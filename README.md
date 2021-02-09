@@ -2,8 +2,6 @@
 
 ## Team
 
-3 - Online shop de venda em segunda mão
-
 Nuno Miguel Fernandes Marques - up201708997@fe.up.pt - up201708997@g.uporto.pt
 
 João Nuno Diegues Vasconcelos  - up201504397@fe.up.pt  - up201504397@g.uporto.pt
