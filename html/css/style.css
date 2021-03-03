@@ -1,0 +1,20 @@
+
+@import url(./fonts.css);
+
+
+ .navbar{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar .navbar-brand{
+    color:red;
+    padding: 0 2rem 0 6rem;
+    text-shadow:1px 1px #640606;
+    font-size: 16pt;
+}
+ 
+.breadcrumb{
+    background:rgba(0,0,0,0.1);
+
+}
+
