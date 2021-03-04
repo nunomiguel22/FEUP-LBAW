@@ -8,6 +8,19 @@ body{
 
 }
 
+.text-outline-dark{
+        text-shadow:
+          -1px -1px 0 #000,
+           0   -1px 0 #000,
+           1px -1px 0 #000,
+           1px  0   0 #000,
+           1px  1px 0 #000,
+           0    1px 0 #000,
+          -1px  1px 0 #000,
+          -1px  0   0 #000;
+}
+
+
  .navbar{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -21,6 +34,24 @@ body{
     margin-left:10%;
 }
 
+
 .container .carousel .carousel-inner{
     border-radius: 3px;
+}
+
+.card-body {
+    padding:5px;
+    margin: 0 0;
+}
+
+.HomeNav-devInfo{
+    color:grey;
+    margin:0;
+    padding:0;
+}
+
+.HomeNav-GameTitle{
+    font-family:'Lucida Sans';
+    font-style: italic;
+    color:honeydew;
 }

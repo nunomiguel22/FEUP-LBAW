@@ -42,7 +42,7 @@
   <div class="container">
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="0" class="active box-text-outline-dark"></li>
         <li data-target="#carousel" data-slide-to="1"></li>
         <li data-target="#carousel" data-slide-to="2"></li>
       </ol>
@@ -50,22 +50,22 @@
         <div class="carousel-item active">
           <img src="/img/carousel/CP2077.jpg" class="d-block w-100" alt="Cyberpunk2077">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Cyberpunk 2077</h5>
-            <p>Starting at 59.99€.</p>
+            <h5 class="text-outline-dark">Cyberpunk 2077</h5>
+            <p class="text-outline-dark">Starting at 59.99€.</p>
           </div>
         </div>
         <div class="carousel-item">
           <img src="/img/carousel/Outriders.jpg" class="d-block w-100" alt="Outriders">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Outsiders</h5>
-            <p>Starting at 40.00€.</p>
+            <h5 class="text-outline-dark">Outsiders</h5>
+            <p class="text-outline-dark">Starting at 40.00€.</p>
           </div>
         </div>
         <div class="carousel-item">
           <img src="/img/carousel/h3.jpg" class="d-block w-100" alt="Hitman 3">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Hitman 3</h5>
-            <p>Starting at 30.00€.</p>
+            <h5 class="text-outline-dark">Hitman 3</h5>
+            <p class="text-outline-dark">Starting at 30.00€.</p>
           </div>
         </div>
       </div>
@@ -80,6 +80,127 @@
     </div>
   </div>
 
+  <!-- Game Nav -->
+  <div class="container" style="padding-top:80px;">
+    <ul class="nav nav-tabs" id="HomeNav" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+          aria-selected="true">Top Sellers</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+          aria-selected="false">Action</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+          aria-selected="false">Adventure</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="HomeNavContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <!-- Game Nav Card Deck -->
+        <div class="card-deck mb-3 text-center">
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/CP2077.jpg" class="card-img-top" alt="Cyberpunk">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Cyberpunk 2077</h6>
+              <p class="HomeNav-devInfo">CD Projekt Red</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">59.99€</a>
+          </div>
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/Outriders.jpg" class="card-img-top" alt="Outriders">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Outriders</h6>
+              <p class="HomeNav-devInfo">People Can Fly</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">40.00€</a>
+          </div>
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/h3.jpg" class="card-img-top" alt="Hitman 3">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Hitman 3</h5>
+                <p class="HomeNav-devInfo">IO Interactive</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">30.00€</a>
+          </div>
+        </div>
+
+        <!-- Game Nav Card Deck -->
+        <div class="card-deck mb-3 text-center">
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/GTAV.jpg" class="card-img-top" alt="GTA V">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">GTA V</h6>
+              <p class="HomeNav-devInfo">Rockstar North</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">20.99€</a>
+          </div>
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/CSGO.jpg" class="card-img-top" alt="CSGO">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Counter-strike: Global Offensive</h6>
+              <p class="HomeNav-devInfo">Valve</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">40.00€</a>
+          </div>
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/Control.jpg" class="card-img-top" alt="Control">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Control</h5>
+                <p class="HomeNav-devInfo">505 Games</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">29.99€</a>
+          </div>
+        </div>
+
+        <!-- Game Nav Card Deck -->
+        <div class="card-deck mb-3 text-center">
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/GR.jpg" class="card-img-top" alt="Ghostrunner">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Ghostrunner</h6>
+              <p class="HomeNav-devInfo">One More Level</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">29.99€</a>
+          </div>
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/BL3.jpg" class="card-img-top" alt="Borderlands 3">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Borderlands 3</h6>
+              <p class="HomeNav-devInfo">Gearbox Software</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">59.99€</a>
+          </div>
+          <!-- Card -->
+          <div class="card mb-2 mt-2">
+            <img src="/img/carousel/MW3.jpg" class="card-img-top" alt="COD:MW3">
+            <div class="card-body">
+              <h6 class="HomeNav-GameTitle">Call of Duty: Modern Warfare 3</h5>
+                <p class="HomeNav-devInfo">Infinity Ward</p>
+            </div>
+            <a href="#" class="btn btn-primary stretched-link">39.99€</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        Soon Tm
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        Soon Tm
+      </div>
+    </div>
+
+  </div>
   <br><br>
 
   <!-- MAIN AREA -->
