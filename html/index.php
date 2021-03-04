@@ -48,14 +48,14 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="/img/carousel/cp2077.jpg" class="d-block w-100" alt="Cyberpunk2077">
+          <img src="/img/carousel/CP2077.jpg" class="d-block w-100" alt="Cyberpunk2077">
           <div class="carousel-caption d-none d-md-block">
             <h5>Cyberpunk 2077</h5>
             <p>Starting at 59.99€.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="/img/carousel/outriders.jpg" class="d-block w-100" alt="Outriders">
+          <img src="/img/carousel/Outriders.jpg" class="d-block w-100" alt="Outriders">
           <div class="carousel-caption d-none d-md-block">
             <h5>Outsiders</h5>
             <p>Starting at 40.00€.</p>
