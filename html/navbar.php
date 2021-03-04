@@ -1,7 +1,9 @@
 <html>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">OGS</a>
+    <a class="navbar-brand" href="/index.php">
+        <img src="/img/logo/logo_transparent2.png" width="40" height="40" alt="">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
         aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,9 +27,6 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="#">Login</a>
             </li>
             <li class="nav-item">
@@ -38,5 +37,6 @@
 
     </div>
 </nav>
+
 
 </html>
