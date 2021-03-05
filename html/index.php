@@ -13,9 +13,11 @@
   <script src="./bootstrap/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
 
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="./css/all.min.css">
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./css/style.css">
-
 </head>
 
 <body>
@@ -48,21 +50,27 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="/img/carousel/CP2077.jpg" class="d-block w-100" alt="Cyberpunk2077">
+          <a href="#">
+            <img src="/img/carousel/CP2077.jpg" class="d-block w-100" alt="Cyberpunk2077">
+          </a>
           <div class="carousel-caption d-none d-md-block">
             <h5 class="text-outline-dark">Cyberpunk 2077</h5>
             <p class="text-outline-dark">Starting at 59.99€.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="/img/carousel/Outriders.jpg" class="d-block w-100" alt="Outriders">
+          <a href="#">
+            <img src="/img/carousel/GR.jpg" class="d-block w-100" alt="Ghostrunner">
+          </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5 class="text-outline-dark">Outsiders</h5>
-            <p class="text-outline-dark">Starting at 40.00€.</p>
+            <h5 class="text-outline-dark">Ghostrunner</h5>
+            <p class="text-outline-dark">Starting at 29.99€.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="/img/carousel/h3.jpg" class="d-block w-100" alt="Hitman 3">
+          <a href="#">
+            <img src="/img/carousel/h3.jpg" class="d-block w-100" alt="Hitman 3">
+          </a>
           <div class="carousel-caption d-none d-md-block">
             <h5 class="text-outline-dark">Hitman 3</h5>
             <p class="text-outline-dark">Starting at 30.00€.</p>
@@ -80,8 +88,21 @@
     </div>
   </div>
 
-  <!-- Game Nav -->
+  <!-- Game Nav Divider -->
   <div class="container" style="padding-top:80px;">
+    <div class="row">
+      <div class="col">
+        <hr style="background:white;">
+      </div>
+      <span><i class="fas fa-book-open"></i> Browse Catalogs</span>
+      <div class="col">
+        <hr style="background:white;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Nav -->
+  <div class="container">
     <ul class="nav nav-tabs" id="HomeNav" role="tablist">
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"

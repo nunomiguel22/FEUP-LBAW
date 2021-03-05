@@ -7,14 +7,16 @@
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <div class="col-lg-8 col-md-12 mb-4 mb-md-0">
                 <h5 class="text-uppercase">Online Game Store</h5>
 
                 <p>
-                    Bem vindo a Online Game Store, etc, etc...
+                    Welcome to the Online Game Store, this website is a project developed for
+                    the 2021 LBAW class of the Faculty of Engineering at the University of Porto.
                 </p>
 
                 <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
+                <img src="/img/others/logo-feup.png" width="100" height="100" alt="">
             </div>
             <!--Grid column-->
 
@@ -28,9 +30,6 @@
                     </li>
                     <li>
                         <a href="#!" class="text-light">Report a problem</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-light">etc</a>
                     </li>
                 </ul>
             </div>
