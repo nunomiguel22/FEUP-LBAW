@@ -41,12 +41,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#LoginModal">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#SignupModal">Signup</a>
-            </li>
-
         </ul>
-
     </div>
 </nav>
 
