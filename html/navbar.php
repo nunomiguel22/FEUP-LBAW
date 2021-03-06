@@ -34,12 +34,16 @@
         </ul>
 
         <form class="form-inline ml-auto mr-auto" style="width:30%">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search for a title..." style="width:68%">
+            <input class="form-control bg-secondary text-light mr-sm-2" type="text" placeholder="Search for a title..."
+                style="width:68%">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#LoginModal">Login</a>
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#LoginModal">
+                    <i class="far fa-user fa-2x"></i>
+                    Login
+                </a>
             </li>
         </ul>
     </div>
@@ -48,18 +52,70 @@
 <div class="modal" id="LoginModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>LOGIN</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <div class="container">
+                <div class="row mt-4 mb-3">
+                    <div class="col-11" align="center">
+                        <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-10 ml-auto mr-auto">
+                        <p>SIGN IN WITH AN OGS ACCOUNT</p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-10 ml-auto mr-auto">
+                        <div class="form-group">
+                            <input type="email" class="form-control bg-secondary text-light" id="LoginInputEmail1"
+                                style="height:50px" placeholder="Email address">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 ml-auto mr-auto">
+                        <div class="form-group">
+                            <input type="password" class="form-control bg-secondary text-light" id="LoginInputPassword1"
+                                style="height:50px" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 ml-auto mr-auto" align="right">
+                        <div class="form-group">
+                            <a class="form-text text-muted" href=""> Forgot your password?</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-10 ml-auto mr-auto">
+                        <div class="form-group">
+                            <button class="btn btn-secondary my-2 my-sm-0 btn-lg" style="width:100%;" type="submit">Sign
+                                in</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 ml-auto mr-auto mb-4" align="center">
+                        <span>Don't have an OGS account?
+                            <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal"
+                                data-target="#SignupModal">
+                                Sign up.
+                            </a> </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
