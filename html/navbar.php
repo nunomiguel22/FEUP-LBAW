@@ -49,10 +49,76 @@
     </div>
 </nav>
 
-<div class="modal" id="LoginModal">
+<!-- Signin Modal -->
+<div class="modal fade" id="LoginModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="container">
+
+                <!-- Modal Header -->
+                <div class="row mt-4 mb-3">
+                    <div class="col-11" align="center">
+                        <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 ml-auto mr-auto">
+                        <p>SIGN IN WITH AN OGS ACCOUNT</p>
+                    </div>
+                </div>
+
+                <!-- Signin Form -->
+                <form action="">
+
+                    <!-- Email Row -->
+                    <div class=" form-group row mb-4">
+                        <input type="email" class="form-control col-10 m-auto bg-secondary text-light"
+                            style="height:50px" placeholder="Email address">
+                    </div>
+
+                    <!-- Password Row -->
+                    <div class="form-group row">
+                        <input type="password" class="form-control col-10 m-auto bg-secondary text-light"
+                            style="height:50px" placeholder="Password">
+                    </div>
+
+                    <!-- Submit button Row -->
+                    <div class="form-group row mt-5">
+
+                        <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;"
+                            type="submit">
+                            Sign in</button>
+                    </div>
+
+                </form>
+
+                <!-- Signup link -->
+                <div class="row mb-4" align="center">
+                    <span class="col-10 m-auto">Don't have an OGS account?
+                        <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal"
+                            data-target="#SignupModal">
+                            Sign up.
+                        </a> </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Signin Modal -->
+<div class="modal fade" id="SignupModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="container">
+
+                <!-- Modal Header -->
                 <div class="row mt-4 mb-3">
                     <div class="col-11" align="center">
                         <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
@@ -67,75 +133,66 @@
 
                 <div class="row">
                     <div class="col-10 ml-auto mr-auto">
-                        <p>SIGN IN WITH AN OGS ACCOUNT</p>
+                        <p>SIGN UP FOR AN OGS ACCOUNT</p>
                     </div>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-10 ml-auto mr-auto">
-                        <div class="form-group">
-                            <input type="email" class="form-control bg-secondary text-light" id="LoginInputEmail1"
-                                style="height:50px" placeholder="Email address">
+                <!-- Signup Form -->
+                <form action="">
 
-                        </div>
+                    <!-- Country Row -->
+                    <div class=" form-group row mb-4 justify-content-center">
+                        <select class="form-control col-10 bg-secondary text-light" name="Country" style="height:50px">
+                            <option value="Portugal" default>Portugal</option>
+                            <option value="Spain">Spain</option>
+                            <option value="France">France</option>
+                            <option value="Germany">Germany</option>
+                        </select>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-10 ml-auto mr-auto">
-                        <div class="form-group">
-                            <input type="password" class="form-control bg-secondary text-light" id="LoginInputPassword1"
-                                style="height:50px" placeholder="Password">
-                        </div>
+                    <!-- Name Row -->
+                    <div class="form-group row justify-content-center">
+                        <input type="text" class="form-control col-md-5 bg-secondary text-light" style="height:50px"
+                            placeholder="*First Name">
+                        <input type="text" class="form-control col-md-5 bg-secondary text-light" style="height:50px"
+                            placeholder="*Last Name">
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-10 ml-auto mr-auto" align="right">
-                        <div class="form-group">
-                            <a class="form-text text-muted" href=""> Forgot your password?</a>
-                        </div>
+                    <!-- Display name Row -->
+                    <div class="form-group row justify-content-center">
+                        <input type="text" class="form-control col-10 bg-secondary text-light" style="height:50px"
+                            placeholder="*Display Name">
                     </div>
-                </div>
 
-                <div class="row mt-3">
-                    <div class="col-10 ml-auto mr-auto">
-                        <div class="form-group">
-                            <button class="btn btn-secondary my-2 my-sm-0 btn-lg" style="width:100%;" type="submit">Sign
-                                in</button>
-                        </div>
+                    <!-- Email Row -->
+                    <div class=" form-group row">
+                        <input type="email" class="form-control col-10 m-auto bg-secondary text-light"
+                            style="height:50px" placeholder="Email address">
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-10 ml-auto mr-auto mb-4" align="center">
-                        <span>Don't have an OGS account?
-                            <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal"
-                                data-target="#SignupModal">
-                                Sign up.
-                            </a> </span>
+                    <!-- Password Row -->
+                    <div class="form-group row">
+                        <input type="password" class="form-control col-10 m-auto bg-secondary text-light"
+                            style="height:50px" placeholder="Password">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="modal" id="SignupModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>SIGNUP</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- Submit button Row -->
+                    <div class="form-group row mt-3">
+
+                        <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;"
+                            type="submit">
+                            Sign in</button>
+                    </div>
+
+                </form>
+
+                <!-- Signup link -->
+                <div class="row mb-4" align="center">
+                    <span class="col-10 m-auto">Don't have an OGS account?
+                        <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal"
+                            data-target="#SignupModal">
+                            Sign up.
+                        </a> </span>
+                </div>
             </div>
         </div>
     </div>

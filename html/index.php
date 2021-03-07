@@ -21,12 +21,11 @@
 </head>
 
 <body>
-
   <!-- HEADER AREA -->
 
   <!-- Navbar -->
   <?php
-    include_once 'navbar.php';
+    include_once 'navbar_logged.php';
   ?>
 
   <!-- Breadcrumbs -->
