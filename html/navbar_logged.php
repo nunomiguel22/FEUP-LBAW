@@ -43,11 +43,11 @@
         <ul class="navbar-nav">
 
             <li class="nav-item">
-                <button class="btn btn-secondary" type="button">
+                <a class="btn btn-secondary" href="/cart.php" role="button">
                     <i class="fas fa-shopping-cart mr-2"></i>
-
                     <span class="numberCircle">2</span>
-                </button>
+                    </button>
+                </a>
             </li>
 
             <li class="nav-item dropdown ml-3">
