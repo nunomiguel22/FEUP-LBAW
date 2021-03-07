@@ -31,7 +31,7 @@
   <!-- Breadcrumbs -->
   <div class="container-fluid">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active"> <a href="/index.php"> Home </a></li>
+      <li class="breadcrumb-item active"> Home </a></li>
     </ol>
   </div>
 
