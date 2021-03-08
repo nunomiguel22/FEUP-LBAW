@@ -29,7 +29,8 @@
                         <a href="#!" class="text-light">About us</a>
                     </li>
                     <li>
-                        <a href="#!" class="text-light">Report a problem</a>
+                        <a href="#!" class="text-light" data-toggle="modal" data-target="#ReportModal">Report a
+                            problem</a>
                     </li>
                 </ul>
             </div>
@@ -48,6 +49,54 @@
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
+
+<!-- Report Problem Modal -->
+<div class="modal fade" id="ReportModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="container">
+
+                <!-- Modal Header -->
+                <div class="row mt-4 mb-3">
+                    <div class="col-11" align="center">
+                        <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-10 ml-auto mr-auto">
+                        <p>Report a problem and helps us improve your experience</p>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <form action="">
+
+                    <!-- Problem text Row -->
+                    <div class="form-group row justify-content-center">
+                        <textarea class="form-control bg-dark text-light" placeholder="Describe your problem..."
+                            rows="7" style="width:85%; resize:none;"></textarea>
+                    </div>
+
+                    <!-- Submit button Row -->
+                    <div class="form-group row mt-3 mb-4">
+                        <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;"
+                            type="submit">
+                            Submit Report</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </html>
