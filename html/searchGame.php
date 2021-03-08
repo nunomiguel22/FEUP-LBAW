@@ -47,7 +47,7 @@
 
       <div class = "form-row">
         <div class = "game-name col-md-5" style = "padding-left:1em">
-          <h5 class = "criteria-text">Name: </h5>
+          <h5 class = "criteria-text">Search for title: </h5>
           <input class = "form-control" type = "text" style = "width:85%"> 
         </div>
         
@@ -96,7 +96,7 @@
         </div>  
 
         <div class="col-md-1">
-          <button type="button" class="btn btn-success search-button">Search</button>
+          <button type="button" class="btn btn-secondary search-button">Search</button>
         </div>
 
       </div>
@@ -118,7 +118,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">CD Projekt Red</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class="d-inline card-text card-categories">Categories:</h5>
@@ -140,7 +140,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">People Can Fly</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class="d-inline card-text card-categories">Categories:</h5>
@@ -163,7 +163,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">IO Interactive</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class="d-inline card-text card-categories">Categories:</h5>
@@ -184,7 +184,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">Rockstar Games</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class = "d-inline card-text card-categories">Categories:</h5>
@@ -205,7 +205,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">Valve</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class = "d-inline card-text card-categories">Categories:</h5>
@@ -227,7 +227,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">505 Games</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class = "d-inline card-text card-categories">Categories:</h5>
@@ -249,7 +249,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">One More Level</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class = "d-inline card-text card-categories">Categories:</h5>
@@ -270,7 +270,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">Gearbox Software</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class = "d-inline card-text card-categories">Categories:</h5>
@@ -293,7 +293,7 @@
 
               <div class = "row card-secondary-info">
                 <h5 class = "card-text col-sm-9">Infinity Ward</h5>
-                <a href="#" class = "stretched-link">See page</a>
+                <a href="#" class = "stretched-link text-muted">See page</a>
               </div>
 
               <h5 class = "d-inline card-text card-categories">Categories:</h5>
@@ -310,10 +310,29 @@
     <!-- Next page and previous page buttons -->
 
     <div class="container">
-      <div class="row justify-content-between pb-4">
-        <button type="button" class="btn btn-success rounded-pill col-sm-2">< Previous Page</button>
-        <button type="button" class="btn btn-success rounded-pill col-sm-2">Next Page ></button>
-      </div>
+      <ul class="pagination row justify-content-center pb-3 mt-n4">
+        <li class="page-item disabled">
+          <a class="page-link" href="#">&laquo;</a>
+        </li>
+        <li class="page-item active">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">4</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">5</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">&raquo;</a>
+        </li>
+      </ul>
     </div>
 
     <!-- MAIN AREA -->
