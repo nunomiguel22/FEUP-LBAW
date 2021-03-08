@@ -36,7 +36,7 @@
         <form class="form-inline ml-auto mr-auto" style="width:30%">
             <input class="form-control bg-secondary text-light mr-sm-2" type="text" placeholder="Search for a title..."
                 style="width:68%">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
 
 

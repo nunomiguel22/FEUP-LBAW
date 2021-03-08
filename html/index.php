@@ -121,93 +121,111 @@
         <!-- Game Nav Card Deck -->
         <div class="card-deck mb-3 text-center">
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/CP2077.jpg" class="card-img-top" alt="Cyberpunk">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Cyberpunk 2077</h6>
               <p class="HomeNav-devInfo">CD Projekt Red</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">59.99€</a>
+            <a href="#" class="btn btn-secondary stretched-link">59.99€</a>
           </div>
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/Outriders.jpg" class="card-img-top" alt="Outriders">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Remove from Wishlist"
+              href="asd.php"><i class="fas fa-check-circle"></i></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Outriders</h6>
               <p class="HomeNav-devInfo">People Can Fly</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">40.00€</a>
+            <a href="#" class="btn btn-secondary stretched-link">40.00€</a>
           </div>
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/h3.jpg" class="card-img-top" alt="Hitman 3">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Hitman 3</h5>
                 <p class="HomeNav-devInfo">IO Interactive</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">30.00€</a>
+            <a href="#" class="btn btn-secondary stretched-link">30.00€</a>
           </div>
         </div>
 
         <!-- Game Nav Card Deck -->
         <div class="card-deck mb-3 text-center">
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/GTAV.jpg" class="card-img-top" alt="GTA V">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">GTA V</h6>
               <p class="HomeNav-devInfo">Rockstar North</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">20.99€</a>
+            <a href="#" class="btn btn-secondary stretched-link">20.99€</a>
           </div>
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/CSGO.jpg" class="card-img-top" alt="CSGO">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Counter-strike: Global Offensive</h6>
               <p class="HomeNav-devInfo">Valve</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">40.00€</a>
+            <a href="#" class="btn btn-secondary stretched-link">40.00€</a>
           </div>
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/Control.jpg" class="card-img-top" alt="Control">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Control</h5>
                 <p class="HomeNav-devInfo">505 Games</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">29.99€</a>
+            <a href="#" class="btn btn-secondary stretched-link">29.99€</a>
           </div>
         </div>
 
         <!-- Game Nav Card Deck -->
         <div class="card-deck mb-3 text-center">
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/GR.jpg" class="card-img-top" alt="Ghostrunner">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Ghostrunner</h6>
               <p class="HomeNav-devInfo">One More Level</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">29.99€</a>
+            <a href="#" class="btn btn-secondary stretched-link">29.99€</a>
           </div>
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/BL3.jpg" class="card-img-top" alt="Borderlands 3">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Borderlands 3</h6>
               <p class="HomeNav-devInfo">Gearbox Software</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">59.99€</a>
+            <a href="#" class="btn btn-secondary stretched-link">59.99€</a>
           </div>
           <!-- Card -->
-          <div class="card mb-2 mt-2">
+          <div class="card mb-2 mt-2 hover-darken">
             <img src="/img/carousel/MW3.jpg" class="card-img-top" alt="COD:MW3">
+            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
+              href="asd.php"><i class="fas fa-plus-circle"></i></a>
             <div class="card-body">
               <h6 class="HomeNav-GameTitle">Call of Duty: Modern Warfare 3</h5>
                 <p class="HomeNav-devInfo">Infinity Ward</p>
             </div>
-            <a href="#" class="btn btn-primary stretched-link">39.99€</a>
+            <a href="#" class="btn btn-secondary stretched-link">39.99€</a>
           </div>
         </div>
 

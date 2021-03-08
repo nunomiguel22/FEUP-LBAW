@@ -32,9 +32,20 @@ body{
     margin-left:10%;
 }
 
+.container .carousel{
+    transition-duration: 1s;
+}
+
+.container .carousel:hover{
+    box-shadow: 0 4px 8px 0 rgba(116, 116, 116, 0.2), 0 6px 20px 0 rgba(75, 75, 75, 0.19);
+}
 
 .container .carousel .carousel-inner{
     border-radius: 3px;
+}
+
+.card{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-body {
@@ -97,3 +108,30 @@ body{
     margin-left: 10px;
 }
 
+.wishlist-indicator{
+    z-index: 2;
+    color: rgb(253, 253, 253);
+    background: rgba(0, 0, 0, 0.384);
+    border-radius: 10px;
+    width: 20px;
+    position: absolute;
+    display:none;
+    left:320px;
+    top: 5px;
+}
+
+.card:hover .wishlist-indicator{
+    display:block;
+}
+
+.wishlist-indicator:hover{
+    color:gray;
+}
+
+.hover-darken:hover {
+    filter: brightness(90%);
+}
+
+.hover-brighten:hover {
+    filter: brightness(90%);
+}
