@@ -4,7 +4,10 @@
 body{
     margin:0;
     font-family: "Roboto";
+}
 
+p{
+    font-family: 'Courier New';
 }
 
 .text-outline-dark{
