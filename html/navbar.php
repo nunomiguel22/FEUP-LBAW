@@ -188,15 +188,6 @@
                     </div>
 
                 </form>
-
-                <!-- Signup link -->
-                <div class="row mb-4" align="center">
-                    <span class="col-10 m-auto">Don't have an OGS account?
-                        <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal"
-                            data-target="#SignupModal">
-                            Sign up.
-                        </a> </span>
-                </div>
             </div>
         </div>
     </div>

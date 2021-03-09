@@ -28,7 +28,7 @@
                     <a class="dropdown-item" href="#">Sports</a>
                     <a class="dropdown-item" href="#">Strategy</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Browse All</a>
+                    <a class="dropdown-item" href="/search_game.php">Browse All</a>
                 </div>
             </li>
         </ul>
@@ -58,7 +58,7 @@
                         <i class="fas fa-id-badge"></i>
                         <span> Profile</span>
                     </a>
-                    <a class="dropdown-item" href="/history.php"><i class="fas fa-hammer"></i>
+                    <a class="dropdown-item" href="/AdminPage.php"><i class="fas fa-hammer"></i>
                         <span> Admin Dashboard</span>
                     </a>
                     <a class="dropdown-item" href="/wishlist.php">
