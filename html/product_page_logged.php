@@ -69,12 +69,16 @@
         <div class="col">
             <div class="row">
                 <h3>CyberPunk 2077</h3>  
+                <div class="col" align="right">
+                  <h3 class="mt-2">59.99€</h3>
+                </div>
                 <br>  
                 <br> 
                 <br>
                 <br>
-                <p style="font-size:115%;">Cyberpunk 2077 é uma história de ação/aventura no mundo aberto de Night City, uma megalópole obcecada com poder, glamour e alterações de corpos. Aqui serás V, um mercenário exilado que persegue um implante essencial para obter a imortalidade. Poderás personalizar o cyberware, 
-                habilidades e estilo da tua personagem e explorar uma vasta cidade onde as escolhas que tomares irão moldar a história e o mundo que te rodeia.
+              <p style="font-size:115%;">
+              Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality. You can customize your character’s cyberware, 
+              skillset and playstyle, and explore a vast city where the choices you make shape the story and the world around you.
                 </p>
             </div>
             <div class="row align-items-center" style="padding-top:25px; padding-left:70px;">
@@ -104,45 +108,45 @@
   <div class="container" style="padding-top:50px;">
     <div class="card mb-5">
       <div class="card-header">
-        The_User
+        <h4>The_User</h4>
+        <button type="button" class="btn btn-secondary"> Delete your review <i class="far fa-trash-alt"></i></button>
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+        <p class="card-text ml-3"> 
+          With so many clothes to choose from, fashion (and buying cars) 
+          basically becomes the Cyberpunk endgame. Just be prepared to give up some armor and stat bonuses to wear what you like.</p>
       </div>
     </div>
 
     <div class="card mb-5">
       <div class="card-header">
-        Maria Ines
+        <h4>Maria Ines</h4>
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+        <p class="card-text ml-3"> 
+          The variety of citizens in Night City is remarkable, with outrageous future fashions, wild hairstyles, and elaborate cyber implants. You'll see rodeo cowboys with mechanical legs, tattooed yakuza, faces crisscrossed with cyberware, 
+          '80s metalheads sporting wraparound neon visors, and people so heavily augmented you'll wonder if there's any human left. 
+          There's a real sense of this being a teeming, vibrant metropolis with layers of history and culture. And everyone just looks cool.</p>
       </div>
     </div>
 
     <div class="card mb-5">
       <div class="card-header">
-        Teresa Pinto
+        <h4>Teresa Pinto</h4>
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+        <p class="card-text ml-3"> 
+          Some nice characters and stories nested in an astounding open world, undercut by jarring bugs at every turn.</p>
       </div>
     </div>
 
     <div class="card mb-5">
       <div class="card-header">
-        Gonçalo Gonçalves
+        <h4>Gonçalo Gonçalves</h4>
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+        <p class="card-text ml-3"> 
+          I’m taken by how relentlessly hopeful Cyberpunk is.</p>
       </div>
     </div>
   </div>
@@ -156,8 +160,17 @@
 		                <div class="form-group col-md-6">
 		                    <label class="sr-only" for="cname">Name</label>
 		                    <input type="text" class="form-control" id="cname" name="name" placeholder="Name" minlength="2" required="">
-		                </div>    
-		                
+		                </div>   
+                    <div class="form-group col-md-4">
+                      <select id="inputState" class="form-control">
+                        <option selected>Star review</option>
+                        <option>1 star</option>
+                        <option>2 stars</option>
+                        <option>3 stars</option>
+                        <option>4 stars</option>
+                        <option>5 stars</option>
+                      </select>
+                    </div>
 		                <div class="form-group col-12">
 		                    <label class="sr-only" for="cmessage">Your message</label>
 		                    <textarea class="form-control" id="creview" name="review" placeholder="Enter your review" rows="10" required=""></textarea>

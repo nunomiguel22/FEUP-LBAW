@@ -91,12 +91,12 @@
         <div class="col" align="right">
           <h5 class="mt-2">Total price: 89.99€</p>
         </div>
-        <div class="col-2 align-self-end" align="right">
+        <div class="col-2 align-self-end" >
           <button class="btn btn-lg btn-secondary" href="/index.php" role="button">
             <i class="fas fa-trash"></i> Remove all
           </button>
         </div>
-        <div class="col-2 align-self-end" align="right">
+        <div class="col-2 align-self-end">
           <button class="btn btn-lg btn-secondary" href="/index.php" role="button">
             <i class="fas fa-shopping-cart"></i> Checkout
           </button>
