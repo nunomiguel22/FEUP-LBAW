@@ -43,7 +43,7 @@
   <!-- MAIN AREA -->
 
   <div class="container" style="padding-top:30px;">
-    <div class = "row">
+    <div class="row">
       <h3>Whishlist</h3>
     </div>
     <div class="card mt-2 mb-2">
@@ -70,7 +70,7 @@
       <div class="row no-gutters">
         <div class="col-md-3">
           <a href="/product_page.php" class="text-white">
-          <img src="/img/carousel/GR.jpg" widht="75" height="75" alt="Ghostrunner">
+            <img src="/img/carousel/GR.jpg" widht="75" height="75" alt="Ghostrunner">
           </a>
         </div>
         <div class="card-body col-md-8">
@@ -90,7 +90,7 @@
       <div class="row no-gutters">
         <div class="col-md-3">
           <a href="/product_page.php" class="text-white">
-          <img src="/img/carousel/GTAV.jpg" widht="75" height="75" alt="GTA V">
+            <img src="/img/carousel/GTAV.jpg" widht="75" height="75" alt="GTA V">
           </a>
         </div>
         <div class="card-body col-md-8">
@@ -112,9 +112,9 @@
       <div class="row" style="padding-top:50px; padding-bottom:25px;">
 
         <div class="col-2 align-self-end" align="right">
-          <button class="btn btn-lg btn-secondary" href="/index.php" role="button">
-            <i class="fas fa-arrow-left"></i> Back to store
-          </button>
+          <a href="/index.php"><button class="btn btn-lg btn-secondary" role="button">
+              <i class="fas fa-arrow-left"></i> Back to store
+            </button></a>
         </div>
 
         <div class="col-2 align-self-end" align="right">

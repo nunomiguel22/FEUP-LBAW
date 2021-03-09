@@ -58,6 +58,9 @@
                         <i class="fas fa-id-badge"></i>
                         <span> Profile</span>
                     </a>
+                    <a class="dropdown-item" href="/history.php"><i class="fas fa-hammer"></i>
+                        <span> Admin Dashboard</span>
+                    </a>
                     <a class="dropdown-item" href="/wishlist.php">
                         <i class="fas fa-star"></i>
                         <span> Wishlist</span>
