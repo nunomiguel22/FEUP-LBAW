@@ -26,7 +26,7 @@
 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="#!" class="text-light">About us</a>
+                        <a href="/about.php" class="text-light">About us</a>
                     </li>
                     <li>
                         <a href="#!" class="text-light" data-toggle="modal" data-target="#ReportModal">Report a
