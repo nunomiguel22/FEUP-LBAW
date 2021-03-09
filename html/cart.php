@@ -37,7 +37,16 @@
   </div>
 
   <!-- header Area -->
-    <div class="container">
+
+
+   <div class="container">
+    <h2>
+    My Cart
+    </h2>
+   </div>
+
+
+   <div class="container" style="padding-top:30px;">
     <div class="card">
       <div class="row no-gutters">
         <div class="col-md-3" >
@@ -49,7 +58,7 @@
             <p class="card-text">59.99€</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col mt-3 ml-5">
             <button class="btn btn-secondary" role="button">
                 <i class="far fa-trash-alt"></i>
             </button>
@@ -69,7 +78,7 @@
             <p class="card-text">30.00€</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col mt-3 ml-5">
             <button class="btn btn-secondary" role="button">
                 <i class="far fa-trash-alt"></i>
             </button>
@@ -80,7 +89,7 @@
 
 
   <div class="container">
-    <div class="row" style="padding-top:25px; padding-bottom:25px;">
+    <div class="row ml-5" style="padding-top:50px; padding-bottom:25px;">
         <div class="col-3">
           <button class="btn btn-secondary" href="/index.php" role="button">
           Keep looking
