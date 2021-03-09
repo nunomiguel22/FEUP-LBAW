@@ -1,5 +1,8 @@
 <html>
 
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/index.php">
         <img src="/img/logo/logo_transparent2.png" width="40" height="40" alt="">
@@ -36,8 +39,9 @@
         <form class="form-inline ml-auto mr-auto" style="width:30%">
             <input class="form-control bg-secondary text-light mr-sm-2" type="text" placeholder="Search for a title..."
                 style="width:68%">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
+
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#LoginModal">

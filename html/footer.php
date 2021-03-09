@@ -1,7 +1,7 @@
 <html>
 
 <!-- Footer -->
-<footer class="bg-dark text-center text-lg-start">
+<footer class="bg-dark text-center text-lg-start" style="position:sticky; top: Calc(100vh - 10em);">
     <!-- Grid container -->
     <div class="container p-4">
         <!--Grid row-->

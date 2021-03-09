@@ -54,10 +54,21 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false"><i class="fas fa-user-cog"></i> The_User</a>
                 <div class="dropdown-menu dropdown-menu-right" style="width:30px">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Wishlist</a>
-                    <a class="dropdown-item" href="#">My Games</a>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-id-badge"></i>
+                        <span> Profile</span>
+                    </a>
+                    <a class="dropdown-item" href="/wishlist.php">
+                        <i class="fas fa-star"></i>
+                        <span> Wishlist</span>
+                    </a>
+                    <a class="dropdown-item" href="/history.php"><i class="fas fa-archive"></i>
+                        <span> History</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span> Logout</span>
+                    </a>
                 </div>
             </li>
 
