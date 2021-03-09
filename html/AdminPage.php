@@ -313,7 +313,7 @@
                   </td>
                 </tr>
                 <tr class="table-active">
-                  <th scope="row">1</th>
+                  <th scope="row">2</th>
                   <td>Salter</td>
                   <td>Spam</td>
                   <td>The_User</td>
@@ -331,7 +331,7 @@
                   </td>
                 </tr>
                 <tr class="table-active">
-                  <th scope="row">1</th>
+                  <th scope="row">3</th>
                   <td>Ripper2000</td>
                   <td>Inappropriate content</td>
                   <td>The_User</td>
@@ -420,7 +420,7 @@
                   </td>
                 </tr>
                 <tr class="table-active">
-                  <th scope="row">1</th>
+                  <th scope="row">2</th>
                   <td>44859</td>
                   <td>Spam</td>
                   <td>The_User</td>
@@ -438,7 +438,7 @@
                   </td>
                 </tr>
                 <tr class="table-active">
-                  <th scope="row">1</th>
+                  <th scope="row">3</th>
                   <td>1372449</td>
                   <td>Inappropriate content</td>
                   <td>The_User</td>
