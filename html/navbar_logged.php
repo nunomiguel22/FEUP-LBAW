@@ -54,9 +54,13 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false"><i class="fas fa-user-cog"></i> The_User</a>
                 <div class="dropdown-menu dropdown-menu-right" style="width:30px">
-                    <a class="dropdown-item" href="/editProfile.php">
+                    <a class="dropdown-item" href="/profile.php">
                         <i class="fas fa-id-badge"></i>
-                        <span> Profile</span>
+                        <span> My Profile</span>
+                    </a>
+                    <a class="dropdown-item" href="/editProfile.php">
+                        <i class="fas fa-user-edit"></i></i>
+                        <span> Edit Profile</span>
                     </a>
                     <a class="dropdown-item" href="/wishlist.php">
                         <i class="fas fa-star"></i>
