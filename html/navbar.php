@@ -31,7 +31,7 @@
                     <a class="dropdown-item" href="#">Sports</a>
                     <a class="dropdown-item" href="#">Strategy</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Browse All</a>
+                    <a class="dropdown-item" href="/search_game.php">Browse All</a>
                 </div>
             </li>
         </ul>
