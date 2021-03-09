@@ -49,7 +49,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <a href="#">
+          <a href="/product_page.php">
             <img src="/img/carousel/CP2077.jpg" class="d-block w-100" alt="Cyberpunk2077">
           </a>
           <div class="carousel-caption d-none d-md-block">
@@ -129,7 +129,7 @@
               <h6 class="HomeNav-GameTitle">Cyberpunk 2077</h6>
               <p class="HomeNav-devInfo">CD Projekt Red</p>
             </div>
-            <a href="#" class="btn btn-secondary stretched-link">59.99€</a>
+            <a href="/product_page.php" class="btn btn-secondary stretched-link">59.99€</a>
           </div>
           <!-- Card -->
           <div class="card mb-2 mt-2 hover-darken">
