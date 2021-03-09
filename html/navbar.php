@@ -179,9 +179,10 @@
                     <!-- Submit button Row -->
                     <div class="form-group row mt-3">
 
-                        <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;"
-                            type="submit">
+                        <a href="/index_logged.php" <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg"
+                            style="width:100%;" type="submit">
                             Sign in</button>
+                        </a>
                     </div>
 
                 </form>
