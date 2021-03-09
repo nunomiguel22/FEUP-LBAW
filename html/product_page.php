@@ -1,4 +1,4 @@
-<!DOCTYPE html>         
+<!DOCTYPE html>
 <html>
 
 
@@ -24,69 +24,98 @@
 
 <body>
 
-<!-- Header Area -->
+  <!-- Header Area -->
 
- <?php
-    include_once 'navbar_logged.php';
+  <?php
+    include_once 'navbar.php';
   ?>
 
   <!-- Breadcrumbs -->
   <div class="container-fluid">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"> <a href="/index.php"> Home </a></li>
-      <li class="breadcrumb-item active" aria-current="page"> Product </li>
+      <li class="breadcrumb-item" aria-current="page"> <a href="/search_game.php"> Search Page</a></li>
+      <li class="breadcrumb-item active" aria-current="page"> Cyberpunk 2077 </li>
     </ol>
   </div>
 
   <!-- header Area -->
 
+
+
+
   <!-- Main Area -->
-  <div class="container" style="padding-top:30px;">
+  <div class="container">
     <div class="row">
-        <div class="col">
-            <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/img/CP2077.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/CP2077C1.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/CP2077C2.jpg" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+      <div class="carousel col slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/CP2077.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/CP2077C1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/img/CP2077C2.jpg" class="d-block w-100" alt="...">
+          </div>
         </div>
-        <div class="col">
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <h3 class="row">CyberPunk 2077</h3>
+            <p class="row text-muted">CD Projekt Red</p>
+          </div>
+          <div class="col mt-2">
             <div class="row">
-                <h3>CyberPunk 2077</h3>  
-                <br>  
-                <br> 
-                <br>
-                <br>
-                <p style="font-size:115%;">Cyberpunk 2077 é uma história de ação/aventura no mundo aberto de Night City, uma megalópole obcecada com poder, glamour e alterações de corpos. Aqui serás V, um mercenário exilado que persegue um implante essencial para obter a imortalidade. Poderás personalizar o cyberware, 
-                habilidades e estilo da tua personagem e explorar uma vasta cidade onde as escolhas que tomares irão moldar a história e o mundo que te rodeia.
-                </p>
+              <h5>Released on &nbsp;</h5>
+              <span class="text-muted"> 20/12/2021</span>
             </div>
-            <div class="row align-items-center" style="padding-top:25px; padding-left:70px;">
-                <div class="col-6">
-                    <button type="button" class="btn btn-primary">Add to cart</button>
-                </div>
-                <div class="col-6">
-                    <button type="button" class="btn btn-primary">Add to wishlist</button>
-                </div>
-            </div>
+            <h4 class="row">59.99€</h4>
+          </div>
         </div>
+
+        <div class="row">
+          <p style="font-size:100%;">
+            Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with
+            power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant
+            that is the key to immortality. You can customize your character’s cyberware,
+            skillset and playstyle, and explore a vast city where the choices you make shape the story and the world
+            around you.
+          </p>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <div class="row mt-3 ml-auto">
+          <h4> Categories </h4>
+        </div>
+        <div class="row">
+          <div class="d-inline-flex category-box">Open world</div>
+          <div class="d-inline-flex category-box">RPG</div>
+          <div class="d-inline-flex category-box">Action</div>
+        </div>
+
+      </div>
+
+      <div class="col mt-4" style="padding-top:25px; padding-left:70px;">
+        <button type="button" class="btn btn-secondary mb-2 mr-2">Add to cart</button>
+        <button type="button" class="btn btn-secondary mb-2 mr-2">Add to wishlist</button>
+
+      </div>
+
+    </div>
+
   </div>
 
   <div class="container" style="padding-top:50px;">
@@ -102,55 +131,98 @@
   </div>
 
   <div class="container" style="padding-top:50px;">
+
     <div class="card mb-5">
+
       <div class="card-header">
-        The_User
+        <div class="row">
+          <h4 class="col">The_User </h4>
+
+          <div class="review-rating col" align="right">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> <i class="far fa-star"></i>
+          </div>
+        </div>
       </div>
+
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+
+        <p class="card-text ml-3">With so many clothes to choose from, fashion (and buying cars)
+          basically becomes the Cyberpunk endgame. Just be prepared to give up some armor and stat bonuses to wear
+          what
+          you like.</p>
       </div>
     </div>
 
     <div class="card mb-5">
       <div class="card-header">
-        Maria Ines
+        <div class="row">
+          <h4 class="col">Maria_Ines </h4>
+
+          <div class="review-rating col" align="right">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+          </div>
+        </div>
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+        <p class="card-text ml-3">
+          The variety of citizens in Night City is remarkable, with outrageous future fashions, wild hairstyles, and
+          elaborate cyber implants. You'll see rodeo cowboys with mechanical legs, tattooed yakuza, faces crisscrossed
+          with cyberware,
+          '80s metalheads sporting wraparound neon visors, and people so heavily augmented you'll wonder if there's
+          any
+          human left.
+          There's a real sense of this being a teeming, vibrant metropolis with layers of history and culture. And
+          everyone just looks cool.</p>
       </div>
     </div>
 
     <div class="card mb-5">
       <div class="card-header">
-        Teresa Pinto
+        <div class="row">
+          <h4 class="col">Teresa_Pinto </h4>
+
+          <div class="review-rating col" align="right">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+            <i class="far fa-star"></i> <i class="far fa-star"></i>
+          </div>
+        </div>
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+        <p class="card-text ml-3">
+          Some nice characters and stories nested in an astounding open world, undercut by jarring bugs at every turn.
+        </p>
       </div>
     </div>
 
     <div class="card mb-5">
       <div class="card-header">
-        Gonçalo Gonçalves
+        <div class="row">
+          <h4 class="col">Gonçalo_Gonçalves</h4>
+
+          <div class="review-rating col" align="right">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> <i class="far fa-star"></i>
+            <i class="far fa-star"></i> <i class="far fa-star"></i>
+          </div>
+        </div>
       </div>
       <div class="card-body">
-        <p class="card-text"> 
-          A imagem do artigo colocado inicialmente no website da Worten não correspondia à realidade. A imagem presente era da edição em steelcase e a edição em causa que é tipo digipack. 
-        Fiquei um pouco desiludido quando vi que a edição física não correspondia à imagem publicada pela Worten. Mas de resto, tudo bem.</p>
+        <p class="card-text ml-3">
+          I’m taken by how relentlessly hopeful Cyberpunk is.</p>
       </div>
     </div>
   </div>
 
+
   <!-- Main Area -->
 
 
-   <!-- FOOTER -->
+  <!-- FOOTER -->
   <?php
     include_once 'footer.php';
   ?>

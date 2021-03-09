@@ -1,8 +1,5 @@
 <html>
 
-
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/index.php">
         <img src="/img/logo/logo_transparent2.png" width="40" height="40" alt="">
@@ -31,7 +28,7 @@
                     <a class="dropdown-item" href="#">Sports</a>
                     <a class="dropdown-item" href="#">Strategy</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Browse All</a>
+                    <a class="dropdown-item" href="/search_game.php">Browse All</a>
                 </div>
             </li>
         </ul>
@@ -188,15 +185,6 @@
                     </div>
 
                 </form>
-
-                <!-- Signup link -->
-                <div class="row mb-4" align="center">
-                    <span class="col-10 m-auto">Don't have an OGS account?
-                        <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal"
-                            data-target="#SignupModal">
-                            Sign up.
-                        </a> </span>
-                </div>
             </div>
         </div>
     </div>

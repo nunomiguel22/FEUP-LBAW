@@ -62,6 +62,9 @@
                         <i class="fas fa-user-edit"></i></i>
                         <span> Edit Profile</span>
                     </a>
+                    <a class="dropdown-item" href="/AdminPage.php"><i class="fas fa-hammer"></i>
+                        <span> Admin Dashboard</span>
+                    </a>
                     <a class="dropdown-item" href="/wishlist.php">
                         <i class="fas fa-star"></i>
                         <span> Wishlist</span>
@@ -80,7 +83,5 @@
 
     </div>
 </nav>
-
-
 
 </html>
