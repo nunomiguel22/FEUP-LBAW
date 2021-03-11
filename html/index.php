@@ -43,7 +43,7 @@
   <div class="container">
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active box-text-outline-dark"></li>
+        <li data-target="#carousel" data-slide-to="0" class="active shadow-box-dark"></li>
         <li data-target="#carousel" data-slide-to="1"></li>
         <li data-target="#carousel" data-slide-to="2"></li>
       </ol>
@@ -77,7 +77,7 @@
         </div>
       </div>
       <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon shadow-lg" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
       <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
@@ -120,115 +120,189 @@
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <!-- Game Nav Card Deck -->
         <div class="card-deck mb-3 text-center">
+
           <!-- Card -->
           <div class="card mb-2 mt-2 hover-darken">
+            <!-- Image -->
             <img src="/img/carousel/CP2077.jpg" class="card-img-top" alt="Cyberpunk">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Cyberpunk 2077</h6>
-              <p class="HomeNav-devInfo">CD Projekt Red</p>
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Cyberpunk 2077</span>
+              <span class="col-4 HomeNav-price text-right mr-3">59.99€</span>
             </div>
-            <a href="/product_page.php" class="btn btn-secondary stretched-link">59.99€</a>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">CD Projekt Red</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
           </div>
+
+
           <!-- Card -->
           <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/Outriders.jpg" class="card-img-top" alt="Outriders">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Remove from Wishlist"
-              href="asd.php"><i class="fas fa-check-circle"></i></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Outriders</h6>
-              <p class="HomeNav-devInfo">People Can Fly</p>
+            <!-- Image -->
+            <img src="/img/carousel/Outriders.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Outriders</span>
+              <span class="col-4 HomeNav-price text-right mr-3">40.00€</span>
             </div>
-            <a href="#" class="btn btn-secondary stretched-link">40.00€</a>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">People Can Fly</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
           </div>
+
           <!-- Card -->
           <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/h3.jpg" class="card-img-top" alt="Hitman 3">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Hitman 3</h5>
-                <p class="HomeNav-devInfo">IO Interactive</p>
+            <!-- Image -->
+            <img src="/img/carousel/h3.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Hitman 3</span>
+              <span class="col-4 HomeNav-price text-right mr-3">30.00€</span>
             </div>
-            <a href="#" class="btn btn-secondary stretched-link">30.00€</a>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">IO Interactive</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
+          </div>
+
+        </div>
+
+        <!-- Game Nav Card Deck -->
+        <div class="card-deck mb-3 text-center">
+
+          <!-- Card -->
+          <div class="card mb-2 mt-2 hover-darken">
+            <!-- Image -->
+            <img src="/img/carousel/GTAV.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Grand Theft Auto V</span>
+              <span class="col-4 HomeNav-price text-right mr-3">20.99€</span>
+            </div>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">Rockstar North</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
+          </div>
+
+          <!-- Card -->
+          <div class="card mb-2 mt-2 hover-darken">
+            <!-- Image -->
+            <img src="/img/carousel/CSGO.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Counter-Strike: Global Offensive</span>
+              <span class="col-4 HomeNav-price text-right mr-3">40.00€</span>
+            </div>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">Valve</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
+          </div>
+
+          <!-- Card -->
+          <div class="card mb-2 mt-2 hover-darken">
+            <!-- Image -->
+            <img src="/img/carousel/Control.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle" align="center">Control</span>
+              <span class="col-4 HomeNav-price text-right mr-3">29.99€</span>
+            </div>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">505 Games</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
           </div>
         </div>
 
         <!-- Game Nav Card Deck -->
         <div class="card-deck mb-3 text-center">
-          <!-- Card -->
-          <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/GTAV.jpg" class="card-img-top" alt="GTA V">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">GTA V</h6>
-              <p class="HomeNav-devInfo">Rockstar North</p>
-            </div>
-            <a href="#" class="btn btn-secondary stretched-link">20.99€</a>
-          </div>
-          <!-- Card -->
-          <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/CSGO.jpg" class="card-img-top" alt="CSGO">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Counter-strike: Global Offensive</h6>
-              <p class="HomeNav-devInfo">Valve</p>
-            </div>
-            <a href="#" class="btn btn-secondary stretched-link">40.00€</a>
-          </div>
-          <!-- Card -->
-          <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/Control.jpg" class="card-img-top" alt="Control">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Control</h5>
-                <p class="HomeNav-devInfo">505 Games</p>
-            </div>
-            <a href="#" class="btn btn-secondary stretched-link">29.99€</a>
-          </div>
-        </div>
 
-        <!-- Game Nav Card Deck -->
-        <div class="card-deck mb-3 text-center">
           <!-- Card -->
           <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/GR.jpg" class="card-img-top" alt="Ghostrunner">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Ghostrunner</h6>
-              <p class="HomeNav-devInfo">One More Level</p>
+            <!-- Image -->
+            <img src="/img/carousel/GR.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Ghostrunner</span>
+              <span class="col-4 HomeNav-price text-right mr-3">29.99€</span>
             </div>
-            <a href="#" class="btn btn-secondary stretched-link">29.99€</a>
-          </div>
-          <!-- Card -->
-          <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/BL3.jpg" class="card-img-top" alt="Borderlands 3">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Borderlands 3</h6>
-              <p class="HomeNav-devInfo">Gearbox Software</p>
-            </div>
-            <a href="#" class="btn btn-secondary stretched-link">59.99€</a>
-          </div>
-          <!-- Card -->
-          <div class="card mb-2 mt-2 hover-darken">
-            <img src="/img/carousel/MW3.jpg" class="card-img-top" alt="COD:MW3">
-            <a class="wishlist-indicator" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"
-              href="asd.php"><i class="fas fa-plus-circle"></i></a>
-            <div class="card-body">
-              <h6 class="HomeNav-GameTitle">Call of Duty: Modern Warfare 3</h5>
-                <p class="HomeNav-devInfo">Infinity Ward</p>
-            </div>
-            <a href="#" class="btn btn-secondary stretched-link">39.99€</a>
-          </div>
-        </div>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">One More Level</span>
 
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
+          </div>
+
+          <!-- Card -->
+          <div class="card mb-2 mt-2 hover-darken">
+            <!-- Image -->
+            <img src="/img/carousel/BL3.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Borderlands 3</span>
+              <span class="col-4 HomeNav-price text-right mr-3">59.99€</span>
+            </div>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">Gearbox Software</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
+          </div>
+
+          <!-- Card -->
+          <div class="card mb-2 mt-2 hover-darken">
+            <!-- Image -->
+            <img src="/img/carousel/MW3.jpg" class="card-img-top" alt="Cyberpunk">
+            <!-- Wishlist Indicator -->
+            <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
+              title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
+            <!-- Wishlist Card Body -->
+            <div class="row mt-2">
+              <span class="col-7 HomeNav-GameTitle">Call of Duty: Modern Warfare 3</span>
+              <span class="col-4 HomeNav-price text-right mr-3">39.99€</span>
+            </div>
+            <div class="row">
+              <span class="col-7 HomeNav-devInfo">Infinity Ward</span>
+
+            </div>
+            <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
+          </div>
+
+        </div>
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         Soon Tm
@@ -239,7 +313,7 @@
     </div>
 
   </div>
-  <br><br>
+
 
   <!-- MAIN AREA -->
 
