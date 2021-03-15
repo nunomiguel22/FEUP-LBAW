@@ -73,12 +73,25 @@
 
         <div class="row mt-2">
 
-          <button type="button" class="btn btn-success mb-2 mr-2"><i class="fas fa-shopping-cart"> Add to
-              cart</button>
-          <button type="button" class="btn btn-secondary mb-2 mr-2"><i class="far fa-heart"></i>Add to
-            wishlist</button>
+          <button type="button" class="btn btn-success mb-2 mr-2">Add to
+            cart <i class="fas fa-shopping-cart"></i></button>
+          <button type="button" class="btn btn-secondary mb-2 mr-2">Add to
+            wishlist <i class="far fa-heart"></i></button>
+          <button type="button" class="btn btn-danger mb-2 mr-2" data-toggle="modal" data-target="#EditModal">Edit Game
+            <i class="fas fa-edit"></i></button>
+          <span class="mt-2 mr-1 text-warning">Keys Available</span>
+          <span class="mt-2"> 20000</span>
         </div>
 
+        <div class="row mt-2">
+          <div class="input-group mb-3 ">
+            <input type="number" class="form-control col-3" placeholder="Add keys" aria-label="Add keys"
+              aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-warning" type="button">Add</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col">
@@ -163,7 +176,7 @@
           what
           you like.</p>
         <hr style="background:white;">
-        <button type="button" class="btn btn-warning mb-3 ml-3">Edit your review <i class="fas fa-edit"></i></i>
+        <button type="button" class="btn btn-warning mb-3 ml-3">Edit your review <i class="fas fa-edit"></i>
         </button>
         <button type="button" class="btn btn-danger mb-3 ml-3">Delete your review <i class="fas fa-trash"></i>
         </button>
@@ -196,6 +209,8 @@
         <hr style="background:white;">
         <button type="button" class="btn btn-danger mb-3 ml-3">Report this review <i class="fas fa-gavel"></i></i>
         </button>
+        <button type="button" class="btn btn-danger mb-3 ml-3">Delete this review <i
+            class="fas fa-trash-alt"></i></i></i>
 
       </div>
     </div>
@@ -220,6 +235,8 @@
         <hr style="background:white;">
         <button type="button" class="btn btn-danger mb-3 ml-3">Report this review <i class="fas fa-gavel"></i></i>
         </button>
+        <button type="button" class="btn btn-danger mb-3 ml-3">Delete this review <i
+            class="fas fa-trash-alt"></i></i></i>
       </div>
     </div>
 
@@ -242,6 +259,9 @@
           I’m taken by how relentlessly hopeful Cyberpunk is.</p>
         <hr style="background:white;">
         <button type="button" class="btn btn-danger mb-3 ml-3">Report this review <i class="fas fa-gavel"></i></i>
+        </button>
+        <button type="button" class="btn btn-danger mb-3 ml-3">Delete this review <i
+            class="fas fa-trash-alt"></i></i></i>
         </button>
       </div>
     </div>
@@ -279,6 +299,198 @@
   </section>
 
   <!-- Main Area -->
+
+  <!-- Signin Modal -->
+  <div class="modal fade" id="LoginModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="container">
+
+          <!-- Modal Header -->
+          <div class="row mt-4 mb-3">
+            <div class="col-11" align="center">
+              <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
+            </div>
+            <div class="col-1">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-10 ml-auto mr-auto">
+              <p>SIGN IN WITH AN OGS ACCOUNT</p>
+            </div>
+          </div>
+
+          <!-- Signin Form -->
+          <form action="">
+
+            <!-- Email Row -->
+            <div class=" form-group row mb-4">
+              <input type="email" class="form-control col-10 m-auto bg-secondary text-light" style="height:50px"
+                placeholder="Email address">
+            </div>
+
+            <!-- Password Row -->
+            <div class="form-group row">
+              <input type="password" class="form-control col-10 m-auto bg-secondary text-light" style="height:50px"
+                placeholder="Password">
+            </div>
+
+            <!-- Submit button Row -->
+            <div class="form-group row mt-5">
+
+              <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;" type="submit">
+                Sign in</button>
+            </div>
+
+          </form>
+
+          <!-- Signup link -->
+          <div class="row mb-4" align="center">
+            <span class="col-10 m-auto">Don't have an OGS account?
+              <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal" data-target="#SignupModal">
+                Sign up.
+              </a> </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal fade" id="EditModal">
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="container">
+
+          <!-- Modal Header -->
+          <div class="row mt-4 mb-3">
+            <div class="col-11" align="center">
+              <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
+            </div>
+            <div class="col-1">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          </div>
+
+
+          <div class="container my-3">
+            <div class="row my-2">
+              <input type="text" class="form-control m-auto col-5 bg-secondary text-light" style="height:50px"
+                value="CyberPunk 2077">
+
+              <input type="text" class="form-control m-auto col-5 bg-secondary text-light" style="height:50px"
+                value="CD Projekt Red">
+            </div>
+            <div class="row my-2">
+              <input type="text" class="form-control m-auto col-5 bg-secondary text-light" style="height:50px"
+                value="20/12/2021">
+
+              <input type="text" class="form-control m-auto col-5 bg-secondary text-light" style="height:50px"
+                value="59.99€">
+            </div>
+            <div class="row my-2">
+              <textarea class="form-control col-11 m-auto bg-dark text-light" name="description" rows="6" required="">
+                Cyberpunk 2077 is an open-world, action-adventure story set in Night City, 
+                a megalopolis obsessed with power, glamour and body modification. 
+                You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the 
+                key to immortality. You can customize your character’s cyberware, skillset and 
+                playstyle, and explore a vast city where the choices you make shape the story and 
+                the world around you.
+              
+              </textarea>
+            </div>
+            <div class="row mt-2">
+
+              <div class="form-group col-5 m-auto">
+                <div class="input-group mb-3">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input " id="inputGroupFile02">
+                    <label class="custom-file-label" for="inputGroupFile02">Add cover photo</label>
+                  </div>
+                  <div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-5 mx-auto mt-3">
+                <div class="input-group mb-3">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input " id="inputGroupFile02">
+                    <label class="custom-file-label" for="inputGroupFile02">Add galery photos</label>
+                  </div>
+                  <div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-5 mx-auto">
+                Category
+                <select name="Category" class="form-control bg-dark text-light">
+                  <option value="RPG">RPG</option>
+                  <option value="Action">Action</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="etc">etc</option>
+                </select>
+              </div>
+              <div class="col-5 mx-auto">
+                Listed
+                <select name="Category" class="form-control bg-dark text-light">
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+
+            </div>
+            <div class="row mt-3">
+              <div class="col-5 mx-auto">
+                <label for="exampleSelect2">Tags</label>
+                <select multiple="" class="form-control bg-dark text-light" id="exampleSelect2">
+                  <option selected>Open World</option>
+                  <option>Souls-like</option>
+                  <option>Co-op</option>
+                  <option selected>RPG</option>
+                  <option>Story-based</option>
+                  <option selected>Action</option>
+                  <option>Side-scroller</option>
+                </select>
+              </div>
+
+              <div class="col-5 mx-auto">
+                Amount of Keys Available
+                <div class="input-group mb-3 ">
+                  <input type="number" class="form-control col" value="20000" aria-label="Add keys"
+                    aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-warning" type="button">Change</button>
+                  </div>
+                </div>
+                <button class="btn btn-warning btn-lg w-100" type="submit">
+                  Edit Game</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
 
 
   <!-- FOOTER -->

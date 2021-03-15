@@ -32,6 +32,9 @@
                         <a href="#!" class="text-light" data-toggle="modal" data-target="#ReportModal">Report a
                             problem</a>
                     </li>
+                    <li>
+                        <a href="/all_links.php" class="text-light">All Links</a>
+                    </li>
                 </ul>
             </div>
             <!--Grid column-->

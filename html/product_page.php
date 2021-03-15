@@ -47,26 +47,39 @@
   <!-- Main Area -->
   <div class="container">
     <div class="row">
-      <div class="carousel col slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/img/CP2077.jpg" class="d-block w-100" alt="...">
+      <div class="col mr-4">
+        <div class="carousel row slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/img/CP2077.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/img/CP2077C1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/img/CP2077C2.jpg" class="d-block w-100" alt="...">
+            </div>
           </div>
-          <div class="carousel-item">
-            <img src="/img/CP2077C1.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="/img/CP2077C2.jpg" class="d-block w-100" alt="...">
-          </div>
+          <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+
+
+        <div class="row mt-2">
+
+          <button type="button" class="btn btn-success mb-2 mr-2" data-toggle="modal" data-target="#LoginModal">
+            <i class="fas fa-shopping-cart"></i> Add to cart
+          </button>
+          <button type="button" class="btn btn-secondary mb-2 mr-2" data-toggle="modal" data-target="#LoginModal">Add to
+            <i class="far fa-heart"></i> wishlist</button>
+        </div>
+
       </div>
 
       <div class="col">
@@ -93,25 +106,23 @@
             around you.
           </p>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="row mt-3 ml-auto">
-          <h4> Categories </h4>
-        </div>
+
         <div class="row">
-          <div class="d-inline-flex category-box">Open world</div>
-          <div class="d-inline-flex category-box">RPG</div>
-          <div class="d-inline-flex category-box">Action</div>
+          <div class="col">
+            <div class="row mt-3">
+              <h4> Tags </h4>
+            </div>
+            <div class="row">
+              <span class="text-muted" style="word-spacing: 2px;">Open-World RPG Action</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="radialProgressBar-large progress-70">
+              <div class="overlay text-light">3.5</div>
+            </div>
+          </div>
+
         </div>
-
-      </div>
-
-      <div class="col mt-4" style="padding-top:25px; padding-left:70px;">
-        <button type="button" class="btn btn-secondary mb-2 mr-2">Add to cart</button>
-        <button type="button" class="btn btn-secondary mb-2 mr-2">Add to wishlist</button>
-
       </div>
 
     </div>
@@ -132,12 +143,12 @@
 
   <div class="container" style="padding-top:50px;">
 
-    <div class="card mb-5">
+    <div class="card mb-3">
 
       <div class="card-header">
         <div class="row">
-          <h4 class="col">The_User </h4>
-
+          <h4 class="col" style="font-style: italic;">The_User </h4>
+          <span class="col text-center text-muted">25/01/2021</span>
           <div class="review-rating col" align="right">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i> <i class="fas fa-star"></i>
@@ -148,18 +159,24 @@
 
       <div class="card-body">
 
-        <p class="card-text ml-3">With so many clothes to choose from, fashion (and buying cars)
+        <p class="card-text ml-3 my-2">With so many clothes to choose from, fashion (and buying cars)
           basically becomes the Cyberpunk endgame. Just be prepared to give up some armor and stat bonuses to wear
           what
           you like.</p>
+        <hr style="background:white;">
+        <button type="button" class="btn btn-warning mb-3 ml-3">Edit your review <i class="fas fa-edit"></i></i>
+        </button>
+        <button type="button" class="btn btn-danger mb-3 ml-3">Delete your review <i class="fas fa-trash"></i>
+        </button>
+
       </div>
     </div>
 
-    <div class="card mb-5">
+    <div class="card mb-3">
       <div class="card-header">
         <div class="row">
-          <h4 class="col">Maria_Ines </h4>
-
+          <h4 class="col" style="font-style: italic;">Maria_Ines </h4>
+          <span class="col text-center text-muted">20/01/2021</span>
           <div class="review-rating col" align="right">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i> <i class="fas fa-star"></i>
@@ -168,7 +185,7 @@
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text ml-3">
+        <p class="card-text ml-3 my-2">
           The variety of citizens in Night City is remarkable, with outrageous future fashions, wild hairstyles, and
           elaborate cyber implants. You'll see rodeo cowboys with mechanical legs, tattooed yakuza, faces crisscrossed
           with cyberware,
@@ -177,14 +194,19 @@
           human left.
           There's a real sense of this being a teeming, vibrant metropolis with layers of history and culture. And
           everyone just looks cool.</p>
+        <hr style="background:white;">
+        <button type="button" class="btn btn-danger mb-3 ml-3">Report this review <i class="fas fa-gavel"></i></i>
+        </button>
+
       </div>
     </div>
 
-    <div class="card mb-5">
+
+    <div class="card mb-3">
       <div class="card-header">
         <div class="row">
-          <h4 class="col">Teresa_Pinto </h4>
-
+          <h4 class="col" style="font-style: italic;">Teresa_Pinto </h4>
+          <span class="col text-center text-muted">21/02/2021</span>
           <div class="review-rating col" align="right">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i> <i class="fas fa-star"></i>
@@ -193,17 +215,22 @@
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text ml-3">
+        <p class="card-text ml-3 my-2">
           Some nice characters and stories nested in an astounding open world, undercut by jarring bugs at every turn.
         </p>
+        <hr style="background:white;">
+        <button type="button" class="btn btn-danger mb-3 ml-3">Report this review <i class="fas fa-gavel"></i></i>
+        </button>
       </div>
     </div>
+
+
 
     <div class="card mb-5">
       <div class="card-header">
         <div class="row">
-          <h4 class="col">Gonçalo_Gonçalves</h4>
-
+          <h4 class="col" style="font-style: italic;">Gonçalo_Gonçalves</h4>
+          <span class="col text-center text-muted">20/01/2021</span>
           <div class="review-rating col" align="right">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i> <i class="far fa-star"></i>
@@ -212,8 +239,11 @@
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text ml-3">
+        <p class="card-text ml-3 my-2">
           I’m taken by how relentlessly hopeful Cyberpunk is.</p>
+        <hr style="background:white;">
+        <button type="button" class="btn btn-danger mb-3 ml-3">Report this review <i class="fas fa-gavel"></i></i>
+        </button>
       </div>
     </div>
   </div>

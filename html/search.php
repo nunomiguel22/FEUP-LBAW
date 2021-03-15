@@ -89,7 +89,7 @@
                 <div class="overlay text-light">3.5</div>
               </div>
             </div>
-            <span class="col-md-2 my-auto" align="right">59.99€</span>
+            <div class="col-md-2 my-auto" align="right">59.99€</div>
           </a>
 
           <a class="row bg-dark b-shadow my-1" href="#">
