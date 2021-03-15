@@ -93,7 +93,8 @@
     <div class="container" style="padding-bottom:40px;">
 
         <a class="row bg-dark b-shadow my-1" href="#">
-            <div class="col-md-2"><img src="/img/carousel/CP2077.jpg" class="ml-0 mt-1" style="max-width:96px;max-height:54px;">
+            <div class="col-md-2"><img src="/img/carousel/CP2077.jpg" class="ml-n3 " 
+              style="max-width:120px;max-height:70px;">
             </div>
             <div class="col-5 m-auto">
                 <div class="row">
@@ -113,8 +114,8 @@
         </a>
 
         <a class="row bg-dark b-shadow my-1" href="#">
-        <div class="col-md-2"><img src="/img/carousel/GTAV.jpg" class="ml-0 mt-1"
-                style="max-width:96px;max-height:54px;">
+        <div class="col-md-2"><img src="/img/carousel/GTAV.jpg" class="ml-n3 " 
+          style="max-width:120px;max-height:70px;">
             </div>
             <div class="col-5 m-auto">
               <div class="row">
@@ -134,8 +135,8 @@
         </a>
 
         <a class="row bg-dark b-shadow my-1" href="#">
-        <div class="col-md-2"><img src="/img/carousel/Outriders.jpg" class="ml-0 mt-1"
-                style="max-width:96px;max-height:54px;">
+        <div class="col-md-2"><img src="/img/carousel/Outriders.jpg" class="ml-n3 " 
+          style="max-width:120px;max-height:70px;">
             </div>
             <div class="col-5 m-auto">
               <div class="row">
@@ -153,6 +154,46 @@
                 <i class="fas fa-edit"></i>
             </button>
         </a>
+    </div>
+
+    <div class="container border-top" style="padding-bottom:40px; padding-top:15px;">
+
+      <h3 style="padding-bottom:5px;">Wishlist</h3>
+
+        <a class="row bg-dark b-shadow my-1" href="#">
+            <div class="col-md-2"><img src="/img/carousel/GR.jpg" class="ml-n3 " 
+              style="max-width:120px;max-height:70px;">
+            </div>
+            <div class="col-7 m-auto">
+                <div class="row">
+                    Ghostrunner
+                </div>
+                <div class="row"><span class="HomeNav-devInfo">One More Level</span></div>
+
+            </div>
+            <div class="col-md-2 my-auto">29.99€</div>
+            <button class="btn btn-secondary col-md-1" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit Hours">
+                <i class="fas fa-trash"></i>
+            </button>
+        </a>
+
+        <a class="row bg-dark b-shadow my-1" href="#">
+            <div class="col-md-2"><img src="/img/carousel/h3.jpg" class="ml-n3 " 
+              style="max-width:120px;max-height:70px;">
+            </div>
+            <div class="col-7 m-auto">
+                <div class="row">
+                    Hitman 3
+                </div>
+                <div class="row"><span class="HomeNav-devInfo">IO Interactive</span></div>
+
+            </div>
+            <div class="col-md-2 my-auto">30.00€</div>
+            <button class="btn btn-secondary col-md-1" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit Hours">
+                <i class="fas fa-trash"></i>
+            </button>
+        </a>
+
     </div>
 
     <!-- MAIN AREA -->
