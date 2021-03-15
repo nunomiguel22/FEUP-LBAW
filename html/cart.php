@@ -43,67 +43,84 @@
   <!-- MAIN AREA -->
 
   <div class="container" style="padding-top:30px;">
-    <div class="card mt-2 mb-2">
-      <div class="row no-gutters">
-        <div class="col-md-3">
-          <a href="/product_page.php" class="text-white">
-            <img src="/img/CP2077.jpg" widht="75" height="75" alt="...">
-          </a>
-        </div>
-        <div class="card-body col-md-8">
-          <a href="/product_page.php" class="text-white">
-            <h5 class="card-title">Cyberpunk 2077</h5>
-            <p class="card-text">59.99€</p>
-          </a>
-        </div>
 
-        <button class="btn btn-secondary col-md-1" role="button">
-          <i class="far fa-trash-alt"></i>
-        </button>
+    <div class="row bg-dark b-shadow my-1">
+      <div class=" col-md-2"><img src="/img/carousel/CP2077.jpg" class="ml-0 mt-1"
+          style="max-width:96px;max-height:54px;">
       </div>
+      <div class="col-5 m-auto">
+        <div class="row">
+          Cyberpunk 2077
+        </div>
+        <div class="row"><span class="HomeNav-devInfo">CD Projekt Red</span></div>
+
+      </div>
+
+
+      <div class="col-md-2 my-auto" align="right">59.99€</div>
+      <button class="btn btn-secondary col-md-1" role="button">
+        <i class="far fa-trash-alt"></i>
+      </button>
     </div>
 
-    <div class="card mt-2 mb-2">
-      <div class="row no-gutters">
-        <div class="col-md-3">
-          <a href="/product_page.php" class="text-white">
-            <img src="/img/hitman.jpg" widht="75" height="75" alt="...">
-          </a>
+    <div class="row bg-dark b-shadow my-1">
+      <div class=" col-md-2"><img src="/img/carousel/H3.jpg" class="ml-0 mt-1" style="max-width:96px;max-height:54px;">
+      </div>
+      <div class="col-5 m-auto">
+        <div class="row">
+          Hitman 3
         </div>
-        <div class="card-body col-md-8">
-          <a href="/product_page.php" class="text-white">
-            <h5 class="card-title">Hitman 3</h5>
-            <p class="card-text">30.00€</p>
-          </a>
+        <div class="row"><span class="HomeNav-devInfo">CD Projekt Red</span></div>
+
+      </div>
+
+
+      <div class="col-md-2 my-auto" align="right">30.00€</div>
+      <button class="btn btn-secondary col-md-1" role="button">
+        <i class="far fa-trash-alt"></i>
+      </button>
+    </div>
+
+    <div class="row bg-dark b-shadow my-1">
+      <div class=" col-md-2"></div>
+      <div class="col-5 m-auto">
+        <div class="row my-3">
+          <h5>Total</h5>
         </div>
 
-        <button class="btn btn-secondary col-md-1" role="button">
-          <i class="far fa-trash-alt"></i>
-        </button>
+
       </div>
+
+
+      <div class="col-md-2 my-auto" align="right">
+        <h5>89.99€</h5>
+      </div>
+      <button class="btn btn-secondary col-md-1" role="button">
+        <i class="far fa-trash-alt"></i>
+      </button>
     </div>
+
+
+
+
 
     <hr style="background:white;">
 
-    <div class="container">
-      <div class="row" style="padding-top:50px; padding-bottom:25px;">
 
-        <div class="col" align="right">
-          <h5 class="mt-2">Total price: 89.99€</p>
-        </div>
-        <div class="col-2 align-self-end" >
-          <button class="btn btn-lg btn-secondary" href="/index.php" role="button">
-            <i class="fas fa-trash"></i> Remove all
-          </button>
-        </div>
-        <div class="col-2 align-self-end">
-          <button class="btn btn-lg btn-secondary" href="/index.php" role="button">
-            <i class="fas fa-shopping-cart"></i> Checkout
-          </button>
-        </div>
-      </div>
+    <div class="row">
+
+      <button class="btn btn-lg col-2 col-sm-4 btn-danger mr-3 mb-3" href="/index.php" role="button">
+        <i class="fas fa-trash"></i> Remove all
+      </button>
+
+
+      <button class="btn btn-lg btn-success col-2 col-sm-4 mb-3" href="/index.php" role="button">
+        <i class="fas fa-shopping-cart"></i> Checkout
+
     </div>
+
   </div>
+
   <!-- MAIN AREA -->
 
   <!-- FOOTER -->

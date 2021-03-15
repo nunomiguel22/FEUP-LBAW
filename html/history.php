@@ -88,8 +88,7 @@
                 <td>Ghostrunner</td>
                 <td>29.99€</td>
                 <td>03/03/2021</td>
-                <td><button class="btn btn-secondary" data-toggle="modal" data-target="#KeyModal" type="submit">View
-                        Key</button></td>
+                <td><span class="text-success">Gifted</span></td>
             </tr>
     </table>
 
