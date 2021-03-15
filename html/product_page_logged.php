@@ -73,8 +73,8 @@
 
         <div class="row mt-2">
 
-          <button type="button" class="btn btn-success mb-2 mr-2"><i class="fas fa-shopping-cart"> Add to
-              cart</button>
+          <button type="button" class="btn btn-success mb-2 mr-2"><i class="fas fa-shopping-cart"></i> Add to
+            cart</button>
           <button type="button" class="btn btn-secondary mb-2 mr-2"><i class="far fa-heart"></i>Add to
             wishlist</button>
         </div>

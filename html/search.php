@@ -72,7 +72,7 @@
 
         <div class="container" style="padding-bottom:40px;">
 
-          <a class="row bg-dark b-shadow my-1" href="#">
+          <a class="row bg-dark b-shadow my-1" href="/product_page_logged.php">
             <div class="col-md-2"><img src="/img/carousel/CP2077.jpg" class="ml-0 mt-1"
                 style="max-width:96px;max-height:54px;">
             </div>
