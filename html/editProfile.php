@@ -48,7 +48,7 @@
             </div>
             <div class="col-md-10">
                 <div class="card mb-3">
-                    <h3 class="card-header"><i class="fas fa-user"></i>Editing The_User Profile</h3>
+                    <h3 class="card-header"><i class="fas fa-user"></i>  The_User</h3>
 
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">

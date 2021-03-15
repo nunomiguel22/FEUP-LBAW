@@ -3,21 +3,21 @@
 
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Game Shop</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Game Shop</title>
 
-  <!-- Bootstrap and dependencies -->
-  <script src="/bootstrap/jquery-3.3.1.slim.min.js"></script>
-  <script src="/bootstrap/popper.min.js"></script>
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap and dependencies -->
+    <script src="/bootstrap/jquery-3.3.1.slim.min.js"></script>
+    <script src="/bootstrap/popper.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/css/style.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -41,173 +41,119 @@
     <!-- MAIN AREA -->
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-md-2">
+                <img src="/img/logo/instagram_profile_image.png" class="align-self-start mr-3" width="150" height="150" alt="...">
+            </div>
+            <div class="col-md-10">
                 <div class="card mb-3">
-                    <h3 class="card-header"><i class="fas fa-user"></i>The_User Profile</h3>
-                    <img src="/img/logo/instagram_profile_image.png" class="align-self-start mr-3" width="150" height="150" alt="...">
+                    <h3 class="card-header"><i class="fas fa-user"></i> The_User</h3>
+
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <div class="form-group">
-                                <label class="col-form-label" for="inputDefault">
-                                    <b>Name</b>
-                                </label>
-                                <p>The User</p>
-                            </div>
+                            <form>
+                                <fieldset>
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item flex-column align-items-start">
+                                            <p class="mb-1"> Description unavailable.</p>
+                                        </a>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </li>
-                        <li class="list-group-item">
-                            <div class="form-group">
-                                <label class="col-form-label" for="inputDefault">
-                                    <b>E-Mail</b>
-                                </label>
-                                <p>theUSerEmail@gmail.com</p>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="form-group">
-                                <label class="col-form-label" for="inputDefault">
-                                    <b>Description</b>
-                                </label>
-                                <p>Unavailable</p>
-                            </div>
-                        </li>
-
                     </ul>
-                    <div class="card-footer text-muted">
-                        2 days ago
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="padding-top:30px;">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Games Owned</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Games Owned List</h6>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="card">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-3">
-                                            <img src="/img/CP2077.jpg" widht="75" height="75" alt="...">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Cyberpunk 2077</h5>
-                                                <p class="card-text">Bought</p>
-                                            </div>
-                                        </div>
-                                        <div class="col mt-3 ml-5">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="card">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-3">
-                                            <img src="/img/hitman.jpg" widht="75" height="75" alt="...">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Hitman 3</h5>
-                                                <p class="card-text">Bought</p>
-                                            </div>
-                                        </div>
-                                        <div class="col mt-3 ml-5">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a><a href="#" class="list-group-item list-group-item-action">
-                                <div class="card">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-3">
-                                            <img src="/img/carousel/Outriders.jpg"  widht="75" height="75" alt="...">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Outriders</h5>
-                                                <p class="card-text">Bought</p>
-                                            </div>
-                                        </div>
-                                        <div class="col mt-3 ml-5">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="padding-top:30px;">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Most Played</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Most Played List</h6>
-                        <a href="#" class="list-group-item list-group-item-action">
-                                <div class="card">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-3">
-                                            <img src="/img/CP2077.jpg" widht="75" height="75" alt="...">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Cyberpunk 2077</h5>
-                                                <p class="card-text">Bought</p>
-                                            </div>
-                                        </div>
-                                        <div class="col mt-3 ml-5">
-                                        54 hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="card">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-3">
-                                            <img src="/img/hitman.jpg" widht="75" height="75" alt="...">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Hitman 3</h5>
-                                                <p class="card-text">Bought</p>
-                                            </div>
-                                        </div>
-                                        <div class="col mt-3 ml-5">
-                                        33 hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </a><a href="#" class="list-group-item list-group-item-action">
-                                <div class="card">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-3">
-                                            <img src="/img/carousel/Outriders.jpg"  widht="75" height="75" alt="...">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Outriders</h5>
-                                                <p class="card-text">Bought</p>
-                                            </div>
-                                        </div>
-                                        <div class="col mt-3 ml-5">
-                                        20 hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container" style="padding-top:80px;">
+
+    <form class="container mb-4 mt-4 bg-dark">
+
+        <div class="form-row">
+            <div class="col-lg-8 col-md-4 col-sm-4 my-3">
+
+                <div class="input-group  w-75">
+                    <input type="text" class="form-control bg-dark text-light" placeholder="Search for a title..." aria-label="Search for a title..." aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+            <span class="my-auto col-1">Sort by </span>
+            <div class="col-lg-2 col-md-2 my-auto">
+
+                <select name="SortBy" class="form-control bg-dark text-light">
+                    <option value="hours">Hours Played</option>
+                    <option value="purchaseNew">Last Bought</option>
+                    <option value="purchaseOld">First Bought</option>
+                </select>
+            </div>
+        </div>
+    </form>
+
+    <div class="container" style="padding-bottom:40px;">
+
+        <a class="row bg-dark b-shadow my-1" href="#">
+            <div class="col-md-2"><img src="/img/carousel/CP2077.jpg" class="ml-0 mt-1" style="max-width:96px;max-height:54px;">
+            </div>
+            <div class="col-5 m-auto">
+                <div class="row">
+                    Cyberpunk 2077
+                </div>
+                <div class="row"><span class="HomeNav-devInfo">CD Projekt Red</span></div>
+
+            </div>
+            <div class="col-md-2  m-auto">
+                <div class="row">Bought: </div>
+                <div class="row"><span class="text-info">31/12/2020</span></div>
+            </div>
+            <div class="col-md-2 my-auto">55 Hours </div>
+            <button class="btn btn-secondary col-md-1" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit Hours">
+                <i class="fas fa-edit"></i>
+            </button>
+        </a>
+
+        <a class="row bg-dark b-shadow my-1" href="#">
+        <div class="col-md-2"><img src="/img/carousel/GTAV.jpg" class="ml-0 mt-1"
+                style="max-width:96px;max-height:54px;">
+            </div>
+            <div class="col-5 m-auto">
+              <div class="row">
+                Grand Theft Auto V
+              </div>
+              <div class="row"><span class="HomeNav-devInfo">Rockstar North</span></div>
+
+            </div>
+            <div class="col-md-2  m-auto">
+                <div class="row">Bought: </div>
+                <div class="row"><span class="text-info">31/12/2020</span></div>
+            </div>
+            <div class="col-md-2 my-auto">32 Hours </div>
+            <button class="btn btn-secondary col-md-1" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit Hours">
+                <i class="fas fa-edit"></i>
+            </button>
+        </a>
+
+        <a class="row bg-dark b-shadow my-1" href="#">
+        <div class="col-md-2"><img src="/img/carousel/Outriders.jpg" class="ml-0 mt-1"
+                style="max-width:96px;max-height:54px;">
+            </div>
+            <div class="col-5 m-auto">
+              <div class="row">
+                Outriders
+              </div>
+              <div class="row"><span class="HomeNav-devInfo">People Can Fly</span></div>
+
+            </div>
+            <div class="col-md-2  m-auto">
+                <div class="row">Bought: </div>
+                <div class="row"><span class="text-info">31/12/2020</span></div>
+            </div>
+            <div class="col-md-2 my-auto">20 Hours </div>
+            <button class="btn btn-secondary col-md-1" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit Hours">
+                <i class="fas fa-edit"></i>
+            </button>
+        </a>
     </div>
-
-
 
     <!-- MAIN AREA -->
 
