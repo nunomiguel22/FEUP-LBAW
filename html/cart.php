@@ -33,7 +33,7 @@
   <div class="container-fluid">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"> <a href="/index.php"> Home </a></li>
-      <li class="breadcrumb-item active" aria-current="page"> Cart </li>
+      <li class="breadcrumb-item active" aria-current="page"> Your Shopping Cart </li>
     </ol>
   </div>
 
