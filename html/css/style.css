@@ -81,6 +81,11 @@ a:hover{
     margin: 0 0;
 }
 
+.link-small{
+  font-size:9pt;
+  text-decoration-line: underline;
+}
+
 /* Homepage Game nav */
 
 .HomeNav-devInfo{
