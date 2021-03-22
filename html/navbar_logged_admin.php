@@ -56,22 +56,16 @@
                 <div class="dropdown-menu dropdown-menu-right" style="width:30px">
                     <a class="dropdown-item" href="/profile.php">
                         <i class="fas fa-id-badge"></i>
-                        <span> My Profile</span>
+                        <span> Profile</span>
                     </a>
-                    <a class="dropdown-item" href="/editProfile.php">
+                    <a class="dropdown-item" href="/account.php">
                         <i class="fas fa-user-edit"></i></i>
-                        <span> Edit Profile</span>
+                        <span> Account</span>
                     </a>
                     <a class="dropdown-item" href="/AdminPage.php"><i class="fas fa-hammer"></i>
                         <span> Admin Dashboard</span>
                     </a>
-                    <a class="dropdown-item" href="/wishlist.php">
-                        <i class="fas fa-star"></i>
-                        <span> Wishlist</span>
-                    </a>
-                    <a class="dropdown-item" href="/history.php"><i class="fas fa-archive"></i>
-                        <span> History</span>
-                    </a>
+
                     <a class="dropdown-item" href="#">
                         <i class="fas fa-sign-out-alt"></i>
                         <span> Logout</span>

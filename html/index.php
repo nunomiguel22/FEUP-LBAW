@@ -31,7 +31,7 @@
   <!-- Breadcrumbs -->
   <div class="container-fluid">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active"> Home </a></li>
+      <li class="breadcrumb-item active"> Home </li>
     </ol>
   </div>
 
@@ -91,11 +91,11 @@
   <div class="container" style="padding-top:80px;">
     <div class="row">
       <div class="col">
-        <hr style="background:white;">
+        <hr>
       </div>
       <span><i class="fas fa-book-open"></i> Browse Catalogs</span>
       <div class="col">
-        <hr style="background:white;">
+        <hr>
       </div>
     </div>
   </div>

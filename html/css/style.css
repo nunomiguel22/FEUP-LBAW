@@ -18,6 +18,22 @@ a:hover{
   text-decoration: none;
 }
 
+hr{
+  background:rgb(190, 190, 190);
+}
+
+.btn{
+  border-radius: 0;
+}
+
+.page-link{
+  background: grey;
+}
+
+.page-link:hover{
+  background:#375a7f !important;
+}
+
 /* Wish list indicator */
 .wishlist-indicator{
     z-index: 2;
@@ -29,6 +45,28 @@ a:hover{
     top: 5px;
 }
 
+.pagination {
+  justify-content: center;
+}
+
+.borderless table {
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+.borderless td, .borderless th {
+  border: none;
+  margin:0;
+  padding:5px;
+}
+
+.top-ph::placeholder{
+  position: absolute;
+  top: 0;
+
+}
 
 .card:hover .wishlist-indicator{
     display:block;
@@ -53,6 +91,41 @@ a:hover{
 .breadcrumb{
     background:rgba(0,0,0,0);
     margin-left:10%;
+   
+}
+
+/* Nav Menu */
+
+.nav-menu{
+  min-width:150px;
+  margin-right: 5px;
+  background: #303030;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav-menu .nav-link{
+  border-radius: 0;
+  font-size: 0.8em;
+  font-family: BrutalTypeMedium;
+
+}
+
+.nav-menu .nav-link:Hover{
+  background:#3f3f3f;
+  transition: 1s;
+}
+
+.nav-menu .nav-link:not(:focus,:active){
+  color:rgb(194, 194, 194);
+}
+
+.nav-menu .nav-link:focus{
+  background:#375a7f !important;
+  transition: 1.5s ease;
+}
+
+.nav-menu .active{
+  color:white !important;
 }
 
 

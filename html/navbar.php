@@ -181,7 +181,7 @@
 
                         <a href="/index_logged.php" <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg"
                             style="width:100%;" type="submit">
-                            Sign in</button>
+                            Sign up</button>
                         </a>
                     </div>
 
