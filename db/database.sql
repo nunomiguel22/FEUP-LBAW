@@ -26,14 +26,18 @@ DROP TYPE IF EXISTS REPORT_TYPE;
 
 DROP FUNCTION IF EXISTS update_game_score() CASCADE;
 DROP FUNCTION IF EXISTS add_review() CASCADE;
+DROP FUNCTION IF EXISTS check_review_repeats() CASCADE;
 DROP FUNCTION IF EXISTS find_available_key() CASCADE;
+DROP FUNCTION IF EXISTS remove_key_availability() CASCADE;
 DROP FUNCTION IF EXISTS remove_cart_product() CASCADE;
 DROP FUNCTION IF EXISTS remove_wishlist_product() CASCADE;
 DROP FUNCTION IF EXISTS update_deleted_user_reviews() CASCADE;
  
 DROP TRIGGER IF EXISTS update_score ON products;
 DROP TRIGGER IF EXISTS add_review ON review;
+DROP TRIGGER IF EXISTS check_review_repeats ON review;
 DROP TRIGGER IF EXISTS make_purchase ON purchase;
+DROP TRIGGER IF EXISTS remove_availability ON purchase;
 DROP TRIGGER IF EXISTS remove_cart_product ON purchase;
 DROP TRIGGER IF EXISTS remove_wishlist_product ON purchase;
 DROP TRIGGER IF EXISTS update_review_on_user_delete ON "user";
@@ -106,8 +110,8 @@ CREATE TABLE game(
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
-    price DOUBLE NOT NULL CONSTRAINT price_ck CHECK (price > 0),
-    score DOUBLE CONSTRAINT score_ck CHECK (score > 0 and score < 6),
+    price DECIMAL NOT NULL CONSTRAINT price_ck CHECK (price > 0),
+    score DECIMAL CONSTRAINT score_ck CHECK (score > 0 and score < 6),
     launch_date DATE,
     listed BOOLEAN NOT NULL DEFAULT true,
     parent_id INTEGER REFERENCES game (id),
@@ -130,25 +134,25 @@ CREATE TABLE game_image (
 CREATE TABLE game_tag(
     tag_id INTEGER NOT NULL REFERENCES tag (id),
     game_id INTEGER NOT NULL REFERENCES game (id),
-    PRIMARY_KEY(tag_id, game_id)
+    PRIMARY KEY(tag_id, game_id)
 );
 
 CREATE TABLE in_cart(
     game_id INTEGER NOT NULL REFERENCES game (id),
     user_id INTEGER NOT NUll REFERENCES "user" (id),
-    PRIMARY_KEY(game_id, user_id)
+   PRIMARY KEY(game_id, user_id)
 );
 
 CREATE TABLE in_wishlist(
     game_id INTEGER NOT NULL REFERENCES game (id),
     user_id INTEGER NOT NUll REFERENCES "user" (id),
-    PRIMARY_KEY(game_id, user_id)
+    PRIMARY KEY(game_id, user_id)
 );
 
 CREATE TABLE purchase(
     id SERIAL PRIMARY KEY,
     "timestamp" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-    price DOUBLE NOT NULL CONSTRAINT price_ck CHECK (price > 0),
+    price DECIMAL NOT NULL CONSTRAINT price_ck CHECK (price > 0),
     status PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
     method PAYMENT_METHOD NOT NULL,
     key_id INTEGER NOT NULL REFERENCES game_key (id),
@@ -196,126 +200,143 @@ CREATE INDEX in_wishlist_user_id_idx ON in_wishlist USING hash (user_id);
 -- TRIGGERS and UDFs
 -----------------------------------------
  
-CREATE FUNCTION update_game_score() RETURN TRIGGER 
-AS 
+CREATE FUNCTION update_game_score() RETURNS TRIGGER AS 
 $BODY$
 BEGIN 
     UPDATE products
-    SET score = (AVG(score) FROM reviews WHERE game_id=New.game_id)
-    WHERE game_id=New.game_id
+    SET score = AVG(review.score)::numeric(0) 
+        FROM review 
+        WHERE game_id=New.game_id;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER update_score 
-AFTER INSERT OR UPDATE OR DELETE ON review
-EXECUTE PROCEDURE update_game_score();  
+    AFTER INSERT OR UPDATE OR DELETE ON review
+    EXECUTE PROCEDURE update_game_score();  
  
-CREATE FUNCTION add_review() RETURN TRIGGER 
-AS
+
+CREATE FUNCTION add_review() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF NOT EXISTS (SELECT Key.game_id
-                    FROM purchase AS Purchase, game_key AS Key, "user" as User
-                    WHERE Purchase.key_id=Key.id AND Key.game_id=New.game_id
-                    AND New.user_id=Purchase.user_id AND User.id = *LOGGED_USER_ID*) THEN
+    IF NOT EXISTS (SELECT game_key.game_id
+                    FROM purchase
+                    JOIN game_key ON purchase.key_id = game_key.id
+                    WHERE purchase.buyer_id = New.reviewer_id
+                    AND game_key.game_id = New.game_id)
+                THEN
     RAISE EXCEPTION 'You can not review a game you do not own.';
-    END IF 
+    END IF;
     RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER add_review
-BEFORE INSERT ON review
-FOR EACH ROW
-EXECUTE PROCEDURE add_review();
+    BEFORE INSERT ON review
+    FOR EACH ROW
+    EXECUTE PROCEDURE add_review();
 
-CREATE FUNCTION check_review_repeats() RETURN TRIGGER 
-AS
+
+CREATE FUNCTION check_review_repeats() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF EXISTS (SELECT id 
                 FROM review
                 WHERE game_id=New.game_id AND user_id=New.game_id) THEN
     RAISE EXCEPTION 'You can only review a game once.';
-    END IF
+    END IF;
     RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER check_review_repeats
-BEFORE INSERT ON review
-FOR EACH ROW
-EXECUTE PROCEDURE check_review_repeats();
+    BEFORE INSERT ON review
+    FOR EACH ROW
+    EXECUTE PROCEDURE check_review_repeats();
  
-CREATE FUNCTION find_available_key() RETURN TRIGGER 
-AS
+
+CREATE FUNCTION find_available_key() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF NOT EXISTS (SELECT Key.available
-                    FROM game_key AS Key, game AS Game
-                    WHERE Game.id=Key.game_id AND Key.available=TRUE AND Game.id=*CURRENT_GAME_ID*) THEN
-    RAISE EXCEPTION 'There are no available keys for the game you are trying to purchase.';
-    END IF
+    IF NOT EXISTS (SELECT game_key.available
+                    FROM game_key
+                    WHERE game_key.id = New.key_id AND game_key.available=TRUE) THEN
+    RAISE EXCEPTION 'This key is not available for purchase.';
+    END IF;
     RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER make_purchase
-BEFORE INSERT ON purchase
-FOR EACH ROW
-EXECUTE PROCEDURE find_available_key();
+    BEFORE INSERT ON purchase
+    FOR EACH ROW
+    EXECUTE PROCEDURE find_available_key();
 
-CREATE FUNCTION remove_cart_product() RETURNS TRIGGER 
-AS
+
+CREATE FUNCTION remove_key_availability() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    SELECT FROM game_key AS Key WHERE id=New.key_id
-	
+    UPDATE game_key
+    SET available=FALSE
+    WHERE id=New.key_id;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER remove_availability
+    AFTER INSERT ON purchase
+    FOR EACH ROW
+    EXECUTE PROCEDURE remove_key_availability();
+
+
+CREATE FUNCTION remove_cart_product() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF EXISTS (SELECT game_key.id FROM game_key AS Key WHERE id=New.key_id) THEN
     DELETE FROM in_cart
-    WHERE user_id=New.buyer_id AND game_id=Key.game_id
+    WHERE user_id=New.buyer_id AND game_id=Key.game_id;
+    END IF;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER remove_cart_product 
-AFTER INSERT ON purchase
-EXECUTE PROCEDURE remove_cart_product();
+    AFTER INSERT ON purchase
+    EXECUTE PROCEDURE remove_cart_product();
+    
 
-CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER 
-AS
+CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    SELECT FROM game_key AS Key WHERE id=New.key_id
-	
+    IF EXISTS (SELECT game_key.id FROM game_key AS Key WHERE id=New.key_id) THEN
     DELETE FROM in_wishlist
-    WHERE user_id=New.buyer_id AND game_id=Key.game_id
+    WHERE user_id=New.buyer_id AND game_id=Key.game_id;
+    END IF;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER remove_wishlist_product 
-AFTER INSERT ON purchase
-EXECUTE PROCEDURE remove_wishlist_product();
+    AFTER INSERT ON purchase
+    EXECUTE PROCEDURE remove_wishlist_product();
 
-CREATE FUNCTION update_deleted_user_reviews() RETURNS TRIGGER 
-AS
+
+CREATE FUNCTION update_deleted_user_reviews() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    UPDATE review
-    SET user_id=*DELETED_USER_ID*
-    WHERE user_id=New.id
+    DELETE FROM review
+    WHERE review.reviewer_id=New.id;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER update_review_on_user_delete
-AFTER DELETE ON "user"
-FOR EACH ROW
-EXECUTE PROCEDURE update_deleted_user_reviews();
+    AFTER DELETE ON "user"
+    FOR EACH ROW
+    EXECUTE PROCEDURE update_deleted_user_reviews();
 
 -----------------------------------------
 -- end
