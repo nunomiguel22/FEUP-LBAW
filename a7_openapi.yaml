@@ -83,7 +83,7 @@ paths:
       summary: "R104: Logout Action"
       description: "Logout the current authenticated used. Access: USR, ADM"
       tags:
-        - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and profile"
       responses:
         "302":
           description: "Redirect after processing logout."
@@ -158,7 +158,7 @@ paths:
       summary: "R107: View user profile"
       description: "Show the individual user profile. Access: USR"
       tags:
-        - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and profile"
       parameters:
         - in: path
           name: id
@@ -175,7 +175,7 @@ paths:
       summary: "R108: Edit user profile Form"
       description: "Edit user profile Form. Access: USR"
       tags:
-        - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and profile"
       parameters:
         - in: path
           name: id
@@ -193,7 +193,7 @@ paths:
       summary: "R109: Edit user profile Action"
       description: "Alter the individual user profile. Access: USR"
       tags:
-        - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and profile"
       parameters:
         - in: path
           name: id
@@ -252,7 +252,7 @@ paths:
       summary: "R110: Delete user profile Form"
       description: "Show delete user profile Form. Access: USR"
       tags:
-        - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and profile"
       parameters:
         - in: path
           name: id
@@ -268,7 +268,7 @@ paths:
       summary: "R111: Delete user profile Action"
       description: "Delete user profile Action. Access: USR, ADM"
       tags:
-        - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and profile"
       parameters:
         - in: path
           name: id
