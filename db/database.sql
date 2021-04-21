@@ -33,7 +33,7 @@ DROP FUNCTION IF EXISTS remove_cart_product() CASCADE;
 DROP FUNCTION IF EXISTS remove_wishlist_product() CASCADE;
 DROP FUNCTION IF EXISTS update_deleted_user_reviews() CASCADE;
  
-DROP TRIGGER IF EXISTS update_score ON products;
+DROP TRIGGER IF EXISTS update_score ON game;
 DROP TRIGGER IF EXISTS add_review ON review;
 DROP TRIGGER IF EXISTS check_review_repeats ON review;
 DROP TRIGGER IF EXISTS make_purchase ON purchase;
@@ -203,10 +203,16 @@ CREATE INDEX in_wishlist_user_id_idx ON in_wishlist USING hash (user_id);
 CREATE FUNCTION update_game_score() RETURNS TRIGGER AS 
 $BODY$
 BEGIN 
-    UPDATE products
-    SET score = AVG(review.score)::numeric(0) 
-        FROM review 
-        WHERE game_id=New.game_id;
+    WITH score_avg AS (
+        SELECT AVG(score)::numeric(1) as avg
+        FROM review
+        WHERE game_id=New.game_id 
+    )
+
+    UPDATE game
+    SET score = score_avg.avg
+    FROM score_avg;
+    RETURN NULL;
 END
 $BODY$
 LANGUAGE plpgsql;
@@ -243,7 +249,7 @@ $BODY$
 BEGIN
     IF EXISTS (SELECT id 
                 FROM review
-                WHERE game_id=New.game_id AND user_id=New.game_id) THEN
+                WHERE game_id=New.game_id AND reviewer_id=New.game_id) THEN
     RAISE EXCEPTION 'You can only review a game once.';
     END IF;
     RETURN NEW;
@@ -260,7 +266,7 @@ CREATE TRIGGER check_review_repeats
 CREATE FUNCTION find_available_key() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF NOT EXISTS (SELECT game_key.available
+    IF NOT EXISTS (SELECT game_key.id
                     FROM game_key
                     WHERE game_key.id = New.key_id AND game_key.available=TRUE) THEN
     RAISE EXCEPTION 'This key is not available for purchase.';
@@ -282,6 +288,7 @@ BEGIN
     UPDATE game_key
     SET available=FALSE
     WHERE id=New.key_id;
+    RETURN NULL;
 END
 $BODY$
 LANGUAGE plpgsql;
@@ -295,10 +302,11 @@ CREATE TRIGGER remove_availability
 CREATE FUNCTION remove_cart_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT game_key.id FROM game_key AS Key WHERE id=New.key_id) THEN
+    IF EXISTS (SELECT id FROM game_key WHERE id=New.key_id) THEN
     DELETE FROM in_cart
-    WHERE user_id=New.buyer_id AND game_id=Key.game_id;
+    WHERE in_cart.user_id=New.buyer_id AND game_id=Key.game_id;
     END IF;
+    RETURN NULL;
 END
 $BODY$
 LANGUAGE plpgsql;
@@ -306,15 +314,16 @@ LANGUAGE plpgsql;
 CREATE TRIGGER remove_cart_product 
     AFTER INSERT ON purchase
     EXECUTE PROCEDURE remove_cart_product();
-    
+
 
 CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT game_key.id FROM game_key AS Key WHERE id=New.key_id) THEN
+    IF EXISTS (SELECT id FROM game_key WHERE id=New.key_id) THEN
     DELETE FROM in_wishlist
     WHERE user_id=New.buyer_id AND game_id=Key.game_id;
     END IF;
+    RETURN NULL;
 END
 $BODY$
 LANGUAGE plpgsql;
@@ -329,6 +338,7 @@ $BODY$
 BEGIN
     DELETE FROM review
     WHERE review.reviewer_id=New.id;
+    RETURN NULL;
 END
 $BODY$
 LANGUAGE plpgsql;

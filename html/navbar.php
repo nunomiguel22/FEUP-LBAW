@@ -1,4 +1,5 @@
 <html>
+<script src="/js/navbar.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/index.php">
@@ -41,7 +42,7 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#LoginModal">
+                <a class="nav-link" href="#LoginModal" data-toggle="modal" data-target="#LoginModal">
                     <i class="fas fa-user fa text-shadow"></i>
                     Login
                 </a>
@@ -102,7 +103,7 @@
                 <!-- Signup link -->
                 <div class="row mb-4" align="center">
                     <span class="col-10 m-auto">Don't have an OGS account?
-                        <a href="#" class="text-muted" data-dismiss="modal" data-toggle="modal"
+                        <a href="#SignupModal" class="text-muted" data-dismiss="modal" data-toggle="modal"
                             data-target="#SignupModal">
                             Sign up.
                         </a> </span>
