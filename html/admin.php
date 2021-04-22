@@ -373,21 +373,7 @@
                                <span class="text-muted">Add the cover photo and the image gallery for this game</span>
 
                                <div class="my-2 row ">
-
-                                   <div class="form-group col-5">
-                                       <div class="input-group ">
-                                           <div class="custom-file">
-                                               <input type="file" class="custom-file-input " id="inputGroupFile02">
-                                               <label class="custom-file-label" for="inputGroupFile02">Add cover
-                                                   photo</label>
-                                           </div>
-                                           <div class="input-group-append">
-                                               <span class="input-group-text">Upload</span>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div class="col-1"></div>
-                                   <div class="form-group col-5">
+                                   <div class="form-group col-12">
                                        <div class="input-group mb-3">
                                            <div class="custom-file">
                                                <input type="file" class="custom-file-input " id="inputGroupFile02">
@@ -429,7 +415,7 @@
 
                                </div>
                                <div class="row mt-4">
-                                   <div class="col-5">
+                                   <div class="col-lg-5 col-md-6">
                                        <div class="row ml-auto">
                                            <label for="exampleSelect2 ">Tags</label>
                                            <select multiple="" class="form-control bg-dark text-light"
@@ -442,21 +428,32 @@
                                            </select>
                                        </div>
                                        <div class="row mt-1 ml-auto">
-                                           <input type="text" class="form-control my-auto col-8 bg-secondary text-light"
+                                           <input type="text" class="form-control my-auto col-6 bg-secondary text-light"
                                                placeholder="*Enter a new tag">
-                                           <button class="btn btn-info col-4" type="submit">
+                                           <button class="btn btn-info col-6" type="submit">
                                                Add Tag</button>
                                        </div>
                                    </div>
-                                   <div class="col-1"></div>
-                                   <div class="col-5">
-                                       <button class="btn btn-info my-5 btn-lg w-100" type="submit">
+                               </div>
+
+                               <div class="row mt-4">
+
+                                   <div class="col-8 m-auto">
+                                       <button class="btn btn-success my-5 btn-lg w-100" type="submit">
                                            Add Game</button>
                                    </div>
-
                                </div>
 
                            </div>
+
+
+
+
+
+
+
+
+
 
                        </div>
                        <div class="tab-pane fade" id="v-pills-reports" role="tabpanel" aria-labelledby="v-pills-report">

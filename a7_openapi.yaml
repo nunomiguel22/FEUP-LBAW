@@ -31,7 +31,7 @@ paths:
         - "M01: Authentication and profile"
       responses:
         "200":
-          description: "Ok. Show [UI01](http://lbaw2156-piu.lbaw-prod.fe.up.pt/index.php)"
+          description: "Ok. Show [UI01](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui01-homepage)"
 
   /login:
     get:

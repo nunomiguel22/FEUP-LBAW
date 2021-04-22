@@ -42,7 +42,7 @@
 
   <!-- MAIN AREA -->
 
-  <div class="container" style="padding-top:30px;">
+  <div class="container m-auto" style="padding-top:30px;">
 
     <div class="row bg-transparent b-shadow my-1 px-2">
 
