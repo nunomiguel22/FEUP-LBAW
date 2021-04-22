@@ -42,7 +42,7 @@ paths:
         - "M01: Authentication and profile"
       responses:
         "200":
-          description: "Ok. Show [UI01](http://lbaw2156-piu.lbaw-prod.fe.up.pt/index.php#LoginModal)"
+          description: "Ok. Show [UI02](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui02-login-form)"
     post:
       operationId: R103
       summary: "R103: Login Action"
@@ -106,7 +106,7 @@ paths:
         - "M01: Authentication and profile"
       responses:
         "200":
-          description: "Ok. Show [UI01](http://lbaw2156-piu.lbaw-prod.fe.up.pt/index.php#SignupModal)"
+          description: "Ok. Show [UI03](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
 
     post:
       operationId: R106
@@ -168,7 +168,7 @@ paths:
           required: true
       responses:
         "200":
-          description: "Ok. Show [UI07](http://lbaw2156-piu.lbaw-prod.fe.up.pt/profile.php)"
+          description: "Ok. Show [UI04](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
 
   /users/{id}/edit:
     get:
@@ -185,9 +185,9 @@ paths:
           required: true
       responses:
         "200":
-          description: "Ok. Show [UI06](http://lbaw2156-piu.lbaw-prod.fe.up.pt/account.php#General)"
+          description: "Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
         "404":
-          description: "User not found. Show [UI03](TODO: URL)"
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
     put:
       operationId: R109
@@ -245,7 +245,7 @@ paths:
                   description: "Failed to alter. Redirect to user profile."
                   value: "/users/{id}"
         "404":
-          description: "User not found. Show [UI03](TODO: URL)"
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /users/{id}/password_security:
     get:
@@ -304,7 +304,7 @@ paths:
                   description: "Failed to alter. Redirect to user profile."
                   value: "/users/{id}"
         "404":
-          description: "User not found. Show [UI03](TODO: URL)"
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
     delete:
       operationId: R112
@@ -333,7 +333,7 @@ paths:
                   description: "Failed account deletion. Redirect to user profile."
                   value: "/users/{id}"
         "404":
-          description: "User not found. Show [UI03](TODO: URL)"
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /admin/products/add_product:
     get:
@@ -344,7 +344,7 @@ paths:
         - "M02: Administration"
       responses:
         "200":
-          description: "Ok. Show [UI10](http://lbaw2156-piu.lbaw-prod.fe.up.pt/admin.php#NewGame)"
+          description: "Ok. Show [UI07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui07-add-new-product-form)"
 
     post:
       operationId: R202
@@ -466,7 +466,7 @@ paths:
                   description: "Failed account deletion. Redirect to product page."
                   value: "/product/{id}"
         "404":
-          description: "Product not found. Show [UI03](TODO: URL)"
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /api/products/search:
     get:
@@ -542,9 +542,9 @@ paths:
           required: true
       responses:
         "200":
-          description: "Ok. Show [UI05](http://lbaw2156-piu.lbaw-prod.fe.up.pt/product_page.php)"
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
         "404":
-          description: "Product not found. Show [UI03](TODO: URL)"
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /shopping/cart:
     get:
@@ -555,7 +555,7 @@ paths:
         - "M04: Shopping"
       responses:
         "200":
-          description: "Ok. Show [UI05](http://lbaw2156-piu.lbaw-prod.fe.up.pt/cart.php)"
+          description: "Ok. Show [UI10](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
 
   /shopping/products/{id}/cart:
     post:
@@ -612,7 +612,7 @@ paths:
                 302Failure:
                   description: "Failed to remove product from cart."
         "404":
-          description: "User not found. Show [UI03](TODO: URL)"
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /shopping/cart/purchase:
     post:
@@ -718,9 +718,9 @@ paths:
                 - description
       responses:
         "200":
-          description: "Ok. Show [UI14](TODO: URL)"
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
         "404":
-          description: "Product not found. Show [UI03](TODO: URL)"
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
     put:
       operationId: R502
@@ -753,9 +753,9 @@ paths:
                 - description
       responses:
         "200":
-          description: "Ok. Show [UI14](TODO: URL)"
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
         "404":
-          description: "Product not found. Show [UI03](TODO: URL)"
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
     delete:
       operationId: R503
@@ -771,9 +771,9 @@ paths:
           required: true
       responses:
         "200":
-          description: "Ok. Show [UI14](TODO: URL)"
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
         "404":
-          description: "Product not found. Show [UI03](TODO: URL)"
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /api/wishlist/users/{id}:
     get:
@@ -840,7 +840,7 @@ paths:
         "200":
           description: "Ok. Show [UI14](TODO: URL)"
         "404":
-          description: "Product not found. Show [UI03](TODO: URL)"
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
     delete:
       operationId: R603
@@ -858,4 +858,4 @@ paths:
         "200":
           description: "Ok. Show [UI14](TODO: URL)"
         "404":
-          description: "Product not found. Show [UI03](TODO: URL)"
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
