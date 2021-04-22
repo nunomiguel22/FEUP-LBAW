@@ -39,7 +39,7 @@
     <!-- HEADER AREA -->
 
     <!-- MAIN AREA -->
-    <div class="container">
+    <div class="container m-auto">
 
         <div class="row d-lg-none d-sm-block mb-2">
             <div class="nav flex-column nav-pills nav-menu w-100" id="v-pills-tab" role="tablist"
@@ -407,7 +407,7 @@
                                 password that you don't use for any other online account</span>
 
                             <div class="row my-5">
-                                <div class="col" style="border-right: 1px solid lightgray;">
+                                <div class="col-7" style="border-right: 1px solid lightgray;">
                                     <h5 class="text-light mt-4">CURRENT PASSWORD</h5>
                                     <span class="text-muted">REQUIRED</span>
                                     <input type="text" class="form-control mt-2 bg-secondary text-white"
@@ -426,7 +426,7 @@
 
                                 </div>
 
-                                <div class="col ml-4">
+                                <div class="col-3 ml-2">
                                     <h5 class="text-light row my-4">YOUR PASSWORD</h5>
 
                                     <span class="text-muted row my-4">Your password must not be equal to your previous
@@ -448,7 +448,7 @@
                             <hr>
                             <h4 class="text-shadow">DELETE YOUR ACCOUNT</h4>
                             <div class="row mx-auto">
-                                <div class="col-8">
+                                <div class="col-7">
                                     <span class="text-muted row my-4">Click DELETE ACCOUNT to permanently delete
                                         your OGS account including all personal information, purchase history, whishlist
                                         entries, and

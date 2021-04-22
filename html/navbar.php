@@ -58,14 +58,16 @@
             <div class="container">
 
                 <!-- Modal Header -->
-                <div class="row mt-4 mb-3">
-                    <div class="col-11" align="center">
-                        <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
-                    </div>
-                    <div class="col-1">
+                <div class="row mt-4 mb-3 float-right">
+                    <div class="col-12">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                    </div>
+                </div>
+                <div class="row mt-4 mb-3">
+                    <div class="col-12" align="center">
+                        <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
                     </div>
                 </div>
 
@@ -121,16 +123,17 @@
             <div class="container">
 
                 <!-- Modal Header -->
-                <div class="row mt-4 mb-3">
-                    <div class="col-11" align="center">
-                        <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
-                    </div>
-                    <div class="col-1">
+                <div class="row mt-4 mb-3 float-right">
+                    <div class="col-12">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
+                </div>
+                <div class="row mt-4 mb-3">
+                    <div class="col-12" align="center">
+                        <img src="/img/logo/logo_transparent.png" width="100" height="100" alt="">
+                    </div>
                 </div>
 
                 <div class="row">
@@ -154,9 +157,9 @@
 
                     <!-- Name Row -->
                     <div class="form-group row justify-content-center">
-                        <input type="text" class="form-control col-md-5 bg-secondary text-light" style="height:50px"
+                        <input type="text" class="form-control col-5 bg-secondary text-light" style="height:50px"
                             placeholder="*First Name">
-                        <input type="text" class="form-control col-md-5 bg-secondary text-light" style="height:50px"
+                        <input type="text" class="form-control col-5 bg-secondary text-light" style="height:50px"
                             placeholder="*Last Name">
                     </div>
                     <!-- Display name Row -->

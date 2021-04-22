@@ -45,7 +45,7 @@
                 <img src="/img/logo/instagram_profile_image.png" style="max-height:250px; max-width:250px;"
                     class="align-self-start border b-shadow" alt="...">
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <h3 class="text-shadow">the_user</h3>
                 <span class="text-muted">My</span>
                 <span class="text-muted mr"> Name</span>
@@ -53,8 +53,8 @@
                 <span class="text-light">Games purchased: </span> <span class="m">5</span>
             </div>
             <div class="col-1" style="border-right: 1px solid lightgray;"></div>
-            <div class="col mt-4">
-                <span>No descrition yet</span>
+            <div class="col-4 mt-4">
+                <span>No description yet</span>
             </div>
         </div>
     </div>

@@ -19,6 +19,7 @@ tags:
   - name: "M03: Products"
   - name: "M04: Shopping"
   - name: "M05: Reviews"
+  - name: "M06: Wishlist"
 
 paths:
   /homepage:
@@ -246,10 +247,10 @@ paths:
         "404":
           description: "User not found. Show [UI03](TODO: URL)"
 
-  /users/{id}/delete:
+  /users/{id}/password_security:
     get:
       operationId: R110
-      summary: "R110: Delete user profile Form"
+      summary: "R110: Password and Security Form"
       description: "Show delete user profile Form. Access: USR"
       tags:
         - "M01: Authentication and profile"
@@ -263,9 +264,51 @@ paths:
         "200":
           description: "Ok. Show [UI07](http://lbaw2156-piu.lbaw-prod.fe.up.pt/account.php#Security)"
 
-    delete:
+    put:
       operationId: R111
-      summary: "R111: Delete user profile Action"
+      summary: "R111: Edit user passwword Action"
+      description: "Alter the individual user password. Access: USR"
+      tags:
+        - "M01: Authentication and profile"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                new_password:
+                  type: string
+                new_password_conf:
+                  type: string
+      responses:
+        "302":
+          description: "Redirect after processing the new user information."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Profile Successfully Altered. Redirect to user profile."
+                  value: "/users/{id}"
+                302Failure:
+                  description: "Failed to alter. Redirect to user profile."
+                  value: "/users/{id}"
+        "404":
+          description: "User not found. Show [UI03](TODO: URL)"
+
+    delete:
+      operationId: R112
+      summary: "R112: Delete user profile Action"
       description: "Delete user profile Action. Access: USR, ADM"
       tags:
         - "M01: Authentication and profile"

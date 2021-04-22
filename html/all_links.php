@@ -48,8 +48,7 @@
             <a class="row ml-3" href="/about.php">About</a>
             <a class="row ml-3" href="/admin.php">Admin</a>
             <a class="row ml-3" href="/cart.php">Cart</a>
-            <a class="row ml-3" href="/editProfile.php">Edit Profile</a>
-            <a class="row ml-3" href="/history.php">History</a>
+            <a class="row ml-3" href="/account.php">Account Management</a>
             <a class="row ml-3" href="/index_admin.php">Index (Admin)</a>
             <a class="row ml-3" href="/index_logged.php">Index (Logged in)</a>
             <a class="row ml-3" href="/index.php">Index</a>
@@ -58,7 +57,6 @@
             <a class="row ml-3" href="/produtct_page.php">Product Page</a>
             <a class="row ml-3" href="/profile.php">Profile</a>
             <a class="row ml-3" href="/search.php">Search Page</a>
-            <a class="row ml-3" href="/wishlist.php">Wishlist</a>
             <a class="btn btn-primary btn-lg row mt-3 ml-2" href="/index.php" role="button">Back to Homepage</a>
         </div>
     </div>
