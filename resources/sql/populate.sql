@@ -110,12 +110,12 @@ INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES 
 INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (5,'8244 Village Avenue','Pescara',65129,'Kazaure','Abruzzi',4);
 INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (6,'4730 Mcguire Way','Pescara',65129,'Gostyń','Abruzzi',17);
 
-INSERT INTO "user"(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (1,'sderuel0@admin.ch','Sam','De Ruel','sderuel0','65G9omsD',7255446027,'true','true','true',1,1);
-INSERT INTO "user"(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (2,'dwoodfine1@mozilla.com','Danielle','Woodfine','dwoodfine1','jHueoix',1351427237,'false','false','true',2,3);
-INSERT INTO "user"(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (3,'kterrans2@nydailynews.com','Kettie','Terrans','kterrans2','tR5QebJOIh3h',4055779631,'true','true','true',3,2);
-INSERT INTO "user"(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (4,'bgrills3@lulu.com','Birk','Grills','bgrills3','yBcdCc',9450750998,'true','true','false',5,4);
-INSERT INTO "user"(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (5,'lcleatherow4@loc.gov','Lamond','Cleatherow','lcleatherow4','1WjY4gEB',2810810966,'false','false','true',4,5);
-INSERT INTO "user"(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (6,'arait5@marketwatch.com','Atlante','Rait','arait5','QIePzSfJ',0504279289,'true','true','true',6,6);
+INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (1,'sderuel0@admin.ch','Sam','De Ruel','sderuel0','65G9omsD',7255446027,'true','true','true',1,1);
+INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (2,'dwoodfine1@mozilla.com','Danielle','Woodfine','dwoodfine1','jHueoix',1351427237,'false','false','true',2,3);
+INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (3,'kterrans2@nydailynews.com','Kettie','Terrans','kterrans2','tR5QebJOIh3h',4055779631,'true','true','true',3,2);
+INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (4,'bgrills3@lulu.com','Birk','Grills','bgrills3','yBcdCc',9450750998,'true','true','false',5,4);
+INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (5,'lcleatherow4@loc.gov','Lamond','Cleatherow','lcleatherow4','1WjY4gEB',2810810966,'false','false','true',4,5);
+INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (6,'arait5@marketwatch.com','Atlante','Rait','arait5','QIePzSfJ',0504279289,'true','true','true',6,6);
 
 INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (1,'39 Steps, The','Replacement of Lower Lip with Synth Sub, Extern Approach',58.54,3,'1/4/2021','true',NULL,4,8);
 INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (2,'Roommate, The','Auditory Processing Assessment using Computer',62.52,5,'1/1/2021','false',NULL,1,8);

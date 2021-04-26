@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS developer CASCADE;
 DROP TABLE IF EXISTS category CASCADE;
 DROP TABLE IF EXISTS tag CASCADE;
 DROP TABLE IF EXISTS addresses CASCADE;
-DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS game CASCADE;
 DROP TABLE IF EXISTS game_key CASCADE;
 DROP TABLE IF EXISTS game_image CASCADE;
@@ -40,7 +40,7 @@ DROP TRIGGER IF EXISTS make_purchase ON purchase;
 DROP TRIGGER IF EXISTS remove_availability ON purchase;
 DROP TRIGGER IF EXISTS remove_cart_product ON purchase;
 DROP TRIGGER IF EXISTS remove_wishlist_product ON purchase;
-DROP TRIGGER IF EXISTS update_review_on_user_delete ON "user";
+DROP TRIGGER IF EXISTS update_review_on_user_delete ON users;
  
 -----------------------------------------
 -- Types
@@ -91,7 +91,7 @@ CREATE TABLE addresses (
     country_id INTEGER REFERENCES country (id)
 );
  
-CREATE TABLE "user" (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL CONSTRAINT user_email_uk UNIQUE,
     first_name TEXT NOT NULL,
@@ -139,13 +139,13 @@ CREATE TABLE game_tag(
 
 CREATE TABLE in_cart(
     game_id INTEGER NOT NULL REFERENCES game (id),
-    user_id INTEGER NOT NUll REFERENCES "user" (id),
+    user_id INTEGER NOT NUll REFERENCES users (id),
    PRIMARY KEY(game_id, user_id)
 );
 
 CREATE TABLE in_wishlist(
     game_id INTEGER NOT NULL REFERENCES game (id),
-    user_id INTEGER NOT NUll REFERENCES "user" (id),
+    user_id INTEGER NOT NUll REFERENCES users (id),
     PRIMARY KEY(game_id, user_id)
 );
 
@@ -156,7 +156,7 @@ CREATE TABLE purchase(
     status PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
     method PAYMENT_METHOD NOT NULL,
     key_id INTEGER NOT NULL REFERENCES game_key (id),
-    buyer_id INTEGER NOT NULL REFERENCES "user" (id)
+    buyer_id INTEGER NOT NULL REFERENCES users (id)
 );
 
 CREATE TABLE review(
@@ -164,7 +164,7 @@ CREATE TABLE review(
     description TEXT NOT NULL,
     publication_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     score INTEGER CONSTRAINT score_ck CHECK (score > 0 AND score < 6),
-    reviewer_id INTEGER NOT NULL REFERENCES "user" (id),
+    reviewer_id INTEGER NOT NULL REFERENCES users (id),
     game_id INTEGER NOT NULL REFERENCES game (id)
 );
 
@@ -174,8 +174,8 @@ CREATE TABLE report(
     r_type REPORT_TYPE NOT NULL DEFAULT 'Bug',
     submission_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     r_status REPORT_STATUS NOT NULL DEFAULT 'Open',
-    reporter_id INTEGER NOT NULL REFERENCES "user" (id),
-    admin_id INTEGER REFERENCES "user" (id), --Tem que ter constraint a verificar se user é admin
+    reporter_id INTEGER NOT NULL REFERENCES users (id),
+    admin_id INTEGER REFERENCES users (id), --Tem que ter constraint a verificar se user é admin
     review_id INTEGER REFERENCES review (id) CONSTRAINT review_id_ck
     CHECK ((r_type='Review' AND review_id is NOT NULL) OR r_type='Bug')
 );
@@ -344,7 +344,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER update_review_on_user_delete
-    AFTER DELETE ON "user"
+    AFTER DELETE ON users
     FOR EACH ROW
     EXECUTE PROCEDURE update_deleted_user_reviews();
 

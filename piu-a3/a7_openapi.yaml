@@ -1,0 +1,861 @@
+openapi: 3.0.0
+
+info:
+  version: "1.0"
+  title: "OGS Web API"
+  description: "Web Resources Specification (A7) for OGS"
+
+servers:
+  - url: http://lbaw2156-piu.lbaw-prod.fe.up.pt/
+    description: Production server
+
+externalDocs:
+  description: Find more info here.
+  url: https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A7
+
+tags:
+  - name: "M01: Authentication and profile"
+  - name: "M02: Administration"
+  - name: "M03: Products"
+  - name: "M04: Shopping"
+  - name: "M05: Reviews"
+  - name: "M06: Wishlist"
+
+paths:
+  /homepage:
+    get:
+      operationId: R101
+      summary: "R101: View Home Page"
+      description: "View Home Page. Access: PUB"
+      tags:
+        - "M01: Authentication and profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI01](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui01-homepage)"
+
+  /login:
+    get:
+      operationId: R102
+      summary: "R102: Login Form"
+      description: "Provide login form. Access: PUB"
+      tags:
+        - "M01: Authentication and profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI02](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui02-login-form)"
+    post:
+      operationId: R103
+      summary: "R103: Login Action"
+      description: "Processes the login form submission. Access: PUB"
+      tags:
+        - "M01: Authentication and profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        "302":
+          description: "Redirect after processing the login credentials."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successful authentication. Redirect to user profile."
+                  value: "/users/{id}"
+                302Error:
+                  description: "Failed authentication. Redirect to login form."
+                  value: "/login"
+
+  /logout:
+    post:
+      operationId: R104
+      summary: "R104: Logout Action"
+      description: "Logout the current authenticated used. Access: USR, ADM"
+      tags:
+        - "M01: Authentication and profile"
+      responses:
+        "302":
+          description: "Redirect after processing logout."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successful logout. Redirect to login form."
+                  value: "/login"
+
+  /register:
+    get:
+      operationId: R105
+      summary: "R105: Register Form"
+      description: "Provide new user registration form. Access: PUB"
+      tags:
+        - "M01: Authentication and profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI03](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
+
+    post:
+      operationId: R106
+      summary: "R106: Register Action"
+      description: "Processes the new user registration form submission. Access: PUB"
+      tags:
+        - "M01: Authentication and profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                country:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+                - username
+                - country
+      responses:
+        "302":
+          description: "Redirect after processing the new user information."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successful authentication. Redirect to user profile."
+                  value: "/users/{id}"
+                302Failure:
+                  description: "Failed authentication. Redirect to login form."
+                  value: "/login"
+
+  /users/{id}:
+    get:
+      operationId: R107
+      summary: "R107: View user profile"
+      description: "Show the individual user profile. Access: USR"
+      tags:
+        - "M01: Authentication and profile"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI04](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
+
+  /users/{id}/edit:
+    get:
+      operationId: R108
+      summary: "R108: Edit user profile Form"
+      description: "Edit user profile Form. Access: USR"
+      tags:
+        - "M01: Authentication and profile"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
+        "404":
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+    put:
+      operationId: R109
+      summary: "R109: Edit user profile Action"
+      description: "Alter the individual user profile. Access: USR"
+      tags:
+        - "M01: Authentication and profile"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                country:
+                  type: string
+                nif:
+                  type: string
+                address_l1:
+                  type: string
+                address_l2:
+                  type: string
+                address_city:
+                  type: string
+                address_region:
+                  type: string
+                address_postal:
+                  type: string
+      responses:
+        "302":
+          description: "Redirect after processing the new user information."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Profile Successfully Altered. Redirect to user profile."
+                  value: "/users/{id}"
+                302Failure:
+                  description: "Failed to alter. Redirect to user profile."
+                  value: "/users/{id}"
+        "404":
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+  /users/{id}/password_security:
+    get:
+      operationId: R110
+      summary: "R110: Password and Security Form"
+      description: "Show delete user profile Form. Access: USR"
+      tags:
+        - "M01: Authentication and profile"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI07](http://lbaw2156-piu.lbaw-prod.fe.up.pt/account.php#Security)"
+
+    put:
+      operationId: R111
+      summary: "R111: Edit user passwword Action"
+      description: "Alter the individual user password. Access: USR"
+      tags:
+        - "M01: Authentication and profile"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                new_password:
+                  type: string
+                new_password_conf:
+                  type: string
+      responses:
+        "302":
+          description: "Redirect after processing the new user information."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Profile Successfully Altered. Redirect to user profile."
+                  value: "/users/{id}"
+                302Failure:
+                  description: "Failed to alter. Redirect to user profile."
+                  value: "/users/{id}"
+        "404":
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+    delete:
+      operationId: R112
+      summary: "R112: Delete user profile Action"
+      description: "Delete user profile Action. Access: USR, ADM"
+      tags:
+        - "M01: Authentication and profile"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "302":
+          description: "Redirect after deleting account."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successful account deletion. Redirect to homepage."
+                  value: "/homepage"
+                302Failure:
+                  description: "Failed account deletion. Redirect to user profile."
+                  value: "/users/{id}"
+        "404":
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+  /admin/products/add_product:
+    get:
+      operationId: R201
+      summary: "R201: Add a new product Form"
+      description: "Show add a new product Form. Access: USR"
+      tags:
+        - "M02: Administration"
+      responses:
+        "200":
+          description: "Ok. Show [UI07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui07-add-new-product-form)"
+
+    post:
+      operationId: R202
+      summary: "R202: Add a new product Action"
+      description: "Add a new product action. Access: ADM"
+      tags:
+        - "M02: Administration"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                launch_date:
+                  type: string
+                listed:
+                  type: boolean
+                parent_id:
+                  type: integer
+                developer_id:
+                  type: integer
+                category_id:
+                  type: integer
+                photos:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - title
+                - description
+                - price
+                - launch_date
+                - listed
+                - category_id
+                - developer_id
+                - photos
+      responses:
+        "302":
+          description: "Redirect after deleting account."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successfully added game. Redirect to homepage."
+                  value: "/homepage"
+                302Failure:
+                  description: "Failed account deletion. Redirect to homepage."
+                  value: "/homepage"
+
+  /admin/products/{id}/edit:
+    put:
+      operationId: R203
+      summary: "R203: Edit a product Action"
+      description: "Edit a product Action. Access: ADM"
+      tags:
+        - "M02: Administration"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                launch_date:
+                  type: string
+                listed:
+                  type: boolean
+                parent_id:
+                  type: integer
+                developer_id:
+                  type: integer
+                category_id:
+                  type: integer
+                tags:
+                  type: array
+                  items:
+                    type: integer
+                photos:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - id
+      responses:
+        "302":
+          description: "Redirect after editing product."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successfully edited game. Redirect to product page."
+                  value: "/product/{id}"
+                302Failure:
+                  description: "Failed account deletion. Redirect to product page."
+                  value: "/product/{id}"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+  /api/products/search:
+    get:
+      operationId: R301
+      summary: "R301: Search products API"
+      description: "Searches for products and returns the results as JSON. Access: PUB."
+      tags:
+        - "M03: Products"
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: category
+          description: Filter by category
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: price
+          description: Filter by maximum price
+          schema:
+            type: integer
+          required: false
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    picture:
+                      type: string
+                    developer:
+                      type: string
+                    launch_date:
+                      type: string
+                    score:
+                      type: number
+                    price:
+                      type: number
+              example:
+                - id: 1
+                  title: Cyberpunk 2077
+                  picture: /images/cp2077_cover.jpg
+                  developer: CDProjekt Red
+                  launch_date: 20/12/2020
+                  score: 3.5
+                  price: 59.99
+
+  /products/{id}:
+    get:
+      operationId: R302
+      summary: "R302: Products"
+      description: "Show the individual product Page. Access: PUB"
+      tags:
+        - "M03: Products"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+  /shopping/cart:
+    get:
+      operationId: R401
+      summary: "R401: View cart page"
+      description: "View cart page. Access: USR"
+      tags:
+        - "M04: Shopping"
+      responses:
+        "200":
+          description: "Ok. Show [UI10](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
+
+  /shopping/products/{id}/cart:
+    post:
+      operationId: R402
+      summary: "R402: Add product to cart Action"
+      description: "Add product to cart. Access: USR"
+      tags:
+        - "M04: Shopping"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+              required:
+                - product_id
+      responses:
+        "200":
+          description: "Ok"
+        "404":
+          description: "Product not found. Show [UI03](TODO: URL)"
+
+    delete:
+      operationId: R403
+      summary: "R403: Remove product from cart Action"
+      description: "Remove product from cart Action. Access: USR"
+      tags:
+        - "M04: Shopping"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "302":
+          description: "Redirect after deleting account."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successfully removed product from cart."
+                302Failure:
+                  description: "Failed to remove product from cart."
+        "404":
+          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+  /shopping/cart/purchase:
+    post:
+      operationId: R404
+      summary: "R404: Checkout cart items Action"
+      description: "Checkout cart items Action. Access: USR"
+      tags:
+        - "M04: Shopping"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  product_id:
+                    type: integer
+                  payment_method:
+                    type: string
+      responses:
+        "302":
+          description: "Redirect after deleting account."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successful purchase. Redirect to homepage."
+                  value: "/homepage"
+                302Failure:
+                  description: "Failed to checkout items. Redirect to user profile."
+                  value: "/shopping/cart/"
+
+  /api/shopping/order_history:
+    get:
+      operationId: R405
+      summary: "R405: Order History."
+      description: "Provide full list of all games purchased Access: USR"
+      tags:
+        - "M04: Shopping"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    order_id:
+                      type: integer
+                    product_id:
+                      type: integer
+                    title:
+                      type: string
+                    price:
+                      type: string
+                    purchase_date:
+                      type: string
+                    game_key:
+                      type: string
+              example:
+                - order_id: 15
+                  product_id: 1
+                  title: Cyberpunk 2077
+                  price: 59.99
+                  purchase_date: 20/12/2020
+                  game_key: "AS215DA5FGH"
+
+  /reviews/products/{id}/review:
+    post:
+      operationId: R501
+      summary: "R501: Add review to product Action"
+      description: "Add review to product. Access: BYR"
+      tags:
+        - "M05: Reviews"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                score:
+                  type: integer
+                description:
+                  type: string
+              required:
+                - product_id
+                - score
+                - description
+      responses:
+        "200":
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+    put:
+      operationId: R502
+      summary: "R502: Edit product review Action"
+      description: "Edit product review. Access: BYR"
+      tags:
+        - "M05: Reviews"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                review_id:
+                  type: integer
+                score:
+                  type: integer
+                description:
+                  type: string
+              required:
+                - review_id
+                - score
+                - description
+      responses:
+        "200":
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+    delete:
+      operationId: R503
+      summary: "R503: Remove product review Action"
+      description: "Remove product review Action. Access: BYR"
+      tags:
+        - "M05: Reviews"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI09](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+  /api/wishlist/users/{id}:
+    get:
+      operationId: R601
+      summary: "R601: View user wishlist."
+      description: "View user wishlist. Access: USR"
+      tags:
+        - "M06: Wishlist"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    product_id:
+                      type: integer
+                    title:
+                      type: string
+                    price:
+                      type: string
+                    cover_image:
+                      type: string
+              example:
+                - product_id: 1
+                  title: Cyberpunk 2077
+                  price: 59.99
+                  cover_image: "/images/cp2077_cover.jpg"
+
+  /wishlist/product{id}:
+    post:
+      operationId: R602
+      summary: "R602: Add product to wishlist Action"
+      description: "Add product to wishlist. Access: USR"
+      tags:
+        - "M06: Wishlist"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+              required:
+                - product_id
+      responses:
+        "200":
+          description: "Ok. Show [UI14](TODO: URL)"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+
+    delete:
+      operationId: R603
+      summary: "R603: Remove product from wishlist Action"
+      description: "Remove product from wishlist Action. Access: BYR"
+      tags:
+        - "M06: Wishlist"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI14](TODO: URL)"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"

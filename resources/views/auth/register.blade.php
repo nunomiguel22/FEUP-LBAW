@@ -1,39 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="{{ route('register') }}">
-    {{ csrf_field() }}
+<!-- Signup Modal -->
+<div class="container" id="SignupModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="container">
 
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-    @if ($errors->has('name'))
-      <span class="error">
-          {{ $errors->first('name') }}
-      </span>
-    @endif
+        <!-- Modal Header -->
+        <div class="row mt-4 mb-3 float-right">
+          <div class="col-12">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="row mt-4 mb-3">
+          <div class="col-12" align="center">
+            <img src="{{ asset('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
+          </div>
+        </div>
 
-    <label for="email">E-Mail Address</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-    @if ($errors->has('email'))
-      <span class="error">
-          {{ $errors->first('email') }}
-      </span>
-    @endif
+        <div class="row">
+          <div class="col-10 ml-auto mr-auto">
+            <p>SIGN UP FOR AN OGS ACCOUNT</p>
+          </div>
+        </div>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
-      <span class="error">
-          {{ $errors->first('password') }}
-      </span>
-    @endif
+        <!-- Signup Form -->
+        <form method="POST" action="{{route('register')}}" novalidate>
+          {{ csrf_field() }}
+          <!-- Name Row -->
+          <div class="form-group row justify-content-center">
+            <input type="text" name="first_name" class="form-control col-5 bg-secondary text-light" style="height:50px"
+              placeholder="*First Name">
+            <input type="text" name="last_name" class="form-control col-5 bg-secondary text-light" style="height:50px"
+              placeholder="*Last Name">
+          </div>
+          <!-- Display name Row -->
+          <div class="form-group row justify-content-center">
+            <input type="text" name="username" class="form-control col-10 bg-secondary text-light" style="height:50px"
+              placeholder="*Username">
+          </div>
 
-    <label for="password-confirm">Confirm Password</label>
-    <input id="password-confirm" type="password" name="password_confirmation" required>
+          <!-- Email Row -->
+          <div class=" form-group row">
+            <input type="email" name="email" class="form-control col-10 m-auto bg-secondary text-light"
+              style="height:50px" placeholder="Email address">
+          </div>
 
-    <button type="submit">
-      Register
-    </button>
-    <a class="button button-outline" href="{{ route('login') }}">Login</a>
-</form>
+          <!-- Password Row -->
+          <div class="form-group row">
+            <input type="password" name="password" class="form-control col-10 m-auto bg-secondary text-light"
+              style="height:50px" placeholder="Password">
+          </div>
+
+          <!-- Submit button Row -->
+          <div class="form-group row mt-3">
+
+            <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;" type="submit">
+              Sign up</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
