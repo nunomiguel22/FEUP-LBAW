@@ -10,17 +10,16 @@
 @section('content')
 
 <!-- Breadcrumbs -->
-<div class="container-fluid">
+<section class="container-fluid">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
         <li class="breadcrumb-item active" aria-current="page"> Admin Dashboard </li>
     </ol>
-</div>
+</section>
 
-<!-- MAIN AREA -->
-<div class="container">
-
-    <div class="row d-lg-none d-sm-block mb-2">
+<!-- Page Content -->
+<section class="container">
+    <nav class="row d-lg-none d-sm-block mb-2">
         <div class="nav flex-column nav-pills nav-menu w-100" id="v-pills-tab" role="tablist"
             aria-orientation="vertical">
             <a class="nav-link" id="v-pills-0-tab-2" data-toggle="pill" href="#v-pills-0" role="tab"
@@ -45,11 +44,10 @@
             </a>
 
         </div>
-    </div>
-
+    </nav>
 
     <div class="row">
-        <div class="col-lg-3 d-none d-lg-block">
+        <nav class="col-lg-3 d-none d-lg-block">
             <div class="nav flex-column nav-pills nav-menu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" id="v-pills-0-tab" data-toggle="pill" href="#v-pills-0" role="tab"
                     aria-controls="v-pills-sale" aria-selected="true">
@@ -72,9 +70,8 @@
                     <i class="fas fa-bug mr-3"></i></i> MANAGE REPORTS
                 </a>
             </div>
-        </div>
+        </nav>
 
-        <!-- Whishlist TAB  -->
         <div class="col bg-dark mb-4">
 
             <div class="tab-pane fade" id="v-pills-0" role="tabpanel" aria-labelledby="v-pills-2-tab">
@@ -99,9 +96,9 @@
 
         </div>
     </div>
-</div>
+</section>
 
-
+<!-- Activate correct tab on startup  -->
 <script type="text/javascript"> activateTab(<?php echo $tab_id ?>) </script>
 
 

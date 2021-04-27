@@ -1,5 +1,3 @@
-<script src="{{asset('js/app.js')}}" defer></script>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/index.php">
         <img src="{{ asset('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">

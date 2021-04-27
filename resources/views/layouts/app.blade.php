@@ -11,7 +11,7 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-
+  <!-- scripts -->
   <script type="text/javascript">
     // Fix for Firefox autofocus CSS bug
     // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -20,6 +20,7 @@
   <script src="{{ asset('bootstrap/jquery-3.3.1.slim.min.js') }}" defer></script>
   <script src="{{ asset('bootstrap/popper.min.js') }}" defer></script>
   <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" defer></script>
+  <script src="{{asset('js/app.js')}}" defer></script>
   @yield('scripts')
 
   <!-- Styles -->

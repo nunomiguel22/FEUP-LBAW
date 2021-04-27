@@ -37,6 +37,12 @@
                     <div class=" form-group row mb-4">
                         <input type="email" name="email" class="form-control col-10 m-auto bg-secondary text-light"
                             style="height:50px" placeholder="Email address">
+
+                        @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
                     </div>
                     <!-- Password Row -->
                     <div class="form-group row">
@@ -48,7 +54,7 @@
                     <div class="form-group row mt-5">
 
                         <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;"
-                            type="submit">
+                            type="submit" id="testsubmit">
                             Sign in</button>
                     </div>
                 </form>
