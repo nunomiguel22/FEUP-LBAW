@@ -7,15 +7,15 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <a href="/product_page.php">
-                <img src="{{ asset('' . $carousel_games[0]->cover_image()) }}" class="d-block w-100"
-                    alt="''.$game->title">
+                <img src="{{ asset('' . $title_game->cover_image()) }}" class="d-block w-100"
+                    alt="''.$title_game->title">
             </a>
             <div class="carousel-caption d-none d-md-block">
-                <h5 class="text-outline-dark">{{ $carousel_games[0]->title }}</h5>
-                <p class="text-outline-dark">Starting at {{ $carousel_games[0]->price }}€.</p>
+                <h5 class="text-outline-dark">{{ $title_game->title }}</h5>
+                <p class="text-outline-dark">Starting at {{ $title_game->price }}€.</p>
             </div>
         </div>
-        @foreach ($carousel_games->slice(1, 3) as $game)
+        @foreach ($carousel_games as $game)
         <div class="carousel-item">
             <a href="/product_page.php">
                 <img src="{{ asset('' . $game->cover_image()) }}" class="d-block w-100" alt="''.$game->title">

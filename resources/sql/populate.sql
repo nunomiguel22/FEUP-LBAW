@@ -2,256 +2,370 @@
 -- Populate the database
 -----------------------------------------
 
+INSERT INTO countries VALUES 
+(1,'Afghanistan')
+,(2,'Aland Islands')
+,(3,'Albania')
+,(4,'Algeria')
+,(5,'American Samoa')
+,(6,'Andorra')
+,(7,'Angola')
+,(8,'Anguilla')
+,(9,'Antarctica')
+,(10,'Antigua and Barbuda')
+,(11,'Argentina')
+,(12,'Armenia')
+,(13,'Aruba')
+,(14,'Australia')
+,(15,'Austria')
+,(16,'Azerbaijan')
+,(17,'Bahamas')
+,(18,'Bahrain')
+,(19,'Bangladesh')
+,(20,'Barbados')
+,(21,'Belarus')
+,(22,'Belgium')
+,(23,'Belize')
+,(24,'Benin')
+,(25,'Bermuda')
+,(26,'Bhutan')
+,(27,'Bolivia')
+,(28,'Bonaire, Sint Eustatius and Saba')
+,(29,'Bosnia and Herzegovina')
+,(30,'Botswana')
+,(31,'Bouvet Island')
+,(32,'Brazil')
+,(33,'British Indian Ocean Territory')
+,(34,'Brunei')
+,(35,'Bulgaria')
+,(36,'Burkina Faso')
+,(37,'Burundi')
+,(38,'Cambodia')
+,(39,'Cameroon')
+,(40,'Canada')
+,(41,'Cape Verde')
+,(42,'Cayman Islands')
+,(43,'Central African Republic')
+,(44,'Chad')
+,(45,'Chile')
+,(46,'China')
+,(47,'Christmas Island')
+,(48,'Cocos (Keeling) Islands')
+,(49,'Colombia')
+,(50,'Comoros')
+,(51,'Congo')
+,(52,'Cook Islands')
+,(53,'Costa Rica')
+,(54,'Ivory Coast')
+,(55,'Croatia')
+,(56,'Cuba')
+,(57,'Curacao')
+,(58,'Cyprus')
+,(59,'Czech Republic')
+,(60,'Democratic Republic of the Congo')
+,(61,'Denmark')
+,(62,'Djibouti')
+,(63,'Dominica')
+,(64,'Dominican Republic')
+,(65,'Ecuador')
+,(66,'Egypt')
+,(67,'El Salvador')
+,(68,'Equatorial Guinea')
+,(69,'Eritrea')
+,(70,'Estonia')
+,(71,'Ethiopia')
+,(72,'Falkland Islands (Malvinas)')
+,(73,'Faroe Islands')
+,(74,'Fiji')
+,(75,'Finland')
+,(76,'France')
+,(77,'French Guiana')
+,(78,'French Polynesia')
+,(79,'French Southern Territories')
+,(80,'Gabon')
+,(81,'Gambia')
+,(82,'Georgia')
+,(83,'Germany')
+,(84,'Ghana')
+,(85,'Gibraltar')
+,(86,'Greece')
+,(87,'Greenland')
+,(88,'Grenada')
+,(89,'Guadaloupe')
+,(90,'Guam')
+,(91,'Guatemala')
+,(92,'Guernsey')
+,(93,'Guinea')
+,(94,'Guinea-Bissau')
+,(95,'Guyana')
+,(96,'Haiti')
+,(97,'Heard Island and McDonald Islands')
+,(98,'Honduras')
+,(99,'Hong Kong')
+,(100,'Hungary')
+,(101,'Iceland')
+,(102,'India')
+,(103,'Indonesia')
+,(104,'Iran')
+,(105,'Iraq')
+,(106,'Ireland')
+,(107,'Isle of Man')
+,(108,'Israel')
+,(109,'Italy')
+,(110,'Jamaica')
+,(111,'Japan')
+,(112,'Jersey')
+,(113,'Jordan')
+,(114,'Kazakhstan')
+,(115,'Kenya')
+,(116,'Kiribati')
+,(117,'Kosovo')
+,(118,'Kuwait')
+,(119,'Kyrgyzstan')
+,(120,'Laos')
+,(121,'Latvia')
+,(122,'Lebanon')
+,(123,'Lesotho')
+,(124,'Liberia')
+,(125,'Libya')
+,(126,'Liechtenstein')
+,(127,'Lithuania')
+,(128,'Luxembourg')
+,(129,'Macao')
+,(130,'Macedonia')
+,(131,'Madagascar')
+,(132,'Malawi')
+,(133,'Malaysia')
+,(134,'Maldives')
+,(135,'Mali')
+,(136,'Malta')
+,(137,'Marshall Islands')
+,(138,'Martinique')
+,(139,'Mauritania')
+,(140,'Mauritius')
+,(141,'Mayotte')
+,(142,'Mexico')
+,(143,'Micronesia')
+,(144,'Moldava')
+,(145,'Monaco')
+,(146,'Mongolia')
+,(147,'Montenegro')
+,(148,'Montserrat')
+,(149,'Morocco')
+,(150,'Mozambique')
+,(151,'Myanmar (Burma)')
+,(152,'Namibia')
+,(153,'Nauru')
+,(154,'Nepal')
+,(155,'Netherlands')
+,(156,'New Caledonia')
+,(157,'New Zealand')
+,(158,'Nicaragua')
+,(159,'Niger')
+,(160,'Nigeria')
+,(161,'Niue')
+,(162,'Norfolk Island')
+,(163,'North Korea')
+,(164,'Northern Mariana Islands')
+,(165,'Norway')
+,(166,'Oman')
+,(167,'Pakistan')
+,(168,'Palau')
+,(169,'Palestine')
+,(170,'Panama')
+,(171,'Papua New Guinea')
+,(172,'Paraguay')
+,(173,'Peru')
+,(174,'Phillipines')
+,(175,'Pitcairn')
+,(176,'Poland')
+,(177,'Portugal')
+,(178,'Puerto Rico')
+,(179,'Qatar')
+,(180,'Reunion')
+,(181,'Romania')
+,(182,'Russia')
+,(183,'Rwanda')
+,(184,'Saint Barthelemy')
+,(185,'Saint Helena')
+,(186,'Saint Kitts and Nevis')
+,(187,'Saint Lucia')
+,(188,'Saint Martin')
+,(189,'Saint Pierre and Miquelon')
+,(190,'Saint Vincent and the Grenadines')
+,(191,'Samoa')
+,(192,'San Marino')
+,(193,'Sao Tome and Principe')
+,(194,'Saudi Arabia')
+,(195,'Senegal')
+,(196,'Serbia')
+,(197,'Seychelles')
+,(198,'Sierra Leone')
+,(199,'Singapore')
+,(200,'Sint Maarten')
+,(201,'Slovakia')
+,(202,'Slovenia')
+,(203,'Solomon Islands')
+,(204,'Somalia')
+,(205,'South Africa')
+,(206,'South Georgia and the South Sandwich Islands')
+,(207,'South Korea')
+,(208,'South Sudan')
+,(209,'Spain')
+,(210,'Sri Lanka')
+,(211,'Sudan')
+,(212,'Suriname')
+,(213,'Svalbard and Jan Mayen')
+,(214,'Swaziland')
+,(215,'Sweden')
+,(216,'Switzerland')
+,(217,'Syria')
+,(218,'Taiwan')
+,(219,'Tajikistan')
+,(220,'Tanzania')
+,(221,'Thailand')
+,(222,'Timor-Leste (East Timor)')
+,(223,'Togo')
+,(224,'Tokelau')
+,(225,'Tonga')
+,(226,'Trinidad and Tobago')
+,(227,'Tunisia')
+,(228,'Turkey')
+,(229,'Turkmenistan')
+,(230,'Turks and Caicos Islands')
+,(231,'Tuvalu')
+,(232,'Uganda')
+,(233,'Ukraine')
+,(234,'United Arab Emirates')
+,(235,'United Kingdom')
+,(236,'United States')
+,(237,'United States Minor Outlying Islands')
+,(238,'Uruguay')
+,(239,'Uzbekistan')
+,(240,'Vanuatu')
+,(241,'Vatican City')
+,(242,'Venezuela')
+,(243,'Vietnam')
+,(244,'Virgin Islands, British')
+,(245,'Virgin Islands, US')
+,(246,'Wallis and Futuna')
+,(247,'Western Sahara')
+,(248,'Yemen');
 
-INSERT INTO country(id,name) VALUES (1,'Poland');
-INSERT INTO country(id,name) VALUES (2,'France');
-INSERT INTO country(id,name) VALUES (3,'Indonesia');
-INSERT INTO country(id,name) VALUES (4,'Portugal');
-INSERT INTO country(id,name) VALUES (5,'Germany');
-INSERT INTO country(id,name) VALUES (6,'Argentina');
-INSERT INTO country(id,name) VALUES (7,'Venezuela');
-INSERT INTO country(id,name) VALUES (8,'Hungary');
-INSERT INTO country(id,name) VALUES (9,'Russia');
-INSERT INTO country(id,name) VALUES (10,'Sweden');
-INSERT INTO country(id,name) VALUES (11,'South Africa');
-INSERT INTO country(id,name) VALUES (12,'China');
-INSERT INTO country(id,name) VALUES (13,'Yemen');
-INSERT INTO country(id,name) VALUES (14,'Peru');
-INSERT INTO country(id,name) VALUES (15,'Czech Republic');
-INSERT INTO country(id,name) VALUES (16,'Greece');
-INSERT INTO country(id,name) VALUES (17,'Netherlands');
-INSERT INTO country(id,name) VALUES (18,'Philippines');
-INSERT INTO country(id,name) VALUES (19,'Japan');
-INSERT INTO country(id,name) VALUES (20,'Brazil');
+INSERT INTO images(id,path) VALUES (1,'images/games/BL3.jpg');
+INSERT INTO images(id,path) VALUES (2,'images/games/Control.jpg');
+INSERT INTO images(id,path) VALUES (3,'images/games/CP2077.jpg');
+INSERT INTO images(id,path) VALUES (4,'images/games/CP2077C1.jpg');
+INSERT INTO images(id,path) VALUES (5,'images/games/CP2077C2.jpg');
+INSERT INTO images(id,path) VALUES (6,'images/games/CSGO.jpg');
+INSERT INTO images(id,path) VALUES (7,'images/games/GR.jpg');
+INSERT INTO images(id,path) VALUES (8,'images/games/GTAV.jpg');
+INSERT INTO images(id,path) VALUES (9,'images/games/h3.jpg');
+INSERT INTO images(id,path) VALUES (10,'images/games/MW3.jpg');
+INSERT INTO images(id,path) VALUES (11,'images/games/Outriders.jpg');
+
+INSERT INTO developers(id,name) VALUES (1,'CDProjekt Red');
+INSERT INTO developers(id,name) VALUES (2,'Rockstar North');
+INSERT INTO developers(id,name) VALUES (3,'2k');
+INSERT INTO developers(id,name) VALUES (4,'Valve');
+INSERT INTO developers(id,name) VALUES (5,'One More Level');
+INSERT INTO developers(id,name) VALUES (6,'IO Interactive');
+INSERT INTO developers(id,name) VALUES (7,'Infinity Ward');
+INSERT INTO developers(id,name) VALUES (8,'Square Enix');
+INSERT INTO developers(id,name) VALUES (9,'Remedy Entertainment');
 
 
-INSERT INTO photo(id,path) VALUES (1,'LectusVestibulum.jpg');
-INSERT INTO photo(id,path) VALUES (2,'NonMauris.gif');
-INSERT INTO photo(id,path) VALUES (3,'FeugiatNon.jpg');
-INSERT INTO photo(id,path) VALUES (4,'PlateaDictumst.jpg');
-INSERT INTO photo(id,path) VALUES (5,'ArcuAdipiscingMolestie.jpg');
-INSERT INTO photo(id,path) VALUES (6,'A.jpg');
-INSERT INTO photo(id,path) VALUES (7,'AtDiamNam.jpg');
-INSERT INTO photo(id,path) VALUES (8,'Non.pdf');
-INSERT INTO photo(id,path) VALUES (9,'PedePosuereNonummy.jpg');
-INSERT INTO photo(id,path) VALUES (10,'BibendumImperdietNullam.jpg');
-INSERT INTO photo(id,path) VALUES (11,'ArcuAdipiscing.tiff');
-INSERT INTO photo(id,path) VALUES (12,'CongueEgetSemper.jpg');
-INSERT INTO photo(id,path) VALUES (13,'LigulaSit.jpg');
-INSERT INTO photo(id,path) VALUES (14,'Donec.jpg');
-INSERT INTO photo(id,path) VALUES (15,'LobortisSapienSapien.tiff');
-INSERT INTO photo(id,path) VALUES (16,'TellusSemper.jpg');
-INSERT INTO photo(id,path) VALUES (17,'ConsequatVarius.pdf');
-INSERT INTO photo(id,path) VALUES (18,'InAnteVestibulum.jpg');
-INSERT INTO photo(id,path) VALUES (19,'Quam.jpg');
-INSERT INTO photo(id,path) VALUES (20,'Suspendisse.jpg');
-INSERT INTO photo(id,path) VALUES (21,'AtTurpisDonec.gif');
-INSERT INTO photo(id,path) VALUES (22,'JustoLaciniaEget.gif');
-INSERT INTO photo(id,path) VALUES (23,'AcEstLacinia.tiff');
-INSERT INTO photo(id,path) VALUES (24,'InAnte.jpg');
-INSERT INTO photo(id,path) VALUES (25,'CrasMi.jpg');
-INSERT INTO photo(id,path) VALUES (26,'Volutpat.jpg');
-INSERT INTO photo(id,path) VALUES (27,'AeneanFermentum.jpg');
-INSERT INTO photo(id,path) VALUES (28,'InFaucibusOrci.jpg');
-INSERT INTO photo(id,path) VALUES (29,'RisusSemper.jpg');
-INSERT INTO photo(id,path) VALUES (30,'Eu.jpg');
+INSERT INTO categories(id,name) VALUES (1,'Action');
+INSERT INTO categories(id,name) VALUES (2,'Adventure');
+INSERT INTO categories(id,name) VALUES (3,'Role-Playing');
+INSERT INTO categories(id,name) VALUES (4,'Simulation');
+INSERT INTO categories(id,name) VALUES (5,'Strategy');
+INSERT INTO categories(id,name) VALUES (6,'Sports and Racing');
 
+INSERT INTO tags(id,name) VALUES (1,'Action-RPG');
+INSERT INTO tags(id,name) VALUES (2,'Fighting');
+INSERT INTO tags(id,name) VALUES (3,'Puzzle');
+INSERT INTO tags(id,name) VALUES (4,'Sci-Fi');
+INSERT INTO tags(id,name) VALUES (5,'Real-time Strategy');
+INSERT INTO tags(id,name) VALUES (6,'Racing');
+INSERT INTO tags(id,name) VALUES (7,'JRPG');
+INSERT INTO tags(id,name) VALUES (8,'First-Person Shooter');
+INSERT INTO tags(id,name) VALUES (9,'Third-Person Shooter');
+INSERT INTO tags(id,name) VALUES (10,'Casual');
+INSERT INTO tags(id,name) VALUES (11,'Platformer');
 
-INSERT INTO developer(id,name) VALUES (1,'Vipe');
-INSERT INTO developer(id,name) VALUES (2,'Wikido');
-INSERT INTO developer(id,name) VALUES (3,'Twitterbridge');
-INSERT INTO developer(id,name) VALUES (4,'Voonte');
-INSERT INTO developer(id,name) VALUES (5,'Aimbu');
-INSERT INTO developer(id,name) VALUES (6,'Youspan');
-INSERT INTO developer(id,name) VALUES (7,'Geba');
-INSERT INTO developer(id,name) VALUES (8,'Nlounge');
-INSERT INTO developer(id,name) VALUES (9,'Jamia');
-INSERT INTO developer(id,name) VALUES (10,'Bubblemix');
-INSERT INTO developer(id,name) VALUES (11,'Skiba');
-INSERT INTO developer(id,name) VALUES (12,'Yodo');
-INSERT INTO developer(id,name) VALUES (13,'Shufflester');
-INSERT INTO developer(id,name) VALUES (14,'Zoonoodle');
-INSERT INTO developer(id,name) VALUES (15,'Gabtune');
-INSERT INTO developer(id,name) VALUES (16,'Vinder');
-INSERT INTO developer(id,name) VALUES (17,'Yakitri');
-INSERT INTO developer(id,name) VALUES (18,'Buzzbean');
-INSERT INTO developer(id,name) VALUES (19,'Eimbee');
-INSERT INTO developer(id,name) VALUES (20,'Camido');
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (1, 'Cyberpunk 2077', 
+            'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with
+            power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant
+            that is the key to immortality. You can customize your character’s cyberware,
+            skillset and playstyle, and explore a vast city where the choices you make shape the story and the world
+            around you.', 59.99, 3.5, '2020-12-20'::date, true, null, 1, 1);
 
-INSERT INTO category(id,name) VALUES (1,'Action');
-INSERT INTO category(id,name) VALUES (2,'Drama');
-INSERT INTO category(id,name) VALUES (3,'Thriller');
-INSERT INTO category(id,name) VALUES (4,'Sci-Fi');
-INSERT INTO category(id,name) VALUES (5,'Musical');
-INSERT INTO category(id,name) VALUES (6,'Comedy');
-INSERT INTO category(id,name) VALUES (7,'Horror');
-INSERT INTO category(id,name) VALUES (8,'Western');
-INSERT INTO category(id,name) VALUES (9,'Adventure');
-INSERT INTO category(id,name) VALUES (10,'Shooter');
-INSERT INTO category(id,name) VALUES (11,'Crime');
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (2, 'Borderlands 3', 
+            'The original shooter-looter returns, packing bazillions of guns and a mayhem-fueled adventure! 
+            Blast through new worlds and enemies as one of four new Vault Hunters.', 
+            59.99, 4, '2020-03-13'::date, true, null, 3, 1);
 
-INSERT INTO tag(id,name) VALUES (1,'Action');
-INSERT INTO tag(id,name) VALUES (2,'Drama');
-INSERT INTO tag(id,name) VALUES (3,'Thriller');
-INSERT INTO tag(id,name) VALUES (4,'Sci-Fi');
-INSERT INTO tag(id,name) VALUES (5,'Musical');
-INSERT INTO tag(id,name) VALUES (6,'Comedy');
-INSERT INTO tag(id,name) VALUES (7,'Horror');
-INSERT INTO tag(id,name) VALUES (8,'Western');
-INSERT INTO tag(id,name) VALUES (9,'Adventure');
-INSERT INTO tag(id,name) VALUES (10,'Shooter');
-INSERT INTO tag(id,name) VALUES (11,'Crime');
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (3, 'Control', 
+            'Winner of over 80 awards, Control is a visually stunning third-person action-adventure that will keep you on the edge of your seat.', 
+            39.99, 4.5, '2020-8-27'::date, true, null, 9, 2);
 
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (4, 'Counter-Strike: Global Offensive', 
+            'Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. 
+            CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).', 
+            8.99, 4.5, '2012-08-21'::date, true, null, 4, 1);
 
-INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (1,'03613 Glendale Avenue','Pescara',65129,'Frutillar','Abruzzi',1);
-INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (2,'7343 Packers Avenue','Pescara',65129,'Maopingchang','Abruzzi',19);
-INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (3,'678 Roxbury Road','Pescara',65129,'Xingzhen','Abruzzi',1);
-INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (4,'02743 Waxwing Park','Pescara',65129,'Fengtai Chengguanzhen','Abruzzi',19);
-INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (5,'8244 Village Avenue','Pescara',65129,'Kazaure','Abruzzi',4);
-INSERT INTO addresses(id,line1,line2,postal_code,city,region,country_id) VALUES (6,'4730 Mcguire Way','Pescara',65129,'Gostyń','Abruzzi',17);
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (5, 'Ghostrunner', 
+            'Ghostrunner offers a unique single-player experience: fast-paced, violent combat, and an original setting that blends science fiction with post-apocalyptic themes. 
+            It tells the story of a world that has already ended and its inhabitants who fight to survive.', 
+            29.99, 4.5, '2020-10-27'::date, true, null, 5, 1);
 
-INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (1,'sderuel0@admin.ch','Sam','De Ruel','sderuel0','65G9omsD',7255446027,'true','true','true',1,1);
-INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (2,'dwoodfine1@mozilla.com','Danielle','Woodfine','dwoodfine1','jHueoix',1351427237,'false','false','true',2,3);
-INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (3,'kterrans2@nydailynews.com','Kettie','Terrans','kterrans2','tR5QebJOIh3h',4055779631,'true','true','true',3,2);
-INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (4,'bgrills3@lulu.com','Birk','Grills','bgrills3','yBcdCc',9450750998,'true','true','false',5,4);
-INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (5,'lcleatherow4@loc.gov','Lamond','Cleatherow','lcleatherow4','1WjY4gEB',2810810966,'false','false','true',4,5);
-INSERT INTO users(id,email,first_name,last_name,username,password,nif,banned,restricted,is_admin,avatar_id,addresses_id) VALUES (6,'arait5@marketwatch.com','Atlante','Rait','arait5','QIePzSfJ',0504279289,'true','true','true',6,6);
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (6, 'Grand Theft Auto V', 
+            'Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.', 
+            29.99, 4.5, '2015-04-14'::date, true, null, 2, 1);
 
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (1,'39 Steps, The','Replacement of Lower Lip with Synth Sub, Extern Approach',58.54,3,'1/4/2021','true',NULL,4,8);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (2,'Roommate, The','Auditory Processing Assessment using Computer',62.52,5,'1/1/2021','false',NULL,1,8);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (3,'Daddy and Them','Dilation of Left Pulmonary Artery, Open Approach',74.56,5,'11/1/2020','true',NULL,2,7);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (4,'Jennifer''s Body','Contact Radiation of Uterus',7.73,1,'7/24/2020','true',NULL,2,1);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (5,'Ernest & Célestine (Ernest et Célestine)','Drainage of Nasopharynx with Drainage Device, Open Approach',20.5,3,'9/30/2020','false',NULL,10,8);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (6,'Le grand soir','Occlusion of R Brach Art with Intralum Dev, Perc Approach',2.64,5,'11/27/2020','true',NULL,13,10);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (7,'Detroit Metal City (Detoroito Metaru Shiti)','Replace Buttock Skin w Nonaut Sub, Full Thick, Extern',50.5,2,'4/6/2021','false',NULL,1,8);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (8,'Traffic','Ultrasonography of Bilateral Renal Arteries, Intravascular',29.88,3,'4/16/2021','true',NULL,7,1);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (9,'Gambling City','Repair Right Ureter, Via Natural or Artificial Opening',20.76,2,'9/26/2020','true',NULL,20,2);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (10,'Broken Vessels','Drain L Ext Jugular Vein w Drain Dev, Perc Endo',8.97,5,'9/30/2020','true',NULL,11,6);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (11,'7 Virgins (7 vírgenes)','Revision of Stimulator Lead in Upper Artery, Open Approach',25.37,2,'10/1/2020','true',NULL,1,11);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (12,'Trash Humpers','Removal of Ext Fix from L Pelvic Bone, Extern Approach',72.41,5,'3/22/2021','true',NULL,2,5);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (13,'M','Dilate R Popl Art, Bifurc, w Drug-elut Intra, Open',53.5,2,'1/16/2021','false',NULL,17,9);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (14,'Atomic Submarine, The','Change Brace on Left Lower Arm',34.45,5,'4/19/2020','true',1,10,10);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (15,'King of Escape, The (Le roi de l''évasion)','Supplement R Up Arm Subcu/Fascia w Autol Sub, Open',9.66,5,'10/3/2020','true',NULL,1,11);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (16,'Turbulence','Drainage of Right Carpal with Drainage Device, Perc Approach',18.05,5,'4/3/2021','false',NULL,14,1);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (17,'Remains of the Day, The','Insertion of Other Device into L Low Extrem, Open Approach',49.23,5,'6/12/2020','false',NULL,15,8);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (18,'High Society','Drainage of Left Nipple with Drainage Device, Open Approach',25.14,2,'10/26/2020','true',NULL,11,7);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (19,'Life of Pi','Restriction of Right Main Bronchus with Intralum Dev, Endo',90.79,4,'9/22/2020','true',7,20,10);
-INSERT INTO game(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) VALUES (20,'Last Run','Revision of Intbd Fus Dev in C-thor Jt, Extern Approach',40.54,3,'8/17/2020','false',11,19,5);
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (7, 'Hitman 3', 
+            'Death Awaits. Agent 47 returns in HITMAN 3, the dramatic conclusion to the World of Assassination trilogy.', 
+            44.99, 4, '2021-01-20'::date, true, null, 6, 1);
 
-INSERT INTO game_key(id,key,available,game_id) VALUES (1,7578466453,'false',13);
-INSERT INTO game_key(id,key,available,game_id) VALUES (2,7974943076,'true',20);
-INSERT INTO game_key(id,key,available,game_id) VALUES (3,1218582960,'true',15);
-INSERT INTO game_key(id,key,available,game_id) VALUES (4,3184561836,'false',12);
-INSERT INTO game_key(id,key,available,game_id) VALUES (5,0376537884,'true',20);
-INSERT INTO game_key(id,key,available,game_id) VALUES (6,2913805906,'false',9);
-INSERT INTO game_key(id,key,available,game_id) VALUES (7,7273371572,'false',8);
-INSERT INTO game_key(id,key,available,game_id) VALUES (8,0254996434,'false',15);
-INSERT INTO game_key(id,key,available,game_id) VALUES (9,5649957770,'false',9);
-INSERT INTO game_key(id,key,available,game_id) VALUES (10,9851802131,'true',11);
-INSERT INTO game_key(id,key,available,game_id) VALUES (11,3038852554,'false',12);
-INSERT INTO game_key(id,key,available,game_id) VALUES (12,9828927284,'false',11);
-INSERT INTO game_key(id,key,available,game_id) VALUES (13,7000479310,'false',13);
-INSERT INTO game_key(id,key,available,game_id) VALUES (14,2154515878,'false',14);
-INSERT INTO game_key(id,key,available,game_id) VALUES (15,4793015255,'false',20);
-INSERT INTO game_key(id,key,available,game_id) VALUES (16,8222502964,'false',7);
-INSERT INTO game_key(id,key,available,game_id) VALUES (17,3639476298,'false',9);
-INSERT INTO game_key(id,key,available,game_id) VALUES (18,8855338048,'true',6);
-INSERT INTO game_key(id,key,available,game_id) VALUES (19,7669739924,'false',8);
-INSERT INTO game_key(id,key,available,game_id) VALUES (20,5732887784,'false',19);
-INSERT INTO game_key(id,key,available,game_id) VALUES (21,1052888755,'true',6);
-INSERT INTO game_key(id,key,available,game_id) VALUES (22,8186325883,'true',14);
-INSERT INTO game_key(id,key,available,game_id) VALUES (23,9793461217,'false',14);
-INSERT INTO game_key(id,key,available,game_id) VALUES (24,5899301325,'false',17);
-INSERT INTO game_key(id,key,available,game_id) VALUES (25,2205355724,'false',5);
-INSERT INTO game_key(id,key,available,game_id) VALUES (26,3510328841,'false',9);
-INSERT INTO game_key(id,key,available,game_id) VALUES (27,7295090517,'false',19);
-INSERT INTO game_key(id,key,available,game_id) VALUES (28,7471666668,'true',14);
-INSERT INTO game_key(id,key,available,game_id) VALUES (29,5686284520,'true',15);
-INSERT INTO game_key(id,key,available,game_id) VALUES (30,0765377047,'false',2);
-INSERT INTO game_key(id,key,available,game_id) VALUES (31,3811969382,'true',10);
-INSERT INTO game_key(id,key,available,game_id) VALUES (32,9268828863,'false',11);
-INSERT INTO game_key(id,key,available,game_id) VALUES (33,2982965704,'true',9);
-INSERT INTO game_key(id,key,available,game_id) VALUES (34,8500699655,'false',7);
-INSERT INTO game_key(id,key,available,game_id) VALUES (35,9009703029,'true',12);
-INSERT INTO game_key(id,key,available,game_id) VALUES (36,0613217861,'true',4);
-INSERT INTO game_key(id,key,available,game_id) VALUES (37,8517584023,'false',17);
-INSERT INTO game_key(id,key,available,game_id) VALUES (38,8754976391,'true',8);
-INSERT INTO game_key(id,key,available,game_id) VALUES (39,1021916706,'false',12);
-INSERT INTO game_key(id,key,available,game_id) VALUES (40,9514497856,'false',18);
-INSERT INTO game_key(id,key,available,game_id) VALUES (41,6826456265,'true',19);
-INSERT INTO game_key(id,key,available,game_id) VALUES (42,7413740990,'true',11);
-INSERT INTO game_key(id,key,available,game_id) VALUES (43,5363704668,'false',18);
-INSERT INTO game_key(id,key,available,game_id) VALUES (44,9719812796,'false',4);
-INSERT INTO game_key(id,key,available,game_id) VALUES (45,2391658745,'false',11);
-INSERT INTO game_key(id,key,available,game_id) VALUES (46,8393272521,'false',2);
-INSERT INTO game_key(id,key,available,game_id) VALUES (47,8343772539,'true',6);
-INSERT INTO game_key(id,key,available,game_id) VALUES (48,7585176910,'true',14);
-INSERT INTO game_key(id,key,available,game_id) VALUES (49,4691368256,'true',14);
-INSERT INTO game_key(id,key,available,game_id) VALUES (50,6964227032,'false',17);
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (8, 'Modern Warfare® 3', 
+            'The best-selling first-person action series of all-time returns with an epic sequel to the multiple GOTY award winner Call of Duty®: Modern Warfare® 2', 
+            39.99, 4, '2011-11-08'::date, true, null, 7, 1);
 
+INSERT INTO games(id,title,description,price,score,launch_date,listed,parent_id,dev_id,category_id) 
+VALUES (9, 'Outriders', 
+            'Outriders’ brutal and bloody combat combines frenetic gunplay, violent powers and deep RPG systems to create a true genre hybrid.', 
+            59.99, 3, '2021-04-01'::date, true, null, 8, 1);
 
-INSERT INTO game_image(photo_id,game_id) VALUES (3,15);
-INSERT INTO game_image(photo_id,game_id) VALUES (4,20);
-INSERT INTO game_image(photo_id,game_id) VALUES (16,1);
-INSERT INTO game_image(photo_id,game_id) VALUES (1,5);
-INSERT INTO game_image(photo_id,game_id) VALUES (14,15);
-INSERT INTO game_image(photo_id,game_id) VALUES (15,2);
-INSERT INTO game_image(photo_id,game_id) VALUES (30,1);
-INSERT INTO game_image(photo_id,game_id) VALUES (19,8);
-INSERT INTO game_image(photo_id,game_id) VALUES (2,14);
-INSERT INTO game_image(photo_id,game_id) VALUES (7,1);
-INSERT INTO game_image(photo_id,game_id) VALUES (10,18);
-INSERT INTO game_image(photo_id,game_id) VALUES (17,3);
-INSERT INTO game_image(photo_id,game_id) VALUES (29,2);
-INSERT INTO game_image(photo_id,game_id) VALUES (24,16);
-INSERT INTO game_image(photo_id,game_id) VALUES (27,2);
-INSERT INTO game_image(photo_id,game_id) VALUES (12,20);
-INSERT INTO game_image(photo_id,game_id) VALUES (21,3);
-INSERT INTO game_image(photo_id,game_id) VALUES (5,10);
-INSERT INTO game_image(photo_id,game_id) VALUES (22,12);
-INSERT INTO game_image(photo_id,game_id) VALUES (13,17);
-INSERT INTO game_image(photo_id,game_id) VALUES (18,8);
+INSERT INTO game_keys(id,key,available,game_id) VALUES (1,'757AD8466FA453','false',1);
+INSERT INTO game_keys(id,key,available,game_id) VALUES (2,'797494323076','true',1);
+INSERT INTO game_keys(id,key,available,game_id) VALUES (3,'1218582960','true',3);
+INSERT INTO game_keys(id,key,available,game_id) VALUES (4,'3184561836','false',4);
 
+INSERT INTO image_game(image_id,game_id) VALUES (1,2);
+INSERT INTO image_game(image_id,game_id) VALUES (2,3);
+INSERT INTO image_game(image_id,game_id) VALUES (3,1);
+INSERT INTO image_game(image_id,game_id) VALUES (4,1);
+INSERT INTO image_game(image_id,game_id) VALUES (5,1);
+INSERT INTO image_game(image_id,game_id) VALUES (6,4);
+INSERT INTO image_game(image_id,game_id) VALUES (7,5);
+INSERT INTO image_game(image_id,game_id) VALUES (8,6);
+INSERT INTO image_game(image_id,game_id) VALUES (9,7);
+INSERT INTO image_game(image_id,game_id) VALUES (10,8);
+INSERT INTO image_game(image_id,game_id) VALUES (11,9);
 
-INSERT INTO game_tag(tag_id,game_id) VALUES (2,1);
-INSERT INTO game_tag(tag_id,game_id) VALUES (8,4);
-INSERT INTO game_tag(tag_id,game_id) VALUES (1,3);
-INSERT INTO game_tag(tag_id,game_id) VALUES (10,3);
-INSERT INTO game_tag(tag_id,game_id) VALUES (4,17);
-INSERT INTO game_tag(tag_id,game_id) VALUES (6,18);
-INSERT INTO game_tag(tag_id,game_id) VALUES (3,13);
-INSERT INTO game_tag(tag_id,game_id) VALUES (7,14);
-INSERT INTO game_tag(tag_id,game_id) VALUES (7,6);
-INSERT INTO game_tag(tag_id,game_id) VALUES (1,14);
+INSERT INTO game_tags(tag_id,game_id) VALUES (1,1);
+INSERT INTO game_tags(tag_id,game_id) VALUES (4,1);
+INSERT INTO game_tags(tag_id,game_id) VALUES (8,1);
 
-INSERT INTO in_cart(game_id,user_id) VALUES (4,1);
-INSERT INTO in_cart(game_id,user_id) VALUES (6,1);
-INSERT INTO in_cart(game_id,user_id) VALUES (5,2);
-INSERT INTO in_cart(game_id,user_id) VALUES (14,5);
-INSERT INTO in_cart(game_id,user_id) VALUES (8,5);
-
-INSERT INTO in_wishlist(game_id,user_id) VALUES (3,3);
-INSERT INTO in_wishlist(game_id,user_id) VALUES (7,1);
-INSERT INTO in_wishlist(game_id,user_id) VALUES (16,5);
-INSERT INTO in_wishlist(game_id,user_id) VALUES (14,1);
-INSERT INTO in_wishlist(game_id,user_id) VALUES (7,5);
-
-INSERT INTO purchase(id,timestamp,price,status,method,key_id,buyer_id) VALUES (1,'2020-07-08 19:39:21',76.56,'Pending','MB',10,1);
-INSERT INTO purchase(id,timestamp,price,status,method,key_id,buyer_id) VALUES (2,'2020-05-23 18:22:59',52.65,'Pending','MB',5,3);
-INSERT INTO purchase(id,timestamp,price,status,method,key_id,buyer_id) VALUES (3,'2020-05-16 07:26:33',4.4,'Completed','MB',2,1);
-INSERT INTO purchase(id,timestamp,price,status,method,key_id,buyer_id) VALUES (4,'2020-11-12 20:46:48',53.77,'Pending','MB',3,4);
-INSERT INTO purchase(id,timestamp,price,status,method,key_id,buyer_id) VALUES (5,'2020-05-05 15:40:20',3.53,'Completed','PayPal',49,5);
-
-INSERT INTO review(id,description,publication_date,score,reviewer_id,game_id) VALUES (1,'Excision of tendon of hand for graft','12/26/2020',3,1,11);
-INSERT INTO review(id,description,publication_date,score,reviewer_id,game_id) VALUES (2,'Biopsy of nose','5/25/2020',2,3,20);
-INSERT INTO review(id,description,publication_date,score,reviewer_id,game_id) VALUES (3,'Limb lengthening procedures, tibia and fibula','11/3/2020',5,1,20);
-INSERT INTO review(id,description,publication_date,score,reviewer_id,game_id) VALUES (4,'Diagnostic interview and evaluation, not otherwise specified','3/18/2020',2,4,15);
-INSERT INTO review(id,description,publication_date,score,reviewer_id,game_id) VALUES (5,'Other division of bone, carpals and metacarpals','5/9/2020',3,5,14);
-
-
-INSERT INTO report(id,description,r_type,submission_date,r_status,reporter_id,admin_id,review_id) VALUES (1,'Other specified injury of right renal vein, initial encounter','Review','1/2/2021','In Progress',5,5,1);
-INSERT INTO report(id,description,r_type,submission_date,r_status,reporter_id,admin_id,review_id) VALUES (2,'Postprocedural hemorrhage of unspecified eye and adnexa following other procedure','Review','5/28/2020','In Progress',3,2,3);
-INSERT INTO report(id,description,r_type,submission_date,r_status,reporter_id,admin_id,review_id) VALUES (3,'Superficial foreign body of unspecified back wall of thorax, initial encounter','Review','6/23/2020','In Progress',5,3,4);
 
 -----------------------------------------
 -- end

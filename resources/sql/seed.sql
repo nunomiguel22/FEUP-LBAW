@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS game_keys CASCADE;
 DROP TABLE IF EXISTS image_game CASCADE;
 DROP TABLE IF EXISTS game_tags CASCADE;
 DROP TABLE IF EXISTS cart_items CASCADE;
-DROP TABLE IF EXISTS withlist_items CASCADE;
+DROP TABLE IF EXISTS wishlist_items CASCADE;
 DROP TABLE IF EXISTS purchases CASCADE;
 DROP TABLE IF EXISTS reviews CASCADE;
 DROP TABLE IF EXISTS reports CASCADE;
@@ -143,7 +143,7 @@ CREATE TABLE cart_items(
    PRIMARY KEY(game_id, user_id)
 );
 
-CREATE TABLE withlist_items(
+CREATE TABLE wishlist_items(
     game_id INTEGER NOT NULL REFERENCES games (id),
     user_id INTEGER NOT NUll REFERENCES users (id),
     PRIMARY KEY(game_id, user_id)
@@ -194,7 +194,7 @@ CREATE INDEX game_category_id_idx ON games USING hash (category_id);
  
 CREATE INDEX cart_items_user_id_idx ON cart_items USING hash (user_id); 
  
-CREATE INDEX withlist_items_user_id_idx ON withlist_items USING hash (user_id); 
+CREATE INDEX withlist_items_user_id_idx ON wishlist_items USING hash (user_id); 
  
 -----------------------------------------
 -- TRIGGERS and UDFs
@@ -320,7 +320,7 @@ CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF EXISTS (SELECT id FROM game_keys WHERE id=New.key_id) THEN
-    DELETE FROM withlist_items
+    DELETE FROM wishlist_items
     WHERE user_id=New.buyer_id AND game_id=Key.game_id;
     END IF;
     RETURN NULL;

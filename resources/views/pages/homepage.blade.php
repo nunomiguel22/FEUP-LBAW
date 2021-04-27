@@ -6,7 +6,8 @@
 
 <div class="container">
     @if (!empty($carousel_games))
-    @include('partials.carousel', ['carousel_games' => $carousel_games])
+    @include('partials.homepage.carousel', ['title_game' => $title_game,
+    'carousel_games' => $carousel_games])
     @endif
 
     <!-- Game Nav Divider -->
@@ -43,24 +44,7 @@
                 <!-- Game Nav Card Deck -->
                 <div class="card-deck mb-3 text-center">
                     @forelse ($first_row as $game)
-                    <!-- Card -->
-                    <div class="card mb-2 mt-2 hover-darken">
-                        <!-- Image -->
-                        <img src="{{ asset('' . $game->cover_image()) }}" class="card-img-top" alt="Cyberpunk">
-                        <!-- Wishlist Indicator -->
-                        <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
-                            title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
-                        <!-- Wishlist Card Body -->
-                        <div class="row mt-2">
-                            <span class="col-7 HomeNav-GameTitle">{{ $game->title }}</span>
-                            <span class="col-4 HomeNav-price text-right mr-3">{{ $game->price }}€</span>
-                        </div>
-                        <div class="row">
-                            <span class="col-7 HomeNav-devInfo">{{ $game->developer() }}</span>
-
-                        </div>
-                        <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
-                    </div>
+                    @include('partials.homepage.card', ['game' => $game])
                     @empty
                     <p>No gaems</p>
                     @endforelse
@@ -69,24 +53,7 @@
                 <!-- Game Nav Card Deck -->
                 <div class="card-deck mb-3 text-center">
                     @forelse ($second_row as $game)
-                    <!-- Card -->
-                    <div class="card mb-2 mt-2 hover-darken">
-                        <!-- Image -->
-                        <img src="{{ asset('' . $game->cover_image()) }}" class="card-img-top" alt="Cyberpunk">
-                        <!-- Wishlist Indicator -->
-                        <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
-                            title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
-                        <!-- Wishlist Card Body -->
-                        <div class="row mt-2">
-                            <span class="col-7 HomeNav-GameTitle">{{ $game->title }}</span>
-                            <span class="col-4 HomeNav-price text-right mr-3">{{ $game->price }}€</span>
-                        </div>
-                        <div class="row">
-                            <span class="col-7 HomeNav-devInfo">{{ $game->developer() }}</span>
-
-                        </div>
-                        <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
-                    </div>
+                    @include('partials.homepage.card', ['game' => $game])
                     @empty
                     <p>No gaems</p>
                     @endforelse
@@ -94,30 +61,11 @@
 
                 <!-- Game Nav Card Deck -->
                 <div class="card-deck mb-3 text-center">
-
                     @forelse ($third_row as $game)
-                    <!-- Card -->
-                    <div class="card mb-2 mt-2 hover-darken">
-                        <!-- Image -->
-                        <img src="{{ asset('' . $game->cover_image()) }}" class="card-img-top" alt="Cyberpunk">
-                        <!-- Wishlist Indicator -->
-                        <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
-                            title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>
-                        <!-- Wishlist Card Body -->
-                        <div class="row mt-2">
-                            <span class="col-7 HomeNav-GameTitle">{{ $game->title }}</span>
-                            <span class="col-4 HomeNav-price text-right mr-3">{{ $game->price }}€</span>
-                        </div>
-                        <div class="row">
-                            <span class="col-7 HomeNav-devInfo">{{ $game->developer() }}</span>
-
-                        </div>
-                        <a href="/product_page_logged.php" class="btn btn-secondary hidden-opacity stretched-link"></a>
-                    </div>
+                    @include('partials.homepage.card', ['game' => $game])
                     @empty
                     <p>No gaems</p>
                     @endforelse
-
                 </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

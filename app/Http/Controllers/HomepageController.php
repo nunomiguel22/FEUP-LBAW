@@ -26,8 +26,8 @@ class HomepageController extends Controller
         }
         
         if ($game_count > 2) {
-            $car_games = $games->slice(0, 3);
-            $first_row = $car_games;
+            $car_games = $games->slice(1, 2);
+            $first_row =  $games->slice(0, 3);
         }
         if ($game_count > 5) {
             $second_row = $games->slice(3, 3);
@@ -37,7 +37,8 @@ class HomepageController extends Controller
             $third_row = $games->slice(6, 3);
         }
         
-        return view('pages.homepage', ['carousel_games' => $car_games,
+        return view('pages.homepage', [ 'title_game' => $title_game,
+                                        'carousel_games' => $car_games,
                                         'first_row' => $first_row,
                                         'second_row' => $second_row,
                                         'third_row' => $third_row]);

@@ -20,20 +20,20 @@ class Game extends Model
 
     public function cover_image()
     {
-        return  DB::table('game')
-        ->join('game_image', 'game.id', '=', 'game_image.game_id')
-        ->join('photo', 'photo.id', '=', 'game_image.photo_id')
-        ->select('photo.path')
-        ->where('game.id', '=', $this->id)
+        return  DB::table('games')
+        ->join('image_game', 'games.id', '=', 'image_game.game_id')
+        ->join('images', 'images.id', '=', 'image_game.image_id')
+        ->select('images.path')
+        ->where('games.id', '=', $this->id)
         ->first()->path;
     }
 
     public function images()
     {
-        return  DB::table('game')
-        ->join('game_image', 'game.id', '=', 'game_image.game_id')
-        ->join('photo', 'photo.id', '=', 'game_image.photo_id')
-        ->select('photo.path')
+        return  DB::table('games')
+        ->join('image_game', 'games.id', '=', 'image_game.game_id')
+        ->join('images', 'images.id', '=', 'image_game.image_id')
+        ->select('images.path')
         ->get();
     }
 }
