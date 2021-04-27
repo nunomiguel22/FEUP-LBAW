@@ -115,7 +115,7 @@ CREATE TABLE games(
     launch_date DATE,
     listed BOOLEAN NOT NULL DEFAULT true,
     parent_id INTEGER REFERENCES games (id),
-    dev_id INTEGER NOT NULL REFERENCES developers (id),
+    developer_id INTEGER NOT NULL REFERENCES developers (id),
     category_id INTEGER NOT NULL REFERENCES categories (id)
 );
 

@@ -13,9 +13,9 @@ class Game extends Model
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
 
-    public function developer()
+    public function developers()
     {
-        return Developer::find($this->dev_id)->name;
+        return $this->belongsTo(Developer::class, 'developer_id', 'id');
     }
 
     public function cover_image()
