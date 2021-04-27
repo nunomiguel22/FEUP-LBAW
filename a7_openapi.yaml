@@ -22,7 +22,7 @@ tags:
   - name: "M06: Wishlist"
 
 paths:
-  /homepage:
+  /:
     get:
       operationId: R101
       summary: "R101: View Home Page"

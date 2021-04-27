@@ -129,6 +129,7 @@ hr {
 
 .container .carousel {
     transition-duration: 1s;
+    margin-top: 20px;
 }
 
 .container .carousel:hover {

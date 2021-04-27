@@ -21,13 +21,10 @@
   <script src="{{ asset('bootstrap/popper.min.js') }}" defer></script>
   <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" defer></script>
 
-
   <!-- Styles -->
   <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
 
 </head>
 
