@@ -11,7 +11,7 @@
 |
 */
 // Home
-Route::get('/', 'HomepageController@show');
+Route::get('/', 'HomepageController@show')->name('homepage');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -20,6 +20,10 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+//Admin
+Route::get('/admin', 'AdminController@showDefault');
+Route::get('/admin/sales', 'AdminController@showSales');
+Route::get('/admin/products/add_product', 'AdminController@showNewGame');
 
 /* // Cards
 Route::get('cards', 'CardController@list');

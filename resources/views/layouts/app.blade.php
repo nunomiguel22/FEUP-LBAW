@@ -20,6 +20,7 @@
   <script src="{{ asset('bootstrap/jquery-3.3.1.slim.min.js') }}" defer></script>
   <script src="{{ asset('bootstrap/popper.min.js') }}" defer></script>
   <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" defer></script>
+  @yield('scripts')
 
   <!-- Styles -->
   <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
