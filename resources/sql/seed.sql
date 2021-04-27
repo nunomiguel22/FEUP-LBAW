@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS addresses CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS games CASCADE;
 DROP TABLE IF EXISTS game_keys CASCADE;
-DROP TABLE IF EXISTS image_game CASCADE;
+DROP TABLE IF EXISTS game_image CASCADE;
 DROP TABLE IF EXISTS game_tags CASCADE;
 DROP TABLE IF EXISTS cart_items CASCADE;
 DROP TABLE IF EXISTS wishlist_items CASCADE;
@@ -126,7 +126,7 @@ CREATE TABLE game_keys (
     game_id INTEGER NOT NULL REFERENCES games(id)
 );
 
-CREATE TABLE image_game (
+CREATE TABLE game_image (
     image_id INTEGER PRIMARY KEY REFERENCES images(id),
     game_id INTEGER REFERENCES games(id)
 );
@@ -186,7 +186,7 @@ CREATE TABLE reports(
  
 CREATE INDEX review_game_id_idx ON reviews USING hash (game_id); 
 
-CREATE INDEX image_game_id_idx ON image_game USING hash (game_id); 
+CREATE INDEX image_game_id_idx ON game_image USING hash (game_id); 
  
 CREATE INDEX purchase_id_idx ON purchases USING hash (buyer_id); 
  
