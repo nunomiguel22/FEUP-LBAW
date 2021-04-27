@@ -13,8 +13,6 @@ class Game extends Model
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
 
-    protected $table = 'game';
-
     public function developer()
     {
         return Developer::find($this->dev_id)->name;

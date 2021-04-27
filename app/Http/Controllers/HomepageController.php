@@ -12,11 +12,31 @@ class HomepageController extends Controller
 {
     public function show()
     {
+        $title_game = array();
+        $car_games = array();
+        $first_row = array();
+        $second_row = array();
+        $third_row = array();
         $games = Game::inRandomOrder()->limit(9)->get();
-        $car_games = $games->slice(0, 3);
-        $first_row = $car_games;
-        $second_row = $games->slice(3, 3);
-        $third_row = $games->slice(6, 3);
+        
+        $game_count = count($games);
+
+        if ($game_count > 0) {
+            $title_game = $games[0];
+        }
+        
+        if ($game_count > 2) {
+            $car_games = $games->slice(0, 3);
+            $first_row = $car_games;
+        }
+        if ($game_count > 5) {
+            $second_row = $games->slice(3, 3);
+        }
+        
+        if ($game_count > 8) {
+            $third_row = $games->slice(6, 3);
+        }
+        
         return view('pages.homepage', ['carousel_games' => $car_games,
                                         'first_row' => $first_row,
                                         'second_row' => $second_row,
