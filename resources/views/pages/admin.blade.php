@@ -9,16 +9,18 @@
 
 @section('content')
 
-<!-- Breadcrumbs -->
-<section class="container-fluid">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
-        <li class="breadcrumb-item active" aria-current="page"> Admin Dashboard </li>
-    </ol>
-</section>
+
 
 <!-- Page Content -->
 <section class="container">
+    <!-- Breadcrumbs -->
+    <div class="row mx-0 my-3 p-0">
+        <ol class="breadcrumb m-0 p-0">
+            <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Admin Panel </li>
+        </ol>
+    </div>
+
     <nav class="row d-lg-none d-sm-block mb-2">
         <div class="nav flex-column nav-pills nav-menu w-100" id="v-pills-tab" role="tablist"
             aria-orientation="vertical">

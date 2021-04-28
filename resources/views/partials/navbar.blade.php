@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/index.php">
+    <a class="navbar-brand" href="{{route('homepage')}}">
         <img src="{{ asset('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">
     </a>
 
@@ -26,7 +26,7 @@
                     <a class="dropdown-item" href="#">Sports</a>
                     <a class="dropdown-item" href="#">Strategy</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/search.php">Browse All</a>
+                    <a class="dropdown-item" href="{{ route('products') }}">Browse All</a>
                 </div>
             </li>
         </ul>
@@ -68,7 +68,11 @@
                         <i class="fas fa-user-edit"></i></i>
                         <span> Account</span>
                     </a>
-
+                    @if(Auth::user()->is_admin)
+                    <a class="dropdown-item" href="{{route('admin')}}"><i class="fas fa-hammer"></i>
+                        <span> Admin Panel</span>
+                    </a>
+                    @endif
                     <a class="dropdown-item" href="{{route('logout')}}">
                         <i class="fas fa-sign-out-alt"></i>
                         <span> Logout</span>

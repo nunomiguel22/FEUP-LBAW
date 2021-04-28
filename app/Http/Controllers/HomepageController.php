@@ -17,7 +17,7 @@ class HomepageController extends Controller
         $first_row = array();
         $second_row = array();
         $third_row = array();
-        $games = Game::inRandomOrder()->limit(9)->get();
+        $games = Game::where('listed', '=', 'true')->inRandomOrder()->limit(9)->get();
         
         $game_count = count($games);
 

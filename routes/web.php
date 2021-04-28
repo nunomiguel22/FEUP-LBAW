@@ -21,13 +21,13 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 // Admin
-Route::get('/admin', 'AdminController@showDefault');
-Route::get('/admin/sales', 'AdminController@showSales');
-Route::get('/admin/products/add_product', 'AdminController@showNewGame');
+Route::get('admin', 'AdminController@showDefault')->name('admin');
+Route::get('admin/sales', 'AdminController@showSales');
+Route::get('admin/products/add_product', 'AdminController@showNewGame');
 
 // Products
-Route::get('/products', 'GameController@showProducts');
-Route::get('/api/products/search', 'GameController@search');
+Route::get('products', 'GameController@showProducts')->name('products');
+Route::get('api/products/search', 'GameController@search');
 
 /* // Cards
 Route::get('cards', 'CardController@list');

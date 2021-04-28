@@ -9,7 +9,6 @@ function encodeForAjax(data) {
 
 function sendAjaxRequest(method, url, data, handler) {
     let request = new XMLHttpRequest();
-
     request.open(method, url, true);
     request.setRequestHeader(
         "X-CSRF-TOKEN",
@@ -17,8 +16,23 @@ function sendAjaxRequest(method, url, data, handler) {
     );
     request.setRequestHeader(
         "Content-Type",
-        "application/x-www-form-urlencoded"
+        "application/x-www-form-urlencoded",
+        "X-Header-Name: XMLHttpRequest"
     );
     request.addEventListener("load", handler);
     request.send(encodeForAjax(data));
+}
+
+function startLoader(parent) {
+    let loader = document.createElement("div");
+    loader.classList.add("loader");
+    loader.id = "dynamic-loader";
+    let parentElement = document.getElementById(parent);
+    parentElement.innerHTML = "";
+    parentElement.appendChild(loader);
+}
+
+function stopLoader() {
+    let loader = document.getElementById("dynamic-loader");
+    if (loader != null) loader.parentNode.removeChild(loader);
 }

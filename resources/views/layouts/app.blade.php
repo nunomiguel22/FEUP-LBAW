@@ -21,6 +21,7 @@
   <script src="{{ asset('bootstrap/popper.min.js') }}" defer></script>
   <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" defer></script>
   <script src="{{asset('js/app.js')}}" defer></script>
+  <script src="{{asset('js/navbar.js')}}" defer></script>
   @yield('scripts')
 
   <!-- Styles -->
@@ -33,14 +34,10 @@
 <body>
   <main>
     @include('partials.navbar')
-
     @yield('content')
-
-    @include('partials.footer')
-
   </main>
 </body>
 
-
+@include('partials.footer')
 
 </html>

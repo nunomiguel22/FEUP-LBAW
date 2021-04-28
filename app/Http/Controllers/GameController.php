@@ -12,7 +12,7 @@ class GameController extends Controller
 {
     public function search()
     {
-        return Game::where('listed', '=', true)->with('developers', 'categories', 'images')->paginate(10);
+        return Game::where('listed', '=', true)->with('developers', 'categories', 'images')->paginate(3);
     }
 
     public function showProducts()

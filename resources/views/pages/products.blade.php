@@ -2,31 +2,39 @@
 
 @section('title', 'OGS')
 
+@section('scripts')
+<script src="{{ asset('bootstrap/jquery.twbsPagination.min.js') }}" defer></script>
+<script src="{{ asset('js/products.js') }}" defer></script>
+
+@endsection
+
+
 @section('content')
 
 
 
 <!-- Breadcrumbs -->
-<div class="container-fluid">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Search</li>
-    </ol>
-</div>
 
 
 <!-- Game list -->
 <div class="container p-0">
-    <div class=" row">
+    <div class="row mx-0 mt-3 p-0">
+        <ol class="breadcrumb m-0 p-0">
+            <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Products</li>
+        </ol>
+    </div>
+
+
+    <section class="row my-4">
 
         <div class="col-lg-9 col-md-12">
 
-            <form class="container search-criteria mb-4 bg-dark">
+            <form class="container search-criteria mb-4 bg-dark py-2">
 
                 <div class="form-row">
-                    <div class="col-lg-8 col-md-4 col-sm-4 my-3">
-
-                        <div class="input-group  w-75">
+                    <div class="col-5 my-3">
+                        <div class="input-group">
                             <input type="text" class="form-control bg-dark text-light"
                                 placeholder="Search for a title..." aria-label="Search for a title..."
                                 aria-describedby="basic-addon2">
@@ -35,228 +43,33 @@
                             </div>
                         </div>
                     </div>
-                    <span class="my-auto col-1">Sort by </span>
-                    <div class="col-lg-2 col-md-2 my-auto">
+                    <div class="col-2 mx-auto my-auto" id="list-loader"></div>
+                    <div class="col-5 my-auto">
+                        <div class="row">
+                            <span class="col-3 my-auto">Sort by </span>
+                            <div class="col-9">
 
-                        <select name="SortBy" class="form-control bg-dark text-light">
-                            <option value="popularity">Popularity</option>
-                            <option value="newReleases">New Releases</option>
-                            <option value="topRated">Top Rated</option>
-                        </select>
+                                <select name="SortBy" class="form-control bg-dark text-light">
+                                    <option value="popularity">Popularity</option>
+                                    <option value="newReleases">New Releases</option>
+                                    <option value="topRated">Top Rated</option>
+                                </select>
+                            </div>
+
+                        </div>
                     </div>
+
+
                 </div>
             </form>
 
-
-            <div class="container" style="padding-bottom:40px;">
-
-                <a class="row bg-dark b-shadow my-1" href="/product_page_logged.php">
-                    <div class="col-md-2"><img src="/img/carousel/CP2077.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Cyberpunk 2077
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">CD Projekt Red</span></div>
-
-                    </div>
-                    <div class="col-md-2 my-auto">20/12/2020</div>
-                    <div class="col-md-1 my-auto">
-                        <div class="radialProgressBar progress-70">
-                            <div class="overlay text-light">3.5</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">59.99€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/GTAV.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Grand Theft Auto V
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">Rockstar North</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">20/04/2013</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-90">
-                            <div class="overlay text-light">4.5</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">20.99€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/Outriders.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Outriders
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">People Can Fly</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">20/02/2021</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-40">
-                            <div class="overlay text-light">2.5</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">40.00€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/h3.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Hitman 3
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">IO Interactive</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">10/01/2021</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-80">
-                            <div class="overlay text-light">4</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">30.00€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/CSGO.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Counter-Strike: Global Offensive
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">Valve</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">20/04/2013</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-100">
-                            <div class="overlay text-light">5</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">40.00€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/Control.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Control
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">505 Games</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">24/04/2016</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-60">
-                            <div class="overlay text-light">3</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">29.99€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/GR.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Ghostrunner
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">One More Level</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">4/08/2020</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-80">
-                            <div class="overlay text-light">4</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">29.99€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/BL3.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Borderlands 3
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">Gearbox Software</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">5/09/2018</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-60">
-                            <div class="overlay text-light">3</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">59.99€</div>
-                </a>
-
-                <a class="row bg-dark b-shadow my-1" href="#">
-                    <div class="col-md-2"><img src="/img/carousel/MW3.jpg" class="ml-0 mt-1"
-                            style="max-width:96px;max-height:54px;">
-                    </div>
-                    <div class="col-5 m-auto">
-                        <div class="row">
-                            Call of Duty: Modern Warfare 3
-                        </div>
-                        <div class="row"><span class="HomeNav-devInfo">Infinity Ward</span></div>
-
-                    </div>
-                    <div class="col-md-2 m-auto">24/01/2014</div>
-                    <div class="col-md-1 m-auto">
-                        <div class="radialProgressBar progress-70">
-                            <div class="overlay text-light">3.5</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-auto" align="right">39.99€</div>
-                </a>
-
+            <div id="game-list" class="container" style="padding-bottom:40px;">
+                <!-- DYNAMIC LIST OF GAMES -->
             </div>
             <!-- Next page and previous page buttons -->
 
-            <div class="container">
-                <ul class="pagination row justify-content-center pb-3 mt-n4">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">&laquo;</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
-                    </li>
-                </ul>
+            <div id="list-links" class="container">
+
             </div>
         </div>
 
@@ -296,7 +109,7 @@
 
 
         </div>
-    </div>
+    </section>
 </div>
 
 

@@ -41,9 +41,10 @@
                     <!-- Submit button Row -->
                     <div class="form-group row mt-5">
 
-                        <button class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg" style="width:100%;"
-                            type="submit">
-                            Sign in</button>
+                        <button id="loginButton" class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg"
+                            style="width:100%;" type="submit">
+                            Sign in
+                        </button>
                     </div>
                 </form>
 
