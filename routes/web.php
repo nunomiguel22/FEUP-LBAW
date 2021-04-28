@@ -20,10 +20,14 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//Admin
+// Admin
 Route::get('/admin', 'AdminController@showDefault');
 Route::get('/admin/sales', 'AdminController@showSales');
 Route::get('/admin/products/add_product', 'AdminController@showNewGame');
+
+// Products
+Route::get('/products', 'GameController@showProducts');
+Route::get('/api/products/search', 'GameController@search');
 
 /* // Cards
 Route::get('cards', 'CardController@list');

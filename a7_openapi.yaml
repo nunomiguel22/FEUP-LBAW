@@ -476,12 +476,18 @@ paths:
       tags:
         - "M03: Products"
       parameters:
+        - in: integer
+          name: page
+          description: Page number, games are paginated in increments of 10
+          schema:
+            type: string
+          required: false
         - in: query
           name: query
           description: String to use for full-text search
           schema:
             type: string
-          required: true
+          required: false
         - in: query
           name: category
           description: Filter by category
@@ -508,24 +514,60 @@ paths:
                       type: integer
                     title:
                       type: string
-                    picture:
+                    description:
                       type: string
-                    developer:
-                      type: string
-                    launch_date:
-                      type: string
-                    score:
-                      type: number
                     price:
                       type: number
+                    score:
+                      type: number
+                    launch_date:
+                      type: string
+                    parent_id:
+                      type: integer
+                    developers:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    categories:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    images:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          path:
+                            type: string
               example:
                 - id: 1
                   title: Cyberpunk 2077
-                  picture: /images/cp2077_cover.jpg
-                  developer: CDProjekt Red
-                  launch_date: 20/12/2020
-                  score: 3.5
+                  description: Cyberpunk 2077 is an open-world, action-adventure story set in Night City...
                   price: 59.99
+                  score: 3.5
+                  launch_date: "2020-12-20"
+                  parent_id: null
+                  developers:
+                    id: 1
+                    name: CDProjekt Red
+                  categories:
+                    id: 1
+                    name: Action
+                  images:
+                    - id: 3
+                      path: "images/games/CP2077.jpg"
+                    - id: 3
+                      path: "images/games/CP2077C1.jpg"
+                    - id: 3
+                      path: "images/games/CP2077C2.jpg"
 
   /products/{id}:
     get:
