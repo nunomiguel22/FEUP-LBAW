@@ -29,6 +29,10 @@ Route::get('admin/products/add_product', 'AdminController@showNewGame');
 Route::get('products', 'GameController@showProducts')->name('products');
 Route::get('api/products/search', 'GameController@search');
 
+//Profile
+Route::get('/profile', 'ProfileController@show');
+
+
 /* // Cards
 Route::get('cards', 'CardController@list');
 Route::get('cards/{id}', 'CardController@show');
