@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Game;
 use App\Models\Image;
+use App\Models\Tag;
 
 class GameController extends Controller
 {
@@ -39,14 +40,19 @@ class GameController extends Controller
         $game->listed = $request->listed;
         $game->description = $request->description;
         $game->save();
-
+        
+        // Images
         foreach ($request->file('images') as $image) {
             $path = Storage::disk('public')->putFile('images/games', $image);
             $game->images()->save(new Image(['path' => $path]));
         }
+
+        // Tags
+        foreach ($request->tags as $tag) {
+            $tag = Tag::find($tag);
+            $game->tags()->attach($tag);
+        }
     }
-
-
 
     protected function validator(array $data)
     {
@@ -59,7 +65,9 @@ class GameController extends Controller
             'listed' => 'required|boolean',
             'description' => 'required|string|max:200|min:1',
             'images' => 'required',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'tags' => 'nullable',
+            'tags.*' => 'string'
         ]);
     }
 }

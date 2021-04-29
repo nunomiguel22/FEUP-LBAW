@@ -15,16 +15,10 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">Browse Categories</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Adventure</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Casual</a>
-                    <a class="dropdown-item" href="#">Indie</a>
-                    <a class="dropdown-item" href="#">Massively Multiplayer</a>
-                    <a class="dropdown-item" href="#">Racing</a>
-                    <a class="dropdown-item" href="#">RPG</a>
-                    <a class="dropdown-item" href="#">Simulation</a>
-                    <a class="dropdown-item" href="#">Sports</a>
-                    <a class="dropdown-item" href="#">Strategy</a>
+                    @forelse($categories as $category)
+                    <a class="dropdown-item" href="#">{{$category->name}}</a>
+                    @empty
+                    @endforelse
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('products') }}">Browse All</a>
                 </div>

@@ -32,12 +32,11 @@
 
             <div class="col-6">
                 <label for="tags ">Tags</label>
-                <select multiple="" name="tags" class="form-control bg-dark text-light">
-                    <option>Open World</option>
-                    <option>Souls-like</option>
-                    <option>Co-op</option>
-                    <option>Story-based</option>
-                    <option>Side-scroller</option>
+                <select multiple name="tags[]" class="form-control bg-dark text-light">
+                    @forelse($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @empty
+                    @endforelse
                 </select>
                 <div class="row mt-2">
                     <div class="col-9 pr-0">

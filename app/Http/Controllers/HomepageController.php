@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Game;
+use App\Models\Category;
 
 class HomepageController extends Controller
 {
@@ -37,11 +38,14 @@ class HomepageController extends Controller
         if ($game_count > 8) {
             $third_row = $games->slice(6, 3);
         }
+
+        $categories = Category::all();
         
         return view('pages.homepage', [ 'title_game' => $title_game,
                                         'carousel_games' => $car_games,
                                         'first_row' => $first_row,
                                         'second_row' => $second_row,
-                                        'third_row' => $third_row]);
+                                        'third_row' => $third_row,
+                                        'categories' => $categories]);
     }
 }

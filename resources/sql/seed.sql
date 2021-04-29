@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS games CASCADE;
 DROP TABLE IF EXISTS game_keys CASCADE;
 DROP TABLE IF EXISTS game_image CASCADE;
-DROP TABLE IF EXISTS game_tags CASCADE;
+DROP TABLE IF EXISTS game_tag CASCADE;
 DROP TABLE IF EXISTS cart_items CASCADE;
 DROP TABLE IF EXISTS wishlist_items CASCADE;
 DROP TABLE IF EXISTS purchases CASCADE;
@@ -131,7 +131,7 @@ CREATE TABLE game_image (
     game_id INTEGER REFERENCES games(id)
 );
 
-CREATE TABLE game_tags(
+CREATE TABLE game_tag(
     tag_id INTEGER NOT NULL REFERENCES tags (id),
     game_id INTEGER NOT NULL REFERENCES games (id),
     PRIMARY KEY(tag_id, game_id)
@@ -720,9 +720,9 @@ INSERT INTO game_image(image_id,game_id) VALUES (9,7);
 INSERT INTO game_image(image_id,game_id) VALUES (10,8);
 INSERT INTO game_image(image_id,game_id) VALUES (11,9);
 
-INSERT INTO game_tags(tag_id,game_id) VALUES (1,1);
-INSERT INTO game_tags(tag_id,game_id) VALUES (4,1);
-INSERT INTO game_tags(tag_id,game_id) VALUES (8,1);
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,1);
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,1);
+INSERT INTO game_tag(tag_id,game_id) VALUES (8,1);
 
 
 -----------------------------------------

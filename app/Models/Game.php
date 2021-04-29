@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use \App\Models\Developer;
 use \App\Models\Category;
 use \App\Models\Image;
+use \App\Models\Tag;
 
 class Game extends Model
 {
@@ -32,6 +33,11 @@ class Game extends Model
     public function categories()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
     public function images()
