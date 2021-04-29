@@ -20,7 +20,8 @@
                 </div>
                 <div class="row mt-4 mb-3">
                     <div class="col-12" align="center">
-                        <img src="{{ asset('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
+                        <img src="{{ Storage::url('images/logo/logo_transparent.png')}}" width="100" height="100"
+                            alt="">
                     </div>
                 </div>
 
@@ -36,7 +37,7 @@
                     <!-- Email Row -->
                     <div class=" form-group row mb-4">
                         <input type="email" name="email" class="form-control col-10 m-auto bg-secondary text-light"
-                            style="height:50px" placeholder="Email address">
+                            style="height:50px" placeholder="Email address" required>
 
                         @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
@@ -48,7 +49,7 @@
                     <div class="form-group row">
                         <input type="password" name="password"
                             class="form-control col-10 m-auto bg-secondary text-light" style="height:50px"
-                            placeholder="Password">
+                            placeholder="Password" required>
                     </div>
                     <!-- Submit button Row -->
                     <div class="form-group row mt-5">

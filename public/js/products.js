@@ -39,7 +39,7 @@ function getGameTemplate(game) {
 
     template.innerHTML = 
     `<a class="row bg-dark b-shadow my-2" href="products/` + game.id + `">
-        <div class="col-2 my-auto"><img src="` +  game.images[0].path + `" class="my-1 b-shadow"
+        <div class="col-2 my-auto"><img src="storage/` +  game.images[0].path + `" class="my-1 b-shadow"
                 style="max-width:80%;max-height:80%;">
         </div>
         <div class="col-4 m-auto">

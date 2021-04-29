@@ -1,7 +1,7 @@
  <!-- Card -->
  <div class="card mb-2 mt-2 hover-darken">
      <!-- Image -->
-     <img src="{{ asset('' . $game->cover_image()) }}" class="card-img-top" alt="Cyberpunk">
+     <img src="{{ Storage::url('' . $game->cover_image()) }}" class="card-img-top" alt="Cyberpunk">
      <!-- Wishlist Indicator -->
      <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
          title="Add to Wishlist" href="asd.php"><i class="fas fa-plus-circle"></i></a>

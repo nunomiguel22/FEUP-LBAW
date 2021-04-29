@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
 
 use App\Models\User;
+use App\Models\Developer;
+use App\Models\Category;
+use App\Models\Game;
 
 class AdminController extends Controller
 {
@@ -21,11 +24,21 @@ class AdminController extends Controller
 
     public function showSales()
     {
-        return view('pages.admin', ['tab_id' => 0]);
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+        $categories = Category::all();
+        $developers = Developer::all();
+        return view('pages.admin', ['tab_id' => 0, 'developers' => $developers, 'categories' => $categories]);
     }
 
     public function showNewGame()
     {
-        return view('pages.admin', ['tab_id' => 2]);
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+        $categories = Category::all();
+        $developers = Developer::all();
+        return view('pages.admin', ['tab_id' => 2, 'developers' => $developers, 'categories' => $categories]);
     }
 }

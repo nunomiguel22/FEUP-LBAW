@@ -27,8 +27,9 @@ class HomepageController extends Controller
         
         if ($game_count > 2) {
             $car_games = $games->slice(1, 2);
-            $first_row =  $games->slice(0, 3);
+            $first_row = $games->slice(0, 3);
         }
+        
         if ($game_count > 5) {
             $second_row = $games->slice(3, 3);
         }

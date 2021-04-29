@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{{route('homepage')}}">
-        <img src="{{ asset('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">
+        <img src="{{ Storage::url('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"

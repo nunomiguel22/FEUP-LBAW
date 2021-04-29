@@ -7,7 +7,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <a href="/product_page.php">
-                <img src="{{ asset('' . $title_game->cover_image()) }}" class="d-block w-100"
+                <img src="{{ Storage::url('' . $title_game->cover_image()) }}" class="d-block w-100"
                     alt="''.$title_game->title">
             </a>
             <div class="carousel-caption d-none d-md-block">
@@ -18,7 +18,7 @@
         @foreach ($carousel_games as $game)
         <div class="carousel-item">
             <a href="/product_page.php">
-                <img src="{{ asset('' . $game->cover_image()) }}" class="d-block w-100" alt="''.$game->title">
+                <img src="{{ Storage::url('' . $game->cover_image()) }}" class="d-block w-100" alt="''.$game->title">
             </a>
             <div class="carousel-caption d-none d-md-block">
                 <h5 class="text-outline-dark">{{ $game->title }}</h5>

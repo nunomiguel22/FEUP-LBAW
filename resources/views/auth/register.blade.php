@@ -17,7 +17,7 @@
         </div>
         <div class="row mt-4 mb-3">
           <div class="col-12" align="center">
-            <img src="{{ asset('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
+            <img src="{{ Storage::url('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
           </div>
         </div>
 
@@ -32,27 +32,27 @@
           {{ csrf_field() }}
           <!-- Name Row -->
           <div class="form-group row justify-content-center">
-            <input type="text" name="first_name" class="form-control col-5 bg-secondary text-light" style="height:50px"
-              placeholder="*First Name">
-            <input type="text" name="last_name" class="form-control col-5 bg-secondary text-light" style="height:50px"
-              placeholder="*Last Name">
+            <input type="text" name="first_name" class="form-control text-field  col-5 bg-secondary text-light"
+              placeholder="*First Name" required>
+            <input type="text" name="last_name" class="form-control text-field  col-5 bg-secondary text-light"
+              placeholder="*Last Name" required>
           </div>
           <!-- Display name Row -->
           <div class="form-group row justify-content-center">
-            <input type="text" name="username" class="form-control col-10 bg-secondary text-light" style="height:50px"
-              placeholder="*Username">
+            <input type="text" name="username" class="form-control col-10 bg-secondary text-field  text-light"
+              placeholder="*Username" required>
           </div>
 
           <!-- Email Row -->
           <div class=" form-group row">
-            <input type="email" name="email" class="form-control col-10 m-auto bg-secondary text-light"
-              style="height:50px" placeholder="Email address">
+            <input type="email" name="email" class="form-control text-field col-10 m-auto bg-secondary text-light"
+              placeholder="Email address" required>
           </div>
 
           <!-- Password Row -->
           <div class="form-group row">
-            <input type="password" name="password" class="form-control col-10 m-auto bg-secondary text-light"
-              style="height:50px" placeholder="Password">
+            <input type="password" name="password"
+              class="form-control text-field  col-10 m-auto bg-secondary text-light" placeholder="Password" required>
           </div>
 
           <!-- Submit button Row -->

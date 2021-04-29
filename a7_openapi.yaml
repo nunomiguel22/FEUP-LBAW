@@ -476,7 +476,7 @@ paths:
       tags:
         - "M03: Products"
       parameters:
-        - in: integer
+        - in: query
           name: page
           description: Page number, games are paginated in increments of 10
           schema:
@@ -506,74 +506,139 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    description:
-                      type: string
-                    price:
-                      type: number
-                    score:
-                      type: number
-                    launch_date:
-                      type: string
-                    parent_id:
-                      type: integer
-                    developers:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                  data:
+                    type: array
+                    items:
                       type: object
                       properties:
                         id:
                           type: integer
-                        name:
+                        title:
                           type: string
-                    categories:
+                        description:
+                          type: string
+                        price:
+                          type: number
+                        score:
+                          type: number
+                        launch_date:
+                          type: string
+                        parent_id:
+                          type: integer
+                        developers:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        categories:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        images:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              path:
+                                type: string
+                  first_page_url:
+                    type: string
+                  from:
+                    type: integer
+                  last_page:
+                    type: integer
+                  last_page_url:
+                    type: string
+                  links:
+                    type: array
+                    items:
                       type: object
                       properties:
-                        id:
-                          type: integer
-                        name:
+                        url:
                           type: string
-                    images:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          path:
-                            type: string
+                        label:
+                          type: string
+                        active:
+                          type: boolean
+                  next_page_url:
+                    type: string
+                  path:
+                    type: string
+                  per_page:
+                    type: integer
+                  prev_page_url:
+                    type: string
+                  to:
+                    type: integer
+                  total:
+                    type: integer
               example:
-                - id: 1
-                  title: Cyberpunk 2077
-                  description: Cyberpunk 2077 is an open-world, action-adventure story set in Night City...
-                  price: 59.99
-                  score: 3.5
-                  launch_date: "2020-12-20"
-                  parent_id: null
-                  developers:
-                    id: 1
-                    name: CDProjekt Red
-                  categories:
-                    id: 1
-                    name: Action
-                  images:
-                    - id: 3
-                      path: "images/games/CP2077.jpg"
-                    - id: 3
-                      path: "images/games/CP2077C1.jpg"
-                    - id: 3
-                      path: "images/games/CP2077C2.jpg"
+                current_page: 1
+                data:
+                  - id: 1
+                    title: Cyberpunk 2077
+                    description: Cyberpunk 2077 is an open-world, action-adventure story set in Night City...
+                    price: 59.99
+                    score: 3.5
+                    launch_date: "2020-12-20"
+                    parent_id: null
+                    developers:
+                      id: 1
+                      name: CDProjekt Red
+                    categories:
+                      id: 1
+                      name: Action
+                    images:
+                      - id: 3
+                        path: images/games/CP2077.jpg
+                      - id: 3
+                        path: images/games/CP2077C1.jpg
+                      - id: 3
+                        path: images/games/CP2077C2.jpg
+                first_page_url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=1
+                from: 1
+                last_page: 3
+                last_page_url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=3
+                links:
+                  - url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=1
+                    label: "1"
+                    active: true
+                next_page_url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=2
+                path: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search
+                per_page: 3
+                prev_page_url: null
+                to: 3
+                total: 9
+
+  /products:
+    get:
+      operationId: R302
+      summary: "R302: List Products"
+      description: "List Products. Access: PUB"
+      tags:
+        - "M03: Products"
+      responses:
+        "200":
+          description: "Ok. Show [UI08](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui08-search-page)"
+        "404":
+          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /products/{id}:
     get:
-      operationId: R302
-      summary: "R302: Products"
-      description: "Show the individual product Page. Access: PUB"
+      operationId: R303
+      summary: "R303: Individual Product Page"
+      description: "Show the individual product Page. Access: PUB, USR"
       tags:
         - "M03: Products"
       parameters:
