@@ -4,6 +4,7 @@
 
 @section('content')
 
+
 <div class="container">
     @if (!empty($carousel_games))
     @include('partials.homepage.carousel', ['title_game' => $title_game,

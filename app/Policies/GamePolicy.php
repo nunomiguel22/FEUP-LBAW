@@ -15,6 +15,6 @@ class GamePolicy
     public function create(User $user)
     {
         // Any user can create a new card
-        return Auth::user()->is_admin;
+        return $user->is_admin;
     }
 }

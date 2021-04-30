@@ -73,7 +73,7 @@ paths:
               examples:
                 302Success:
                   description: "Successful authentication. Redirect to user profile."
-                  value: "/users/{id}"
+                  value: "/"
                 302Error:
                   description: "Failed authentication. Redirect to login form."
                   value: "/login"
@@ -95,7 +95,7 @@ paths:
               examples:
                 302Success:
                   description: "Successful logout. Redirect to login form."
-                  value: "/login"
+                  value: "/"
 
   /register:
     get:
@@ -121,8 +121,6 @@ paths:
             schema:
               type: object
               properties:
-                country:
-                  type: string
                 first_name:
                   type: string
                 last_name:
@@ -137,7 +135,6 @@ paths:
                 - email
                 - password
                 - username
-                - country
       responses:
         "302":
           description: "Redirect after processing the new user information."
@@ -361,36 +358,39 @@ paths:
               properties:
                 title:
                   type: string
-                description:
-                  type: string
-                price:
-                  type: number
                 launch_date:
                   type: string
+                developer:
+                  type: integer
+                category:
+                  type: integer
+                price:
+                  type: number
                 listed:
                   type: boolean
-                parent_id:
-                  type: integer
-                developer_id:
-                  type: integer
-                category_id:
-                  type: integer
-                photos:
+                description:
+                  type: string
+                images:
                   type: array
                   items:
                     type: string
+                    format: binary
+                tags:
+                  type: array
+                  items:
+                    type: integer
               required:
                 - title
-                - description
-                - price
                 - launch_date
+                - developer
+                - category
+                - price
                 - listed
-                - category_id
-                - developer_id
-                - photos
+                - description
+                - images
       responses:
         "302":
-          description: "Redirect after deleting account."
+          description: "Redirect after adding a new product."
           headers:
             Location:
               schema:
@@ -398,15 +398,24 @@ paths:
               examples:
                 302Success:
                   description: "Successfully added game. Redirect to homepage."
-                  value: "/homepage"
+                  value: "/"
                 302Failure:
                   description: "Failed account deletion. Redirect to homepage."
-                  value: "/homepage"
+                  value: "/"
 
   /admin/products/{id}/edit:
-    put:
+    get:
       operationId: R203
-      summary: "R203: Edit a product Action"
+      summary: "R203: Edit a product Form"
+      description: "Show the edit product Form. Access: USR"
+      tags:
+        - "M02: Administration"
+      responses:
+        "200":
+          description: "Ok. Show [UI07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui07-add-new-product-form)"
+    put:
+      operationId: R204
+      summary: "R204: Edit a product Action"
       description: "Edit a product Action. Access: ADM"
       tags:
         - "M02: Administration"
@@ -631,8 +640,6 @@ paths:
       responses:
         "200":
           description: "Ok. Show [UI08](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui08-search-page)"
-        "404":
-          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /products/{id}:
     get:

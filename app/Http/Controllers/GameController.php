@@ -30,6 +30,12 @@ class GameController extends Controller
 
         $validator = $this->validator($request->all());
 
+        if ($validator->fails()) {
+            return redirect('admin/products/add_product')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $game = new Game();
 
         $game->title = $request->title;
@@ -47,11 +53,14 @@ class GameController extends Controller
             $game->images()->save(new Image(['path' => $path]));
         }
 
+        $tags = $request->tags ? $request->tags : array();
         // Tags
-        foreach ($request->tags as $tag) {
+        foreach ($tags as $tag) {
             $tag = Tag::find($tag);
             $game->tags()->attach($tag);
         }
+
+        return redirect('/');
     }
 
     protected function validator(array $data)
@@ -69,5 +78,10 @@ class GameController extends Controller
             'tags' => 'nullable',
             'tags.*' => 'string'
         ]);
+    }
+
+
+    public function update(Request $request)
+    {
     }
 }

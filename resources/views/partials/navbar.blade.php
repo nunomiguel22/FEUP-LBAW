@@ -34,7 +34,7 @@
         @if(Auth::guest())
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('login')}}" data-toggle="modal" data-target="#LoginModal">
+                <a class="nav-link" data-toggle="modal" data-target="#LoginModal">
                     <i class="fas fa-user fa text-shadow"></i>
                     Login
                 </a>
@@ -80,6 +80,6 @@
 </nav>
 
 @if(Auth::guest())
-@include('partials.login')
-@include('partials.register')
+@include('partials.login_modal')
+@include('partials.register_modal')
 @endif

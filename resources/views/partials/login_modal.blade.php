@@ -1,5 +1,5 @@
 <!-- Signin Modal -->
-<div class="modal fade" id="LoginModal">
+<div class="modal show" id="LoginModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="container">

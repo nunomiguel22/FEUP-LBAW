@@ -13,6 +13,13 @@ class HomepageController extends Controller
 {
     public function show()
     {
+        $homepage_games = $this->homepageGames();
+
+        return view('pages.homepage', $homepage_games);
+    }
+
+    public function homepageGames()
+    {
         $title_game = array();
         $car_games = array();
         $first_row = array();
@@ -40,12 +47,12 @@ class HomepageController extends Controller
         }
 
         $categories = Category::all();
-        
-        return view('pages.homepage', [ 'title_game' => $title_game,
-                                        'carousel_games' => $car_games,
-                                        'first_row' => $first_row,
-                                        'second_row' => $second_row,
-                                        'third_row' => $third_row,
-                                        'categories' => $categories]);
+
+        return  [ 'title_game' => $title_game,
+        'carousel_games' => $car_games,
+        'first_row' => $first_row,
+        'second_row' => $second_row,
+        'third_row' => $third_row,
+        'categories' => $categories];
     }
 }
