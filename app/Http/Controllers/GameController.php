@@ -71,17 +71,12 @@ class GameController extends Controller
             'developer' => 'required|integer',
             'category' => 'required|integer',
             'price' => 'required|numeric|min:0',
-            'listed' => 'required|boolean',
+            'listed' => 'required|string',
             'description' => 'required|string|max:200|min:1',
             'images' => 'required',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tags' => 'nullable',
             'tags.*' => 'string'
         ]);
-    }
-
-
-    public function update(Request $request)
-    {
     }
 }

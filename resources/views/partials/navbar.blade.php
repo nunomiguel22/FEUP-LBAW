@@ -28,7 +28,7 @@
         <form class="form-inline ml-auto mr-auto" style="width:30%">
             <input class="form-control bg-secondary text-light mr-sm-1" type="text" placeholder="Search for a title..."
                 style="width:68%">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="button"><i class="fas fa-search"></i></button>
         </form>
 
         @if(Auth::guest())
@@ -80,6 +80,6 @@
 </nav>
 
 @if(Auth::guest())
-@include('partials.login_modal')
-@include('partials.register_modal')
+@include('partials.modals.login')
+@include('partials.modals.register')
 @endif

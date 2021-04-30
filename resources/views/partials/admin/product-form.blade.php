@@ -74,9 +74,9 @@
             <select name="listed" class="form-control text-field bg-secondary text-light" required>
                 @if(($game->developer_id ?? true) == true)
                 <option selected="selected" value="true">Yes</option>
-                <option value="false">No</option>
+                <option value="0">No</option>
                 @else
-                <option value="true">Yes</option>
+                <option value="1">Yes</option>
                 <option selected="selected" value="false">No</option>
                 @endif
             </select>

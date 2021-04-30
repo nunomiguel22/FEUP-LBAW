@@ -23,12 +23,13 @@ Route::post('register', 'Auth\RegisterController@register');
 // Admin
 Route::get('admin', 'AdminController@showDefault')->name('admin');
 Route::get('admin/sales', 'AdminController@showSales');
+Route::get('admin/products', 'AdminController@showProducts');
 Route::get('admin/products/add_product', 'AdminController@showNewGame');
+Route::get('admin/products/{id}/edit', 'AdminController@showEditGame');
 
 // Products
 Route::get('products', 'GameController@showProducts')->name('products');
 Route::get('api/products/search', 'GameController@search');
 Route::post('admin/products/add_product', 'GameController@store');
-Route::get('admin/products/{id}/edit', 'GameController@showEdit');
 Route::put('admin/products/{id}/edit', 'GameController@update');
 Route::delete('admin/products/{id}/delete', 'GameController@delete');

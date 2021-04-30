@@ -1,3 +1,12 @@
+function addEventListeners() {
+    let submitButtons = document.querySelectorAll('[type="submit"]');
+    for (let submitButton of submitButtons) {
+        submitButton.form.addEventListener("submit", function () {
+            startLoader(submitButton);
+        });
+    }
+}
+
 function encodeForAjax(data) {
     if (data == null) return null;
     return Object.keys(data)
@@ -23,16 +32,17 @@ function sendAjaxRequest(method, url, data, handler) {
     request.send(encodeForAjax(data));
 }
 
-function startLoader(parent) {
+function startLoader(element) {
     let loader = document.createElement("div");
     loader.classList.add("loader");
     loader.id = "dynamic-loader";
-    let parentElement = document.getElementById(parent);
-    parentElement.innerHTML = "";
-    parentElement.appendChild(loader);
+    element.innerHTML = "";
+    element.appendChild(loader);
 }
 
 function stopLoader() {
     let loader = document.getElementById("dynamic-loader");
     if (loader != null) loader.parentNode.removeChild(loader);
 }
+
+addEventListeners();

@@ -52,6 +52,10 @@ input[type="number"] {
     background: none;
 }
 
+.error {
+    color: red;
+}
+
 .page-link:hover {
     background: #375a7f !important;
 }
