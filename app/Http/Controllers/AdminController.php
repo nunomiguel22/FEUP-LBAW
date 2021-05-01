@@ -61,11 +61,19 @@ class AdminController extends Controller
         if (!Auth::check() || !Auth::user()->is_admin) {
             throw new AuthorizationException('This page is limited to administrators only');
         }
+
+        $game = null;
+        try {
+            $game = Game::findOrFail($game_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
         $tags = Tag::all();
         $categories = Category::all();
         $developers = Developer::all();
-
-        $game = Game::find($game_id);
+    
+       
         
         return view('pages.admin.edit_game', ['tab_id' => 2, 'developers' => $developers, 'categories' => $categories,
                     'tags' => $tags, 'game' => $game]);

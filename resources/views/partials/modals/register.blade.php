@@ -26,7 +26,7 @@
 
         <!-- Signup Form -->
         <form method="POST" action="{{route('register')}}" novalidate>
-          {{ csrf_field() }}
+          @csrf
           <!-- Name Row -->
           <div class="form-group row justify-content-center">
             <input type="text" name="first_name" class="form-control text-field  col-5 bg-secondary text-light"

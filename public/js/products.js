@@ -3,7 +3,7 @@ var pagination_set = false;
 sendSearchRequest(1);
 
 function sendSearchRequest(page) {
-    startLoader("list-loader");
+    startLoader(document.getElementById("list-loader"));
     sendAjaxRequest("get", "api/products/search?page=" + page, null, displayGames);
 }
 

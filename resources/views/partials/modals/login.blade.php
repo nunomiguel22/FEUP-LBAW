@@ -1,5 +1,5 @@
 <!-- Signin Modal -->
-<div class="modal show" id="LoginModal">
+<div class="modal fade" id="LoginModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="container">
@@ -27,7 +27,7 @@
 
                 <!-- Signin Form -->
                 <form method="POST" action="{{route('login')}}">
-                    {{ csrf_field() }}
+                    @csrf
                     <!-- Email Row -->
                     <div class=" form-group row mb-4">
                         <input type="email" name="email"

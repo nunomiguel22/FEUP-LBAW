@@ -2,11 +2,6 @@
 
 @section('title', 'OGS - New Product')
 
-@section('scripts')
-<script src="{{ asset('js/admin.js') }}"></script>
-@endsection
-
-
 @section('content')
 
 <section class="container">
@@ -31,12 +26,12 @@
         </ul>
 
         <form method="POST" action="/admin/products/add_product" enctype="multipart/form-data">
-            {{ csrf_field() }}
+            @csrf
             @include('partials.admin.product-form')
 
             <hr>
             <h4 class="mt-5 text-shadow">IMAGES AND TAGS</h4>
-            <span class="text-muted">Add the the image gallery and tags for this game</span>
+            <span class="text-muted">Add the image gallery and tags for this game</span>
 
             <div class="my-2 row">
 

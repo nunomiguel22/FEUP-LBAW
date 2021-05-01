@@ -32,7 +32,7 @@ DROP FUNCTION IF EXISTS remove_key_availability() CASCADE;
 DROP FUNCTION IF EXISTS remove_cart_product() CASCADE;
 DROP FUNCTION IF EXISTS remove_wishlist_product() CASCADE;
 DROP FUNCTION IF EXISTS update_deleted_user_reviews() CASCADE;
- 
+
 DROP TRIGGER IF EXISTS update_score ON games;
 DROP TRIGGER IF EXISTS add_review ON reviews;
 DROP TRIGGER IF EXISTS check_review_repeats ON reviews;
@@ -41,6 +41,7 @@ DROP TRIGGER IF EXISTS remove_availability ON purchases;
 DROP TRIGGER IF EXISTS remove_cart_product ON purchases;
 DROP TRIGGER IF EXISTS remove_wishlist_product ON purchases;
 DROP TRIGGER IF EXISTS update_review_on_user_delete ON users;
+
  
 -----------------------------------------
 -- Types
@@ -103,7 +104,7 @@ CREATE TABLE users (
     restricted BOOLEAN NOT NULL DEFAULT false,
     is_admin BOOLEAN NOT NULL DEFAULT false,
     avatar_id INTEGER REFERENCES images (id),
-    addresses_id INTEGER REFERENCES addresses (id)
+    addresses_id INTEGER REFERENCES addresses (id)  ON DELETE CASCADE
 );
 
 CREATE TABLE games(
@@ -127,7 +128,7 @@ CREATE TABLE game_keys (
 );
 
 CREATE TABLE game_image (
-    image_id INTEGER PRIMARY KEY REFERENCES images(id),
+    image_id INTEGER PRIMARY KEY REFERENCES images(id) ON DELETE CASCADE,
     game_id INTEGER REFERENCES games(id)
 );
 
@@ -155,7 +156,7 @@ CREATE TABLE purchases(
     price DECIMAL NOT NULL CONSTRAINT price_ck CHECK (price > 0),
     status PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
     method PAYMENT_METHOD NOT NULL,
-    key_id INTEGER NOT NULL REFERENCES game_keys (id),
+    game_key_id INTEGER NOT NULL REFERENCES game_keys (id),
     buyer_id INTEGER NOT NULL REFERENCES users (id)
 );
 
@@ -199,6 +200,7 @@ CREATE INDEX withlist_items_user_id_idx ON wishlist_items USING hash (user_id);
 -----------------------------------------
 -- TRIGGERS and UDFs
 -----------------------------------------
+
  
 CREATE FUNCTION update_game_score() RETURNS TRIGGER AS 
 $BODY$
@@ -227,7 +229,7 @@ $BODY$
 BEGIN
     IF NOT EXISTS (SELECT game_keys.game_id
                     FROM purchases
-                    JOIN game_keys ON purchases.key_id = game_keys.id
+                    JOIN game_keys ON purchases.game_key_id = game_keys.id
                     WHERE purchases.buyer_id = New.reviewer_id
                     AND game_keys.game_id = New.game_id)
                 THEN
@@ -268,7 +270,7 @@ $BODY$
 BEGIN
     IF NOT EXISTS (SELECT game_keys.id
                     FROM game_keys
-                    WHERE game_keys.id = New.key_id AND game_keys.available=TRUE) THEN
+                    WHERE game_keys.id = New.game_key_id AND game_keys.available=TRUE) THEN
     RAISE EXCEPTION 'This key is not available for purchase.';
     END IF;
     RETURN NEW;
@@ -287,7 +289,7 @@ $BODY$
 BEGIN
     UPDATE game_keys
     SET available=FALSE
-    WHERE id=New.key_id;
+    WHERE id=New.game_key_id;
     RETURN NULL;
 END
 $BODY$
@@ -302,7 +304,7 @@ CREATE TRIGGER remove_availability
 CREATE FUNCTION remove_cart_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT id FROM game_keys WHERE id=New.key_id) THEN
+    IF EXISTS (SELECT id FROM game_keys WHERE id=New.game_key_id) THEN
     DELETE FROM cart_items
     WHERE cart_items.user_id=New.buyer_id AND game_id=Key.game_id;
     END IF;
@@ -319,7 +321,7 @@ CREATE TRIGGER remove_cart_product
 CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT id FROM game_keys WHERE id=New.key_id) THEN
+    IF EXISTS (SELECT id FROM game_keys WHERE id=New.game_key_id) THEN
     DELETE FROM wishlist_items
     WHERE user_id=New.buyer_id AND game_id=Key.game_id;
     END IF;
@@ -336,6 +338,8 @@ CREATE TRIGGER remove_wishlist_product
 CREATE FUNCTION update_deleted_user_reviews() RETURNS TRIGGER AS
 $BODY$
 BEGIN
+    DELETE FROM reports WHERE reports.review_id=New.id;
+
     DELETE FROM reviews
     WHERE reviews.reviewer_id=New.id;
     RETURN NULL;

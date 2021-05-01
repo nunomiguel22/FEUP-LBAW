@@ -4,8 +4,7 @@
 
 @section('content')
 
-
-<div class="container">
+<section class="container">
     @if (!empty($carousel_games))
     @include('partials.homepage.carousel', ['title_game' => $title_game,
     'carousel_games' => $carousel_games])
@@ -78,5 +77,6 @@
         </div>
 
     </div>
+</section>
 
-    @endsection
+@endsection
