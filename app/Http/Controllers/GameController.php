@@ -142,13 +142,6 @@ class GameController extends Controller
         $game->tags()->detach();
 
         $game->delete();
-        /*         foreach ($game->images as $image) {
-                    $image->deleteFromDisk();
-                }
-
-                $game->tags()->delete();
-                $game->images()->delete();
-                $game-> */
 
 
         return redirect('admin/products');

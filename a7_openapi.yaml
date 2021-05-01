@@ -397,11 +397,11 @@ paths:
                 type: string
               examples:
                 302Success:
-                  description: "Successfully added game. Redirect to homepage."
-                  value: "/"
+                  description: "Successfully added game. Redirect to product page."
+                  value: "products/{id}"
                 302Failure:
-                  description: "Failed account deletion. Redirect to homepage."
-                  value: "/"
+                  description: "Failed to add game. Redirect back to add product page."
+                  value: "/admin/products/add_product"
 
   /admin/products/{id}/edit:
     get:
@@ -432,34 +432,41 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
                 title:
                   type: string
-                description:
-                  type: string
-                price:
-                  type: number
                 launch_date:
                   type: string
+                developer:
+                  type: integer
+                category:
+                  type: integer
+                price:
+                  type: number
                 listed:
                   type: boolean
-                parent_id:
-                  type: integer
-                developer_id:
-                  type: integer
-                category_id:
-                  type: integer
+                description:
+                  type: string
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                images_del:
+                  type: array
+                  items:
+                    type: integer
                 tags:
                   type: array
                   items:
                     type: integer
-                photos:
-                  type: array
-                  items:
-                    type: string
               required:
-                - id
+                - title
+                - launch_date
+                - developer
+                - category
+                - price
+                - listed
+                - description
       responses:
         "302":
           description: "Redirect after editing product."
@@ -474,8 +481,32 @@ paths:
                 302Failure:
                   description: "Failed account deletion. Redirect to product page."
                   value: "/product/{id}"
-        "404":
-          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+    delete:
+      operationId: R205
+      summary: "R205: Delete game Action"
+      description: "Delete game Action. Access: ADM"
+      tags:
+        - "M02: Administration"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "302":
+          description: "Redirect after deleting account."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successfully deleted game. Redirect to products admin page."
+                  value: "/admin/products"
+                302Failure:
+                  description: "Failed game deletion. Redirect to product admin page."
+                  value: "/admin/products/{id}/edit"
 
   /api/products/search:
     get:
@@ -725,8 +756,6 @@ paths:
                   description: "Successfully removed product from cart."
                 302Failure:
                   description: "Failed to remove product from cart."
-        "404":
-          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /shopping/cart/purchase:
     post:
