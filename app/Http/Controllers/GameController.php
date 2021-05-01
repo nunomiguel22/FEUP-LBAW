@@ -28,7 +28,7 @@ class GameController extends Controller
 
     public function store(Request $request)
     {
-        $this->authorize('create', Game::class);
+        $this->authorize('modify', Game::class);
 
         $validator = $this->validator($request->all());
 
@@ -67,6 +67,8 @@ class GameController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('modify', Game::class);
+
         $game = Game::find($id);
 
         $validator = $this->validator($request->all());
@@ -126,6 +128,8 @@ class GameController extends Controller
 
     public function delete($id)
     {
+        $this->authorize('modify', Game::class);
+
         $game = null;
         try {
             $game = Game::findOrFail($id);

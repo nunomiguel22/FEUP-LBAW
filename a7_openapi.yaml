@@ -483,8 +483,8 @@ paths:
                   value: "/product/{id}"
     delete:
       operationId: R205
-      summary: "R205: Delete game Action"
-      description: "Delete game Action. Access: ADM"
+      summary: "R205: Delete a product Action"
+      description: "Delete a product Action. Access: ADM"
       tags:
         - "M02: Administration"
       parameters:

@@ -34,7 +34,7 @@
         @if(Auth::guest())
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#LoginModal">
+                <a class="nav-link" href="{{ route('login')}}">
                     <i class="fas fa-user fa text-shadow"></i>
                     Login
                 </a>

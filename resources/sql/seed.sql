@@ -613,6 +613,8 @@ INSERT INTO countries(name) VALUES
 ,('Yemen');
 
 INSERT INTO users(email, first_name, last_name, username, password, is_admin) VALUES('lbaw@lbaw.pt', 'PNome', 'LNome', 'lbaw', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true);
+INSERT INTO users(email, first_name, last_name, username, password, is_admin) VALUES('lbaw2@lbaw.pt', 'PNome', 'LNome', 'lbaw_normal', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', false);
+
 
 INSERT INTO images(path) VALUES ('images/games/BL3.jpg');
 INSERT INTO images(path) VALUES ('images/games/Control.jpg');

@@ -12,7 +12,7 @@ class GamePolicy
 {
     use HandlesAuthorization;
 
-    public function create(User $user)
+    public function modify(User $user)
     {
         // Any user can create a new card
         return $user->is_admin;

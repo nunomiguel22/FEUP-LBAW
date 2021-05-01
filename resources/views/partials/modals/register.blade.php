@@ -34,11 +34,32 @@
             <input type="text" name="last_name" class="form-control text-field  col-5 bg-secondary text-light"
               placeholder="*Last Name" required>
           </div>
+
+          @if ($errors->has('first_name'))
+          <div class="row">
+            <span class="error col-10 mx-auto mb-3">{{ $errors->first('last_name') }}</span>
+          </div>
+          @endif
+
+          @if ($errors->has('last_name'))
+          <div class="row">
+            <span class="error col-10 mx-auto mb-3">{{ $errors->first('last_name') }}</span>
+          </div>
+          @endif
+
+
           <!-- Display name Row -->
           <div class="form-group row justify-content-center">
             <input type="text" name="username" class="form-control col-10 bg-secondary text-field  text-light"
               placeholder="*Username" required>
           </div>
+
+          @if ($errors->has('Username'))
+          <div class="row">
+            <span class="error col-10 mx-auto mb-3">{{ $errors->first('Username') }}</span>
+          </div>
+          @endif
+
 
           <!-- Email Row -->
           <div class=" form-group row">
@@ -46,11 +67,25 @@
               placeholder="Email address" required>
           </div>
 
+
+          @if ($errors->has('email'))
+          <div class="row">
+            <span class="error col-10 mx-auto mb-3">{{ $errors->first('email') }}</span>
+          </div>
+          @endif
+
+
           <!-- Password Row -->
           <div class="form-group row">
             <input type="password" name="password"
               class="form-control text-field  col-10 m-auto bg-secondary text-light" placeholder="Password" required>
           </div>
+
+          @if ($errors->has('password'))
+          <div class="row">
+            <span class="error col-10 mx-auto mb-3">{{ $errors->first('password') }}</span>
+          </div>
+          @endif
 
           <!-- Submit button Row -->
           <div class="form-group row mt-3">

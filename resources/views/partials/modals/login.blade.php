@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-10 ml-auto mr-auto">
+                    <div class="col-10 mx-auto">
                         <p>SIGN IN WITH AN OGS ACCOUNT</p>
                     </div>
                 </div>
@@ -29,17 +29,25 @@
                 <form method="POST" action="{{route('login')}}">
                     @csrf
                     <!-- Email Row -->
-                    <div class=" form-group row mb-4">
+                    <div class="form-group row">
                         <input type="email" name="email"
                             class="form-control text-field col-10 m-auto bg-secondary text-light"
                             placeholder="Email address" required>
                     </div>
+
                     <!-- Password Row -->
-                    <div class="form-group row">
+                    <div class="form-group row mt-4">
                         <input type="password" name="password"
                             class="form-control text-field col-10 m-auto bg-secondary text-light" placeholder="Password"
                             required>
                     </div>
+
+                    @foreach ($errors->all() as $error)
+                    <li class="error col-10 mx-auto">{{ $error }}</li>
+                    @endforeach
+
+
+
                     <!-- Submit button Row -->
                     <div class="form-group row mt-5">
 
@@ -53,8 +61,7 @@
                 <!-- Signup link -->
                 <div class="row mb-4" align="center">
                     <span class="col-10 m-auto">Don't have an OGS account?
-                        <a href="#SignupModal" class="text-muted" data-dismiss="modal" data-toggle="modal"
-                            data-target="#SignupModal">
+                        <a class="text-muted" href="{{ route('register')}}">
                             Sign up.
                         </a> </span>
                 </div>
