@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/index.php">
-        <img src="{{ asset('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">
+    <a class="navbar-brand" href="{{route('homepage')}}">
+        <img src="{{ Storage::url('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
@@ -15,18 +15,12 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">Browse Categories</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Adventure</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Casual</a>
-                    <a class="dropdown-item" href="#">Indie</a>
-                    <a class="dropdown-item" href="#">Massively Multiplayer</a>
-                    <a class="dropdown-item" href="#">Racing</a>
-                    <a class="dropdown-item" href="#">RPG</a>
-                    <a class="dropdown-item" href="#">Simulation</a>
-                    <a class="dropdown-item" href="#">Sports</a>
-                    <a class="dropdown-item" href="#">Strategy</a>
+                    @forelse($categories as $category)
+                    <a class="dropdown-item" href="#">{{$category->name}}</a>
+                    @empty
+                    @endforelse
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/search.php">Browse All</a>
+                    <a class="dropdown-item" href="{{ route('products') }}">Browse All</a>
                 </div>
             </li>
         </ul>
@@ -34,13 +28,13 @@
         <form class="form-inline ml-auto mr-auto" style="width:30%">
             <input class="form-control bg-secondary text-light mr-sm-1" type="text" placeholder="Search for a title..."
                 style="width:68%">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="button"><i class="fas fa-search"></i></button>
         </form>
 
         @if(Auth::guest())
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('login')}}" data-toggle="modal" data-target="#LoginModal">
+                <a class="nav-link" href="{{ route('login')}}">
                     <i class="fas fa-user fa text-shadow"></i>
                     Login
                 </a>
@@ -68,7 +62,11 @@
                         <i class="fas fa-user-edit"></i></i>
                         <span> Account</span>
                     </a>
-
+                    @if(Auth::user()->is_admin)
+                    <a class="dropdown-item" href="{{route('admin')}}"><i class="fas fa-hammer"></i>
+                        <span> Admin Panel</span>
+                    </a>
+                    @endif
                     <a class="dropdown-item" href="{{route('logout')}}">
                         <i class="fas fa-sign-out-alt"></i>
                         <span> Logout</span>
@@ -82,6 +80,6 @@
 </nav>
 
 @if(Auth::guest())
-@include('partials.login')
-@include('partials.register')
+@include('partials.modals.login')
+@include('partials.modals.register')
 @endif

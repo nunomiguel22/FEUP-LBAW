@@ -20,21 +20,16 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//Admin
-Route::get('/admin', 'AdminController@showDefault');
-Route::get('/admin/sales', 'AdminController@showSales');
-Route::get('/admin/products/add_product', 'AdminController@showNewGame');
+// Admin
+Route::get('admin', 'AdminController@showDefault')->name('admin');
+Route::get('admin/sales', 'AdminController@showSales');
+Route::get('admin/products', 'AdminController@showProducts');
+Route::get('admin/products/add_product', 'AdminController@showNewGame');
+Route::get('admin/products/{id}/edit', 'AdminController@showEditGame');
 
-/* // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
-
-// API
-Route::put('api/cards', 'CardController@create');
-Route::delete('api/cards/{card_id}', 'CardController@delete');
-Route::put('api/cards/{card_id}/', 'ItemController@create');
-Route::post('api/item/{id}', 'ItemController@update');
-Route::delete('api/item/{id}', 'ItemController@delete');
-
-
- */
+// Products
+Route::get('products', 'GameController@showProducts')->name('products');
+Route::get('api/products/search', 'GameController@search');
+Route::post('admin/products/add_product', 'GameController@store');
+Route::put('admin/products/{id}/edit', 'GameController@update');
+Route::delete('admin/products/{id}/delete', 'GameController@delete');

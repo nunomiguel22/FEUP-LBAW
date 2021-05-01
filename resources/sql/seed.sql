@@ -1,23 +1,23 @@
 -----------------------------------------
--- Drop old schmema
+-- Drop old schema
 -----------------------------------------
  
-DROP TABLE IF EXISTS country CASCADE;
-DROP TABLE IF EXISTS photo CASCADE;
-DROP TABLE IF EXISTS developer CASCADE;
-DROP TABLE IF EXISTS category CASCADE;
-DROP TABLE IF EXISTS tag CASCADE;
+DROP TABLE IF EXISTS countries CASCADE;
+DROP TABLE IF EXISTS images CASCADE;
+DROP TABLE IF EXISTS developers CASCADE;
+DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS tags CASCADE;
 DROP TABLE IF EXISTS addresses CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS game CASCADE;
-DROP TABLE IF EXISTS game_key CASCADE;
+DROP TABLE IF EXISTS games CASCADE;
+DROP TABLE IF EXISTS game_keys CASCADE;
 DROP TABLE IF EXISTS game_image CASCADE;
 DROP TABLE IF EXISTS game_tag CASCADE;
-DROP TABLE IF EXISTS in_cart CASCADE;
-DROP TABLE IF EXISTS in_wishlist CASCADE;
-DROP TABLE IF EXISTS purchase CASCADE;
-DROP TABLE IF EXISTS review CASCADE;
-DROP TABLE IF EXISTS report CASCADE;
+DROP TABLE IF EXISTS cart_items CASCADE;
+DROP TABLE IF EXISTS wishlist_items CASCADE;
+DROP TABLE IF EXISTS purchases CASCADE;
+DROP TABLE IF EXISTS reviews CASCADE;
+DROP TABLE IF EXISTS reports CASCADE;
  
 DROP TYPE IF EXISTS PAYMENT_METHOD;
 DROP TYPE IF EXISTS PURCHASE_STATUS;
@@ -32,15 +32,16 @@ DROP FUNCTION IF EXISTS remove_key_availability() CASCADE;
 DROP FUNCTION IF EXISTS remove_cart_product() CASCADE;
 DROP FUNCTION IF EXISTS remove_wishlist_product() CASCADE;
 DROP FUNCTION IF EXISTS update_deleted_user_reviews() CASCADE;
- 
-DROP TRIGGER IF EXISTS update_score ON game;
-DROP TRIGGER IF EXISTS add_review ON review;
-DROP TRIGGER IF EXISTS check_review_repeats ON review;
-DROP TRIGGER IF EXISTS make_purchase ON purchase;
-DROP TRIGGER IF EXISTS remove_availability ON purchase;
-DROP TRIGGER IF EXISTS remove_cart_product ON purchase;
-DROP TRIGGER IF EXISTS remove_wishlist_product ON purchase;
+
+DROP TRIGGER IF EXISTS update_score ON games;
+DROP TRIGGER IF EXISTS add_review ON reviews;
+DROP TRIGGER IF EXISTS check_review_repeats ON reviews;
+DROP TRIGGER IF EXISTS make_purchase ON purchases;
+DROP TRIGGER IF EXISTS remove_availability ON purchases;
+DROP TRIGGER IF EXISTS remove_cart_product ON purchases;
+DROP TRIGGER IF EXISTS remove_wishlist_product ON purchases;
 DROP TRIGGER IF EXISTS update_review_on_user_delete ON users;
+
  
 -----------------------------------------
 -- Types
@@ -55,28 +56,28 @@ CREATE TYPE REPORT_TYPE AS ENUM ('Bug', 'Review');
 -- Tables
 -----------------------------------------
  
-CREATE TABLE country (
+CREATE TABLE countries (
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL CONSTRAINT country_name_uk UNIQUE
+    name TEXT NOT NULL CONSTRAINT countries_name_uk UNIQUE
 );
 
-CREATE TABLE photo (
+CREATE TABLE images (
     id SERIAL PRIMARY KEY,
-    path TEXT NULL CONSTRAINT photo_path_uk UNIQUE
+    path TEXT NULL CONSTRAINT images_path_uk UNIQUE
 );
 
-CREATE TABLE developer(
+CREATE TABLE developers(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CONSTRAINT name_developer_uk UNIQUE
 );
 
-CREATE TABLE category(
+CREATE TABLE categories(
     id SERIAL PRIMARY KEY, 
     name TEXT NOT NULL CONSTRAINT name_category_uk UNIQUE
 );
 
 
-CREATE TABLE tag(
+CREATE TABLE tags(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CONSTRAINT name_tag_uk UNIQUE
 );
@@ -88,7 +89,7 @@ CREATE TABLE addresses (
     postal_code TEXT NOT NULL,
     city TEXT NOT NULL,
     region TEXT NOT NULL,
-    country_id INTEGER REFERENCES country (id)
+    country_id INTEGER REFERENCES countries (id)
 );
  
 CREATE TABLE users (
@@ -102,73 +103,73 @@ CREATE TABLE users (
     banned BOOLEAN NOT NULL DEFAULT false,
     restricted BOOLEAN NOT NULL DEFAULT false,
     is_admin BOOLEAN NOT NULL DEFAULT false,
-    avatar_id INTEGER REFERENCES photo (id),
-    addresses_id INTEGER REFERENCES addresses (id)
+    avatar_id INTEGER REFERENCES images (id),
+    addresses_id INTEGER REFERENCES addresses (id)  ON DELETE CASCADE
 );
 
-CREATE TABLE game(
+CREATE TABLE games(
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
     price DECIMAL NOT NULL CONSTRAINT price_ck CHECK (price > 0),
-    score DECIMAL CONSTRAINT score_ck CHECK (score > 0 and score < 6),
+    score DECIMAL CONSTRAINT score_ck CHECK (score > 0 and score < 6) DEFAULT 3,
     launch_date DATE,
     listed BOOLEAN NOT NULL DEFAULT true,
-    parent_id INTEGER REFERENCES game (id),
-    dev_id INTEGER NOT NULL REFERENCES developer (id),
-    category_id INTEGER NOT NULL REFERENCES category (id)
+    parent_id INTEGER REFERENCES games (id),
+    developer_id INTEGER NOT NULL REFERENCES developers (id),
+    category_id INTEGER NOT NULL REFERENCES categories (id)
 );
 
-CREATE TABLE game_key(
+CREATE TABLE game_keys (
     id SERIAL PRIMARY KEY,
-    key TEXT NOT NULL CONSTRAINT game_key_uk UNIQUE,
+    key TEXT NOT NULL CONSTRAINT gamekeys_key_uk UNIQUE,
     available BOOLEAN NOT NULL DEFAULT true,
-    game_id INTEGER NOT NULL REFERENCES game(id)
+    game_id INTEGER NOT NULL REFERENCES games(id)
 );
 
 CREATE TABLE game_image (
-    photo_id INTEGER PRIMARY KEY REFERENCES photo(id),
-    game_id INTEGER REFERENCES game(id)
+    image_id INTEGER PRIMARY KEY REFERENCES images(id) ON DELETE CASCADE,
+    game_id INTEGER REFERENCES games(id)
 );
 
 CREATE TABLE game_tag(
-    tag_id INTEGER NOT NULL REFERENCES tag (id),
-    game_id INTEGER NOT NULL REFERENCES game (id),
+    tag_id INTEGER NOT NULL REFERENCES tags (id),
+    game_id INTEGER NOT NULL REFERENCES games (id),
     PRIMARY KEY(tag_id, game_id)
 );
 
-CREATE TABLE in_cart(
-    game_id INTEGER NOT NULL REFERENCES game (id),
+CREATE TABLE cart_items(
+    game_id INTEGER NOT NULL REFERENCES games (id),
     user_id INTEGER NOT NUll REFERENCES users (id),
    PRIMARY KEY(game_id, user_id)
 );
 
-CREATE TABLE in_wishlist(
-    game_id INTEGER NOT NULL REFERENCES game (id),
+CREATE TABLE wishlist_items(
+    game_id INTEGER NOT NULL REFERENCES games (id),
     user_id INTEGER NOT NUll REFERENCES users (id),
     PRIMARY KEY(game_id, user_id)
 );
 
-CREATE TABLE purchase(
+CREATE TABLE purchases(
     id SERIAL PRIMARY KEY,
     "timestamp" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     price DECIMAL NOT NULL CONSTRAINT price_ck CHECK (price > 0),
     status PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
     method PAYMENT_METHOD NOT NULL,
-    key_id INTEGER NOT NULL REFERENCES game_key (id),
+    game_key_id INTEGER NOT NULL REFERENCES game_keys (id),
     buyer_id INTEGER NOT NULL REFERENCES users (id)
 );
 
-CREATE TABLE review(
+CREATE TABLE reviews(
     id SERIAL PRIMARY KEY,
     description TEXT NOT NULL,
     publication_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     score INTEGER CONSTRAINT score_ck CHECK (score > 0 AND score < 6),
     reviewer_id INTEGER NOT NULL REFERENCES users (id),
-    game_id INTEGER NOT NULL REFERENCES game (id)
+    game_id INTEGER NOT NULL REFERENCES games (id)
 );
 
-CREATE TABLE report(
+CREATE TABLE reports(
     id SERIAL PRIMARY KEY,
     description TEXT NOT NULL,
     r_type REPORT_TYPE NOT NULL DEFAULT 'Bug',
@@ -176,7 +177,7 @@ CREATE TABLE report(
     r_status REPORT_STATUS NOT NULL DEFAULT 'Open',
     reporter_id INTEGER NOT NULL REFERENCES users (id),
     admin_id INTEGER REFERENCES users (id), --Tem que ter constraint a verificar se user é admin
-    review_id INTEGER REFERENCES review (id) CONSTRAINT review_id_ck
+    review_id INTEGER REFERENCES reviews (id) CONSTRAINT review_id_ck
     CHECK ((r_type='Review' AND review_id is NOT NULL) OR r_type='Bug')
 );
  
@@ -184,32 +185,33 @@ CREATE TABLE report(
 -- INDEXES
 -----------------------------------------
  
-CREATE INDEX review_game_id_idx ON review USING hash (game_id); 
+CREATE INDEX review_game_id_idx ON reviews USING hash (game_id); 
 
-CREATE INDEX game_image_game_id_idx ON game_image USING hash (game_id); 
+CREATE INDEX image_game_id_idx ON game_image USING hash (game_id); 
  
-CREATE INDEX purchase_id_idx ON purchase USING hash (buyer_id); 
+CREATE INDEX purchase_id_idx ON purchases USING hash (buyer_id); 
  
-CREATE INDEX game_category_id_idx ON game USING hash (category_id); 
+CREATE INDEX game_category_id_idx ON games USING hash (category_id); 
  
-CREATE INDEX in_cart_user_id_idx ON in_cart USING hash (user_id); 
+CREATE INDEX cart_items_user_id_idx ON cart_items USING hash (user_id); 
  
-CREATE INDEX in_wishlist_user_id_idx ON in_wishlist USING hash (user_id); 
+CREATE INDEX withlist_items_user_id_idx ON wishlist_items USING hash (user_id); 
  
 -----------------------------------------
 -- TRIGGERS and UDFs
 -----------------------------------------
+
  
 CREATE FUNCTION update_game_score() RETURNS TRIGGER AS 
 $BODY$
 BEGIN 
     WITH score_avg AS (
         SELECT AVG(score)::numeric(1) as avg
-        FROM review
+        FROM reviews
         WHERE game_id=New.game_id 
     )
 
-    UPDATE game
+    UPDATE games
     SET score = score_avg.avg
     FROM score_avg;
     RETURN NULL;
@@ -218,18 +220,18 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER update_score 
-    AFTER INSERT OR UPDATE OR DELETE ON review
+    AFTER INSERT OR UPDATE OR DELETE ON reviews
     EXECUTE PROCEDURE update_game_score();  
  
 
 CREATE FUNCTION add_review() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF NOT EXISTS (SELECT game_key.game_id
-                    FROM purchase
-                    JOIN game_key ON purchase.key_id = game_key.id
-                    WHERE purchase.buyer_id = New.reviewer_id
-                    AND game_key.game_id = New.game_id)
+    IF NOT EXISTS (SELECT game_keys.game_id
+                    FROM purchases
+                    JOIN game_keys ON purchases.game_key_id = game_keys.id
+                    WHERE purchases.buyer_id = New.reviewer_id
+                    AND game_keys.game_id = New.game_id)
                 THEN
     RAISE EXCEPTION 'You can not review a game you do not own.';
     END IF;
@@ -239,7 +241,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER add_review
-    BEFORE INSERT ON review
+    BEFORE INSERT ON reviews
     FOR EACH ROW
     EXECUTE PROCEDURE add_review();
 
@@ -248,7 +250,7 @@ CREATE FUNCTION check_review_repeats() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF EXISTS (SELECT id 
-                FROM review
+                FROM reviews
                 WHERE game_id=New.game_id AND reviewer_id=New.game_id) THEN
     RAISE EXCEPTION 'You can only review a game once.';
     END IF;
@@ -258,7 +260,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER check_review_repeats
-    BEFORE INSERT ON review
+    BEFORE INSERT ON reviews
     FOR EACH ROW
     EXECUTE PROCEDURE check_review_repeats();
  
@@ -266,9 +268,9 @@ CREATE TRIGGER check_review_repeats
 CREATE FUNCTION find_available_key() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF NOT EXISTS (SELECT game_key.id
-                    FROM game_key
-                    WHERE game_key.id = New.key_id AND game_key.available=TRUE) THEN
+    IF NOT EXISTS (SELECT game_keys.id
+                    FROM game_keys
+                    WHERE game_keys.id = New.game_key_id AND game_keys.available=TRUE) THEN
     RAISE EXCEPTION 'This key is not available for purchase.';
     END IF;
     RETURN NEW;
@@ -277,7 +279,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER make_purchase
-    BEFORE INSERT ON purchase
+    BEFORE INSERT ON purchases
     FOR EACH ROW
     EXECUTE PROCEDURE find_available_key();
 
@@ -285,16 +287,16 @@ CREATE TRIGGER make_purchase
 CREATE FUNCTION remove_key_availability() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    UPDATE game_key
+    UPDATE game_keys
     SET available=FALSE
-    WHERE id=New.key_id;
+    WHERE id=New.game_key_id;
     RETURN NULL;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER remove_availability
-    AFTER INSERT ON purchase
+    AFTER INSERT ON purchases
     FOR EACH ROW
     EXECUTE PROCEDURE remove_key_availability();
 
@@ -302,9 +304,9 @@ CREATE TRIGGER remove_availability
 CREATE FUNCTION remove_cart_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT id FROM game_key WHERE id=New.key_id) THEN
-    DELETE FROM in_cart
-    WHERE in_cart.user_id=New.buyer_id AND game_id=Key.game_id;
+    IF EXISTS (SELECT id FROM game_keys WHERE id=New.game_key_id) THEN
+    DELETE FROM cart_items
+    WHERE cart_items.user_id=New.buyer_id AND game_id=Key.game_id;
     END IF;
     RETURN NULL;
 END
@@ -312,15 +314,15 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER remove_cart_product 
-    AFTER INSERT ON purchase
+    AFTER INSERT ON purchases
     EXECUTE PROCEDURE remove_cart_product();
 
 
 CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT id FROM game_key WHERE id=New.key_id) THEN
-    DELETE FROM in_wishlist
+    IF EXISTS (SELECT id FROM game_keys WHERE id=New.game_key_id) THEN
+    DELETE FROM wishlist_items
     WHERE user_id=New.buyer_id AND game_id=Key.game_id;
     END IF;
     RETURN NULL;
@@ -329,15 +331,17 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER remove_wishlist_product 
-    AFTER INSERT ON purchase
+    AFTER INSERT ON purchases
     EXECUTE PROCEDURE remove_wishlist_product();
 
 
 CREATE FUNCTION update_deleted_user_reviews() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    DELETE FROM review
-    WHERE review.reviewer_id=New.id;
+    DELETE FROM reports WHERE reports.review_id=New.id;
+
+    DELETE FROM reviews
+    WHERE reviews.reviewer_id=New.id;
     RETURN NULL;
 END
 $BODY$
@@ -347,6 +351,385 @@ CREATE TRIGGER update_review_on_user_delete
     AFTER DELETE ON users
     FOR EACH ROW
     EXECUTE PROCEDURE update_deleted_user_reviews();
+
+-----------------------------------------
+-- end
+-----------------------------------------
+
+
+
+-----------------------------------------
+-- Populate the database
+-----------------------------------------
+
+INSERT INTO countries(name) VALUES 
+('Afghanistan')
+,('Aland Islands')
+,('Albania')
+,('Algeria')
+,('American Samoa')
+,('Andorra')
+,('Angola')
+,('Anguilla')
+,('Antarctica')
+,('Antigua and Barbuda')
+,('Argentina')
+,('Armenia')
+,('Aruba')
+,('Australia')
+,('Austria')
+,('Azerbaijan')
+,('Bahamas')
+,('Bahrain')
+,('Bangladesh')
+,('Barbados')
+,('Belarus')
+,('Belgium')
+,('Belize')
+,('Benin')
+,('Bermuda')
+,('Bhutan')
+,('Bolivia')
+,('Bonaire, Sint Eustatius and Saba')
+,('Bosnia and Herzegovina')
+,('Botswana')
+,('Bouvet Island')
+,('Brazil')
+,('British Indian Ocean Territory')
+,('Brunei')
+,('Bulgaria')
+,('Burkina Faso')
+,('Burundi')
+,('Cambodia')
+,('Cameroon')
+,('Canada')
+,('Cape Verde')
+,('Cayman Islands')
+,('Central African Republic')
+,('Chad')
+,('Chile')
+,('China')
+,('Christmas Island')
+,('Cocos (Keeling) Islands')
+,('Colombia')
+,('Comoros')
+,('Congo')
+,('Cook Islands')
+,('Costa Rica')
+,('Ivory Coast')
+,('Croatia')
+,('Cuba')
+,('Curacao')
+,('Cyprus')
+,('Czech Republic')
+,('Democratic Republic of the Congo')
+,('Denmark')
+,('Djibouti')
+,('Dominica')
+,('Dominican Republic')
+,('Ecuador')
+,('Egypt')
+,('El Salvador')
+,('Equatorial Guinea')
+,('Eritrea')
+,('Estonia')
+,('Ethiopia')
+,('Falkland Islands (Malvinas)')
+,('Faroe Islands')
+,('Fiji')
+,('Finland')
+,('France')
+,('French Guiana')
+,('French Polynesia')
+,('French Southern Territories')
+,('Gabon')
+,('Gambia')
+,('Georgia')
+,('Germany')
+,('Ghana')
+,('Gibraltar')
+,('Greece')
+,('Greenland')
+,('Grenada')
+,('Guadaloupe')
+,('Guam')
+,('Guatemala')
+,('Guernsey')
+,('Guinea')
+,('Guinea-Bissau')
+,('Guyana')
+,('Haiti')
+,('Heard Island and McDonald Islands')
+,('Honduras')
+,('Hong Kong')
+,('Hungary')
+,('Iceland')
+,('India')
+,('Indonesia')
+,('Iran')
+,('Iraq')
+,('Ireland')
+,('Isle of Man')
+,('Israel')
+,('Italy')
+,('Jamaica')
+,('Japan')
+,('Jersey')
+,('Jordan')
+,('Kazakhstan')
+,('Kenya')
+,('Kiribati')
+,('Kosovo')
+,('Kuwait')
+,('Kyrgyzstan')
+,('Laos')
+,('Latvia')
+,('Lebanon')
+,('Lesotho')
+,('Liberia')
+,('Libya')
+,('Liechtenstein')
+,('Lithuania')
+,('Luxembourg')
+,('Macao')
+,('Macedonia')
+,('Madagascar')
+,('Malawi')
+,('Malaysia')
+,('Maldives')
+,('Mali')
+,('Malta')
+,('Marshall Islands')
+,('Martinique')
+,('Mauritania')
+,('Mauritius')
+,('Mayotte')
+,('Mexico')
+,('Micronesia')
+,('Moldava')
+,('Monaco')
+,('Mongolia')
+,('Montenegro')
+,('Montserrat')
+,('Morocco')
+,('Mozambique')
+,('Myanmar (Burma)')
+,('Namibia')
+,('Nauru')
+,('Nepal')
+,('Netherlands')
+,('New Caledonia')
+,('New Zealand')
+,('Nicaragua')
+,('Niger')
+,('Nigeria')
+,('Niue')
+,('Norfolk Island')
+,('North Korea')
+,('Northern Mariana Islands')
+,('Norway')
+,('Oman')
+,('Pakistan')
+,('Palau')
+,('Palestine')
+,('Panama')
+,('Papua New Guinea')
+,('Paraguay')
+,('Peru')
+,('Phillipines')
+,('Pitcairn')
+,('Poland')
+,('Portugal')
+,('Puerto Rico')
+,('Qatar')
+,('Reunion')
+,('Romania')
+,('Russia')
+,('Rwanda')
+,('Saint Barthelemy')
+,('Saint Helena')
+,('Saint Kitts and Nevis')
+,('Saint Lucia')
+,('Saint Martin')
+,('Saint Pierre and Miquelon')
+,('Saint Vincent and the Grenadines')
+,('Samoa')
+,('San Marino')
+,('Sao Tome and Principe')
+,('Saudi Arabia')
+,('Senegal')
+,('Serbia')
+,('Seychelles')
+,('Sierra Leone')
+,('Singapore')
+,('Sint Maarten')
+,('Slovakia')
+,('Slovenia')
+,('Solomon Islands')
+,('Somalia')
+,('South Africa')
+,('South Georgia and the South Sandwich Islands')
+,('South Korea')
+,('South Sudan')
+,('Spain')
+,('Sri Lanka')
+,('Sudan')
+,('Suriname')
+,('Svalbard and Jan Mayen')
+,('Swaziland')
+,('Sweden')
+,('Switzerland')
+,('Syria')
+,('Taiwan')
+,('Tajikistan')
+,('Tanzania')
+,('Thailand')
+,('Timor-Leste (East Timor)')
+,('Togo')
+,('Tokelau')
+,('Tonga')
+,('Trinidad and Tobago')
+,('Tunisia')
+,('Turkey')
+,('Turkmenistan')
+,('Turks and Caicos Islands')
+,('Tuvalu')
+,('Uganda')
+,('Ukraine')
+,('United Arab Emirates')
+,('United Kingdom')
+,('United States')
+,('United States Minor Outlying Islands')
+,('Uruguay')
+,('Uzbekistan')
+,('Vanuatu')
+,('Vatican City')
+,('Venezuela')
+,('Vietnam')
+,('Virgin Islands, British')
+,('Virgin Islands, US')
+,('Wallis and Futuna')
+,('Western Sahara')
+,('Yemen');
+
+INSERT INTO users(email, first_name, last_name, username, password, is_admin) VALUES('lbaw@lbaw.pt', 'PNome', 'LNome', 'lbaw', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true);
+INSERT INTO users(email, first_name, last_name, username, password, is_admin) VALUES('lbaw2@lbaw.pt', 'PNome', 'LNome', 'lbaw_normal', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', false);
+
+
+INSERT INTO images(path) VALUES ('images/games/BL3.jpg');
+INSERT INTO images(path) VALUES ('images/games/Control.jpg');
+INSERT INTO images(path) VALUES ('images/games/CP2077.jpg');
+INSERT INTO images(path) VALUES ('images/games/CP2077C1.jpg');
+INSERT INTO images(path) VALUES ('images/games/CP2077C2.jpg');
+INSERT INTO images(path) VALUES ('images/games/CSGO.jpg');
+INSERT INTO images(path) VALUES ('images/games/GR.jpg');
+INSERT INTO images(path) VALUES ('images/games/GTAV.jpg');
+INSERT INTO images(path) VALUES ('images/games/h3.jpg');
+INSERT INTO images(path) VALUES ('images/games/MW3.jpg');
+INSERT INTO images(path) VALUES ('images/games/Outriders.jpg');
+
+INSERT INTO developers(name) VALUES ('CDProjekt Red');
+INSERT INTO developers(name) VALUES ('Rockstar North');
+INSERT INTO developers(name) VALUES ('2k');
+INSERT INTO developers(name) VALUES ('Valve');
+INSERT INTO developers(name) VALUES ('One More Level');
+INSERT INTO developers(name) VALUES ('IO Interactive');
+INSERT INTO developers(name) VALUES ('Infinity Ward');
+INSERT INTO developers(name) VALUES ('Square Enix');
+INSERT INTO developers(name) VALUES ('Remedy Entertainment');
+
+
+INSERT INTO categories(name) VALUES ('Action');
+INSERT INTO categories(name) VALUES ('Adventure');
+INSERT INTO categories(name) VALUES ('Role-Playing');
+INSERT INTO categories(name) VALUES ('Simulation');
+INSERT INTO categories(name) VALUES ('Strategy');
+INSERT INTO categories(name) VALUES ('Sports and Racing');
+
+INSERT INTO tags(name) VALUES ('Action-RPG');
+INSERT INTO tags(name) VALUES ('Fighting');
+INSERT INTO tags(name) VALUES ('Puzzle');
+INSERT INTO tags(name) VALUES ('Sci-Fi');
+INSERT INTO tags(name) VALUES ('Real-time Strategy');
+INSERT INTO tags(name) VALUES ('Racing');
+INSERT INTO tags(name) VALUES ('JRPG');
+INSERT INTO tags(name) VALUES ('First-Person Shooter');
+INSERT INTO tags(name) VALUES ('Third-Person Shooter');
+INSERT INTO tags(name) VALUES ('Casual');
+INSERT INTO tags(name) VALUES ('Platformer');
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Cyberpunk 2077', 
+            'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with
+            power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant
+            that is the key to immortality. You can customize your character’s cyberware,
+            skillset and playstyle, and explore a vast city where the choices you make shape the story and the world
+            around you.', 59.99, 3.5, '2020-12-20'::date, true, null, 1, 1);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Borderlands 3', 
+            'The original shooter-looter returns, packing bazillions of guns and a mayhem-fueled adventure! 
+            Blast through new worlds and enemies as one of four new Vault Hunters.', 
+            59.99, 4, '2020-03-13'::date, true, null, 3, 1);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Control', 
+            'Winner of over 80 awards, Control is a visually stunning third-person action-adventure that will keep you on the edge of your seat.', 
+            39.99, 4.5, '2020-8-27'::date, true, null, 9, 2);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Counter-Strike: Global Offensive', 
+            'Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. 
+            CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).', 
+            8.99, 4.5, '2012-08-21'::date, true, null, 4, 1);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Ghostrunner', 
+            'Ghostrunner offers a unique single-player experience: fast-paced, violent combat, and an original setting that blends science fiction with post-apocalyptic themes. 
+            It tells the story of a world that has already ended and its inhabitants who fight to survive.', 
+            29.99, 4.5, '2020-10-27'::date, true, null, 5, 1);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Grand Theft Auto V', 
+            'Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.', 
+            29.99, 4.5, '2015-04-14'::date, true, null, 2, 1);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Hitman 3', 
+            'Death Awaits. Agent 47 returns in HITMAN 3, the dramatic conclusion to the World of Assassination trilogy.', 
+            44.99, 4, '2021-01-20'::date, true, null, 6, 1);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Modern Warfare® 3', 
+            'The best-selling first-person action series of all-time returns with an epic sequel to the multiple GOTY award winner Call of Duty®: Modern Warfare® 2', 
+            39.99, 4, '2011-11-08'::date, true, null, 7, 1);
+
+INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Outriders', 
+            'Outriders’ brutal and bloody combat combines frenetic gunplay, violent powers and deep RPG systems to create a true genre hybrid.', 
+            59.99, 3, '2021-04-01'::date, true, null, 8, 1);
+
+INSERT INTO game_keys(key,available,game_id) VALUES ('757AD8466FA453','false',1);
+INSERT INTO game_keys(key,available,game_id) VALUES ('797494323076','true',1);
+INSERT INTO game_keys(key,available,game_id) VALUES ('1218582960','true',3);
+INSERT INTO game_keys(key,available,game_id) VALUES ('3184561836','false',4);
+
+INSERT INTO game_image(image_id,game_id) VALUES (1,2);
+INSERT INTO game_image(image_id,game_id) VALUES (2,3);
+INSERT INTO game_image(image_id,game_id) VALUES (3,1);
+INSERT INTO game_image(image_id,game_id) VALUES (4,1);
+INSERT INTO game_image(image_id,game_id) VALUES (5,1);
+INSERT INTO game_image(image_id,game_id) VALUES (6,4);
+INSERT INTO game_image(image_id,game_id) VALUES (7,5);
+INSERT INTO game_image(image_id,game_id) VALUES (8,6);
+INSERT INTO game_image(image_id,game_id) VALUES (9,7);
+INSERT INTO game_image(image_id,game_id) VALUES (10,8);
+INSERT INTO game_image(image_id,game_id) VALUES (11,9);
+
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,1);
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,1);
+INSERT INTO game_tag(tag_id,game_id) VALUES (8,1);
+
 
 -----------------------------------------
 -- end

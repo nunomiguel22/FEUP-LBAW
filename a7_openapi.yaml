@@ -73,7 +73,7 @@ paths:
               examples:
                 302Success:
                   description: "Successful authentication. Redirect to user profile."
-                  value: "/users/{id}"
+                  value: "/"
                 302Error:
                   description: "Failed authentication. Redirect to login form."
                   value: "/login"
@@ -95,7 +95,7 @@ paths:
               examples:
                 302Success:
                   description: "Successful logout. Redirect to login form."
-                  value: "/login"
+                  value: "/"
 
   /register:
     get:
@@ -121,8 +121,6 @@ paths:
             schema:
               type: object
               properties:
-                country:
-                  type: string
                 first_name:
                   type: string
                 last_name:
@@ -137,7 +135,6 @@ paths:
                 - email
                 - password
                 - username
-                - country
       responses:
         "302":
           description: "Redirect after processing the new user information."
@@ -361,52 +358,64 @@ paths:
               properties:
                 title:
                   type: string
-                description:
-                  type: string
-                price:
-                  type: number
                 launch_date:
                   type: string
+                developer:
+                  type: integer
+                category:
+                  type: integer
+                price:
+                  type: number
                 listed:
                   type: boolean
-                parent_id:
-                  type: integer
-                developer_id:
-                  type: integer
-                category_id:
-                  type: integer
-                photos:
+                description:
+                  type: string
+                images:
                   type: array
                   items:
                     type: string
+                    format: binary
+                tags:
+                  type: array
+                  items:
+                    type: integer
               required:
                 - title
-                - description
-                - price
                 - launch_date
+                - developer
+                - category
+                - price
                 - listed
-                - category_id
-                - developer_id
-                - photos
+                - description
+                - images
       responses:
         "302":
-          description: "Redirect after deleting account."
+          description: "Redirect after adding a new product."
           headers:
             Location:
               schema:
                 type: string
               examples:
                 302Success:
-                  description: "Successfully added game. Redirect to homepage."
-                  value: "/homepage"
+                  description: "Successfully added game. Redirect to product page."
+                  value: "products/{id}"
                 302Failure:
-                  description: "Failed account deletion. Redirect to homepage."
-                  value: "/homepage"
+                  description: "Failed to add game. Redirect back to add product page."
+                  value: "/admin/products/add_product"
 
   /admin/products/{id}/edit:
-    put:
+    get:
       operationId: R203
-      summary: "R203: Edit a product Action"
+      summary: "R203: Edit a product Form"
+      description: "Show the edit product Form. Access: USR"
+      tags:
+        - "M02: Administration"
+      responses:
+        "200":
+          description: "Ok. Show [UI07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui07-add-new-product-form)"
+    put:
+      operationId: R204
+      summary: "R204: Edit a product Action"
       description: "Edit a product Action. Access: ADM"
       tags:
         - "M02: Administration"
@@ -423,34 +432,41 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
                 title:
                   type: string
-                description:
-                  type: string
-                price:
-                  type: number
                 launch_date:
                   type: string
+                developer:
+                  type: integer
+                category:
+                  type: integer
+                price:
+                  type: number
                 listed:
                   type: boolean
-                parent_id:
-                  type: integer
-                developer_id:
-                  type: integer
-                category_id:
-                  type: integer
+                description:
+                  type: string
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                images_del:
+                  type: array
+                  items:
+                    type: integer
                 tags:
                   type: array
                   items:
                     type: integer
-                photos:
-                  type: array
-                  items:
-                    type: string
               required:
-                - id
+                - title
+                - launch_date
+                - developer
+                - category
+                - price
+                - listed
+                - description
       responses:
         "302":
           description: "Redirect after editing product."
@@ -465,8 +481,32 @@ paths:
                 302Failure:
                   description: "Failed account deletion. Redirect to product page."
                   value: "/product/{id}"
-        "404":
-          description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
+    delete:
+      operationId: R205
+      summary: "R205: Delete a product Action"
+      description: "Delete a product Action. Access: ADM"
+      tags:
+        - "M02: Administration"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "302":
+          description: "Redirect after deleting account."
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successfully deleted game. Redirect to products admin page."
+                  value: "/admin/products"
+                302Failure:
+                  description: "Failed game deletion. Redirect to product admin page."
+                  value: "/admin/products/{id}/edit"
 
   /api/products/search:
     get:
@@ -477,11 +517,17 @@ paths:
         - "M03: Products"
       parameters:
         - in: query
+          name: page
+          description: Page number, games are paginated in increments of 10
+          schema:
+            type: string
+          required: false
+        - in: query
           name: query
           description: String to use for full-text search
           schema:
             type: string
-          required: true
+          required: false
         - in: query
           name: category
           description: Filter by category
@@ -500,38 +546,137 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    picture:
-                      type: string
-                    developer:
-                      type: string
-                    launch_date:
-                      type: string
-                    score:
-                      type: number
-                    price:
-                      type: number
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                        score:
+                          type: number
+                        launch_date:
+                          type: string
+                        parent_id:
+                          type: integer
+                        developers:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        categories:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        images:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              path:
+                                type: string
+                  first_page_url:
+                    type: string
+                  from:
+                    type: integer
+                  last_page:
+                    type: integer
+                  last_page_url:
+                    type: string
+                  links:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                        label:
+                          type: string
+                        active:
+                          type: boolean
+                  next_page_url:
+                    type: string
+                  path:
+                    type: string
+                  per_page:
+                    type: integer
+                  prev_page_url:
+                    type: string
+                  to:
+                    type: integer
+                  total:
+                    type: integer
               example:
-                - id: 1
-                  title: Cyberpunk 2077
-                  picture: /images/cp2077_cover.jpg
-                  developer: CDProjekt Red
-                  launch_date: 20/12/2020
-                  score: 3.5
-                  price: 59.99
+                current_page: 1
+                data:
+                  - id: 1
+                    title: Cyberpunk 2077
+                    description: Cyberpunk 2077 is an open-world, action-adventure story set in Night City...
+                    price: 59.99
+                    score: 3.5
+                    launch_date: "2020-12-20"
+                    parent_id: null
+                    developers:
+                      id: 1
+                      name: CDProjekt Red
+                    categories:
+                      id: 1
+                      name: Action
+                    images:
+                      - id: 3
+                        path: images/games/CP2077.jpg
+                      - id: 3
+                        path: images/games/CP2077C1.jpg
+                      - id: 3
+                        path: images/games/CP2077C2.jpg
+                first_page_url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=1
+                from: 1
+                last_page: 3
+                last_page_url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=3
+                links:
+                  - url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=1
+                    label: "1"
+                    active: true
+                next_page_url: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search?page=2
+                path: http://lbaw2156.lbaw-prod.fe.up.pt/api/products/search
+                per_page: 3
+                prev_page_url: null
+                to: 3
+                total: 9
+
+  /products:
+    get:
+      operationId: R302
+      summary: "R302: List Products"
+      description: "List Products. Access: PUB"
+      tags:
+        - "M03: Products"
+      responses:
+        "200":
+          description: "Ok. Show [UI08](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui08-search-page)"
 
   /products/{id}:
     get:
-      operationId: R302
-      summary: "R302: Products"
-      description: "Show the individual product Page. Access: PUB"
+      operationId: R303
+      summary: "R303: Individual Product Page"
+      description: "Show the individual product Page. Access: PUB, USR"
       tags:
         - "M03: Products"
       parameters:
@@ -611,8 +756,6 @@ paths:
                   description: "Successfully removed product from cart."
                 302Failure:
                   description: "Failed to remove product from cart."
-        "404":
-          description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
   /shopping/cart/purchase:
     post:
