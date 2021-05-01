@@ -33,14 +33,10 @@
 <body>
   <main>
     @include('partials.navbar')
-
     @yield('content')
-
-    @include('partials.footer')
-
   </main>
 </body>
 
-
+@include('partials.footer')
 
 </html>

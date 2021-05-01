@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-dark text-center text-lg-start" style="position:sticky; top: Calc(100vh - 10em);">
+<footer class="bg-dark text-center text-lg-start">
     <!-- Grid container -->
     <div class="container p-4">
         <!--Grid row-->
@@ -13,8 +13,8 @@
                     the 2021 LBAW class of the Faculty of Engineering at the University of Porto.
                 </p>
 
-                <img src="{{ asset('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
-                <img src="{{ asset('images/others/logo-feup.png')}}" width="100" height="100" alt="">
+                <img src="{{ Storage::url('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
+                <img src="{{ Storage::url('images/others/logo-feup.png')}}" width="100" height="100" alt="">
             </div>
             <!--Grid column-->
 
@@ -49,4 +49,3 @@
     </div>
     <!-- Copyright -->
 </footer>
-<!-- Footer -->

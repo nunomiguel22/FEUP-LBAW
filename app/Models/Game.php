@@ -6,36 +6,48 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 use \App\Models\Developer;
-use \App\Models\GameImage;
+use \App\Models\Category;
+use \App\Models\Image;
+use \App\Models\Tag;
+use \App\Models\GameKey;
 
 class Game extends Model
 {
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
 
-    protected $table = 'game';
-
-    public function developer()
-    {
-        return Developer::find($this->dev_id)->name;
-    }
+    protected $hidden = [
+        'developer_id', 'category_id', 'listed'
+    ];
 
     public function cover_image()
     {
-        return  DB::table('game')
-        ->join('game_image', 'game.id', '=', 'game_image.game_id')
-        ->join('photo', 'photo.id', '=', 'game_image.photo_id')
-        ->select('photo.path')
-        ->where('game.id', '=', $this->id)
-        ->first()->path;
+        return $this->images[0]->getPath();
+    }
+
+
+    public function developers()
+    {
+        return $this->belongsTo(Developer::class, 'developer_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
     public function images()
     {
-        return  DB::table('game')
-        ->join('game_image', 'game.id', '=', 'game_image.game_id')
-        ->join('photo', 'photo.id', '=', 'game_image.photo_id')
-        ->select('photo.path')
-        ->get();
+        return $this->belongsToMany(Image::class);
+    }
+
+    public function game_keys()
+    {
+        return $this->hasMany(GameKey::class);
     }
 }

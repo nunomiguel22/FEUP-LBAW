@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
 
 use App\Models\User;
+use App\Models\Developer;
+use App\Models\Category;
+use App\Models\Game;
+use App\Models\Tag;
 
 class AdminController extends Controller
 {
@@ -19,13 +23,59 @@ class AdminController extends Controller
         return $this->showSales();
     }
 
+    public function showProducts()
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+        $categories = Category::all();
+        
+        return view('pages.admin.admin', ['tab_id' => 1, 'categories' => $categories]);
+    }
+
     public function showSales()
     {
-        return view('pages.admin', ['tab_id' => 0]);
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+        $tags = Tag::all();
+        $categories = Category::all();
+        $developers = Developer::all();
+        return view('pages.admin.admin', ['tab_id' => 0, 'developers' => $developers, 'categories' => $categories, 'tags' => $tags]);
     }
 
     public function showNewGame()
     {
-        return view('pages.admin', ['tab_id' => 2]);
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+        $tags = Tag::all();
+        $categories = Category::all();
+        $developers = Developer::all();
+        return view('pages.admin.new_game', ['tab_id' => 2, 'developers' => $developers, 'categories' => $categories,
+                    'tags' => $tags]);
+    }
+
+    public function showEditGame($game_id)
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+
+        $game = null;
+        try {
+            $game = Game::findOrFail($game_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        $tags = Tag::all();
+        $categories = Category::all();
+        $developers = Developer::all();
+    
+       
+        
+        return view('pages.admin.edit_game', ['tab_id' => 2, 'developers' => $developers, 'categories' => $categories,
+                    'tags' => $tags, 'game' => $game]);
     }
 }
