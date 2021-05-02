@@ -22,8 +22,7 @@ class GameController extends Controller
 
     public function showProducts()
     {
-        $categories = Category::all();
-        return view('pages.products', ['categories' => $categories]);
+        return view('pages.products', []);
     }
 
     public function store(Request $request)

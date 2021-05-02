@@ -40,6 +40,13 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+.vertical-center-jumbo {
+    min-height: 60%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
 .image-panel {
     overflow-y: scroll;
     padding: 4px;

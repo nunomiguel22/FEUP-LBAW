@@ -9,7 +9,6 @@ use Illuminate\Auth\Access\AuthorizationException;
 
 use App\Models\User;
 use App\Models\Developer;
-use App\Models\Category;
 use App\Models\Game;
 use App\Models\Tag;
 
@@ -28,9 +27,8 @@ class AdminController extends Controller
         if (!Auth::check() || !Auth::user()->is_admin) {
             throw new AuthorizationException('This page is limited to administrators only');
         }
-        $categories = Category::all();
         
-        return view('pages.admin.admin', ['tab_id' => 1, 'categories' => $categories]);
+        return view('pages.admin.admin', ['tab_id' => 1]);
     }
 
     public function showSales()
@@ -39,9 +37,8 @@ class AdminController extends Controller
             throw new AuthorizationException('This page is limited to administrators only');
         }
         $tags = Tag::all();
-        $categories = Category::all();
         $developers = Developer::all();
-        return view('pages.admin.admin', ['tab_id' => 0, 'developers' => $developers, 'categories' => $categories, 'tags' => $tags]);
+        return view('pages.admin.admin', ['tab_id' => 0, 'developers' => $developers, 'tags' => $tags]);
     }
 
     public function showNewGame()
@@ -50,9 +47,8 @@ class AdminController extends Controller
             throw new AuthorizationException('This page is limited to administrators only');
         }
         $tags = Tag::all();
-        $categories = Category::all();
         $developers = Developer::all();
-        return view('pages.admin.new_game', ['tab_id' => 2, 'developers' => $developers, 'categories' => $categories,
+        return view('pages.admin.new_game', ['tab_id' => 2, 'developers' => $developers,
                     'tags' => $tags]);
     }
 
@@ -70,12 +66,9 @@ class AdminController extends Controller
         }
 
         $tags = Tag::all();
-        $categories = Category::all();
         $developers = Developer::all();
-    
-       
-        
-        return view('pages.admin.edit_game', ['tab_id' => 2, 'developers' => $developers, 'categories' => $categories,
+     
+        return view('pages.admin.edit_game', ['tab_id' => 2, 'developers' => $developers,
                     'tags' => $tags, 'game' => $game]);
     }
 }
