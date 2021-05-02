@@ -16,7 +16,7 @@
     <!-- Breadcrumbs -->
     <div class="row mx-0 my-3 p-0">
         <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
+             <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
             <li class="breadcrumb-item active" aria-current="page"> Admin Panel </li>
         </ol>
     </div>
@@ -31,10 +31,6 @@
             <a class="nav-link" id="v-pills-1-tab-2" data-toggle="pill" href="#v-pills-1" role="tab"
                 aria-controls="v-pills-games" aria-selected="false">
                 <i class="fas fa-gamepad mr-3"></i>MANAGE GAMES
-            </a>
-            <a class="nav-link" id="v-pills-2-tab-2" data-toggle="pill" href="#v-pills-2" role="tab"
-                aria-controls="v-pills-2" aria-selected="false">
-                <i class="fas fa-gamepad mr-3"></i>ADD NEW GAME
             </a>
             <a class="nav-link" id="v-pills-3-tab-2" data-toggle="pill" href="#v-pills-3" role="tab"
                 aria-controls="v-pills-users" aria-selected="false">
@@ -59,10 +55,6 @@
                     aria-controls="v-pills-games" aria-selected="false">
                     <i class="fas fa-gamepad mr-3"></i>MANAGE GAMES
                 </a>
-                <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
-                    aria-controls="v-pills-2" aria-selected="false">
-                    <i class="fas fa-gamepad mr-3"></i>ADD NEW GAME
-                </a>
                 <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
                     aria-controls="v-pills-users" aria-selected="false">
                     <i class="fas fa-users-cog mr-3"></i>MANAGE USERS
@@ -82,10 +74,6 @@
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
                 
-            </div>
-         
-            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                @include('partials.admin.new-game')
             </div>
 
             <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">

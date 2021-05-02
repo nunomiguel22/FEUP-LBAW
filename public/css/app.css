@@ -30,12 +30,51 @@ footer {
     width: 100%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.image-panel {
+    overflow-y: scroll;
+    padding: 4px;
+    max-height: 100px;
+    max-width: 95%;
+}
+
+.selectable-image {
+    max-width: 90%;
+    max-height: 90%;
+    margin: 2px;
+}
+
+.selectable-image:hover {
+    cursor: pointer;
+}
+
+.selected-image {
+    outline: 2px solid rgba(255, 0, 0, 0.6) !important;
+}
+
+.text-field {
+    height: 50px;
+}
+
 .btn {
-    border-radius: 0;
+    border-radius: 4;
 }
 
 .page-link {
     background: none;
+}
+
+.error {
+    color: red;
 }
 
 .page-link:hover {

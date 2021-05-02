@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use \App\Models\Developer;
 use \App\Models\Category;
 use \App\Models\Image;
+use \App\Models\Tag;
+use \App\Models\GameKey;
 
 class Game extends Model
 {
@@ -20,7 +22,7 @@ class Game extends Model
 
     public function cover_image()
     {
-        return $this->images[0]->path;
+        return $this->images[0]->getPath();
     }
 
 
@@ -34,8 +36,18 @@ class Game extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function images()
     {
         return $this->belongsToMany(Image::class);
+    }
+
+    public function game_keys()
+    {
+        return $this->hasMany(GameKey::class);
     }
 }

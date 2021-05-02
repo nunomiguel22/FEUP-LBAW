@@ -14,35 +14,45 @@
                 </div>
                 <div class="row mt-4 mb-3">
                     <div class="col-12" align="center">
-                        <img src="{{ asset('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
+                        <img src="{{ Storage::url('images/logo/logo_transparent.png')}}" width="100" height="100"
+                            alt="">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-10 ml-auto mr-auto">
+                    <div class="col-10 mx-auto">
                         <p>SIGN IN WITH AN OGS ACCOUNT</p>
                     </div>
                 </div>
 
                 <!-- Signin Form -->
                 <form method="POST" action="{{route('login')}}">
-                    {{ csrf_field() }}
+                    @csrf
                     <!-- Email Row -->
-                    <div class=" form-group row mb-4">
-                        <input type="email" name="email" class="form-control col-10 m-auto bg-secondary text-light"
-                            style="height:50px" placeholder="Email address">
-                    </div>
-                    <!-- Password Row -->
                     <div class="form-group row">
-                        <input type="password" name="password"
-                            class="form-control col-10 m-auto bg-secondary text-light" style="height:50px"
-                            placeholder="Password">
+                        <input type="email" name="email"
+                            class="form-control text-field col-10 m-auto bg-secondary text-light"
+                            placeholder="Email address" required>
                     </div>
+
+                    <!-- Password Row -->
+                    <div class="form-group row mt-4">
+                        <input type="password" name="password"
+                            class="form-control text-field col-10 m-auto bg-secondary text-light" placeholder="Password"
+                            required>
+                    </div>
+
+                    @foreach ($errors->all() as $error)
+                    <li class="error col-10 mx-auto">{{ $error }}</li>
+                    @endforeach
+
+
+
                     <!-- Submit button Row -->
                     <div class="form-group row mt-5">
 
                         <button id="loginButton" class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg"
-                            style="width:100%;" type="submit">
+                            style="width:100%;" type="submit" required>
                             Sign in
                         </button>
                     </div>
@@ -51,8 +61,7 @@
                 <!-- Signup link -->
                 <div class="row mb-4" align="center">
                     <span class="col-10 m-auto">Don't have an OGS account?
-                        <a href="#SignupModal" class="text-muted" data-dismiss="modal" data-toggle="modal"
-                            data-target="#SignupModal">
+                        <a class="text-muted" href="{{ route('register')}}">
                             Sign up.
                         </a> </span>
                 </div>

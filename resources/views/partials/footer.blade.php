@@ -13,8 +13,8 @@
                     the 2021 LBAW class of the Faculty of Engineering at the University of Porto.
                 </p>
 
-                <img src="{{ asset('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
-                <img src="{{ asset('images/others/logo-feup.png')}}" width="100" height="100" alt="">
+                <img src="{{ Storage::url('images/logo/logo_transparent.png')}}" width="100" height="100" alt="">
+                <img src="{{ Storage::url('images/others/logo-feup.png')}}" width="100" height="100" alt="">
             </div>
             <!--Grid column-->
 
@@ -49,4 +49,3 @@
     </div>
     <!-- Copyright -->
 </footer>
-<!-- Footer -->
