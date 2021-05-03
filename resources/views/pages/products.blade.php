@@ -12,18 +12,15 @@
 @section('content')
 
 
-
-<!-- Breadcrumbs -->
-
-
 <!-- Game list -->
 <div class="container p-0">
-    <div class="row mx-0 mt-3 p-0">
+    <!-- Breadcrumbs -->
+    <aside class="row mx-0 mt-3 p-0">
         <ol class="breadcrumb m-0 p-0">
             <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Products</li>
         </ol>
-    </div>
+    </aside>
 
 
     <section class="row my-4">
@@ -63,14 +60,14 @@
                 </div>
             </form>
 
-            <div id="game-list" class="container" style="padding-bottom:40px;">
+            <section id="game-list" class="container" style="padding-bottom:40px;">
                 <!-- DYNAMIC LIST OF GAMES -->
-            </div>
+            </section>
             <!-- Next page and previous page buttons -->
 
-            <div id="list-links" class="container">
+            <aside id="list-links" class="container">
 
-            </div>
+            </aside>
         </div>
 
 

@@ -27,7 +27,7 @@ $categories = Category::all();
                             aria-expanded="false">Browse Categories</a>
                         <div class="dropdown-menu mb-1">
                             @forelse($categories as $category)
-                            <a class="dropdown-item" href="#">{{$category->name}}</a>
+                            <a class="dropdown-item" href="{{ route('products', ['category' => $category->id ]) }}">{{$category->name}}</a>
                             @empty
                             @endforelse
                             <div class="dropdown-divider"></div>
@@ -37,10 +37,10 @@ $categories = Category::all();
                 </ul>
             </nav>
             
-            <form class="form-inline mx-lg-auto w-50">
-                <input class="form-control bg-secondary text-light" type="text" placeholder="Search for a title..."
+            <form type="GET" action="/products" class="form-inline mx-lg-auto w-50">
+                <input class="form-control bg-secondary text-light" name="text_search" type="text" placeholder="Search for a title..."
                    style="width:85%">
-                <button class="btn bg-transparent border-0 my-2" type="button" style="margin-left:-40px;">
+                <button class="btn bg-transparent border-0 my-2" half-loader="true"  type="submit" style="margin-left:-40px;">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -48,7 +48,7 @@ $categories = Category::all();
             <nav>
                 @if(Auth::guest())
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item ml-lg-5">
                         <a class="nav-link" href="{{ route('login')}}">
                             <i class="fas fa-user fa text-shadow"></i>
                             Login
@@ -72,11 +72,11 @@ $categories = Category::all();
                         </a>
 
                         <article class="dropdown-menu dropdown-menu-right" style="width:30px">
-                            <a class="dropdown-item" href="/profile.php">
+                            <a class="dropdown-item" href="#todo">
                                 <i class="fas fa-id-badge"></i>
                                 <span> Profile</span>
                             </a>
-                            <a class="dropdown-item" href="/account.php">
+                            <a class="dropdown-item" href="#todo">
                                 <i class="fas fa-user-edit"></i></i>
                                 <span> Account</span>
                             </a>

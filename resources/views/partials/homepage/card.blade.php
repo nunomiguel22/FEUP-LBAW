@@ -1,8 +1,9 @@
  <!-- Card -->
  <article class="card mb-2 mt-2 hover-darken">
      <!-- Image -->
-     <img src="{{ $game->cover_image() }}" class="card-img-top" alt="{{ $game->title }}">
-
+     <figure>
+         <img src="{{ $game->cover_image() }}" class="card-img-top" alt="{{ $game->title }}">
+     </figure>
 
      <!-- Wishlist Indicator -->
      @if(Auth::check())

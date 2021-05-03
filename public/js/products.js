@@ -1,10 +1,15 @@
 var pagination_set = false;
 
-sendSearchRequest(1);
 
-function sendSearchRequest(page) {
+getGameList(1);
+
+function getGameList(page) {
     startLoader(document.getElementById("list-loader"));
-    sendAjaxRequest("get", "api/products/search?page=" + page, null, displayGames);
+
+    let category =  search_params.get('category');
+    let text_search =  search_params.get('text_search');
+
+    sendSearchRequest(page, category, text_search, displayGames);
 }
 
 function displayGames() {
@@ -26,7 +31,7 @@ function displayGames() {
             cssStyle: '',
             onInit: null,
             onPageClick: function (event, page) {
-                sendSearchRequest(page);
+                getGameList(page);
             }
         });
         pagination_set = true;

@@ -554,6 +554,14 @@ input[type="number"] {
     animation: spin 2s linear infinite;
 }
 
+.half-scale {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
 /* Safari */
 @-webkit-keyframes spin {
     0% {
