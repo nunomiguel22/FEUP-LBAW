@@ -40,6 +40,13 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+.vertical-center-jumbo {
+    min-height: 60%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
 .image-panel {
     overflow-y: scroll;
     padding: 4px;
@@ -545,6 +552,14 @@ input[type="number"] {
     height: 30px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
+}
+
+.half-scale {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
 }
 
 /* Safari */

@@ -2,7 +2,7 @@
 <div class="modal fade" id="LoginModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="container">
+            <div class="container p-4">
 
                 <!-- Modal Header -->
                 <div class="row mt-4 mb-3 float-right">
@@ -19,47 +19,50 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-10 mx-auto">
-                        <p>SIGN IN WITH AN OGS ACCOUNT</p>
-                    </div>
+                <div class="row mb-3 text-center">
+                    <span class="col">SIGN IN WITH AN OGS ACCOUNT</span>
                 </div>
 
                 <!-- Signin Form -->
                 <form method="POST" action="{{route('login')}}">
                     @csrf
                     <!-- Email Row -->
-                    <div class="form-group row">
-                        <input type="email" name="email"
-                            class="form-control text-field col-10 m-auto bg-secondary text-light"
-                            placeholder="Email address" required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="email" name="email" class="form-control text-field bg-secondary text-light"
+                                placeholder="Email address" required>
+                        </div>
                     </div>
 
                     <!-- Password Row -->
-                    <div class="form-group row mt-4">
-                        <input type="password" name="password"
-                            class="form-control text-field col-10 m-auto bg-secondary text-light" placeholder="Password"
-                            required>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input type="password" name="password"
+                                class="form-control text-field col bg-secondary text-light" placeholder="Password"
+                                required>
+                        </div>
                     </div>
 
-                    @foreach ($errors->all() as $error)
-                    <li class="error col-10 mx-auto">{{ $error }}</li>
-                    @endforeach
-
+                    <ul class="row">
+                        @foreach ($errors->all() as $error)
+                        <li class="error mt-2">{{ $error }}</li>
+                        @endforeach
+                    </ul>
 
 
                     <!-- Submit button Row -->
-                    <div class="form-group row mt-5">
-
-                        <button id="loginButton" class="btn btn-secondary col-10 m-auto my-2 my-sm-0 btn-lg"
-                            style="width:100%;" type="submit" required>
-                            Sign in
-                        </button>
+                    <div class="form-group row mt-4">
+                        <div class="col">
+                            <button id="loginButton" class="btn btn-secondary btn-lg" style="width:100%;" type="submit"
+                                required>
+                                Sign in
+                            </button>
+                        </div>
                     </div>
                 </form>
 
                 <!-- Signup link -->
-                <div class="row mb-4" align="center">
+                <div class="row mb-4 text-center">
                     <span class="col-10 m-auto">Don't have an OGS account?
                         <a class="text-muted" href="{{ route('register')}}">
                             Sign up.

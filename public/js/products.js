@@ -1,10 +1,15 @@
 var pagination_set = false;
 
-sendSearchRequest(1);
 
-function sendSearchRequest(page) {
+getGameList(1);
+
+function getGameList(page) {
     startLoader(document.getElementById("list-loader"));
-    sendAjaxRequest("get", "api/products/search?page=" + page, null, displayGames);
+
+    let category =  search_params.get('category');
+    let text_search =  search_params.get('text_search');
+
+    sendSearchRequest(page, category, text_search, displayGames);
 }
 
 function displayGames() {
@@ -26,7 +31,7 @@ function displayGames() {
             cssStyle: '',
             onInit: null,
             onPageClick: function (event, page) {
-                sendSearchRequest(page);
+                getGameList(page);
             }
         });
         pagination_set = true;
@@ -36,6 +41,10 @@ function displayGames() {
 
 function getGameTemplate(game) {
     let template = document.createElement('article');
+    let score = (game.score / 5) * 100;
+
+    let percent = Math.ceil(score / 5) * 5;
+
 
     template.innerHTML = 
     `<a class="row bg-dark b-shadow my-2" href="products/` + game.id + `">
@@ -51,7 +60,7 @@ function getGameTemplate(game) {
         </div>
         <div class="col-2 my-auto d-none d-md-block">` + game.launch_date + `</div>
         <div class="col-2 my-auto">
-            <div class="radialProgressBar progress-70 mx-auto">
+            <div class="radialProgressBar progress-`+ percent + ` mx-auto">
                 <div class="overlay text-light">` + game.score + `</div>
             </div>
         </div>
