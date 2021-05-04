@@ -17,15 +17,19 @@ class GameController extends Controller
 {
     public function search(Request $request)
     {
-        $query = Game::where("listed", true);
-
+        $query = Game::where('listed', true);
 
         if ($request->category && Category::find($request->category)->exists()) {
-            $query->where("category_id", $request->category);
+            $query->where('category_id', $request->category);
+        }
+
+        if ($request->text_search) {
+            $query->whereIn('id', Game::FTS($request->text_search));
         }
 
         return $query->with('developers', 'categories', 'images')->paginate(10);
     }
+
 
     public function showProducts()
     {

@@ -39,7 +39,7 @@ $categories = Category::all();
             
             <form type="GET" action="/products" class="form-inline mx-lg-auto w-50">
                 <input class="form-control bg-secondary text-light" name="text_search" type="text" placeholder="Search for a title..."
-                   style="width:85%">
+                   style="width:85%" value="{{ $_GET['text_search'] ?? null }}">
                 <button class="btn bg-transparent border-0 my-2" half-loader="true"  type="submit" style="margin-left:-40px;">
                     <i class="fas fa-search"></i>
                 </button>

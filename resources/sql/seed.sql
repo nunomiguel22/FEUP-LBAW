@@ -24,6 +24,8 @@ DROP TYPE IF EXISTS PURCHASE_STATUS;
 DROP TYPE IF EXISTS REPORT_STATUS;
 DROP TYPE IF EXISTS REPORT_TYPE;
 
+DROP MATERIALIZED VIEW IF EXISTS game_search;
+
 DROP FUNCTION IF EXISTS update_game_score() CASCADE;
 DROP FUNCTION IF EXISTS add_review() CASCADE;
 DROP FUNCTION IF EXISTS check_review_repeats() CASCADE;
@@ -180,6 +182,23 @@ CREATE TABLE reports(
     review_id INTEGER REFERENCES reviews (id) CONSTRAINT review_id_ck
     CHECK ((r_type='Review' AND review_id is NOT NULL) OR r_type='Bug')
 );
+
+-----------------------------------------
+-- VIEWS
+-----------------------------------------
+
+CREATE MATERIALIZED VIEW game_search AS
+SELECT games.id as game_id,
+setweight(to_tsvector('simple', games.title), 'A') || 
+setweight(to_tsvector('english', games.description),'B') ||
+setweight(to_tsvector('simple', developers.name), 'B') ||
+setweight(to_tsvector('simple', coalesce(string_agg(tags.name, ' '), '')), 'C') as "search"
+FROM games
+JOIN developers ON (developers.id = games.developer_id)
+LEFT JOIN game_tag ON (game_tag.game_id = games.id)
+LEFT JOIN tags ON (game_tag.tag_id = tags.id)
+GROUP BY games.id, developers.name;
+
  
 -----------------------------------------
 -- INDEXES
@@ -196,10 +215,15 @@ CREATE INDEX game_category_id_idx ON games USING hash (category_id);
 CREATE INDEX cart_items_user_id_idx ON cart_items USING hash (user_id); 
  
 CREATE INDEX withlist_items_user_id_idx ON wishlist_items USING hash (user_id); 
+
+CREATE INDEX game_search_idx ON game_search USING gist(search);
+
+
  
 -----------------------------------------
 -- TRIGGERS and UDFs
 -----------------------------------------
+
 
  
 CREATE FUNCTION update_game_score() RETURNS TRIGGER AS 
@@ -351,6 +375,38 @@ CREATE TRIGGER update_review_on_user_delete
     AFTER DELETE ON users
     FOR EACH ROW
     EXECUTE PROCEDURE update_deleted_user_reviews();
+
+
+DROP FUNCTION IF EXISTS game_update() CASCADE;
+DROP TRIGGER IF EXISTS game_update ON games;
+CREATE OR REPLACE FUNCTION game_update() RETURNS TRIGGER AS $$
+BEGIN
+  REFRESH MATERIALIZED VIEW game_search;
+  RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE TRIGGER game_update
+    AFTER INSERT OR UPDATE ON games
+    FOR EACH ROW
+    EXECUTE PROCEDURE game_update();
+
+DROP FUNCTION IF EXISTS game_tag_update() CASCADE;
+DROP TRIGGER IF EXISTS game_tag_update ON games;
+CREATE OR REPLACE FUNCTION game_tag_update() RETURNS TRIGGER AS $$
+BEGIN
+  REFRESH MATERIALIZED VIEW game_search;
+  RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE TRIGGER game_tag_update
+    AFTER INSERT OR DELETE ON game_tag
+    FOR EACH ROW
+    EXECUTE PROCEDURE game_tag_update();
+
 
 -----------------------------------------
 -- end

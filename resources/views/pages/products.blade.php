@@ -17,13 +17,44 @@
     <!-- Breadcrumbs -->
     <aside class="row mx-0 mt-3 p-0">
         <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Products</li>
         </ol>
     </aside>
 
 
     <section class="row my-4">
+
+        <div class="col-lg-3 d-none d-lg-block">
+
+            <div class="card shadow-none border-0 d-flex text-white bg-transparent mr-3 row">
+                <div class="card-header bg-transparent">Search Results</div>
+                <div class="card-body">
+                    <span class="text-light">Showing <span class="text-white">6</span> results,
+                        use the filters below to further narrow down your search.</span>
+                </div>
+            </div>
+
+            <div class="card shadow-none border-0 mt-2 d-flex text-white bg-transparent mr-3 row">
+                <div class="card-header bg-transparent">Price Limit</div>
+                <div class="card-body text-center">
+                    <input type="range" class="custom-range w-100" id="customRange1">
+                    <label for="customRange1">Under 60,--€</label>
+                </div>
+            </div>
+
+            <div class="card shadow-none border-0 mt-2 d-flex text-white bg-transparent mr-3 row">
+                <div class="card-header bg-transparent">Category</div>
+                <div class="card-body">
+
+                    <select name="SortBy" class="form-control bg-dark text-light mb-3">
+                        <option value="Any">Any</option>
+                        <option value="newReleases">New Releases</option>
+                        <option value="topRated">Top Rated</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
         <div class="col-lg-9 col-md-12">
 
@@ -71,41 +102,9 @@
         </div>
 
 
-        <div class="col-lg-3 d-none d-lg-block">
-
-            <div class="card d-flex text-white bg-secondary mr-3 row">
-                <div class="card-header">Search Results</div>
-                <div class="card-body">
-                    <span class="text-light">Showing <span class="text-white">6</span> results,
-                        use the filters below to further narrow down your search.</span>
-                </div>
-            </div>
-
-            <div class="card mt-2 d-flex text-white text-center bg-secondary mr-3 row">
-                <div class="card-header">Price</div>
-                <div class="card-body">
-
-                    <input type="range" class="custom-range w-75" id="customRange1">
-                    <label for="customRange1">Under 60,--€</label>
-                </div>
-            </div>
-
-            <div class="card mt-2 d-flex text-white text-center bg-secondary mr-3 row">
-                <div class="card-header">Category</div>
-                <div class="card-body">
-
-                    <select name="SortBy" class="form-control bg-dark text-light mb-3">
-                        <option value="Any">Any</option>
-                        <option value="newReleases">New Releases</option>
-                        <option value="topRated">Top Rated</option>
-                    </select>
-                </div>
-            </div>
 
 
 
-
-        </div>
     </section>
 </div>
 
