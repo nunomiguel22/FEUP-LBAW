@@ -41,6 +41,10 @@ function displayGames() {
 
 function getGameTemplate(game) {
     let template = document.createElement('article');
+    let score = (game.score / 5) * 100;
+
+    let percent = Math.ceil(score / 5) * 5;
+
 
     template.innerHTML = 
     `<a class="row bg-dark b-shadow my-2" href="products/` + game.id + `">
@@ -56,7 +60,7 @@ function getGameTemplate(game) {
         </div>
         <div class="col-2 my-auto d-none d-md-block">` + game.launch_date + `</div>
         <div class="col-2 my-auto">
-            <div class="radialProgressBar progress-70 mx-auto">
+            <div class="radialProgressBar progress-`+ percent + ` mx-auto">
                 <div class="overlay text-light">` + game.score + `</div>
             </div>
         </div>
