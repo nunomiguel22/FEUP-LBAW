@@ -4,7 +4,7 @@
 
 
 @section('scripts')
-<script src="{{ asset('js/admin.js') }}"></script>
+<script src="{{ asset('js/tab_navigation.js') }}"></script>
 @endsection
 
 @section('content')
@@ -24,11 +24,11 @@
     <nav class="row d-lg-none d-sm-block mb-2">
         <div class="nav flex-column nav-pills nav-menu w-100" id="v-pills-tab" role="tablist"
             aria-orientation="vertical">
-            <a class="nav-link" id="v-pills-0-tab-2" data-toggle="pill" href="#v-pills-0" role="tab"
+            <a class="nav-link" id="v-pills-0-tab-2" href="{{ url('admin/sales') }}" role="tab"
                 aria-controls="v-pills-sale" aria-selected="true">
                 <i class="fas fa-money-bill-wave mr-3"></i> SALES
             </a>
-            <a class="nav-link" id="v-pills-1-tab-2" data-toggle="pill" href="#v-pills-1" role="tab"
+            <a class="nav-link" id="v-pills-1-tab-2" href="{{ url('admin/products') }}" role="tab"
                 aria-controls="v-pills-games" aria-selected="false">
                 <i class="fas fa-gamepad mr-3"></i>MANAGE GAMES
             </a>
@@ -47,11 +47,11 @@
     <div class="row">
         <nav class="col-lg-3 d-none d-lg-block">
             <div class="nav flex-column nav-pills nav-menu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" id="v-pills-0-tab" data-toggle="pill" href="#v-pills-0" role="tab"
+                <a class="nav-link" id="v-pills-0-tab" href="{{ url('admin/sales') }}" role="tab"
                     aria-controls="v-pills-sale" aria-selected="true">
                     <i class="fas fa-money-bill-wave mr-3"></i> SALES
                 </a>
-                <a class="nav-link" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
+                <a class="nav-link" id="v-pills-1-tab" href="{{ url('admin/products') }}" role="tab"
                     aria-controls="v-pills-games" aria-selected="false">
                     <i class="fas fa-gamepad mr-3"></i>MANAGE GAMES
                 </a>

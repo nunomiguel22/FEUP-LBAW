@@ -76,7 +76,7 @@ $categories = Category::all();
                                 <i class="fas fa-id-badge"></i>
                                 <span> Profile</span>
                             </a>
-                            <a class="dropdown-item" href="#todo">
+                            <a class="dropdown-item" href="{{ route('user') }}">
                                 <i class="fas fa-user-edit"></i></i>
                                 <span> Account</span>
                             </a>

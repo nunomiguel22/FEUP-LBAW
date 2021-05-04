@@ -33,3 +33,11 @@ Route::get('api/products/search', 'GameController@search');
 Route::post('admin/products/add_product', 'GameController@store');
 Route::put('admin/products/{id}/edit', 'GameController@update');
 Route::delete('admin/products/{id}/delete', 'GameController@delete');
+
+// Users
+Route::get('user', 'UserController@showDefault')->name('user');
+Route::get('user/wishlist', 'UserController@showWishlist');
+Route::get('user/edit', 'UserController@showGeneral');
+Route::get('user/security', 'UserController@showSecurity');
+Route::get('user/keys', 'UserController@showKeys');
+Route::get('user/avatar', 'UserController@showAvatar');
