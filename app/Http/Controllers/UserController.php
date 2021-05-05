@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
 
+use App\Models\Purchase;
+
 class UserController extends Controller
 {
     public function showDefault()
@@ -14,14 +16,6 @@ class UserController extends Controller
         return $this->showGeneral();
     }
 
-    public function showWishlist()
-    {
-        if (!Auth::check()) {
-            return redirect('login');
-        }
-        
-        return view('pages.user.user', ['tab_id' => 0]);
-    }
 
     public function showGeneral()
     {
@@ -41,14 +35,7 @@ class UserController extends Controller
         return view('pages.user.user', ['tab_id' => 3]);
     }
 
-    public function showKeys()
-    {
-        if (!Auth::check()) {
-            return redirect('login');
-        }
-        
-        return view('pages.user.user', ['tab_id' => 2]);
-    }
+
     public function showAvatar()
     {
         if (!Auth::check()) {

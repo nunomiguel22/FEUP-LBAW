@@ -89,7 +89,7 @@
 </section>
 
 <!-- Activate correct tab on startup  -->
-<script type="text/javascript"> activateTab(<?php echo $tab_id ?>) </script>
+<script type="text/javascript"> activateTab({{ $tab_id }}) </script>
 
 
 @endsection

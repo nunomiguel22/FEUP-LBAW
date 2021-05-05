@@ -84,6 +84,14 @@
                 
             </div>
 
+            
+            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                @if ($tab_id && $tab_id == 2)
+                    @include('pages.user.keys')
+                @endif
+
+            </div>
+
             <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">
                 
             </div>

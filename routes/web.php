@@ -36,8 +36,8 @@ Route::delete('admin/products/{id}/delete', 'GameController@delete');
 
 // Users
 Route::get('user', 'UserController@showDefault')->name('user');
-Route::get('user/wishlist', 'UserController@showWishlist');
 Route::get('user/edit', 'UserController@showGeneral');
 Route::get('user/security', 'UserController@showSecurity');
-Route::get('user/keys', 'UserController@showKeys');
+Route::get('user/keys', 'PurchaseController@showKeys');
+Route::get('api/user/keys', 'PurchaseController@getKeys');
 Route::get('user/avatar', 'UserController@showAvatar');
