@@ -11,7 +11,6 @@
 
 @section('content')
 
-
 <!-- Game list -->
 <div class="container p-0">
     <!-- Breadcrumbs -->
@@ -100,11 +99,6 @@
 
             </aside>
         </div>
-
-
-
-
-
     </section>
 </div>
 

@@ -108,8 +108,7 @@
     </section>
 </section>
 
-<!-- Signin Modal -->
-<div class="modal fade" id="deleteGameModal">
+<aside class="modal fade" id="deleteGameModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="container">
@@ -168,6 +167,6 @@
             </div>
         </div>
     </div>
-</div>
+</aside>
 
 @endsection
