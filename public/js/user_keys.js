@@ -1,19 +1,45 @@
 var pagination_set = false;
+var curr_page = 1;
+
+var search_field = document.getElementById("key_search_field");
+var key_filter = document.getElementById("key_filter");
+var key_data = null;
+
+var timeout = null;
+search_field.addEventListener('keyup', function(){
+    clearTimeout(timeout);
+    let value = this.value;
+    timeout = setTimeout(function () {
+        getKeyList(curr_page, value, key_filter.value);
+    }, 500);
+});
+
+key_filter.addEventListener('change', function(){
+    getKeyList(curr_page, search_field.value, this.value);
+});
+
 
 getKeyList(1);
 
-
-function getKeyList(page) {
+function getKeyList(page, key_search, key_filter) {
     let params = { page: page };
-    let url_params = encodeForAjax(params);
+    curr_page = page;
 
+    if (key_filter && key_filter != 'All')
+        params.key_filter = key_filter;
+
+    if (key_search)
+        params.key_search = key_search;
+
+    let url_params = encodeForAjax(params);
+    startLoader(document.getElementById("list-loader"));
     sendAjaxRequest("get", "/api/user/keys?" + url_params, null, displayRows);
 }
 
 function displayRows(){
-    let response = JSON.parse(this.responseText);
-    total_pages = response.last_page;
-    let keyList = response.data;
+    key_data = JSON.parse(this.responseText);
+    total_pages = key_data.last_page;
+    let keyList = key_data.data;
     let keyListElement = document.getElementById('key_list');
 
     keyListElement.innerHTML = "";
@@ -24,7 +50,7 @@ function displayRows(){
 
     if (!pagination_set){
         $('#list-links').twbsPagination({
-            totalPages: response.last_page,
+            totalPages: key_data.last_page,
             visiblePages: 7,
             cssStyle: '',
             onInit: null,
@@ -34,6 +60,7 @@ function displayRows(){
         });
         pagination_set = true;
     }
+    stopLoader();
 }
 
 function displayRow(row){
@@ -53,6 +80,12 @@ function displayRow(row){
     else if (row.status == "Aborted")
         row_color = "240, 20, 20";
 
+    let key_button = "";
+
+    if (row.status == "Completed")
+        key_button = `<button class="btn btn-success btn-sm w-100 my-auto" data-toggle="modal" data-target="#gameKeyModal" 
+                        type="button" onClick="fillModal(`+ row.id +`)">
+                        key</button>`;
 
     template.innerHTML =     
     `<div class="row border border-secondary">
@@ -62,19 +95,34 @@ function displayRow(row){
         <div class="col-2 my-auto d-none d-md-block">` + date +`</div>
         <div class="col my-auto d-none d-md-block"> <img src="` + paymethod_image + `"
                 style="max-width:60%; height:auto;"></div>
-        <div class="col-2 my-auto mr-1">` + row.status + `</div>
-        <div class="col my-auto" >
-            <button class="btn btn-secondary btn-sm w-100 my-auto" type="button">
-                key</button>
+        <div class="col-2 my-auto d-none d-md-block mr-1">` + row.status + `</div>
+        <div class="col my-auto" >` + key_button + `
         </div>
-
     </div>`;
 
     return template;
 }
 
 
+function fillModal(purchase_id){
+    let purchase = null;
 
+    for (const pur of key_data.data)
+        if (pur.id == purchase_id)
+            purchase = pur;
+
+    if (!purchase)
+        return;
+        
+    document.getElementById('modal_title').innerHTML = purchase.game_key.game.title;
+    document.getElementById('modal_price').innerHTML = purchase.price;
+    document.getElementById('modal_timestamp').innerHTML = purchase.timestamp;
+    
+    document.getElementById('modal_status').innerHTML = purchase.status;
+    document.getElementById('modal_pmethod').innerHTML = purchase.method;
+    document.getElementById('modal_key').value = purchase.game_key.key;
+    document.getElementById('modal_pid').innerHTML = purchase.id;
+}
 
 
 

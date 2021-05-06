@@ -212,7 +212,7 @@ CREATE INDEX cart_items_user_id_idx ON cart_items USING hash (user_id);
  
 CREATE INDEX withlist_items_user_id_idx ON wishlist_items USING hash (user_id); 
 
-CREATE INDEX game_search_idx ON game_search USING gist(search);
+CREATE INDEX game_search_idx ON game_search USING gin(search);
 
 
  
@@ -741,10 +741,10 @@ VALUES ('Outriders',
             'Outriders’ brutal and bloody combat combines frenetic gunplay, violent powers and deep RPG systems to create a true genre hybrid.', 
             59.99, 3, '2021-04-01'::date, true, null, 8, 1);
 
-INSERT INTO game_keys("key",available,game_id) VALUES ('757AD8466FA453','true',1);
-INSERT INTO game_keys("key",available,game_id) VALUES ('797494323076','true',2);
-INSERT INTO game_keys("key",available,game_id) VALUES ('1218582960','true',3);
-INSERT INTO game_keys("key",available,game_id) VALUES ('3184561836','true',4);
+INSERT INTO game_keys("key",available,game_id) VALUES ('757A-D8466F-A453','true',1);
+INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3076','true',2);
+INSERT INTO game_keys("key",available,game_id) VALUES ('1218-58-2960','true',3);
+INSERT INTO game_keys("key",available,game_id) VALUES ('31845-618-36','true',4);
 
 INSERT INTO game_image(image_id,game_id) VALUES (1,2);
 INSERT INTO game_image(image_id,game_id) VALUES (2,3);
@@ -766,6 +766,8 @@ INSERT INTO game_tag(tag_id,game_id) VALUES (8,1);
 INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2019-03-01', 59.99, 'Pending', 'PayPal', 1, 1);
 INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2020-12-07', 59.99, 'Completed', 'PayPal', 2, 1);
 INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2021-02-07', 8.99, 'Aborted', 'PayPal', 4, 1);
+INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2019-03-10', 39.99, 'Completed', 'PayPal', 3, 1);
+
 
 -----------------------------------------
 -- end
