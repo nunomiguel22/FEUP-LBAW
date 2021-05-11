@@ -85,8 +85,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="radialProgressBar-large progress-70">
-                        <!-- nao esquece de por aqui nao pode levar aqui chavetas de php-->
+                    <div class="radialProgressBar-large progress-{{$percent}}">
                         <div class="overlay text-light">{{$game->score ?? null}}</div>
                     </div>
                 </div>

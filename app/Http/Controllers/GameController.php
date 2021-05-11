@@ -189,11 +189,10 @@ class GameController extends Controller
         //dd($game); //para ver o que recebo
         //$game->with('developers');
         //dd($game);
-        //calcular aqui o valor do score e pasar como outra variável, mudar este js para php
-        //let score = (game.score / 5) * 100;
-        //let percent = Math.ceil(score / 5) * 5;
+        $score = ($game->score / 5) * 100;
+        $percent = ceil($score / 5) * 5;
 
 
-        return view('pages.product_page', ['game' => $game]);
+        return view('pages.product_page', ['game' => $game, 'percent' => $percent]);
     }
 }
