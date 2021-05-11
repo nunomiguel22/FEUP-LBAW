@@ -22,5 +22,5 @@
          <span class="col-7 HomeNav-devInfo">{{ $game->developers->name }}</span>
 
      </div>
-     <a href="#todo" class="btn btn-secondary hidden-opacity stretched-link"></a>
+     <a href="{{ url('/products/'.$game->id) }}" class="btn btn-secondary hidden-opacity stretched-link"></a>
  </article>

@@ -176,4 +176,24 @@ class GameController extends Controller
             'tags.*' => 'string'
         ]);
     }
+
+    public function showProductPage($id)
+    {
+        $game = null;
+        try {
+            $game = Game::findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        //dd($game); //para ver o que recebo
+        //$game->with('developers');
+        //dd($game);
+        //calcular aqui o valor do score e pasar como outra variável, mudar este js para php
+        //let score = (game.score / 5) * 100;
+        //let percent = Math.ceil(score / 5) * 5;
+
+
+        return view('pages.product_page', ['game' => $game]);
+    }
 }
