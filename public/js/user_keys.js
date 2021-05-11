@@ -89,7 +89,7 @@ function displayRow(row){
                         key</button>`;
 
     template.innerHTML =     
-    `<div class="row border border-secondary">
+    `<div class="row border border-dark bg-secondary">
         
         <div class="col-3 my-auto">` + row.game_key.game.title + `</div>
         <div class="col-2 my-auto">` + row.price + `€</div>
