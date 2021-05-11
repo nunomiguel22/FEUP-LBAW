@@ -8,7 +8,7 @@
     </aside>
     <article class="carousel-inner">
         <div class="carousel-item active">
-            <a href="#todo">
+            <a href="{{ url('/products/'.$title_game->id) }}">
                 <img src="{{ $title_game->cover_image() }}" class="d-block w-100" alt="''.$title_game->title">
             </a>
             <div class="carousel-caption d-none d-md-block">
@@ -18,7 +18,7 @@
         </div>
         @foreach ($carousel_games as $game)
         <div class="carousel-item">
-            <a href="#todo">
+            <a href="{{ url('/products/'.$game->id) }}">
                 <img src="{{ $game->cover_image() }}" class="d-block w-100" alt="''.$game->title">
             </a>
             <div class="carousel-caption d-none d-md-block">

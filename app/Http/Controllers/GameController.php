@@ -189,6 +189,7 @@ class GameController extends Controller
         //dd($game); //para ver o que recebo
         //$game->with('developers');
         //dd($game);
+        //calculating score to update in radial progress bar
         $score = ($game->score / 5) * 100;
         $percent = ceil($score / 5) * 5;
 
