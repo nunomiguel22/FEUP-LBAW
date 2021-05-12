@@ -41,3 +41,4 @@ Route::get('user/security', 'UserController@showSecurity');
 Route::get('user/keys', 'PurchaseController@showKeys');
 Route::get('api/user/keys', 'PurchaseController@getKeys');
 Route::get('user/avatar', 'UserController@showAvatar');
+Route::get('user/cart', 'PurchaseController@showProductCart');
