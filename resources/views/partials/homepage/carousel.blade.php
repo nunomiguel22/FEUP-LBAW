@@ -1,4 +1,4 @@
-<section id="carousel" class="carousel slide" data-ride="carousel">
+<section id="carousel" class="carousel slide mt-4" data-ride="carousel">
     <aside>
         <ol class="carousel-indicators">
             <li data-target="#carousel" data-slide-to="0" class="active shadow-box-dark"></li>
