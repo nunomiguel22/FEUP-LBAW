@@ -7,6 +7,16 @@
 
 
 <div class="container">
+
+
+    <aside class="row mt-3 p-0">
+        <ol class="breadcrumb m-0 p-0">
+            <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Products</li>
+        </ol>
+    </aside>
+
+
     <div class="row">
         <div class="col mr-4">
             <div class="carousel row slide carousel-fade" data-ride="carousel">
