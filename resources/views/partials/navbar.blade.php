@@ -1,17 +1,17 @@
-<?php
+@php
 use App\Models\Category;
 
 $categories = Category::all();
-?>
+@endphp
 
-<header >
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <figure class="my-auto">
             <a class="navbar-brand" href="{{route('homepage')}}">
                 <img src="{{ Storage::url('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">
             </a>
         </figure>
-       
+
         <article>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
                 aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +23,12 @@ $categories = Category::all();
             <nav>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                            aria-expanded="false">Browse Categories</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Browse Categories</a>
                         <div class="dropdown-menu mb-1">
                             @forelse($categories as $category)
-                            <a class="dropdown-item" href="{{ route('products', ['category' => $category->id ]) }}">{{$category->name}}</a>
+                            <a class="dropdown-item"
+                                href="{{ route('products', ['category' => $category->id ]) }}">{{$category->name}}</a>
                             @empty
                             @endforelse
                             <div class="dropdown-divider"></div>
@@ -36,11 +37,12 @@ $categories = Category::all();
                     </li>
                 </ul>
             </nav>
-            
+
             <form type="GET" action="/products" class="form-inline mx-lg-auto w-50">
-                <input class="form-control bg-secondary text-light" name="text_search" type="text" placeholder="Search for a title..."
-                   style="width:85%" value="{{ $_GET['text_search'] ?? null }}">
-                <button class="btn bg-transparent border-0 my-2" half-loader="true"  type="submit" style="margin-left:-40px;">
+                <input class="form-control bg-secondary text-light" name="text_search" type="text"
+                    placeholder="Search for a title..." style="width:85%" value="{{ $_GET['text_search'] ?? null }}">
+                <button class="btn bg-transparent border-0 my-2" half-loader="true" type="submit"
+                    style="margin-left:-40px;">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -100,7 +102,7 @@ $categories = Category::all();
 
 @if(Auth::guest())
 <aside>
-@include('partials.modals.login')
-@include('partials.modals.register')
+    @include('partials.modals.login')
+    @include('partials.modals.register')
 </aside>
 @endif

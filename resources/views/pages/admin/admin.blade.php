@@ -7,19 +7,10 @@
 <script src="{{ asset('js/tab_navigation.js') }}"></script>
 @endsection
 
+
+
 @section('content')
-
-
-
-<!-- Page Content -->
 <section class="container">
-    <!-- Breadcrumbs -->
-    <div class="row mx-0 my-3 p-0">
-        <ol class="breadcrumb m-0 p-0">
-             <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Admin Panel </li>
-        </ol>
-    </div>
 
     <nav class="row d-lg-none d-sm-block mb-2">
         <div class="nav flex-column nav-pills nav-menu w-100" id="v-pills-tab" role="tablist"
@@ -69,19 +60,19 @@
         <div class="col bg-dark mb-4">
 
             <div class="tab-pane fade" id="v-pills-0" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+
             </div>
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+
             </div>
 
             <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+
             </div>
 
             <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+
             </div>
 
         </div>
@@ -89,7 +80,13 @@
 </section>
 
 <!-- Activate correct tab on startup  -->
-<script type="text/javascript"> activateTab({{ $tab_id }}) </script>
+<script type="text/javascript">
+    activateTab({
+        {
+            $tab_id
+        }
+    })
+</script>
 
 
 @endsection

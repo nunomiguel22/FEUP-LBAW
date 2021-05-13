@@ -7,19 +7,9 @@
 <script src="{{ asset('js/tab_navigation.js') }}"></script>
 @endsection
 
+
 @section('content')
-
-
-
-<!-- Page Content -->
 <section class="container">
-    <!-- Breadcrumbs -->
-    <div class="row mx-0 my-3 p-0">
-        <ol class="breadcrumb m-0 p-0">
-             <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> User Panel </li>
-        </ol>
-    </div>
 
     <nav class="row d-lg-none d-sm-block mb-2">
         <div class="nav flex-column nav-pills nav-menu w-100" id="v-pills-tab" role="tablist"

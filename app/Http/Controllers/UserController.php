@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function showDefault()
     {
-        return $this->showGeneral();
+        return $this->showKeys();
     }
 
 
@@ -43,5 +43,14 @@ class UserController extends Controller
         }
         
         return view('pages.user.user', ['tab_id' => 4]);
+    }
+
+    public function showKeys()
+    {
+        $this->authorize('view', Purchase::class);
+        
+        $purchases = Auth::user()->purchases;
+
+        return view('pages.user.user', ['tab_id' => 2, 'purchases' => $purchases]);
     }
 }

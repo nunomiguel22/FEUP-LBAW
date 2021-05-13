@@ -13,15 +13,6 @@ use App\Models\Game;
 
 class PurchaseController extends Controller
 {
-    public function showKeys()
-    {
-        $this->authorize('view', Purchase::class);
-        
-        $purchases = Auth::user()->purchases;
-
-        return view('pages.user.user', ['tab_id' => 2, 'purchases' => $purchases]);
-    }
-
     public function getKeys(Request $request)
     {
         $this->authorize('view', Purchase::class);
