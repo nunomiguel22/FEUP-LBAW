@@ -22,15 +22,12 @@
             <div class="carousel row slide carousel-fade" data-ride="carousel">
                 <article class="carousel-inner">
                     <div class="carousel-item active">
-                        <a href="#todo">
-                            <img src="{{ $game->cover_image() }}" class="d-block w-100" alt="''.$game->title">
-                        </a>
+                        <img src="{{ $game->cover_image() }}" class="d-block w-100" alt="''.$game->title">
+
                     </div>
                     @forelse ($game->images as $image)
                     <div class="carousel-item">
-                        <a href="#todo">
-                            <img src="{{ $image->getPath() }}" class="d-block w-100" alt="''.$game->title">
-                        </a>
+                        <img src="{{ $image->getPath() }}" class="d-block w-100" alt="''.$game->title">
                     </div>
                     @empty
                     @endforelse
