@@ -90,6 +90,7 @@
                             @forelse ($game->tags as $tag)
                             {{$tag->name}}
                             @empty
+                            No tags yet!
                             @endforelse
                         </span>
                     </div>
