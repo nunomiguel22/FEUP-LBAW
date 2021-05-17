@@ -70,7 +70,7 @@
                         <h5>Released on &nbsp;</h5>
                         <span class="text-muted">{{$game->launch_date ?? null}}</span>
                     </div>
-                    <h4 class="row">{{$game->price ?? null}}</h4>
+                    <h4 class="row">{{$game->price ?? null}} €</h4>
                 </div>
             </div>
 
