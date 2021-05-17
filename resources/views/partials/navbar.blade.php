@@ -65,7 +65,7 @@ if(Auth::check()){
                     <li class="nav-item">
                         <a class="btn btn-secondary" href="{{ url('/user/cart')}}" role="button">
                             <i class="fas fa-shopping-cart mr-3"></i>
-                            <span class="badge badge-light">{{$cart_item_count}}</span>
+                            <span class="badge badge-light" id="cart_count_nav">{{$cart_item_count}}</span>
                             </button>
                         </a>
                     </li>

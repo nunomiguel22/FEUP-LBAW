@@ -69,4 +69,16 @@ class PurchaseController extends Controller
 
         return view('pages.product_cart', ['cart_items' => $cart_items, 'total_price' => $total_price]);
     }
+
+    public function removeProductFromCart($id){
+        //$this->authorize('removeFromCart', Auth::user());
+
+        Auth::user()->cart_items()->detach($id);
+        return redirect("/user/cart");
+    }
+
+    public function removeAllFromCart(){
+        Auth::user()->cart_items()->detach();
+        return redirect("/user/cart");
+    }
 }

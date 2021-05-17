@@ -2,6 +2,10 @@
 
 @section('title', 'OGS')
 
+@section('scripts')
+
+@endsection
+
 @section('content')
 
 <section class="container">
@@ -24,7 +28,7 @@
                     </a>
                 </div>
 
-                <div class="col-4 m-auto">
+                <div class="col-8 m-auto">
                     <div class="row">
                         {{$game->title}}
                     </div>
@@ -32,14 +36,16 @@
                 </div>
 
 
-                <div class="col-6 my-auto ">
+                <div class="col-2 my-auto ">
                     <div class="row ">
                         <span class="col text-right">{{$game->price}}€</span>
                     </div>
 
-                    <div class="row">
-                        <a class="col text-right link-small text-light" href="#">Remove</a>
-                    </div>
+                    <form class="row" method="POST" action="/cart/{{$game->id}}">
+                        @csrf 
+                        @method('DELETE')
+                        <a class="col text-right link-small text-light" onclick="this.closest('form').submit();return false;">Remove</a>
+                    </form>
                 </div>
             </div>
         
@@ -59,17 +65,21 @@
 
       <div class="col">
         <div class="row">
-          <span class="col my-3 text-right font-weight-bold">{{$total_price}}€</span>
+          <span class="col my-3 text-right font-weight-bold" id="cart_total">{{$total_price}}€</span>
         </div>
       </div>
     </div>
 
     <div class="row bg-dark text-light p-2" align="right">
-      <div class="col">
-        <button class="btn btn-danger mb-2" href="/index.php" role="button">
+      <form class="col" method="POST" action="/user/cart">
+        @csrf 
+        @method('DELETE')
+        <button class="btn btn-danger mb-2" type="submit" href="/index.php" role="button">
           <i class="fas fa-trash"></i> Remove all
         </button>
+      </form>
 
+      <div class="col">
         <button class="btn btn-success mb-2" href="/index.php" role="button">
           <i class="fas fa-shopping-cart"></i> Checkout
         </button>
