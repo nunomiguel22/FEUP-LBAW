@@ -17,7 +17,7 @@
     </aside>
 
 
-    <div class="row">
+    <div class="row mt-4">
         <div class="col mr-4">
             <div class="carousel row slide carousel-fade" data-ride="carousel">
                 <article class="carousel-inner">
