@@ -50,4 +50,11 @@ class Game extends Model
     {
         return $this->hasMany(GameKey::class);
     }
+
+    public static function FTS($search)
+    {
+        return  DB::table('game_search')->selectRaw('game_id')
+            ->whereRaw("search @@ plainto_tsquery('english', ?)", [$search])
+            ->pluck('game_id')->toArray();
+    }
 }

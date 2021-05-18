@@ -51,3 +51,11 @@ Route::delete('api/item/{id}', 'ItemController@delete');
 Route::post('admin/products/add_product', 'GameController@store');
 Route::put('admin/products/{id}/edit', 'GameController@update');
 Route::delete('admin/products/{id}/delete', 'GameController@delete');
+
+// Users
+Route::get('user', 'UserController@showDefault')->name('user');
+Route::get('user/edit', 'UserController@showGeneral');
+Route::get('user/security', 'UserController@showSecurity');
+Route::get('user/keys', 'PurchaseController@showKeys');
+Route::get('api/user/keys', 'PurchaseController@getKeys');
+Route::get('user/avatar', 'UserController@showAvatar');

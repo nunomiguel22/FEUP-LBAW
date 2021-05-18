@@ -1,12 +1,14 @@
-<div id="carousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active shadow-box-dark"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
+<section id="carousel" class="carousel slide" data-ride="carousel">
+    <aside>
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active shadow-box-dark"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+    </aside>
+    <article class="carousel-inner">
         <div class="carousel-item active">
-            <a href="/product_page.php">
+            <a href="#todo">
                 <img src="{{ $title_game->cover_image() }}" class="d-block w-100" alt="''.$title_game->title">
             </a>
             <div class="carousel-caption d-none d-md-block">
@@ -16,7 +18,7 @@
         </div>
         @foreach ($carousel_games as $game)
         <div class="carousel-item">
-            <a href="/product_page.php">
+            <a href="#todo">
                 <img src="{{ $game->cover_image() }}" class="d-block w-100" alt="''.$game->title">
             </a>
             <div class="carousel-caption d-none d-md-block">
@@ -33,6 +35,5 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
-</div>
-</div>
+    </article>
+</section>

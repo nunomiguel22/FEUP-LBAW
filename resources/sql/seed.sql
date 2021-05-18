@@ -24,22 +24,20 @@ DROP TYPE IF EXISTS PURCHASE_STATUS;
 DROP TYPE IF EXISTS REPORT_STATUS;
 DROP TYPE IF EXISTS REPORT_TYPE;
 
+DROP MATERIALIZED VIEW IF EXISTS game_search;
+
 DROP FUNCTION IF EXISTS update_game_score() CASCADE;
 DROP FUNCTION IF EXISTS add_review() CASCADE;
 DROP FUNCTION IF EXISTS check_review_repeats() CASCADE;
-DROP FUNCTION IF EXISTS find_available_key() CASCADE;
-DROP FUNCTION IF EXISTS remove_key_availability() CASCADE;
-DROP FUNCTION IF EXISTS remove_cart_product() CASCADE;
-DROP FUNCTION IF EXISTS remove_wishlist_product() CASCADE;
+DROP FUNCTION IF EXISTS make_purchase() CASCADE;
+DROP FUNCTION IF EXISTS restore_key_availability() CASCADE;
 DROP FUNCTION IF EXISTS update_deleted_user_reviews() CASCADE;
 
 DROP TRIGGER IF EXISTS update_score ON games;
 DROP TRIGGER IF EXISTS add_review ON reviews;
 DROP TRIGGER IF EXISTS check_review_repeats ON reviews;
 DROP TRIGGER IF EXISTS make_purchase ON purchases;
-DROP TRIGGER IF EXISTS remove_availability ON purchases;
-DROP TRIGGER IF EXISTS remove_cart_product ON purchases;
-DROP TRIGGER IF EXISTS remove_wishlist_product ON purchases;
+DROP TRIGGER IF EXISTS restore_key_availability ON purchases;
 DROP TRIGGER IF EXISTS update_review_on_user_delete ON users;
 
  
@@ -122,7 +120,7 @@ CREATE TABLE games(
 
 CREATE TABLE game_keys (
     id SERIAL PRIMARY KEY,
-    key TEXT NOT NULL CONSTRAINT gamekeys_key_uk UNIQUE,
+    "key" TEXT NOT NULL CONSTRAINT gamekeys_key_uk UNIQUE,
     available BOOLEAN NOT NULL DEFAULT true,
     game_id INTEGER NOT NULL REFERENCES games(id)
 );
@@ -157,7 +155,7 @@ CREATE TABLE purchases(
     status PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
     method PAYMENT_METHOD NOT NULL,
     game_key_id INTEGER NOT NULL REFERENCES game_keys (id),
-    buyer_id INTEGER NOT NULL REFERENCES users (id)
+    user_id INTEGER NOT NULL REFERENCES users (id)
 );
 
 CREATE TABLE reviews(
@@ -180,6 +178,23 @@ CREATE TABLE reports(
     review_id INTEGER REFERENCES reviews (id) CONSTRAINT review_id_ck
     CHECK ((r_type='Review' AND review_id is NOT NULL) OR r_type='Bug')
 );
+
+-----------------------------------------
+-- VIEWS
+-----------------------------------------
+
+CREATE MATERIALIZED VIEW game_search AS
+SELECT games.id as game_id,
+setweight(to_tsvector('simple', games.title), 'A') || 
+setweight(to_tsvector('english', games.description),'B') ||
+setweight(to_tsvector('simple', developers.name), 'B') ||
+setweight(to_tsvector('simple', coalesce(string_agg(tags.name, ' '), '')), 'C') as "search"
+FROM games
+JOIN developers ON (developers.id = games.developer_id)
+LEFT JOIN game_tag ON (game_tag.game_id = games.id)
+LEFT JOIN tags ON (game_tag.tag_id = tags.id)
+GROUP BY games.id, developers.name;
+
  
 -----------------------------------------
 -- INDEXES
@@ -189,17 +204,22 @@ CREATE INDEX review_game_id_idx ON reviews USING hash (game_id);
 
 CREATE INDEX image_game_id_idx ON game_image USING hash (game_id); 
  
-CREATE INDEX purchase_id_idx ON purchases USING hash (buyer_id); 
+CREATE INDEX purchase_id_idx ON purchases USING hash (user_id); 
  
 CREATE INDEX game_category_id_idx ON games USING hash (category_id); 
  
 CREATE INDEX cart_items_user_id_idx ON cart_items USING hash (user_id); 
  
 CREATE INDEX withlist_items_user_id_idx ON wishlist_items USING hash (user_id); 
+
+CREATE INDEX game_search_idx ON game_search USING gin(search);
+
+
  
 -----------------------------------------
 -- TRIGGERS and UDFs
 -----------------------------------------
+
 
  
 CREATE FUNCTION update_game_score() RETURNS TRIGGER AS 
@@ -230,7 +250,7 @@ BEGIN
     IF NOT EXISTS (SELECT game_keys.game_id
                     FROM purchases
                     JOIN game_keys ON purchases.game_key_id = game_keys.id
-                    WHERE purchases.buyer_id = New.reviewer_id
+                    WHERE purchases.user_id = New.reviewer_id
                     AND game_keys.game_id = New.game_id)
                 THEN
     RAISE EXCEPTION 'You can not review a game you do not own.';
@@ -265,14 +285,24 @@ CREATE TRIGGER check_review_repeats
     EXECUTE PROCEDURE check_review_repeats();
  
 
-CREATE FUNCTION find_available_key() RETURNS TRIGGER AS
+CREATE FUNCTION make_purchase() RETURNS TRIGGER AS
 $BODY$
+DECLARE
+    game_key RECORD;
 BEGIN
-    IF NOT EXISTS (SELECT game_keys.id
-                    FROM game_keys
-                    WHERE game_keys.id = New.game_key_id AND game_keys.available=TRUE) THEN
-    RAISE EXCEPTION 'This key is not available for purchase.';
+    SELECT INTO game_key * FROM game_keys WHERE (id = NEW.game_key_id);
+
+    IF game_key.available=false THEN
+        RAISE EXCEPTION 'This key is not available for purchase.';
     END IF;
+
+    DELETE FROM cart_items
+    WHERE (cart_items.user_id=New.user_id AND game_id= game_key.game_id);
+
+    UPDATE game_keys
+    SET available=false
+    WHERE game_keys.id=game_key.id;
+     
     RETURN NEW;
 END
 $BODY$
@@ -281,58 +311,26 @@ LANGUAGE plpgsql;
 CREATE TRIGGER make_purchase
     BEFORE INSERT ON purchases
     FOR EACH ROW
-    EXECUTE PROCEDURE find_available_key();
+    EXECUTE PROCEDURE make_purchase();
 
 
-CREATE FUNCTION remove_key_availability() RETURNS TRIGGER AS
+CREATE FUNCTION restore_key_availability() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    UPDATE game_keys
-    SET available=FALSE
-    WHERE id=New.game_key_id;
+    IF (NEW.status = 'Aborted') THEN
+        UPDATE game_keys
+        SET available=true
+        WHERE id=New.game_key_id;
+    END IF;
     RETURN NULL;
 END
 $BODY$
 LANGUAGE plpgsql;
 
-CREATE TRIGGER remove_availability
-    AFTER INSERT ON purchases
+CREATE TRIGGER restore_key_availability
+    AFTER UPDATE ON purchases
     FOR EACH ROW
-    EXECUTE PROCEDURE remove_key_availability();
-
-
-CREATE FUNCTION remove_cart_product() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-    IF EXISTS (SELECT id FROM game_keys WHERE id=New.game_key_id) THEN
-    DELETE FROM cart_items
-    WHERE cart_items.user_id=New.buyer_id AND game_id=Key.game_id;
-    END IF;
-    RETURN NULL;
-END
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE TRIGGER remove_cart_product 
-    AFTER INSERT ON purchases
-    EXECUTE PROCEDURE remove_cart_product();
-
-
-CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-    IF EXISTS (SELECT id FROM game_keys WHERE id=New.game_key_id) THEN
-    DELETE FROM wishlist_items
-    WHERE user_id=New.buyer_id AND game_id=Key.game_id;
-    END IF;
-    RETURN NULL;
-END
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE TRIGGER remove_wishlist_product 
-    AFTER INSERT ON purchases
-    EXECUTE PROCEDURE remove_wishlist_product();
+    EXECUTE PROCEDURE restore_key_availability();
 
 
 CREATE FUNCTION update_deleted_user_reviews() RETURNS TRIGGER AS
@@ -351,6 +349,40 @@ CREATE TRIGGER update_review_on_user_delete
     AFTER DELETE ON users
     FOR EACH ROW
     EXECUTE PROCEDURE update_deleted_user_reviews();
+
+
+DROP FUNCTION IF EXISTS game_update() CASCADE;
+DROP TRIGGER IF EXISTS game_update ON games;
+CREATE OR REPLACE FUNCTION game_update() RETURNS TRIGGER AS $$
+BEGIN
+  REFRESH MATERIALIZED VIEW game_search;
+  RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE TRIGGER game_update
+    AFTER INSERT OR UPDATE ON games
+    FOR EACH ROW
+    EXECUTE PROCEDURE game_update();
+
+DROP FUNCTION IF EXISTS game_tag_update() CASCADE;
+DROP TRIGGER IF EXISTS game_tag_update ON games;
+CREATE OR REPLACE FUNCTION game_tag_update() RETURNS TRIGGER AS $$
+BEGIN
+  REFRESH MATERIALIZED VIEW game_search;
+  RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE TRIGGER game_tag_update
+    AFTER INSERT OR DELETE ON game_tag
+    FOR EACH ROW
+    EXECUTE PROCEDURE game_tag_update();
+
+
+
 
 -----------------------------------------
 -- end
@@ -709,10 +741,10 @@ VALUES ('Outriders',
             'Outriders’ brutal and bloody combat combines frenetic gunplay, violent powers and deep RPG systems to create a true genre hybrid.', 
             59.99, 3, '2021-04-01'::date, true, null, 8, 1);
 
-INSERT INTO game_keys(key,available,game_id) VALUES ('757AD8466FA453','false',1);
-INSERT INTO game_keys(key,available,game_id) VALUES ('797494323076','true',1);
-INSERT INTO game_keys(key,available,game_id) VALUES ('1218582960','true',3);
-INSERT INTO game_keys(key,available,game_id) VALUES ('3184561836','false',4);
+INSERT INTO game_keys("key",available,game_id) VALUES ('757A-D8466F-A453','true',1);
+INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3076','true',2);
+INSERT INTO game_keys("key",available,game_id) VALUES ('1218-58-2960','true',3);
+INSERT INTO game_keys("key",available,game_id) VALUES ('31845-618-36','true',4);
 
 INSERT INTO game_image(image_id,game_id) VALUES (1,2);
 INSERT INTO game_image(image_id,game_id) VALUES (2,3);
@@ -729,6 +761,12 @@ INSERT INTO game_image(image_id,game_id) VALUES (11,9);
 INSERT INTO game_tag(tag_id,game_id) VALUES (1,1);
 INSERT INTO game_tag(tag_id,game_id) VALUES (4,1);
 INSERT INTO game_tag(tag_id,game_id) VALUES (8,1);
+
+
+INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2019-03-01', 59.99, 'Pending', 'PayPal', 1, 1);
+INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2020-12-07', 59.99, 'Completed', 'PayPal', 2, 1);
+INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2021-02-07', 8.99, 'Aborted', 'PayPal', 4, 1);
+INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2019-03-10', 39.99, 'Completed', 'PayPal', 3, 1);
 
 
 -----------------------------------------

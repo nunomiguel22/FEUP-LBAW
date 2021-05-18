@@ -1,3 +1,16 @@
+let search_params = new URLSearchParams(window.location.search);
+
+function sendSearchRequest(page, category, text_search, handler) {
+    let params = { page: page };
+
+    if (category) params.category = category;
+    if (text_search) params.text_search = text_search;
+
+    let url_params = encodeForAjax(params);
+
+    sendAjaxRequest("get", "api/products/search?" + url_params, null, handler);
+}
+
 function addEventListeners() {
     let submitButtons = document.querySelectorAll('[type="submit"]');
     for (let submitButton of submitButtons) {
@@ -35,6 +48,9 @@ function sendAjaxRequest(method, url, data, handler) {
 function startLoader(element) {
     let loader = document.createElement("div");
     loader.classList.add("loader");
+    if (element.getAttribute("half-loader"))
+        element.classList.add("half-scale");
+
     loader.id = "dynamic-loader";
     element.innerHTML = "";
     element.appendChild(loader);

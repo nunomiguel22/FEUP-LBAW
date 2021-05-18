@@ -31,12 +31,13 @@
 </head>
 
 <body>
+  @include('partials.navbar')
+
   <main>
-    @include('partials.navbar')
     @yield('content')
   </main>
-</body>
 
-@include('partials.footer')
+  @include('partials.footer')
+</body>
 
 </html>
