@@ -77,11 +77,10 @@
     <form class="col-5 col-md-2" method="POST" action="/shopping/cart">
       @csrf
       @method('DELETE')
-      <button class="w-100 btn btn-danger mb-2" style="min-height:40px;" type="submit" href="/index.php" role="button">
+      <button class="w-100 btn btn-danger mb-2" style="min-height:40px;" type="submit" role="button">
         <i class="fas fa-trash"></i> Remove all
       </button>
     </form>
-
 
     <button class="col-5 col-md-2 btn btn-success mb-2" style="min-height:40px;" href="#todo" role="button">
       <i class="fas fa-shopping-cart"></i> Checkout

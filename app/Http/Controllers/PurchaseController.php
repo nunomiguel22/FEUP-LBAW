@@ -73,7 +73,7 @@ class PurchaseController extends Controller
         }
 
         Auth::user()->cart_items()->attach($id);
-        return redirect("/shopping/cart");
+        return redirect("/products/".$id);
     }
 
     public function removeProductFromCart($id)
@@ -87,12 +87,12 @@ class PurchaseController extends Controller
         }
 
         Auth::user()->cart_items()->detach($id);
-        return redirect("/shopping/cart");
+        return back();
     }
 
     public function removeAllFromCart()
     {
         Auth::user()->cart_items()->detach();
-        return redirect("/shopping/cart");
+        return back();
     }
 }

@@ -2,21 +2,19 @@
 
 @section('title', 'OGS')
 
+@section('breadcrumbs')
+<!-- Breadcrumbs -->
+<nav class="container my-4 p-0">
+    <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('products') }}">Products</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{$game->title}}</li>
+    </ol>
+</nav>
+@endsection
+
 @section('content')
-
-
-
-<div class="container">
-
-
-    <aside class="row mt-3 p-0">
-        <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Products</li>
-        </ol>
-    </aside>
-
-
+<section class="container">
     <div class="row mt-4">
         <div class="col mr-4">
             <div id="carousel" class="carousel row slide carousel-fade" data-ride="carousel">
@@ -52,18 +50,39 @@
 
             <div class="row mt-2">
                 @if(Auth::check())
-                <button type="button" class="btn btn-success mb-2 mr-2"><i class="fas fa-shopping-cart"></i> Add to
-                    cart</button>
-                <button type="button" class="btn btn-secondary mb-2 mr-2"><i class="far fa-heart"></i>Add to
-                    wishlist</button>
+                <form method="POST" class="col p-0" action="/shopping/products/{{$game->id}}/cart">
+                    @csrf
+                    @if(Auth::user()->gameInCart($game->id))
+                    @method('DELETE')
+                    <button type="submit" class="w-100 btn btn-danger" style="min-height:40px;"><i
+                            class="fas fa-shopping-cart"></i>
+                        Remove from cart</button>
+                    @else
+                    <button type="submit" class="w-100 btn btn-success" style="min-height:40px;"><i
+                            class="fas fa-shopping-cart"></i>
+                        Add to cart</button>
+                    @endif
+                </form>
+                <div class="col pr-0 mr-0">
+                    <button type="button" class="btn btn-secondary w-100" style="min-height:40px;">
+                        <i class="far fa-heart"></i>Add to wishlist
+                    </button>
+                </div>
                 @else
-                <button type="button" class="btn btn-success mb-2 mr-2" data-toggle="modal" data-target="#LoginModal">
-                    <i class="fas fa-shopping-cart"></i> Add to
-                    cart
-                </button>
-                <button type="button" class="btn btn-secondary mb-2 mr-2" data-toggle="modal" data-target="#LoginModal">
-                    <i class="far fa-heart"></i>Add to
-                    wishlist</button>
+                <div class="col p-0">
+                    <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#LoginModal"
+                        style="min-height:40px;">
+                        <i class="fas fa-shopping-cart"></i> Add to
+                        cart
+                    </button>
+                </div>
+                <div class="col pr-0 mr-0">
+                    <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#LoginModal"
+                        style="min-height:40px;">
+                        <i class="far fa-heart"></i>Add to
+                        wishlist</button>
+
+                </div>
                 @endif
             </div>
 
@@ -118,8 +137,6 @@
 
         </div>
     </div>
-
-</div>
-
+</section>
 
 @endsection

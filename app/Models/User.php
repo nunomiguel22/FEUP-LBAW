@@ -40,4 +40,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Game::class, 'cart_items');
     }
+
+    public function gameInCart($game_id)
+    {
+        return $this->cart_items->find($game_id);
+    }
 }
