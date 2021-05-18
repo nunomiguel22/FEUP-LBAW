@@ -40,4 +40,7 @@ Route::get('user/edit', 'UserController@showGeneral');
 Route::get('user/security', 'UserController@showSecurity');
 Route::get('user/keys', 'UserController@showKeys');
 Route::get('user/avatar', 'UserController@showAvatar');
+Route::get('shopping/cart', 'PurchaseController@showProductCart');
+Route::delete('shopping/products/{id}/cart', 'PurchaseController@removeProductFromCart');
+Route::delete('shopping/cart', 'PurchaseController@removeAllFromCart');
 Route::get('api/user/keys', 'PurchaseController@getKeys');

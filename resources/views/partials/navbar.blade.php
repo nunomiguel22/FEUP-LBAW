@@ -1,7 +1,13 @@
 @php
 use App\Models\Category;
+use App\Models\User;
 
 $categories = Category::all();
+$cart_item_count = 0;
+if(Auth::check()){
+$cart_item_count = Auth::user()->cart_items()->count();
+}
+
 @endphp
 
 <header>
@@ -60,9 +66,9 @@ $categories = Category::all();
                 @else
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="btn btn-secondary" href="#todo" role="button">
+                        <a class="btn btn-secondary" href="{{ url('/shopping/cart')}}" role="button">
                             <i class="fas fa-shopping-cart mr-3"></i>
-                            <span class="badge badge-light">4</span>
+                            <span class="badge badge-light" id="cart_count_nav">{{$cart_item_count}}</span>
                             </button>
                         </a>
                     </li>

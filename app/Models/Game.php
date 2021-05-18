@@ -57,4 +57,9 @@ class Game extends Model
             ->whereRaw("search @@ plainto_tsquery('english', ?)", [$search])
             ->pluck('game_id')->toArray();
     }
+
+    public function cart_items()
+    {
+        return $this->belongsToMany(User::class, 'cart_items');
+    }
 }
