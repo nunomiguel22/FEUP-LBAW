@@ -61,4 +61,8 @@ function stopLoader() {
     if (loader != null) loader.parentNode.removeChild(loader);
 }
 
+function removeItemFromCart(id, handler){
+    sendAjaxRequest("delete", "api/cart/?" + id, null, handler);
+}
+
 addEventListeners();

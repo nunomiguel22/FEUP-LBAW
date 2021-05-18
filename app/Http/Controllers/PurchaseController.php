@@ -13,15 +13,6 @@ use App\Models\Game;
 
 class PurchaseController extends Controller
 {
-    public function showKeys()
-    {
-        $this->authorize('view', Purchase::class);
-        
-        $purchases = Auth::user()->purchases;
-
-        return view('pages.user.user', ['tab_id' => 2, 'purchases' => $purchases]);
-    }
-
     public function getKeys(Request $request)
     {
         $this->authorize('view', Purchase::class);
@@ -50,5 +41,58 @@ class PurchaseController extends Controller
         }
 
         return $purchases;
+    }
+
+    public function showProductCart()
+    {
+        $this->authorize('view', Purchase::class);
+        
+        $cart_items = Auth::user()->cart_items;
+
+        $prices = array();
+
+        foreach ($cart_items as $item) {
+            array_push($prices, $item->price);
+        }
+
+        $total_price = array_sum($prices);
+
+        //dd($cart_items);
+
+        return view('pages.product_cart', ['cart_items' => $cart_items, 'total_price' => $total_price]);
+    }
+
+    public function addProductToCart($id)
+    {
+        $this->authorize('view', Purchase::class);
+
+        try {
+            Game::findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        Auth::user()->cart_items()->attach($id);
+        return redirect("/shopping/cart");
+    }
+
+    public function removeProductFromCart($id)
+    {
+        $this->authorize('view', Purchase::class);
+
+        try {
+            Auth::user()->cart_items()->findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        Auth::user()->cart_items()->detach($id);
+        return redirect("/shopping/cart");
+    }
+
+    public function removeAllFromCart()
+    {
+        Auth::user()->cart_items()->detach();
+        return redirect("/shopping/cart");
     }
 }

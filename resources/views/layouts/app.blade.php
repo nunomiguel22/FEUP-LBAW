@@ -33,6 +33,8 @@
 <body>
   @include('partials.navbar')
 
+  @yield('breadcrumbs')
+
   <main>
     @yield('content')
   </main>

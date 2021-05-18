@@ -768,6 +768,11 @@ INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VA
 INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2021-02-07', 8.99, 'Aborted', 'PayPal', 4, 1);
 INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2019-03-10', 39.99, 'Completed', 'PayPal', 3, 1);
 
+INSERT INTO cart_items(game_id, user_id) VALUES (2, 1);
+INSERT INTO cart_items(game_id, user_id) VALUES (9, 1);
+INSERT INTO cart_items(game_id, user_id) VALUES (6, 2);
+INSERT INTO cart_items(game_id, user_id) VALUES (1, 2);
+
 
 -----------------------------------------
 -- end
