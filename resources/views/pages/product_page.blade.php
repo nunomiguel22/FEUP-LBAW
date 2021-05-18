@@ -19,20 +19,38 @@
 
     <div class="row mt-4">
         <div class="col mr-4">
-            <div class="carousel row slide carousel-fade" data-ride="carousel">
+            <div id="carousel" class="carousel row slide carousel-fade" data-ride="carousel">
                 <article class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ $game->cover_image() }}" class="d-block w-100" alt="''.$game->title">
-
+                        <img src="{{ $game->cover_image() }}" class="d-block w-100" alt="game_img">
+                        @php
+                        $isFirst = true
+                        @endphp
                     </div>
                     @forelse ($game->images as $image)
+                    @php
+                    if($isFirst) {
+                    $isFirst = false;
+                    continue;
+                    }
+                    @endphp
                     <div class="carousel-item">
-                        <img src="{{ $image->getPath() }}" class="d-block w-100" alt="''.$game->title">
+                        <img src="{{ $image->getPath() }}" class="d-block w-100" alt="game_img">
                     </div>
                     @empty
                     @endforelse
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </article>
             </div>
+
+
 
             <div class="row mt-2">
                 @if(Auth::check())
