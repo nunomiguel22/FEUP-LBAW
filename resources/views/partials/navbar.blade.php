@@ -1,22 +1,23 @@
-<?php
+@php
 use App\Models\Category;
 use App\Models\User;
 
 $categories = Category::all();
 $cart_item_count = 0;
 if(Auth::check()){
-    $cart_item_count = Auth::user()->cart_items()->count();
+$cart_item_count = Auth::user()->cart_items()->count();
 }
-?>
 
-<header >
+@endphp
+
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <figure class="my-auto">
             <a class="navbar-brand" href="{{route('homepage')}}">
                 <img src="{{ Storage::url('images/logo/logo_transparent2.png') }}" width="40" height="40" alt="">
             </a>
         </figure>
-       
+
         <article>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
                 aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,11 +29,12 @@ if(Auth::check()){
             <nav>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                            aria-expanded="false">Browse Categories</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Browse Categories</a>
                         <div class="dropdown-menu mb-1">
                             @forelse($categories as $category)
-                            <a class="dropdown-item" href="{{ route('products', ['category' => $category->id ]) }}">{{$category->name}}</a>
+                            <a class="dropdown-item"
+                                href="{{ route('products', ['category' => $category->id ]) }}">{{$category->name}}</a>
                             @empty
                             @endforelse
                             <div class="dropdown-divider"></div>
@@ -41,11 +43,12 @@ if(Auth::check()){
                     </li>
                 </ul>
             </nav>
-            
+
             <form type="GET" action="/products" class="form-inline mx-lg-auto w-50">
-                <input class="form-control bg-secondary text-light" name="text_search" type="text" placeholder="Search for a title..."
-                   style="width:85%" value="{{ $_GET['text_search'] ?? null }}">
-                <button class="btn bg-transparent border-0 my-2" half-loader="true"  type="submit" style="margin-left:-40px;">
+                <input class="form-control bg-secondary text-light" name="text_search" type="text"
+                    placeholder="Search for a title..." style="width:85%" value="{{ $_GET['text_search'] ?? null }}">
+                <button class="btn bg-transparent border-0 my-2" half-loader="true" type="submit"
+                    style="margin-left:-40px;">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
@@ -63,7 +66,7 @@ if(Auth::check()){
                 @else
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="btn btn-secondary" href="{{ url('/user/cart')}}" role="button">
+                        <a class="btn btn-secondary" href="{{ url('/shopping/cart')}}" role="button">
                             <i class="fas fa-shopping-cart mr-3"></i>
                             <span class="badge badge-light" id="cart_count_nav">{{$cart_item_count}}</span>
                             </button>
@@ -105,7 +108,7 @@ if(Auth::check()){
 
 @if(Auth::guest())
 <aside>
-@include('partials.modals.login')
-@include('partials.modals.register')
+    @include('partials.modals.login')
+    @include('partials.modals.register')
 </aside>
 @endif

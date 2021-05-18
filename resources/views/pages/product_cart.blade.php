@@ -2,18 +2,22 @@
 
 @section('title', 'OGS')
 
+
+@section('breadcrumbs')
+<!-- Breadcrumbs -->
+<nav class="container my-4 p-0">
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('user') }}">User</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+  </ol>
+</nav>
+@endsection
+
+
 @section('content')
 
 <section class="container">
-  <!-- Breadcrumbs -->
-  <div class="row mx-0 my-3 p-0">
-    <ol class="breadcrumb m-0 p-0">
-      <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
-      <li class="breadcrumb-item active" aria-current="page"> Cart </li>
-    </ol>
-  </div>
-
-
 
   @forelse($cart_items as $game)
   <div class="row bg-secondary b-shadow my-1 px-2">
@@ -37,10 +41,11 @@
         <span class="col text-right">{{$game->price}}€</span>
       </div>
 
-      <form class="row" method="POST" action="/cart/{{$game->id}}">
+      <form class="row" method="POST" action="/shopping/products/{{$game->id}}/cart">
         @csrf
         @method('DELETE')
-        <a class="col text-right link-small text-light" onclick="this.closest('form').submit();return false;">Remove</a>
+        <a class="col clickable text-right link-small text-light"
+          onclick="this.closest('form').submit();return false;">Remove</a>
       </form>
     </div>
   </div>
@@ -69,7 +74,7 @@
 
   <div class="row bg-dark text-light p-2" align="right">
     <div class="col-2 col-md-8"></div>
-    <form class="col-5 col-md-2" method="POST" action="/user/cart">
+    <form class="col-5 col-md-2" method="POST" action="/shopping/cart">
       @csrf
       @method('DELETE')
       <button class="w-100 btn btn-danger mb-2" style="min-height:40px;" type="submit" href="/index.php" role="button">
@@ -86,8 +91,6 @@
 
   <span class="row text-light ml-1 my-3 small">*All prices include VAT where applicable</span>
   @endif
-
-
 </section>
 
 @endsection

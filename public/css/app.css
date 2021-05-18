@@ -147,6 +147,10 @@ input[type="number"] {
     margin-left: 10%;
 }
 
+.clickable:hover {
+    cursor: pointer;
+}
+
 /* Nav Menu */
 
 .nav-menu {

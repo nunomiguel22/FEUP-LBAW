@@ -8,19 +8,21 @@
 
 @endsection
 
+@section('breadcrumbs')
+<!-- Breadcrumbs -->
+<nav class="container my-4">
+    <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Products</li>
+    </ol>
+</nav>
+@endsection
+
 
 @section('content')
 
 <!-- Game list -->
-<div class="container p-0">
-    <!-- Breadcrumbs -->
-    <aside class="row mx-0 mt-3 p-0">
-        <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Products</li>
-        </ol>
-    </aside>
-
+<div class="container">
 
     <section class="row my-4">
 

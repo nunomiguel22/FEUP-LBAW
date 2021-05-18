@@ -17,9 +17,4 @@ class PurchasePolicy
         // Any user can create a new card
         return Auth::check();
     }
-
-    public function removeFromCart(User $user, $cart_user_id)
-    {
-        return $user->id == $cart_user_id;
-    }
 }
