@@ -19,19 +19,19 @@
     <div class="container p-3" style="background:#2e2e2e;">
         <div class="row">
             <div class="col-3 d-none  d-lg-block">
-                <img src="{{ $avatar_path }}" style="max-height:250px; max-width:250px;"
+                <img src="{{ Auth::user()->image->getPath() }}" style="max-height:250px; max-width:250px;"
                     class="align-self-start border b-shadow" alt="...">
             </div>
             <div class="col-4">
-                <h3 class="text-shadow">{{$username}}</h3>
-                <span class="text-muted">{{$first_name}}</span>
-                <span class="text-muted mr"> {{$last_name}}</span>
-                <h6 class="my-3">{{$country}}</h6>
+                <h3 class="text-shadow">{{Auth::user()->username}}</h3>
+                <span class="text-muted">{{Auth::user()->first_name}}</span>
+                <span class="text-muted mr"> {{Auth::user()->last_name}}</span>
+                <h6 class="my-3">{{Auth::user()->address->country->name}}</h6>
                 <span class="text-light">Games purchased: </span> <span class="m">{{$games_purchased}}</span>
             </div>
             <div class="col-1" style="border-right: 1px solid lightgray;"></div>
             <div class="col-4 mt-4">
-                <span>{{$description}}</span>
+                <span>{{Auth::user()->description}}</span>
             </div>
         </div>
     </div>

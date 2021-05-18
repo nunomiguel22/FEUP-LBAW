@@ -72,7 +72,7 @@ $categories = Category::all();
                         </a>
 
                         <article class="dropdown-menu dropdown-menu-right" style="width:30px">
-                            <a class="dropdown-item" href="profile">
+                            <a class="dropdown-item" href="{{route('profile')}}">
                                 <i class="fas fa-id-badge"></i>
                                 <span> Profile</span>
                             </a>

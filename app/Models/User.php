@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use \App\Models\Image;
+use \App\Models\Purchase;
+use \App\Models\Address;
+
+
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -33,6 +39,15 @@ class User extends Authenticatable
     public function purchases()
     {
         return $this->hasMany(Purchase::class);
+    }
+
+    public function image(){
+
+        return $this->belongsTo(Image::class, 'image_id');
+    }
+    public function address(){
+
+        return $this->belongsTo(Address::class, 'addresses_id');
     }
 
 }
