@@ -750,17 +750,17 @@ INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3076','true',2
 INSERT INTO game_keys("key",available,game_id) VALUES ('1218-58-2960','true',3);
 INSERT INTO game_keys("key",available,game_id) VALUES ('31845-618-36','true',4);
 
-INSERT INTO game_image(image_id,game_id) VALUES (1,2);
-INSERT INTO game_image(image_id,game_id) VALUES (2,3);
-INSERT INTO game_image(image_id,game_id) VALUES (3,1);
+INSERT INTO game_image(image_id,game_id) VALUES (2,2);
+INSERT INTO game_image(image_id,game_id) VALUES (3,3);
 INSERT INTO game_image(image_id,game_id) VALUES (4,1);
 INSERT INTO game_image(image_id,game_id) VALUES (5,1);
-INSERT INTO game_image(image_id,game_id) VALUES (6,4);
-INSERT INTO game_image(image_id,game_id) VALUES (7,5);
-INSERT INTO game_image(image_id,game_id) VALUES (8,6);
-INSERT INTO game_image(image_id,game_id) VALUES (9,7);
-INSERT INTO game_image(image_id,game_id) VALUES (10,8);
-INSERT INTO game_image(image_id,game_id) VALUES (11,9);
+INSERT INTO game_image(image_id,game_id) VALUES (6,1);
+INSERT INTO game_image(image_id,game_id) VALUES (7,4);
+INSERT INTO game_image(image_id,game_id) VALUES (8,5);
+INSERT INTO game_image(image_id,game_id) VALUES (9,6);
+INSERT INTO game_image(image_id,game_id) VALUES (10,7);
+INSERT INTO game_image(image_id,game_id) VALUES (11,8);
+INSERT INTO game_image(image_id,game_id) VALUES (12,9);
 
 INSERT INTO game_tag(tag_id,game_id) VALUES (1,1);
 INSERT INTO game_tag(tag_id,game_id) VALUES (4,1);
