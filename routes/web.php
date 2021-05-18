@@ -32,7 +32,7 @@ Route::get('products', 'GameController@showProducts')->name('products');
 Route::get('api/products/search', 'GameController@search');
 
 //Profile
-Route::get('/profile', 'ProfileController@show');
+Route::get('profile', 'ProfileController@show')->name('profile');;
 
 
 /* // Cards
