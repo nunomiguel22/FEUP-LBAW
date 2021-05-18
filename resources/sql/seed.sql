@@ -163,7 +163,7 @@ CREATE TABLE reviews(
     description TEXT NOT NULL,
     publication_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     score INTEGER CONSTRAINT score_ck CHECK (score > 0 AND score < 6),
-    reviewer_id INTEGER NOT NULL REFERENCES users (id),
+    user_id INTEGER NOT NULL REFERENCES users (id),
     game_id INTEGER NOT NULL REFERENCES games (id)
 );
 
