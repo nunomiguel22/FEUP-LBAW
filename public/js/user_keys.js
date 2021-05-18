@@ -22,6 +22,7 @@ key_filter.addEventListener('change', function(){
 getKeyList(1);
 
 function getKeyList(page, key_search, key_filter) {
+    document.getElementById('key_list').innerHTML = "";
     let params = { page: page };
     curr_page = page;
 
@@ -32,7 +33,7 @@ function getKeyList(page, key_search, key_filter) {
         params.key_search = key_search;
 
     let url_params = encodeForAjax(params);
-    startLoader(document.getElementById("list-loader"));
+    startLoader(document.getElementById("spinner_loader"));
     sendAjaxRequest("get", "/api/user/keys?" + url_params, null, displayRows);
 }
 
@@ -88,14 +89,16 @@ function displayRow(row){
                         key</button>`;
 
     template.innerHTML =     
-    `<div class="row border border-secondary">
-        <div class="col mx-0 px-0 py-4" style="flex: 0 0 3px; background-color:rgba(` + row_color +`);"></div>
+    `<div class="row border border-dark bg-secondary">
+        
         <div class="col-3 my-auto">` + row.game_key.game.title + `</div>
         <div class="col-2 my-auto">` + row.price + `€</div>
         <div class="col-2 my-auto d-none d-md-block">` + date +`</div>
         <div class="col my-auto d-none d-md-block"> <img src="` + paymethod_image + `"
                 style="max-width:60%; height:auto;"></div>
-        <div class="col-2 my-auto d-none d-md-block mr-1">` + row.status + `</div>
+        <div class="col-2 my-auto mr-1"> 
+            <i class="fas fa-circle ml-3 ml-md-0" style="color:rgba(`+ row_color +`)"></i><span class="ml-1 d-none d-md-inline">` + row.status + `</span>
+        </div>
         <div class="col my-auto" >` + key_button + `
         </div>
     </div>`;
