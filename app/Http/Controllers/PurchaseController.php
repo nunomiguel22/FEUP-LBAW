@@ -52,15 +52,16 @@ class PurchaseController extends Controller
         return $purchases;
     }
 
-    public function showProductCart(){
+    public function showProductCart()
+    {
         $this->authorize('view', Purchase::class);
         
         $cart_items = Auth::user()->cart_items;
 
         $prices = array();
 
-        foreach ($cart_items as $item){
-            array_push($prices, $item->price); 
+        foreach ($cart_items as $item) {
+            array_push($prices, $item->price);
         }
 
         $total_price = array_sum($prices);
@@ -70,14 +71,16 @@ class PurchaseController extends Controller
         return view('pages.product_cart', ['cart_items' => $cart_items, 'total_price' => $total_price]);
     }
 
-    public function removeProductFromCart($id){
+    public function removeProductFromCart($id)
+    {
         //$this->authorize('removeFromCart', Auth::user());
 
         Auth::user()->cart_items()->detach($id);
         return redirect("/user/cart");
     }
 
-    public function removeAllFromCart(){
+    public function removeAllFromCart()
+    {
         Auth::user()->cart_items()->detach();
         return redirect("/user/cart");
     }
