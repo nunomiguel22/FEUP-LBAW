@@ -95,4 +95,23 @@ class PurchaseController extends Controller
         Auth::user()->cart_items()->detach();
         return back();
     }
+
+    public function showCheckout()
+    {
+        $this->authorize('view', Purchase::class);
+        
+        $cart_items = Auth::user()->cart_items;
+
+        $prices = array();
+
+        foreach ($cart_items as $item) {
+            array_push($prices, $item->price);
+        }
+
+        $total_price = array_sum($prices);
+
+        //dd($cart_items);
+
+        return view('pages.checkout.checkout', ['cart_items' => $cart_items, 'total_price' => $total_price]);
+    }
 }

@@ -152,8 +152,9 @@ CREATE TABLE purchases(
     id SERIAL PRIMARY KEY,
     "timestamp" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     price DECIMAL NOT NULL CONSTRAINT price_ck CHECK (price > 0),
-    status PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
-    method PAYMENT_METHOD NOT NULL,
+    "status" PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
+    "method" PAYMENT_METHOD NOT NULL,
+    payment_uuid TEXT NOT NULL,
     game_key_id INTEGER NOT NULL REFERENCES game_keys (id),
     user_id INTEGER NOT NULL REFERENCES users (id)
 );
@@ -745,6 +746,7 @@ INSERT INTO game_keys("key",available,game_id) VALUES ('757A-D8466F-A453','true'
 INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3076','true',2);
 INSERT INTO game_keys("key",available,game_id) VALUES ('1218-58-2960','true',3);
 INSERT INTO game_keys("key",available,game_id) VALUES ('31845-618-36','true',4);
+INSERT INTO game_keys("key",available,game_id) VALUES ('318DA45-618EFA-3HJV6','true',1);
 
 INSERT INTO game_image(image_id,game_id) VALUES (1,2);
 INSERT INTO game_image(image_id,game_id) VALUES (2,3);
@@ -763,10 +765,10 @@ INSERT INTO game_tag(tag_id,game_id) VALUES (4,1);
 INSERT INTO game_tag(tag_id,game_id) VALUES (8,1);
 
 
-INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2019-03-01', 59.99, 'Pending', 'PayPal', 1, 1);
-INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2020-12-07', 59.99, 'Completed', 'PayPal', 2, 1);
-INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2021-02-07', 8.99, 'Aborted', 'PayPal', 4, 1);
-INSERT INTO purchases(timestamp, price, status, method, game_key_id, user_id) VALUES ('2019-03-10', 39.99, 'Completed', 'PayPal', 3, 1);
+INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2019-03-01', 59.99, 'Pending', 'PayPal', '45', 1, 1);
+INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2020-12-07', 59.99, 'Completed', 'PayPal', 'aC', 2, 1);
+INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2021-02-07', 8.99, 'Aborted', 'PayPal', 'BA', 4, 1);
+INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2019-03-10', 39.99, 'Completed', 'PayPal', 'ASDASD', 3, 1);
 
 INSERT INTO cart_items(game_id, user_id) VALUES (2, 1);
 INSERT INTO cart_items(game_id, user_id) VALUES (9, 1);

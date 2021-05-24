@@ -48,6 +48,7 @@ Route::get('user/keys', 'UserController@showKeys');
 Route::get('user/avatar', 'UserController@showAvatar');
 Route::get('user/cart', 'PurchaseController@showProductCart');
 Route::delete('user/cart', 'PurchaseController@removeAllFromCart');
+Route::get('user/cart/checkout', 'PurchaseController@showCheckout');
 
 
 //API
