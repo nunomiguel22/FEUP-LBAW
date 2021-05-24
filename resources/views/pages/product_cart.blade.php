@@ -82,9 +82,10 @@
       </button>
     </form>
 
-    <button class="col-5 col-md-2 btn btn-success mb-2" style="min-height:44px;" href="#todo" role="button">
-      <i class="fas fa-shopping-cart"></i> Checkout
-    </button>
+    <a class="col-5 col-md-2" href="{{ url('/user/cart/checkout') }}"><button class="btn btn-success mb-2 w-100"
+        style="min-height:44px;" role="button">
+        <i class="fas fa-shopping-cart"></i> Checkout
+      </button></a>
 
   </div>
 
