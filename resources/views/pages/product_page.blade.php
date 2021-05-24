@@ -50,7 +50,7 @@
 
             <div class="row mt-2">
                 @if(Auth::check())
-                <form method="POST" class="col p-0" action="/shopping/products/{{$game->id}}/cart">
+                <form method="POST" class="col p-0" action="/products/{{$game->id}}/cart">
                     @csrf
                     @if(Auth::user()->gameInCart($game->id))
                     @method('DELETE')
