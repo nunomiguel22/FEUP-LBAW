@@ -19,4 +19,9 @@ class GameKey extends Model
     {
         return $this->belongsTo(Game::class);
     }
+
+    public static function getAvailableKey($game_id)
+    {
+        return GameKey::where('game_id', $game_id)->where('available', true)->first();
+    }
 }

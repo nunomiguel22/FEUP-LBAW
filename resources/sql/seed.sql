@@ -150,7 +150,7 @@ CREATE TABLE wishlist_items(
 
 CREATE TABLE purchases(
     id SERIAL PRIMARY KEY,
-    "timestamp" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+    "timestamp" TIMESTAMP(0) WITH TIME zone DEFAULT now()::timestamp(0) NOT NULL,
     price DECIMAL NOT NULL CONSTRAINT price_ck CHECK (price > 0),
     "status" PURCHASE_STATUS NOT NULL DEFAULT 'Pending',
     "method" PAYMENT_METHOD NOT NULL,
@@ -162,7 +162,7 @@ CREATE TABLE purchases(
 CREATE TABLE reviews(
     id SERIAL PRIMARY KEY,
     description TEXT NOT NULL,
-    publication_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+    publication_date TIMESTAMP(0) WITH TIME zone DEFAULT now()::timestamp(0) NOT NULL,
     score INTEGER CONSTRAINT score_ck CHECK (score > 0 AND score < 6),
     user_id INTEGER NOT NULL REFERENCES users (id),
     game_id INTEGER NOT NULL REFERENCES games (id)
@@ -172,7 +172,7 @@ CREATE TABLE reports(
     id SERIAL PRIMARY KEY,
     description TEXT NOT NULL,
     r_type REPORT_TYPE NOT NULL DEFAULT 'Bug',
-    submission_date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+    submission_date TIMESTAMP(0) WITH TIME zone DEFAULT now()::timestamp(0) NOT NULL,
     r_status REPORT_STATUS NOT NULL DEFAULT 'Open',
     reporter_id INTEGER NOT NULL REFERENCES users (id),
     admin_id INTEGER REFERENCES users (id), --Tem que ter constraint a verificar se user é admin

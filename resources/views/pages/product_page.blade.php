@@ -54,34 +54,33 @@
                     @csrf
                     @if(Auth::user()->gameInCart($game->id))
                     @method('DELETE')
-                    <button type="submit" class="w-100 btn btn-danger" style="min-height:40px;"><i
-                            class="fas fa-shopping-cart"></i>
-                        Remove from cart</button>
+                    <button type="submit" class="w-100 btn btn-danger" style="min-height:44px;">
+                        <i class="fas fa-shopping-cart"></i>
+                        Remove from cart
+                    </button>
                     @else
-                    <button type="submit" class="w-100 btn btn-success" style="min-height:40px;"><i
-                            class="fas fa-shopping-cart"></i>
-                        Add to cart</button>
+                    <button type="submit" class="w-100 btn btn-success" style="min-height:44px;">
+                        <i class="fas fa-shopping-cart"></i>
+                        Add to cart
+                    </button>
                     @endif
                 </form>
                 <div class="col pr-0 mr-0">
-                    <button type="button" class="btn btn-secondary w-100" style="min-height:40px;">
+                    <button type="button" class="btn btn-secondary w-100" style="min-height:44px;">
                         <i class="far fa-heart"></i>Add to wishlist
                     </button>
                 </div>
                 @else
                 <div class="col p-0">
                     <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#LoginModal"
-                        style="min-height:40px;">
-                        <i class="fas fa-shopping-cart"></i> Add to
-                        cart
+                        style="min-height:44px;">
+                        <i class="fas fa-shopping-cart"></i> Add to cart
                     </button>
                 </div>
                 <div class="col pr-0 mr-0">
                     <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#LoginModal"
                         style="min-height:40px;">
-                        <i class="far fa-heart"></i>Add to
-                        wishlist</button>
-
+                        <i class="far fa-heart"></i>Add to wishlist</button>
                 </div>
                 @endif
             </div>

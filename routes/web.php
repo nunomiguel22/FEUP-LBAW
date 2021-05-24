@@ -49,6 +49,7 @@ Route::get('user/avatar', 'UserController@showAvatar');
 Route::get('user/cart', 'PurchaseController@showProductCart');
 Route::delete('user/cart', 'PurchaseController@removeAllFromCart');
 Route::get('user/cart/checkout', 'PurchaseController@showCheckout');
+Route::post('user/cart/checkout', 'PurchaseController@completeCheckout');
 
 
 //API
