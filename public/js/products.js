@@ -1,15 +1,41 @@
 var pagination_set = false;
+var customRange = document.getElementById("customRange1");
+var search_field = document.getElementById("game_search_field");
+var sort_field = document.getElementById("sort_by_field");
+var curr_page = 1;
+var timeout = null;
 
+customRange.addEventListener("input", function () {
+    var label = document.getElementById("customRangeLabel");
+    label.innerHTML = "Under " + this.value + ",--€";
+});
 
-getGameList(1);
+search_field.addEventListener("keyup", function () {
+    clearTimeout(timeout);
+    let value = this.value;
+    timeout = setTimeout(function () {
+        getGameList(curr_page, value, sort_field.value);
+    }, 500);
+});
 
-function getGameList(page) {
-    startLoader(document.getElementById("list-loader"));
+sort_field.addEventListener("change", function () {
+    getGameList(curr_page, search_field.value, this.value);
+});
 
-    let category =  search_params.get('category');
-    let text_search =  search_params.get('text_search');
+getGameList(1, null, null);
 
-    sendSearchRequest(page, category, text_search, displayGames);
+function getGameList(page, text_search, sort_by) {
+    startLoader(document.getElementById("game-list"));
+
+    let category = search_params.get('category');
+    if (text_search == null)
+        text_search = search_params.get('text_search');
+    if (sort_by == null)
+        sort_by = search_params.get('sort_by');
+
+    let max_price =  search_params.get('max_price');
+
+    sendSearchRequest(page, category, text_search, max_price, sort_by, displayGames);
 }
 
 function displayGames() {
@@ -31,6 +57,7 @@ function displayGames() {
             cssStyle: '',
             onInit: null,
             onPageClick: function (event, page) {
+                curr_page = page;
                 getGameList(page);
             }
         });
