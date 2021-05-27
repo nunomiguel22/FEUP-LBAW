@@ -29,9 +29,14 @@
         <div class="col-lg-9 col-md-12">
 
             <div class="container search-criteria mb-4 bg-dark py-2">
+                <div class="row mt-2">
+                    <div class="col-8"><span class="my-auto text-light">Search games</span></div>
+                    <div class="col-4 pl-1"><span class="my-auto text-light">Sort by</span></div>
 
-                <div class="form-row">
-                    <div class="col my-3">
+                </div>
+
+                <div class="row">
+                    <div class="col-8 my-2">
 
                         <input type="text" id="game_search_field" name="text_search"
                             class="form-control bg-secondary text-light" placeholder="Search for a title..."
@@ -39,35 +44,30 @@
 
 
                     </div>
-                    <div class="col-5 my-auto">
-                        <div class="row">
-                            <span class="col-3 my-auto">Sort by </span>
-                            <div class="col-9">
+                    <div class="col-4 my-2 pl-1">
 
-                                <select id="sort_by_field" name="sort_by" class="form-control bg-secondary text-light">
-                                    <option value="-1">Position</option>
-                                    @if(($_GET["sort_by"] ?? 1) == 0)
-                                    <option value="0" selected>Score</option>
-                                    @else
-                                    <option value="0">Score</option>
-                                    @endif
+                        <select id="sort_by_field" name="sort_by" class="form-control bg-secondary text-light">
+                            <option value="-1">Position</option>
+                            @if(($_GET["sort_by"] ?? 1) == 0)
+                            <option value="0" selected>Score</option>
+                            @else
+                            <option value="0">Score</option>
+                            @endif
 
-                                    @if(($_GET["sort_by"] ?? null) == 1)
-                                    <option value="1" selected>Date</option>
-                                    @else
-                                    <option value="1">Date</option>
-                                    @endif
+                            @if(($_GET["sort_by"] ?? null) == 1)
+                            <option value="1" selected>Date</option>
+                            @else
+                            <option value="1">Date</option>
+                            @endif
 
-                                    @if(($_GET["sort_by"] ?? null) == 2)
-                                    <option value="2" selected>Price</option>
-                                    @else
-                                    <option value="2">Price</option>
-                                    @endif
+                            @if(($_GET["sort_by"] ?? null) == 2)
+                            <option value="2" selected>Price</option>
+                            @else
+                            <option value="2">Price</option>
+                            @endif
 
-                                </select>
-                            </div>
+                        </select>
 
-                        </div>
                     </div>
                 </div>
             </div>

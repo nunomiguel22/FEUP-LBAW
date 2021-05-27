@@ -89,7 +89,7 @@
 
         <div class="col">
             <h3 class="row">{{$game->title ?? null}}</h3>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col">
 
 
@@ -102,14 +102,14 @@
                     <span class="row text-muted">{{$game->launch_date ?? null}}</span>
                 </div>
             </div>
-            <h6 class="row text-light"> About {{$game->title}}</h6>
+            <h6 class="row text-light mt-4"> About {{$game->title}}</h6>
             <div class="row">
                 <p style="font-size:100%;">
                     {{$game->description ?? null}}
                 </p>
             </div>
 
-            <div class="row">
+            <div class="row mt-4">
 
                 <div class="col-4 col-md-2">
                     <h6 class="row text-light"> Price </h6>

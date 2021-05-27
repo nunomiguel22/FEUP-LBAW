@@ -5,14 +5,16 @@
 @section('content')
 
 <section class="container">
-    <!-- Carousel -->
-    @if (!empty($carousel_games))
-    @include('partials.homepage.carousel', ['title_game' => $title_game,
-    'carousel_games' => $carousel_games])
-    @endif
 
+    <section class="container">
+        <!-- Carousel -->
+        @if (!empty($carousel_games))
+        @include('partials.homepage.carousel', ['title_game' => $title_game,
+        'carousel_games' => $carousel_games])
+        @endif
+    </section>
     <!-- Game Nav Divider -->
-    <aside class="container" style="padding-top:80px;">
+    <aside class="container mt-4">
         <div class="row">
             <div class="col">
                 <hr>
