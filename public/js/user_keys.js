@@ -64,12 +64,6 @@ function displayRows() {
 function displayRow(row) {
     let template = document.createElement("article");
 
-    let paymethod_image;
-    if (row.method == "PayPal")
-        paymethod_image = "/storage/images/others/pp.png";
-    else if (row.method == "BankTransfer")
-        paymethod_image = "/storage/images/others/bt.png";
-
     let date = row.timestamp.substr(0, row.timestamp.indexOf(" "));
 
     let row_color = "50, 200, 100";
@@ -81,39 +75,34 @@ function displayRow(row) {
 
     if (row.status == "Completed")
         key_button =
-            `<button class="btn btn-success btn-sm w-100 my-auto" data-toggle="modal" data-target="#gameKeyModal" 
-                        type="button" onClick="fillModal(` +
-            row.id +
-            `)">
-                        key</button>`;
+            `<button class="btn btn-success btn-sm w-100 my-auto mx-0 p-1 col" data-toggle="modal" data-target="#gameKeyModal" 
+                        type="button" onClick="fillModal(` + row.id + `)"> KEY
+            </button>`;
+    else key_button = `<div class="w-100 my-auto mx-0 p-1 col"></div>`
 
     template.innerHTML =
-        `<div class="row border border-dark bg-secondary">
+    `<div class="row my-2" style="min-height:30px">
         
-        <div class="col-3 my-auto">` +
-        row.game_key.game.title +
+        <div class="col-3 col-md-4 my-auto mx-0 p-1">` +
+            row.game_key.game.title +
         `</div>
-        <div class="col-2 my-auto">` +
-        row.price +
-        `€</div>
-        <div class="col-2 my-auto d-none d-md-block">` +
-        date +
-        `</div>
-        <div class="col my-auto d-none d-md-block"> <img src="` +
-        paymethod_image +
-        `"
-                style="max-width:60%; height:auto;"></div>
-        <div class="col-2 my-auto mr-1"> 
-            <i class="fas fa-circle ml-3 ml-md-0" style="color:rgba(` +
-        row_color +
-        `)"></i><span class="ml-1 d-none d-md-inline">` +
-        row.status +
-        `</span>
+        <div class="col col-md-1 my-auto mx-0 p-1">` +
+            row.price + `€
         </div>
-        <div class="col my-auto" >` +
-        key_button +
+        <div class="col my-auto mx-0 p-1">` +
+            date +
+        `</div>
+        <div class="col my-auto mx-0 p-1">` 
+            + row.method + ` 
+        </div>
+        <div class="col my-auto mx-0 p-0"> 
+            <i class="fas fa-circle ml-3 ml-md-0" style="color:rgba(` + row_color +`)"></i>
+            <span class="ml-1 d-none d-md-inline">` + row.status + `</span>
+        </div>
+        ` +
+            key_button +
         `
-        </div>
+        
     </div>`;
 
     return template;
