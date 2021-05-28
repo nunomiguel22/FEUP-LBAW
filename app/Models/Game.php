@@ -62,4 +62,9 @@ class Game extends Model
     {
         return $this->belongsToMany(User::class, 'cart_items');
     }
+
+    public function wishlist_items()
+    {
+        return $this->belongsToMany(User::class, 'wishlist_items');
+    }
 }

@@ -53,4 +53,14 @@ class UserController extends Controller
 
         return view('pages.user.user', ['tab_id' => 2, 'purchases' => $purchases]);
     }
+
+    public function showWishlist(){
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+
+        $wishlist_games = Auth::user()->wishlist_items;
+
+        return view('pages.user.user', ['tab_id' => 0, 'wishlist_games' -> $wishlist_games]);
+    }
 }

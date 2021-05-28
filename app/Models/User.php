@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->cart_items->find($game_id);
     }
+
+    public function wishlist_items()
+    {
+        return $this->belongsToMany(User::class, 'wishlist_items');
+    }
 }
