@@ -1,10 +1,12 @@
 let search_params = new URLSearchParams(window.location.search);
 
-function sendSearchRequest(page, category, text_search, handler) {
+function sendSearchRequest(page, category, text_search, max_price, sort_by, handler) {
     let params = { page: page };
 
     if (category) params.category = category;
     if (text_search) params.text_search = text_search;
+    if (max_price) params.max_price = max_price;
+    if (sort_by) params.sort_by = sort_by;
 
     let url_params = encodeForAjax(params);
 
@@ -61,7 +63,7 @@ function stopLoader() {
     if (loader != null) loader.parentNode.removeChild(loader);
 }
 
-function removeItemFromCart(id, handler){
+function removeItemFromCart(id, handler) {
     sendAjaxRequest("delete", "api/cart/?" + id, null, handler);
 }
 

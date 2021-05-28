@@ -41,7 +41,7 @@
         <span class="col text-right">{{$game->price}}€</span>
       </div>
 
-      <form class="row" method="POST" action="/shopping/products/{{$game->id}}/cart">
+      <form class="row" method="POST" action="/products/{{$game->id}}/cart">
         @csrf
         @method('DELETE')
         <a class="col clickable text-right link-small text-light"
@@ -74,17 +74,18 @@
 
   <div class="row bg-dark text-light p-2" align="right">
     <div class="col-2 col-md-8"></div>
-    <form class="col-5 col-md-2" method="POST" action="/shopping/cart">
+    <form class="col-5 col-md-2" method="POST" action="/user/cart">
       @csrf
       @method('DELETE')
-      <button class="w-100 btn btn-danger mb-2" style="min-height:40px;" type="submit" role="button">
+      <button class="w-100 btn btn-danger mb-2" style="min-height:44px;" type="submit" role="button">
         <i class="fas fa-trash"></i> Remove all
       </button>
     </form>
 
-    <button class="col-5 col-md-2 btn btn-success mb-2" style="min-height:40px;" href="#todo" role="button">
-      <i class="fas fa-shopping-cart"></i> Checkout
-    </button>
+    <a class="col-5 col-md-2" href="{{ url('/user/cart/checkout') }}"><button class="btn btn-success mb-2 w-100"
+        style="min-height:44px;" role="button">
+        <i class="fas fa-shopping-cart"></i> Checkout
+      </button></a>
 
   </div>
 

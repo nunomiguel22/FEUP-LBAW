@@ -19,12 +19,33 @@ class GameController extends Controller
     {
         $query = Game::where('listed', true);
 
-        if ($request->category && Category::find($request->category)->exists()) {
+        if ($request->category && $request->category != -1 && Category::find($request->category)->exists()) {
             $query->where('category_id', $request->category);
+        }
+
+        if ($request->max_price) {
+            $query->where('price', '<', $request->max_price);
         }
 
         if ($request->text_search) {
             $query->whereIn('id', Game::FTS($request->text_search));
+        }
+
+        if ($request->text_search) {
+            $query->whereIn('id', Game::FTS($request->text_search));
+        }
+
+        switch ($request->sort_by) {
+            case 0:
+                $query->orderByDesc('score');
+                break;
+            case 1:
+                $query->orderByDesc('launch_date');
+                break;
+            case 2:
+                $query->orderByDesc('price');
+                break;
+            default: break;
         }
 
         return $query->with('developers', 'categories', 'images')->paginate(10);
@@ -33,7 +54,8 @@ class GameController extends Controller
 
     public function showProducts()
     {
-        return view('pages.products', []);
+        $categories = Category::all();
+        return view('pages.products', ['categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -186,9 +208,6 @@ class GameController extends Controller
             abort(404);
         }
 
-        //dd($game); //para ver o que recebo
-        //$game->with('developers');
-        //dd($game);
         //calculating score to update in radial progress bar
         $score = ($game->score / 5) * 100;
         $percent = ceil($score / 5) * 5;

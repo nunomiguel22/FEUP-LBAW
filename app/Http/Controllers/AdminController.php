@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Developer;
 use App\Models\Game;
 use App\Models\Tag;
+use App\Models\Category;
 
 class AdminController extends Controller
 {
@@ -48,8 +49,9 @@ class AdminController extends Controller
         }
         $tags = Tag::all();
         $developers = Developer::all();
+        $categories = Category::all();
         return view('pages.admin.new_game', ['tab_id' => 2, 'developers' => $developers,
-                    'tags' => $tags]);
+                    'tags' => $tags, 'categories' => $categories]);
     }
 
     public function showEditGame($game_id)
@@ -64,11 +66,11 @@ class AdminController extends Controller
         } catch (ModelNotFoundException  $err) {
             abort(404);
         }
-
+        $categories = Category::all();
         $tags = Tag::all();
         $developers = Developer::all();
      
         return view('pages.admin.edit_game', ['tab_id' => 2, 'developers' => $developers,
-                    'tags' => $tags, 'game' => $game]);
+                    'tags' => $tags, 'game' => $game, 'categories' => $categories]);
     }
 }

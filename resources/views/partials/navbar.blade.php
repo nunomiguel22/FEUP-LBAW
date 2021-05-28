@@ -66,7 +66,7 @@ $cart_item_count = Auth::user()->cart_items()->count();
                 @else
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="btn btn-secondary" href="{{ url('/shopping/cart')}}" role="button">
+                        <a class="btn btn-secondary" href="{{ url('/user/cart')}}" role="button">
                             <i class="fas fa-shopping-cart mr-3"></i>
                             <span class="badge badge-light" id="cart_count_nav">{{$cart_item_count}}</span>
                             </button>
