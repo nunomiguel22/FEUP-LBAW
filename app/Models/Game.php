@@ -17,7 +17,7 @@ class Game extends Model
     public $timestamps  = false;
 
     protected $hidden = [
-        'developer_id', 'category_id', 'listed'
+        'developer_id', 'category_id'
     ];
 
     public function cover_image()

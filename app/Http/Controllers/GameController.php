@@ -17,7 +17,11 @@ class GameController extends Controller
 {
     public function search(Request $request)
     {
-        $query = Game::where('listed', true);
+        $query = Game::query();
+
+        if (!Auth::user() || !Auth::user()->is_admin) {
+            $query = Game::where('listed', true);
+        }
 
         if ($request->category && $request->category != -1 && Category::find($request->category)->exists()) {
             $query->where('category_id', $request->category);
@@ -25,10 +29,6 @@ class GameController extends Controller
 
         if ($request->max_price) {
             $query->where('price', '<', $request->max_price);
-        }
-
-        if ($request->text_search) {
-            $query->whereIn('id', Game::FTS($request->text_search));
         }
 
         if ($request->text_search) {
@@ -48,7 +48,7 @@ class GameController extends Controller
             default: break;
         }
 
-        return $query->with('developer', 'category', 'images')->paginate(8);
+        return $query->with('developer', 'category', 'images')->paginate(10);
     }
 
 

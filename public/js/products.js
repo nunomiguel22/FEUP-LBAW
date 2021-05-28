@@ -50,7 +50,6 @@ function displayGames() {
         gameListElement.appendChild(getGameTemplate(game));
     }
 
-
     new Paginator('list-links', response.last_page, curr_page,  getGameList);
 
     stopLoader();

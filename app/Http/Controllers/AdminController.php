@@ -20,7 +20,7 @@ class AdminController extends Controller
         if (!Auth::check() || !Auth::user()->is_admin) {
             throw new AuthorizationException('This page is limited to administrators only');
         }
-        return $this->showSales();
+        return $this->showProducts();
     }
 
     public function showProducts()
@@ -41,6 +41,7 @@ class AdminController extends Controller
         $developers = Developer::all();
         return view('pages.admin.admin', ['tab_id' => 0, 'developers' => $developers, 'tags' => $tags]);
     }
+
 
     public function showNewGame()
     {

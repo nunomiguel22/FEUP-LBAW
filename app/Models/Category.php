@@ -18,6 +18,6 @@ class Category extends Model
 
     public function getRecentGames($limit)
     {
-        return $this->games()->orderByDesc('launch_date')->limit($limit)->get();
+        return $this->games()->where('listed', true)->orderByDesc('launch_date')->limit($limit)->get();
     }
 }
