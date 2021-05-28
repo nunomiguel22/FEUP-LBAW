@@ -25,13 +25,17 @@ class Game extends Model
         return $this->images[0]->getPath();
     }
 
+    public static function getRecent($limit)
+    {
+        return Game::orderByDesc('launch_date')->limit($limit)->get();
+    }
 
-    public function developers()
+    public function developer()
     {
         return $this->belongsTo(Developer::class, 'developer_id');
     }
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }

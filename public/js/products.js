@@ -82,7 +82,7 @@ function getGameTemplate(game) {
             <div class="row">`
                + game.title +
            `</div>
-            <div class="row"><span class="HomeNav-devInfo">`+ game.developers.name +`</span></div>
+            <div class="row"><span class="HomeNav-devInfo">`+ game.developer.name +`</span></div>
 
         </div>
         <div class="col-2 my-auto d-none d-md-block">` + game.launch_date + `</div>
