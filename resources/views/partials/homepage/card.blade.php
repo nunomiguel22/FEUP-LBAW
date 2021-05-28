@@ -19,7 +19,7 @@
          <span class="col-4 HomeNav-price text-right mr-3">{{ $game->price }}€</span>
      </div>
      <div class="row">
-         <span class="col-7 HomeNav-devInfo">{{ $game->developers->name }}</span>
+         <span class="col-7 HomeNav-devInfo">{{ $game->developer->name }}</span>
 
      </div>
      <a href="{{ url('/products/'.$game->id) }}" class="btn btn-secondary hidden-opacity stretched-link"></a>
