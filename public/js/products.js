@@ -51,17 +51,8 @@ function displayGames() {
     }
 
     if (!pagination_set){
-        $('#list-links').twbsPagination({
-            totalPages: response.last_page,
-            visiblePages: 7,
-            cssStyle: '',
-            onInit: null,
-            onPageClick: function (event, page) {
-                curr_page = page;
-                getGameList(page);
-            }
-        });
-        pagination_set = true;
+        new Paginator('list-links', response.last_page, 1,  getGameList);
+        pagination_set = true;  
     }
     stopLoader();
 }

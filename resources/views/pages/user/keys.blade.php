@@ -1,3 +1,6 @@
+<script src="{{ asset('js/paginator.js') }}"></script>
+<script src="{{ asset('js/user_keys.js') }}" defer></script>
+
 @section('breadcrumbs')
 <!-- Breadcrumbs -->
 <nav class="container my-4">
@@ -46,7 +49,6 @@
         <div class="col my-auto mx-0 p-1 text-light">STATUS</div>
         <div class="col my-auto mx-0 p-1 text-light">KEY</div>
     </article>
-
 </aside>
 <hr>
 
@@ -61,8 +63,7 @@
 
 </aside>
 
-<script src="{{ asset('bootstrap/jquery.twbsPagination.min.js') }}" defer></script>
-<script src="{{ asset('js/user_keys.js') }}" defer></script>
+
 
 <aside class="modal fade" id="gameKeyModal">
     <div class="modal-dialog" role="document">

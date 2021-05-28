@@ -3,7 +3,7 @@
 @section('title', 'OGS')
 
 @section('scripts')
-<script src="{{ asset('bootstrap/jquery.twbsPagination.min.js') }}" defer></script>
+<script src="{{ asset('js/paginator.js') }}"></script>
 <script src="{{ asset('js/products.js') }}" defer></script>
 
 @endsection

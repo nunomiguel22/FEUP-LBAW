@@ -17,21 +17,21 @@
             <a class="nav-link" id="v-pills-0-tab-2" href="{{ url('user/wishlist') }}" role="tab"
                 aria-controls="v-pills-0" aria-selected="true">
                 <div class="row">
-                    <i class="fas fa-hand-holding-heart col-2"></i> 
+                    <i class="fas fa-hand-holding-heart col-1"></i> 
                     <span class="col"> WISHLIST</span>
                 </div>
             </a>
-            <a class="nav-link" id="v-pills-1-tab-2" href="{{ url('user/general') }}" role="tab"
+            <a class="nav-link" id="v-pills-1-tab-1" href="{{ url('user/general') }}" role="tab"
                 aria-controls="v-pills-1" aria-selected="false">
                 <div class="row">
-                    <i class="fas fa-user col-2"></i> 
+                    <i class="fas fa-user col-1"></i> 
                     <span class="col">GENERAL</span>
                 </div>
             </a>
             <a class="nav-link" id="v-pills-3-tab-2"  href="{{ url('user/security') }}" role="tab"
                 aria-controls="v-pills-3" aria-selected="false">
                 <div class="row">
-                    <i class="fas fa-key col-2"></i>     
+                    <i class="fas fa-key col-1"></i>     
                     <span class="col">PASSWORD & SECURITY</span>
                 </div>
             </a>

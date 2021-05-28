@@ -79,31 +79,31 @@ $cart_item_count = Auth::user()->cart_items()->count();
                             <i class="fas fa-user-cog"></i> {{Auth::user()->username}}
                         </a>
 
-                        <article class="dropdown-menu dropdown-menu-right" style="width:30px">
+                        <article class="dropdown-menu dropdown-menu-right" style="width:40px">
                             <a class="dropdown-item" href="#todo">
                                 <div class="row text-light">
                                     <i class="fas fa-id-badge col-2"></i>
-                                    <span class="col">Profile</span>
+                                    <span class="col-9">Profile</span>
                                 </div>
                             </a>
                             <a class="dropdown-item" href="{{ route('user') }}">
                                 <div class="row text-light">
                                     <i class="fas fa-user-edit col-2"></i></i>
-                                    <span class="col"> Account</span>
+                                    <span class="col-9">Account</span>
                                 </div>
                             </a>
                             @if(Auth::user()->is_admin)
                             <a class="dropdown-item" href="{{route('admin')}}">
                                 <div class="row text-light">
                                     <i class="fas fa-hammer col-2"></i>
-                                    <span class="col "> Admin Panel</span>
+                                    <span class="col-9">Admin Panel</span>
                                 </div>
                             </a>
                             @endif
                             <a class="dropdown-item" href="{{route('logout')}}">
                                 <div class="row text-light">
                                     <i class="fas fa-sign-out-alt col-2"></i>
-                                    <span class="col"> Logout</span>
+                                    <span class="col-9">Logout</span>
                                 </div>
                             </a>
                         </article>

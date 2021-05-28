@@ -48,7 +48,7 @@ class GameController extends Controller
             default: break;
         }
 
-        return $query->with('developer', 'category', 'images')->paginate(10);
+        return $query->with('developer', 'category', 'images')->paginate(1);
     }
 
 

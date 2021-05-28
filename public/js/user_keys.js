@@ -45,17 +45,10 @@ function displayRows() {
     for (const key of keyList) {
         keyListElement.appendChild(displayRow(key));
     }
+    
 
     if (!pagination_set) {
-        $("#list-links").twbsPagination({
-            totalPages: key_data.last_page,
-            visiblePages: 7,
-            cssStyle: "",
-            onInit: null,
-            onPageClick: function (event, page) {
-                getKeyList(page);
-            },
-        });
+        new Paginator('list-links', key_data.last_page, 1,  getKeyList);
         pagination_set = true;
     }
     stopLoader();
