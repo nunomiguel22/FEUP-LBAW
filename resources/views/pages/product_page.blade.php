@@ -67,7 +67,7 @@
                 </form>
                 <div class="col pr-0 mr-0">
                     <button type="button" class="btn btn-secondary w-100" style="min-height:44px;">
-                        <i class="far fa-heart"></i>Add to wishlist
+                        <i class="far fa-heart"></i> Add to wishlist
                     </button>
                 </div>
                 @else
@@ -80,7 +80,7 @@
                 <div class="col pr-0 mr-0">
                     <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#LoginModal"
                         style="min-height:40px;">
-                        <i class="far fa-heart"></i>Add to wishlist</button>
+                        <i class="far fa-heart"></i> Add to wishlist</button>
                 </div>
                 @endif
             </div>
@@ -94,7 +94,7 @@
 
 
                     <h6 class="row text-light"> Developer </h6>
-                    <p class="row text-muted">{{$game->developers->name ?? null}}</p>
+                    <p class="row text-muted">{{$game->developer->name ?? null}}</p>
                 </div>
                 <div class="col">
 
