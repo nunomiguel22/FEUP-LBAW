@@ -1,4 +1,3 @@
-var pagination_set = false;
 var curr_page = 1;
 
 var search_field = document.getElementById("key_search_field");
@@ -46,11 +45,8 @@ function displayRows() {
         keyListElement.appendChild(displayRow(key));
     }
     
+    new Paginator('list-links', key_data.last_page, curr_page,  getKeyList);
 
-    if (!pagination_set) {
-        new Paginator('list-links', key_data.last_page, 1,  getKeyList);
-        pagination_set = true;
-    }
     stopLoader();
 }
 

@@ -1,4 +1,3 @@
-var pagination_set = false;
 var customRange = document.getElementById("customRange1");
 var search_field = document.getElementById("game_search_field");
 var sort_field = document.getElementById("sort_by_field");
@@ -25,6 +24,7 @@ sort_field.addEventListener("change", function () {
 getGameList(1, null, null);
 
 function getGameList(page, text_search, sort_by) {
+    curr_page = page;
     startLoader(document.getElementById("game-list"));
 
     let category = search_params.get('category');
@@ -50,10 +50,9 @@ function displayGames() {
         gameListElement.appendChild(getGameTemplate(game));
     }
 
-    if (!pagination_set){
-        new Paginator('list-links', response.last_page, 1,  getGameList);
-        pagination_set = true;  
-    }
+
+    new Paginator('list-links', response.last_page, curr_page,  getGameList);
+
     stopLoader();
 }
 
