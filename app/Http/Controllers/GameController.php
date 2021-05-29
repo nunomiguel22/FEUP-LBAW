@@ -73,37 +73,44 @@ class GameController extends Controller
                 ->withInput();
         }
 
-        $game = new Game();
+        DB::beginTransaction();
+        try {
+            $game = new Game();
 
-        $game->title = $request->title;
-        $game->launch_date = $request->launch_date;
+            $game->title = $request->title;
+            $game->launch_date = $request->launch_date;
         
-        if ($request->developer == -1) {
-            $developer = new Developer();
-            $developer->name = $request->dev_name;
-            $developer->save();
-            $game->developer_id = $developer->id;
-        } else {
-            $game->developer_id = $request->developer;
-        }
+            if ($request->developer == -1) {
+                $developer = new Developer();
+                $developer->name = $request->dev_name;
+                $developer->save();
+                $game->developer_id = $developer->id;
+            } else {
+                $game->developer_id = $request->developer;
+            }
 
-        $game->category_id = $request->category;
-        $game->price = $request->price;
-        $game->listed = $request->listed;
-        $game->description = $request->description;
-        $game->save();
+            $game->category_id = $request->category;
+            $game->price = $request->price;
+            $game->listed = $request->listed;
+            $game->description = $request->description;
+            $game->save();
         
-        // Images
-        foreach ($request->file('images') as $image) {
-            $path = Image::saveOnDisk($image);
-            $game->images()->save(new Image(['path' => $path]));
-        }
+            // Images
+            foreach ($request->file('images') as $image) {
+                $path = Image::saveOnDisk($image);
+                $game->images()->save(new Image(['path' => $path]));
+            }
 
-        $tags = $request->tags ? $request->tags : array();
-        // Tags
-        foreach ($tags as $tag) {
-            $tag = Tag::find($tag);
-            $game->tags()->attach($tag);
+            $tags = $request->tags ? $request->tags : array();
+            // Tags
+            foreach ($tags as $tag) {
+                $tag = Tag::find($tag);
+                $game->tags()->attach($tag);
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->withErrors($e->getMessage());
         }
 
         return redirect('/');
@@ -113,7 +120,12 @@ class GameController extends Controller
     {
         $this->authorize('modify', Game::class);
 
-        $game = Game::find($id);
+        $game = null;
+        try {
+            $game = Game::findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
 
         $validator = $this->validator($request->all());
 
@@ -123,56 +135,61 @@ class GameController extends Controller
                 ->withInput();
         }
 
-
-        $game->title = $request->title;
-        $game->launch_date = $request->launch_date;
-        if ($request->developer == -1) {
-            $developer = new Developer();
-            $developer->name = $request->dev_name;
-            $developer->save();
-            $game->developer_id = $developer->id;
-        } else {
-            $game->developer_id = $request->developer;
-        }
-        $game->category_id = $request->category;
-        $game->price = $request->price;
-        $game->listed = $request->listed;
-        $game->description = $request->description;
-        $game->save();
+        DB::beginTransaction();
+        try {
+            $game->title = $request->title;
+            $game->launch_date = $request->launch_date;
+            if ($request->developer == -1) {
+                $developer = new Developer();
+                $developer->name = $request->dev_name;
+                $developer->save();
+                $game->developer_id = $developer->id;
+            } else {
+                $game->developer_id = $request->developer;
+            }
+            $game->category_id = $request->category;
+            $game->price = $request->price;
+            $game->listed = $request->listed;
+            $game->description = $request->description;
+            $game->save();
 
         
-        $rem_images = $request->images_del ? $request->images_del : array();
-        foreach ($rem_images as $image_id) {
-            $image = Image::find($image_id);
-            $game->images()->detach($image_id);
-            $image->deleteFromDisk();
-            $image->delete();
-        }
-
-        if ($request->file('images')) {
-            foreach ($request->file('images') as $image) {
-                $path = Image::saveOnDisk($image);
-                $game->images()->save(new Image(['path' => $path]));
+            $rem_images = $request->images_del ? $request->images_del : array();
+            foreach ($rem_images as $image_id) {
+                $image = Image::find($image_id);
+                $game->images()->detach($image_id);
+                $image->deleteFromDisk();
+                $image->delete();
             }
-        }
 
-        $request_tags = $request->tags ? $request->tags : array();
-        $curr_tags = $game->tags;
-
-        foreach ($request_tags as $tag) {
-            if (!$game->tags()->find($tag)) {
-                $tag = Tag::find($tag);
-                $game->tags()->attach($tag);
+            if ($request->file('images')) {
+                foreach ($request->file('images') as $image) {
+                    $path = Image::saveOnDisk($image);
+                    $game->images()->save(new Image(['path' => $path]));
+                }
             }
-        }
 
-        foreach ($curr_tags as $tag) {
-            if (!in_array($tag->id, $request_tags)) {
-                $tag = Tag::find($tag->id);
-                $game->tags()->detach($tag->id);
+            $request_tags = $request->tags ? $request->tags : array();
+            $curr_tags = $game->tags;
+
+            foreach ($request_tags as $tag) {
+                if (!$game->tags()->find($tag)) {
+                    $tag = Tag::find($tag);
+                    $game->tags()->attach($tag);
+                }
             }
-        }
 
+            foreach ($curr_tags as $tag) {
+                if (!in_array($tag->id, $request_tags)) {
+                    $tag = Tag::find($tag->id);
+                    $game->tags()->detach($tag->id);
+                }
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->withErrors($e->getMessage());
+        }
 
         return redirect('admin/products/'.$id.'/edit');
     }
