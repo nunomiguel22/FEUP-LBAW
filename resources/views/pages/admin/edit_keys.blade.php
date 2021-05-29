@@ -12,8 +12,9 @@
         <ol class="breadcrumb m-0 p-0">
             <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
             <li class="breadcrumb-item"> <a href="{{ route('admin') }}"> Admin Panel </a></li>
-            <li class="breadcrumb-item"> <a href="{{ url('admin/products') }}"> Products </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Edit Product {{$game->id}} </li>
+            <li class="breadcrumb-item"> <a href="{{ url('/admin/products') }}"> Products </a></li>
+            <li class="breadcrumb-item"> <a href="{{ url('/products/'.$game->id) }}"> {{ $game->title }} </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Update keys </li>
         </ol>
     </div>
 

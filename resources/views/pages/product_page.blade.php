@@ -184,9 +184,14 @@
 
         <div class="col border-right ml-2">
             <span class="row text-light">Actions</span>
-            <a href="{{ url('/admin/products/'.$game->id.'/edit') }}" class="row mt-2">
-                <i class="fas fa-pencil-alt"></i>
-            </a>
+            <div class="row mt-2">
+                <a href="{{ url('/admin/products/'.$game->id.'/edit') }}" class="mr-2">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a href="{{ url('/admin/products/'.$game->id.'/keys') }}">
+                    <i class="fas fa-key"></i>
+                </a>
+            </div>
         </div>
     </div>
     @endif

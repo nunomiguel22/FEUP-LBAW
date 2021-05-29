@@ -37,11 +37,10 @@
 
 <aside class="container mt-3">
     <article class="row">
-        <div class="col text-light">#ID</div>
-        <div class="col-6 text-light">TITLE</div>
-        <div class="col text-light">LISTED</div>
-        <div class="col text-light">EDIT</div>
-
+        <div class="col-2 text-light px-0">#ID</div>
+        <div class="col-6 text-light px-0">TITLE</div>
+        <div class="col text-light px-0">LISTED</div>
+        <div class="col text-light px-0">ACTION</div>
     </article>
 </aside>
 <hr>
