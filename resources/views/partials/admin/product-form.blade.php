@@ -20,6 +20,7 @@
         <div class="col-6">
             <label for="developer" class="control-label text-light">Developer</label>
             <select name="developer" class="form-control text-field bg-secondary text-light" required>
+                <option value="-1">NEW DEVELOPER NAME</option>
                 @forelse($developers as $developer)
                 @if($developer->id === ($game->developer_id ?? null))
                 <option selected="selected" value="{{$developer->id}}">{{$developer->name}}</option>
@@ -29,19 +30,9 @@
                 @empty
                 @endforelse
             </select>
+            <input name="dev_name" type="text" class="form-control bg-secondary text-light"
+                placeholder="Add New Developer Name">
 
-            <div class="row">
-                <div class="col-9 pr-0">
-                    <input type="text" class="form-control bg-secondary text-light"
-                        placeholder="Add New Developer Name">
-                </div>
-                <div class="col-3 pl-0">
-                    <button type="button" id="dev_adder" class="btn btn-sm btn-success my-auto"
-                        style="width:100%; height:95%;">
-                        +
-                    </button>
-                </div>
-            </div>
         </div>
 
         <div class="col-6">
@@ -49,7 +40,7 @@
             <select name="category" class="form-control text-field bg-secondary text-light" required>
                 @forelse($categories as $category)
                 @if($category->id == ($game->category_id ?? null))
-                <option selected="selected" value="{{$category->id}}">{{$category->name}}</option>
+                <option selected="true" value="{{$category->id}}">{{$category->name}}</option>
                 @else
                 <option value="{{$category->id}}">{{$category->name}}</option>
                 @endif
@@ -82,7 +73,6 @@
             </select>
         </div>
     </div>
-
 
     <div class="row my-4">
         <div class="col">

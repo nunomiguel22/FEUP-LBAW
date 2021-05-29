@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use App\Models\Game;
+use App\Models\Developer;
 use App\Models\GameKey;
 use App\Models\Image;
 use App\Models\Tag;
@@ -75,7 +77,16 @@ class GameController extends Controller
 
         $game->title = $request->title;
         $game->launch_date = $request->launch_date;
-        $game->developer_id = $request->developer;
+        
+        if ($request->developer == -1) {
+            $developer = new Developer();
+            $developer->name = $request->dev_name;
+            $developer->save();
+            $game->developer_id = $developer->id;
+        } else {
+            $game->developer_id = $request->developer;
+        }
+
         $game->category_id = $request->category;
         $game->price = $request->price;
         $game->listed = $request->listed;
@@ -98,66 +109,6 @@ class GameController extends Controller
         return redirect('/');
     }
 
-    public function updateKeys(Request $request, $id)
-    {
-        $this->authorize('modify', Game::class);
-
-        $validator = Validator::make($request->all(), [
-            'del_keys.*' => 'int',
-            'f_keys' => 'file|mimetypes:text/plain|max:2048',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('admin/products/'.$id.'/keys')
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $game = null;
-        try {
-            $game = Game::findOrFail($id);
-        } catch (ModelNotFoundException  $err) {
-            abort(404);
-        }
-
-        $del_keys = empty($request->del_keys) ? array() : $request->del_keys;
-
-        foreach ($del_keys as $key_id) {
-            $key = null;
-            try {
-                $key = GameKey::findOrFail($key_id);
-            } catch (ModelNotFoundException  $err) {
-                continue;
-            }
-            $key->delete();
-        }
-
-        $m_keys = empty($request->m_keys) ? array() : explode("\r\n", $request->m_keys);
-   
-        foreach ($m_keys as $key_code) {
-            $key = new GameKey();
-            $key->key = $key_code;
-            $key->available = true;
-            $key->game_id = $id;
-            $key->save();
-        }
-
-        if (!is_null($request->f_keys)) {
-            $request_f_keys = $request->f_keys->getContent();
-            $f_keys = empty($request_f_keys) ? array() : explode("\r\n", $request_f_keys);
-   
-            foreach ($f_keys as $key_code) {
-                $key = new GameKey();
-                $key->key = $key_code;
-                $key->available = true;
-                $key->game_id = $id;
-                $key->save();
-            }
-        }
-
-        return back();
-    }
-
     public function update(Request $request, $id)
     {
         $this->authorize('modify', Game::class);
@@ -175,7 +126,14 @@ class GameController extends Controller
 
         $game->title = $request->title;
         $game->launch_date = $request->launch_date;
-        $game->developer_id = $request->developer;
+        if ($request->developer == -1) {
+            $developer = new Developer();
+            $developer->name = $request->dev_name;
+            $developer->save();
+            $game->developer_id = $developer->id;
+        } else {
+            $game->developer_id = $request->developer;
+        }
         $game->category_id = $request->category;
         $game->price = $request->price;
         $game->listed = $request->listed;
@@ -244,10 +202,71 @@ class GameController extends Controller
         return redirect('admin/products');
     }
 
+    public function updateKeys(Request $request, $id)
+    {
+        $this->authorize('modify', Game::class);
+
+        $validator = Validator::make($request->all(), [
+            'del_keys.*' => 'int',
+            'f_keys' => 'file|mimetypes:text/plain|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('admin/products/'.$id.'/keys')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $game = null;
+        try {
+            $game = Game::findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        $del_keys = empty($request->del_keys) ? array() : $request->del_keys;
+
+        foreach ($del_keys as $key_id) {
+            $key = null;
+            try {
+                $key = GameKey::findOrFail($key_id);
+            } catch (ModelNotFoundException  $err) {
+                continue;
+            }
+            $key->delete();
+        }
+
+        $m_keys = empty($request->m_keys) ? array() : explode("\r\n", $request->m_keys);
+   
+        foreach ($m_keys as $key_code) {
+            $key = new GameKey();
+            $key->key = $key_code;
+            $key->available = true;
+            $key->game_id = $id;
+            $key->save();
+        }
+
+        if (!is_null($request->f_keys)) {
+            $request_f_keys = $request->f_keys->getContent();
+            $f_keys = empty($request_f_keys) ? array() : explode("\r\n", $request_f_keys);
+   
+            foreach ($f_keys as $key_code) {
+                $key = new GameKey();
+                $key->key = $key_code;
+                $key->available = true;
+                $key->game_id = $id;
+                $key->save();
+            }
+        }
+
+        return back();
+    }
+
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'title' => 'required|string|max:30|min:1',
+            'title' => 'required|string|max:60|min:1',
             'launch_date' => 'required|date',
             'developer' => 'required|integer',
             'category' => 'required|integer',
