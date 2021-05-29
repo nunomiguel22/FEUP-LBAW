@@ -95,12 +95,15 @@
 
         <div class="col">
             <h3 class="row">{{$game->title ?? null}}</h3>
+            @if($keys_available === 0)
+            <span class="row text-danger">Currently unavailable for purchase</span>
+            @endif
+
             <div class="row mt-4">
                 <div class="col">
-
-
                     <h6 class="row text-light"> Developer </h6>
                     <p class="row text-muted">{{$game->developer->name ?? null}}</p>
+
                 </div>
                 <div class="col">
 
