@@ -33,12 +33,12 @@ $cart_item_count = Auth::user()->cart_items()->count();
                             aria-haspopup="true" aria-expanded="false">Browse Categories</a>
                         <div class="dropdown-menu mb-1">
                             @forelse($categories as $category)
-                            <a class="dropdown-item"
+                            <a class="dropdown-item text-light"
                                 href="{{ route('products', ['category' => $category->id ]) }}">{{$category->name}}</a>
                             @empty
                             @endforelse
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('products') }}">Browse All</a>
+                            <a class="dropdown-item text-light" href="{{ route('products') }}">Browse All</a>
                         </div>
                     </li>
                 </ul>
@@ -79,23 +79,32 @@ $cart_item_count = Auth::user()->cart_items()->count();
                             <i class="fas fa-user-cog"></i> {{Auth::user()->username}}
                         </a>
 
-                        <article class="dropdown-menu dropdown-menu-right" style="width:30px">
+                        <article class="dropdown-menu dropdown-menu-right" style="width:40px">
                             <a class="dropdown-item" href="#todo">
-                                <i class="fas fa-id-badge"></i>
-                                <span> Profile</span>
+                                <div class="row text-light">
+                                    <i class="fas fa-id-badge col-2"></i>
+                                    <span class="col-9">Profile</span>
+                                </div>
                             </a>
                             <a class="dropdown-item" href="{{ route('user') }}">
-                                <i class="fas fa-user-edit"></i></i>
-                                <span> Account</span>
+                                <div class="row text-light">
+                                    <i class="fas fa-user-edit col-2"></i></i>
+                                    <span class="col-9">Account</span>
+                                </div>
                             </a>
                             @if(Auth::user()->is_admin)
-                            <a class="dropdown-item" href="{{route('admin')}}"><i class="fas fa-hammer"></i>
-                                <span> Admin Panel</span>
+                            <a class="dropdown-item" href="{{route('admin')}}">
+                                <div class="row text-light">
+                                    <i class="fas fa-hammer col-2"></i>
+                                    <span class="col-9">Admin Panel</span>
+                                </div>
                             </a>
                             @endif
                             <a class="dropdown-item" href="{{route('logout')}}">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span> Logout</span>
+                                <div class="row text-light">
+                                    <i class="fas fa-sign-out-alt col-2"></i>
+                                    <span class="col-9">Logout</span>
+                                </div>
                             </a>
                         </article>
                     </li>

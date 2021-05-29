@@ -26,8 +26,24 @@ class HomepageController extends Controller
 
 
 
-        return view('pages.homepage', ['games' => $games, 'title_game' => $title_game,
-                                        'carousel_games' => $carousel_games, 'first_category' => $first_category,
-                                        'categories' => $categories]);
+        return view('pages.homepage', $this->homepageGames());
+    }
+
+    public function homepageGames()
+    {
+        $categories = Category::all();
+        $games = array();
+
+        foreach ($categories as $category) {
+            $games[$category->id] = $category->getRecentGames(9);
+        }
+
+        $carousel_games = Game::getRecent(3);
+        $title_game = $carousel_games->shift();
+        $first_category = $categories->shift();
+
+        return ['games' => $games, 'title_game' => $title_game,
+        'carousel_games' => $carousel_games, 'first_category' => $first_category,
+        'categories' => $categories];
     }
 }
