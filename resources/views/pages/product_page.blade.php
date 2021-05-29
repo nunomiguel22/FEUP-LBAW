@@ -58,12 +58,19 @@
                         <i class="fas fa-shopping-cart"></i>
                         Remove from cart
                     </button>
+                    @elseif($keys_available === 0)
+                    <button type="submit" class="w-100 btn btn-success" style="min-height:44px;"
+                        title="Currently out of stock" disabled>
+                        <i class="fas fa-shopping-cart"></i>
+                        Add to cart
+                    </button>
                     @else
                     <button type="submit" class="w-100 btn btn-success" style="min-height:44px;">
                         <i class="fas fa-shopping-cart"></i>
                         Add to cart
                     </button>
                     @endif
+
                 </form>
                 <div class="col pr-0 mr-0">
                     <button type="button" class="btn btn-secondary w-100" style="min-height:44px;">
@@ -84,7 +91,6 @@
                 </div>
                 @endif
             </div>
-
         </div>
 
         <div class="col">
@@ -99,7 +105,7 @@
                 <div class="col">
 
                     <h6 class="row text-light"> Released on </h6>
-                    <span class="row text-muted">{{$game->launch_date ?? null}}</span>
+                    <span class="row text-muted">{{$game->formattedLaunchDate('d-m-Y') ?? null}}</span>
                 </div>
             </div>
             <h6 class="row text-light mt-4"> About {{$game->title}}</h6>
@@ -136,6 +142,56 @@
 
         </div>
     </div>
+
+    @if(Auth::check() && Auth::user()->is_admin)
+
+    <div class="row mt-5">
+        <hr class="col px-0">
+        <span> <i class="fas fa-hammer"></i> Administrator Section </span>
+        <hr class="col px-0">
+    </div>
+
+
+    <div class="row my-3">
+        <div class="col border-right">
+            <span class="row text-light">Sales</span>
+            <span class="row mt-2 text-muted">
+                {{ $purchases->count() }}
+            </span>
+        </div>
+        <div class="col border-right ml-2">
+            <span class="row text-light">Total Revenue</span>
+            <span class="row mt-2 text-muted">
+                {{ $purchases->sum('price') }}€
+            </span>
+        </div>
+        <div class="col border-right ml-2">
+            <span class="row text-light">Last Purchase</span>
+            <span class="row mt-2 text-muted">
+                @if($purchases->count() > 0)
+                {{ $purchases->first()->formattedTimestamp('d-m-Y H:i:s') }}
+                @else
+                None yet...
+                @endif
+            </span>
+        </div>
+        <div class="col border-right ml-2">
+            <span class="row text-light">Keys Available</span>
+            <span class="row mt-2 text-muted">
+                {{ $keys_available }}
+            </span>
+        </div>
+
+        <div class="col border-right ml-2">
+            <span class="row text-light">Actions</span>
+            <a href="{{ url('/admin/products/'.$game->id.'/edit') }}" class="row mt-2">
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+        </div>
+    </div>
+    @endif
+
+
 </section>
 
 @endsection

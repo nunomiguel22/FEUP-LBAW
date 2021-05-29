@@ -14,7 +14,6 @@ class GamePolicy
 
     public function modify(User $user)
     {
-        // Any user can create a new card
-        return $user->is_admin;
+        return Auth::check() && $user->is_admin;
     }
 }

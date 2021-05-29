@@ -10,6 +10,7 @@ use \App\Models\Category;
 use \App\Models\Image;
 use \App\Models\Tag;
 use \App\Models\GameKey;
+use \App\Models\Purchase;
 
 class Game extends Model
 {
@@ -23,6 +24,11 @@ class Game extends Model
     public function cover_image()
     {
         return $this->images[0]->getPath();
+    }
+
+    public function formattedLaunchDate($format)
+    {
+        return date($format, strtotime($this->launch_date));
     }
 
     public static function getRecent($limit)
@@ -48,6 +54,11 @@ class Game extends Model
     public function images()
     {
         return $this->belongsToMany(Image::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasManyThrough(Purchase::class, GameKey::class);
     }
 
     public function game_keys()

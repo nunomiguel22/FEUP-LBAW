@@ -33,12 +33,12 @@ $cart_item_count = Auth::user()->cart_items()->count();
                             aria-haspopup="true" aria-expanded="false">Browse Categories</a>
                         <div class="dropdown-menu mb-1">
                             @forelse($categories as $category)
-                            <a class="dropdown-item"
+                            <a class="dropdown-item text-light"
                                 href="{{ route('products', ['category' => $category->id ]) }}">{{$category->name}}</a>
                             @empty
                             @endforelse
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('products') }}">Browse All</a>
+                            <a class="dropdown-item text-light" href="{{ route('products') }}">Browse All</a>
                         </div>
                     </li>
                 </ul>

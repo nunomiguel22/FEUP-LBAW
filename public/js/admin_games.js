@@ -51,7 +51,7 @@ function getGameTemplate(game) {
     template.innerHTML = 
             `
             <div class="col">` + game.id  +`</div>
-            <div class="col-6">` + game.title  +`</div>
+            <a class="col-6" href="/products/`+ game.id +`">` + game.title  +`</a>
             <div class="col">` + listed  +`</div>
             <a class="col" href="/admin/products/`+ game.id +`/edit"> 
                 <i class="fas fa-pencil-alt"></i> 

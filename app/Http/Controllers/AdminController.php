@@ -10,6 +10,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use App\Models\User;
 use App\Models\Developer;
 use App\Models\Game;
+use App\Models\GameKey;
 use App\Models\Tag;
 use App\Models\Category;
 
@@ -51,7 +52,7 @@ class AdminController extends Controller
         $tags = Tag::all();
         $developers = Developer::all();
         $categories = Category::all();
-        return view('pages.admin.new_game', ['tab_id' => 2, 'developers' => $developers,
+        return view('pages.admin.new_game', ['developers' => $developers,
                     'tags' => $tags, 'categories' => $categories]);
     }
 
@@ -71,7 +72,27 @@ class AdminController extends Controller
         $tags = Tag::all();
         $developers = Developer::all();
      
-        return view('pages.admin.edit_game', ['tab_id' => 2, 'developers' => $developers,
+        return view('pages.admin.edit_game', ['developers' => $developers,
                     'tags' => $tags, 'game' => $game, 'categories' => $categories]);
+    }
+
+    public function showEditKeys($game_id)
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+
+        $game = null;
+        try {
+            $game = Game::findOrFail($game_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        $used_keys = $game->game_keys->where('available', false);
+        $available_keys = $game->game_keys->where('available', true);
+     
+        return view('pages.admin.edit_keys', ['game' => $game, 'used_keys' => $used_keys,
+                                               'available_keys' => $available_keys]);
     }
 }

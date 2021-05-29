@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\Game;
+use App\Models\GameKey;
 use App\Models\Image;
 use App\Models\Tag;
 use App\Models\Category;
@@ -95,6 +96,66 @@ class GameController extends Controller
         }
 
         return redirect('/');
+    }
+
+    public function updateKeys(Request $request, $id)
+    {
+        $this->authorize('modify', Game::class);
+
+        $validator = Validator::make($request->all(), [
+            'del_keys.*' => 'int',
+            'f_keys' => 'file|mimetypes:text/plain|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('admin/products/'.$id.'/keys')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $game = null;
+        try {
+            $game = Game::findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        $del_keys = empty($request->del_keys) ? array() : $request->del_keys;
+
+        foreach ($del_keys as $key_id) {
+            $key = null;
+            try {
+                $key = GameKey::findOrFail($key_id);
+            } catch (ModelNotFoundException  $err) {
+                continue;
+            }
+            $key->delete();
+        }
+
+        $m_keys = empty($request->m_keys) ? array() : explode("\r\n", $request->m_keys);
+   
+        foreach ($m_keys as $key_code) {
+            $key = new GameKey();
+            $key->key = $key_code;
+            $key->available = true;
+            $key->game_id = $id;
+            $key->save();
+        }
+
+        if (!is_null($request->f_keys)) {
+            $request_f_keys = $request->f_keys->getContent();
+            $f_keys = empty($request_f_keys) ? array() : explode("\r\n", $request_f_keys);
+   
+            foreach ($f_keys as $key_code) {
+                $key = new GameKey();
+                $key->key = $key_code;
+                $key->available = true;
+                $key->game_id = $id;
+                $key->save();
+            }
+        }
+
+        return back();
     }
 
     public function update(Request $request, $id)
@@ -208,11 +269,17 @@ class GameController extends Controller
             abort(404);
         }
 
-        //calculating score to update in radial progress bar
+        
         $score = ($game->score / 5) * 100;
         $percent = ceil($score / 5) * 5;
+        $purchases = null;
+        $keys_available = $game->game_keys->where('available', 'true')->count();
 
+        if (Auth::check() && Auth::user()->is_admin) {
+            $purchases = $game->purchases()->where('status', 'Completed')->orderByDesc('timestamp');
+        }
 
-        return view('pages.product_page', ['game' => $game, 'percent' => $percent]);
+        return view('pages.product_page', ['game' => $game, 'percent' => $percent,
+                                            'purchases' => $purchases, 'keys_available' => $keys_available]);
     }
 }
