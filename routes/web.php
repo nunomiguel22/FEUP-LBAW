@@ -47,6 +47,7 @@ Route::get('user', 'UserController@showDefault')->name('user');
 Route::get('user/edit', 'UserController@showGeneral');
 Route::get('user/security', 'UserController@showSecurity');
 Route::get('user/keys', 'UserController@showKeys');
+Route::get('user/wishlist', 'UserController@showWishlist');
 Route::get('user/avatar', 'UserController@showAvatar');
 Route::get('user/cart', 'PurchaseController@showProductCart');
 Route::delete('user/cart', 'PurchaseController@removeAllFromCart');

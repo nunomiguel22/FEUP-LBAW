@@ -97,7 +97,9 @@
         <div class="col bg-dark mb-4">
 
             <div class="tab-pane fade" id="v-pills-0" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+            @if ($tab_id && $tab_id == 0)
+                    @include('pages.user.wishlist')
+                @endif
             </div>
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
