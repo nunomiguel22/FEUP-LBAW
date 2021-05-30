@@ -31,6 +31,11 @@ class Game extends Model
         return date($format, strtotime($this->launch_date));
     }
 
+    public function hasAvailableKeys()
+    {
+        return $this->game_keys->where('available', true)->count() > 0;
+    }
+
     public static function getRecent($limit)
     {
         return Game::orderByDesc('launch_date')->limit($limit)->get();
