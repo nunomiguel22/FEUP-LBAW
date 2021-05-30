@@ -5,14 +5,16 @@
 @section('content')
 
 <section class="container">
-    <!-- Carousel -->
-    @if (!empty($carousel_games))
-    @include('partials.homepage.carousel', ['title_game' => $title_game,
-    'carousel_games' => $carousel_games])
-    @endif
 
+    <section class="container">
+        <!-- Carousel -->
+        @if (!empty($carousel_games))
+        @include('partials.homepage.carousel', ['title_game' => $title_game,
+        'carousel_games' => $carousel_games])
+        @endif
+    </section>
     <!-- Game Nav Divider -->
-    <aside class="container" style="padding-top:80px;">
+    <aside class="container mt-4">
         <div class="row">
             <div class="col">
                 <hr>
@@ -29,54 +31,101 @@
         <aside>
             <ul class="nav nav-tabs" id="HomeNav" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                        aria-controls="home" aria-selected="true">Top Sellers</a>
+                    <a class="nav-link active" id="{{$first_category->name}}-tab" data-toggle="tab"
+                        href="#{{$first_category->name}}" role="tab" aria-controls="{{$first_category->name}}"
+                        aria-selected="true">{{$first_category->name}}</a>
                 </li>
+
+                @forelse($categories as $category)
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                        aria-controls="profile" aria-selected="false">Action</a>
+                    <a class="nav-link" id="{{$category->name}}-tab" data-toggle="tab" href="#{{$category->name}}" role="tab"
+                        aria-controls="{{$category->name}}" aria-selected="false">{{$category->name}}</a>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                        aria-controls="contact" aria-selected="false">Adventure</a>
-                </li>
+                @empty
+                @endforelse
+
             </ul>
         </aside>
-        <div class="tab-content" id="HomeNavContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <!-- Game Nav Card Deck -->
-                <div class="card-deck mb-3 text-center">
-                    @forelse ($first_row as $game)
-                    @include('partials.homepage.card', ['game' => $game])
-                    @empty
-                    <p>No gaems</p>
-                    @endforelse
-                </div>
 
-                <!-- Game Nav Card Deck -->
-                <div class="card-deck mb-3 text-center">
-                    @forelse ($second_row as $game)
-                    @include('partials.homepage.card', ['game' => $game])
-                    @empty
-                    <p>No gaems</p>
-                    @endforelse
-                </div>
 
-                <!-- Game Nav Card Deck -->
-                <div class="card-deck mb-3 text-center">
-                    @forelse ($third_row as $game)
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="{{$first_category->name}}" role="tabpanel"
+                aria-labelledby="{{$first_category->name}}-tab">
+                @php
+                $i = 0;
+                $cat_games = $games[$first_category->id];
+                @endphp
+
+                @forelse($cat_games as $game)
+                    @if ($i % 3 == 0)
+                        <div class="card-deck mb-3 text-center">
+                    @endif
+  
                     @include('partials.homepage.card', ['game' => $game])
-                    @empty
-                    <p>No gaems</p>
-                    @endforelse
-                </div>
+
+                    @if($i % 3 == 2)
+                        </div>
+                    @endif
+
+                    @php
+                    $i++;
+                    @endphp
+                @empty
+                @endforelse
+
+                @while($i % 3 != 0)
+                    @php
+                    $i++;
+                    @endphp
+                    <article class="card mb-2 mt-2 hover-darken">
+                    </article>
+
+                    @if($i % 3 == 0)
+                    </div>
+                    @endif
+                @endwhile
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                Soon Tm
+
+            @forelse($categories as  $category)
+            <div class="tab-pane fade" id="{{$category->name}}" role="tabpanel" style="min-height:100px" aria-labelledby="{{$category->name}}-tab">
+                @php
+                $i = 0;
+                $cat_games = $games[$category->id];
+                @endphp
+
+                @forelse($cat_games as $game)
+                    @if ($i % 3 == 0)
+                        <div class="card-deck mb-3 text-center">
+                    @endif
+  
+                    @include('partials.homepage.card', ['game' => $game])
+
+                    @if($i % 3 == 2)
+                        </div>
+                    @endif
+
+                    @php
+                    $i++;
+                    @endphp
+                @empty
+                <span>No games yet!</span>
+                @endforelse
+
+                @while($i % 3 != 0)
+                    @php
+                    $i++;
+                    @endphp
+                    <article class="card mb-2 mt-2 hover-darken">
+                    </article>
+
+                    @if($i % 3 == 0)
+                    </div>
+                    @endif
+                @endwhile
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                Soon Tm
-            </div>
+            @empty
+            @endforelse
+
         </div>
 
     </section>

@@ -18,7 +18,7 @@
 
 @section('content')
 
-<section class="container mt-4 mb-5 p-4" style="background: rgba(0, 0, 0, 0.2)">
+<section class="container mt-4 mb-5 p-4 bg-dark">
     <h4 class="text-shadow">CHECKOUT</h4>
     <span class="text-muted">Here you have an overview of your purchase, choose your payment method and
         finalize your purchase when ready</span>

@@ -28,14 +28,12 @@ DROP MATERIALIZED VIEW IF EXISTS game_search;
 
 DROP FUNCTION IF EXISTS update_game_score() CASCADE;
 DROP FUNCTION IF EXISTS add_review() CASCADE;
-DROP FUNCTION IF EXISTS check_review_repeats() CASCADE;
 DROP FUNCTION IF EXISTS make_purchase() CASCADE;
 DROP FUNCTION IF EXISTS restore_key_availability() CASCADE;
 DROP FUNCTION IF EXISTS update_deleted_user_reviews() CASCADE;
 
 DROP TRIGGER IF EXISTS update_score ON games;
 DROP TRIGGER IF EXISTS add_review ON reviews;
-DROP TRIGGER IF EXISTS check_review_repeats ON reviews;
 DROP TRIGGER IF EXISTS make_purchase ON purchases;
 DROP TRIGGER IF EXISTS restore_key_availability ON purchases;
 DROP TRIGGER IF EXISTS update_review_on_user_delete ON users;
@@ -165,7 +163,8 @@ CREATE TABLE reviews(
     publication_date TIMESTAMP(0) WITH TIME zone DEFAULT now()::timestamp(0) NOT NULL,
     score INTEGER CONSTRAINT score_ck CHECK (score > 0 AND score < 6),
     user_id INTEGER NOT NULL REFERENCES users (id),
-    game_id INTEGER NOT NULL REFERENCES games (id)
+    game_id INTEGER NOT NULL REFERENCES games (id),
+    UNIQUE (user_id, game_id)
 );
 
 CREATE TABLE reports(
@@ -234,7 +233,8 @@ BEGIN
 
     UPDATE games
     SET score = score_avg.avg
-    FROM score_avg;
+    FROM score_avg
+    WHERE games.id=New.game_id; 
     RETURN NULL;
 END
 $BODY$
@@ -251,7 +251,7 @@ BEGIN
     IF NOT EXISTS (SELECT game_keys.game_id
                     FROM purchases
                     JOIN game_keys ON purchases.game_key_id = game_keys.id
-                    WHERE purchases.user_id = New.reviewer_id
+                    WHERE purchases.user_id = New.user_id
                     AND game_keys.game_id = New.game_id)
                 THEN
     RAISE EXCEPTION 'You can not review a game you do not own.';
@@ -265,25 +265,6 @@ CREATE TRIGGER add_review
     BEFORE INSERT ON reviews
     FOR EACH ROW
     EXECUTE PROCEDURE add_review();
-
-
-CREATE FUNCTION check_review_repeats() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-    IF EXISTS (SELECT id 
-                FROM reviews
-                WHERE game_id=New.game_id AND reviewer_id=New.game_id) THEN
-    RAISE EXCEPTION 'You can only review a game once.';
-    END IF;
-    RETURN NEW;
-END
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE TRIGGER check_review_repeats
-    BEFORE INSERT ON reviews
-    FOR EACH ROW
-    EXECUTE PROCEDURE check_review_repeats();
  
 
 CREATE FUNCTION make_purchase() RETURNS TRIGGER AS
@@ -340,7 +321,7 @@ BEGIN
     DELETE FROM reports WHERE reports.review_id=New.id;
 
     DELETE FROM reviews
-    WHERE reviews.reviewer_id=New.id;
+    WHERE reviews.user_id=New.id;
     RETURN NULL;
 END
 $BODY$
@@ -735,7 +716,7 @@ VALUES ('Hitman 3',
 INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Modern Warfare® 3', 
             'The best-selling first-person action series of all-time returns with an epic sequel to the multiple GOTY award winner Call of Duty®: Modern Warfare® 2', 
-            39.99, 4, '2011-11-08'::date, true, null, 7, 1);
+            39.99, 4, '2011-11-08'::date, false, null, 7, 1);
 
 INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Outriders', 
@@ -747,6 +728,9 @@ INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3076','true',2
 INSERT INTO game_keys("key",available,game_id) VALUES ('1218-58-2960','true',3);
 INSERT INTO game_keys("key",available,game_id) VALUES ('31845-618-36','true',4);
 INSERT INTO game_keys("key",available,game_id) VALUES ('318DA45-618EFA-3HJV6','true',1);
+INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3075','true',2);
+
+
 
 INSERT INTO game_image(image_id,game_id) VALUES (1,2);
 INSERT INTO game_image(image_id,game_id) VALUES (2,3);
@@ -769,12 +753,15 @@ INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game
 INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2020-12-07', 59.99, 'Completed', 'PayPal', 'aC', 2, 1);
 INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2021-02-07', 8.99, 'Aborted', 'PayPal', 'BA', 4, 1);
 INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2019-03-10', 39.99, 'Completed', 'PayPal', 'ASDASD', 3, 1);
+INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2020-12-07', 59.99, 'Completed', 'PayPal', 'aB', 6, 2);
+
 
 INSERT INTO cart_items(game_id, user_id) VALUES (2, 1);
 INSERT INTO cart_items(game_id, user_id) VALUES (9, 1);
 INSERT INTO cart_items(game_id, user_id) VALUES (6, 2);
 INSERT INTO cart_items(game_id, user_id) VALUES (1, 2);
 
+INSERT INTO reviews (description, score, user_id, game_id) VALUES ('this it to test see reviews', 4, 2, 2);
 
 -----------------------------------------
 -- end

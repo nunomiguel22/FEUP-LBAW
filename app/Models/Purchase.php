@@ -25,4 +25,9 @@ class Purchase extends Model
     {
         return $this->belongsTo(GameKey::class);
     }
+
+    public function formattedTimestamp($format)
+    {
+        return date($format, strtotime($this->timestamp));
+    }
 }

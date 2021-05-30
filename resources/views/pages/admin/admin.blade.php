@@ -17,19 +17,31 @@
             aria-orientation="vertical">
             <a class="nav-link" id="v-pills-0-tab-2" href="{{ url('admin/sales') }}" role="tab"
                 aria-controls="v-pills-sale" aria-selected="true">
-                <i class="fas fa-money-bill-wave mr-3"></i> SALES
+                <div class="row">
+                    <i class="fas fa-money-bill-wave col-1"></i>
+                    <span class="col">SALES</span>
+                </div>
             </a>
             <a class="nav-link" id="v-pills-1-tab-2" href="{{ url('admin/products') }}" role="tab"
                 aria-controls="v-pills-games" aria-selected="false">
-                <i class="fas fa-gamepad mr-3"></i>MANAGE GAMES
+                <div class="row">
+                    <i class="fas fa-gamepad col-1"></i>
+                    <span class="col">MANAGE GAMES</span>
+                </div>
             </a>
             <a class="nav-link" id="v-pills-3-tab-2" data-toggle="pill" href="#v-pills-3" role="tab"
                 aria-controls="v-pills-users" aria-selected="false">
-                <i class="fas fa-users-cog mr-3"></i>MANAGE USERS
+                <div class="row">
+                    <i class="fas fa-users-cog col-1"></i>
+                    <span class="col">MANAGE USERS</span>
+                </div>
             </a>
             <a class="nav-link" id="v-pills-4-tab-2" data-toggle="pill" href="#v-pills-4" role="tab"
                 aria-controls="v-pills-reports" aria-selected="false">
-                <i class="fas fa-bug mr-3"></i></i> MANAGE REPORTS
+                <div class="row">
+                    <i class="fas fa-bug col-1"></i>
+                    <span class="col">MANAGE REPORTS</span>
+                </div>
             </a>
 
         </div>
@@ -40,19 +52,31 @@
             <div class="nav flex-column nav-pills nav-menu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" id="v-pills-0-tab" href="{{ url('admin/sales') }}" role="tab"
                     aria-controls="v-pills-sale" aria-selected="true">
-                    <i class="fas fa-money-bill-wave mr-3"></i> SALES
+                    <div class="row">
+                        <i class="fas fa-money-bill-wave col-1"></i>
+                        <span class="col">SALES</span>
+                    </div>
                 </a>
                 <a class="nav-link" id="v-pills-1-tab" href="{{ url('admin/products') }}" role="tab"
                     aria-controls="v-pills-games" aria-selected="false">
-                    <i class="fas fa-gamepad mr-3"></i>MANAGE GAMES
+                    <div class="row">
+                        <i class="fas fa-gamepad col-1"></i>
+                        <span class="col">MANAGE GAMES</span>
+                    </div>
                 </a>
                 <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
                     aria-controls="v-pills-users" aria-selected="false">
-                    <i class="fas fa-users-cog mr-3"></i>MANAGE USERS
+                    <div class="row">
+                        <i class="fas fa-users-cog col-1"></i>
+                        <span class="col">MANAGE USERS</span>
+                    </div>
                 </a>
                 <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab"
                     aria-controls="v-pills-reports" aria-selected="false">
-                    <i class="fas fa-bug mr-3"></i></i> MANAGE REPORTS
+                    <div class="row">
+                        <i class="fas fa-bug col-1"></i>
+                        <span class="col">MANAGE REPORTS</span>
+                    </div>
                 </a>
             </div>
         </nav>
@@ -64,7 +88,9 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
-
+            @if ($tab_id && $tab_id == 1)
+                @include('pages.admin.games')
+            @endif
             </div>
 
             <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">
@@ -80,13 +106,7 @@
 </section>
 
 <!-- Activate correct tab on startup  -->
-<script type="text/javascript">
-    activateTab({
-        {
-            $tab_id
-        }
-    })
-</script>
+<script type="text/javascript"> activateTab(<?php echo $tab_id ?>) </script>
 
 
 @endsection
