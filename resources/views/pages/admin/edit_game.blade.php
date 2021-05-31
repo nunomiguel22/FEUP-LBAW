@@ -15,12 +15,13 @@
         <ol class="breadcrumb m-0 p-0">
             <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
             <li class="breadcrumb-item"> <a href="{{ route('admin') }}"> Admin Panel </a></li>
-            <li class="breadcrumb-item"> <a href="{{ url('admin/products') }}"> Products </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Edit Product {{$game->id}} </li>
+            <li class="breadcrumb-item"> <a href="{{ url('/admin/products') }}"> Products </a></li>
+            <li class="breadcrumb-item"> <a href="{{ url('/products/'.$game->id) }}"> {{ $game->title }} </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Edit Product </li>
         </ol>
     </div>
 
-    <section class="bg-dark p-4 my-4">
+    <section class="bg-dark p-5 my-4">
         <h4 class="text-shadow">EDIT A GAME</h4>
         <span class="text-muted">Edit game "{{ $game->title }}" with id {{$game->id}} </span>
 
@@ -45,7 +46,8 @@
 
                 <div class="col-6">
                     <div class="row">
-                        <label for="rem-image-sel" class="col control-label">Remove images from the gallery</label>
+                        <label for="rem-image-sel" class="col control-label text-light">Remove images from the
+                            gallery</label>
                     </div>
                     <div class="row">
                         <select multiple hidden id="rem-image-sel" name="images_del[]">
@@ -59,7 +61,7 @@
                     </div>
 
                     <div class="row mt-2">
-                        <label for="images" class="col control-label">Add new gallery Images</label>
+                        <label for="images" class="col control-label text-light">Add new gallery Images</label>
                     </div>
                     <div class="row">
                         <input type="file" name="images[]" class="col mt-2" multiple>
@@ -67,7 +69,7 @@
                 </div>
 
                 <div class="col-6">
-                    <label for="tags ">Tags</label>
+                    <label for="tags" class="text-light">Tags</label>
                     <select multiple name="tags[]" class="form-control bg-dark text-light">
                         @forelse($tags as $tag)
                         @if ($game->tags->contains($tag->id))

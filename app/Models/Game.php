@@ -10,6 +10,8 @@ use \App\Models\Category;
 use \App\Models\Image;
 use \App\Models\Tag;
 use \App\Models\GameKey;
+use \App\Models\Review;
+use \App\Models\Purchase;
 
 class Game extends Model
 {
@@ -17,7 +19,7 @@ class Game extends Model
     public $timestamps  = false;
 
     protected $hidden = [
-        'developer_id', 'category_id', 'listed'
+        'developer_id', 'category_id'
     ];
 
     public function cover_image()
@@ -25,13 +27,27 @@ class Game extends Model
         return $this->images[0]->getPath();
     }
 
+    public function formattedLaunchDate($format)
+    {
+        return date($format, strtotime($this->launch_date));
+    }
 
-    public function developers()
+    public function hasAvailableKeys()
+    {
+        return $this->game_keys->where('available', true)->count() > 0;
+    }
+
+    public static function getRecent($limit)
+    {
+        return Game::orderByDesc('launch_date')->limit($limit)->get();
+    }
+
+    public function developer()
     {
         return $this->belongsTo(Developer::class, 'developer_id');
     }
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
@@ -46,6 +62,20 @@ class Game extends Model
         return $this->belongsToMany(Image::class);
     }
 
+    public function cart_items()
+    {
+        return $this->belongsToMany(User::class, 'cart_items');
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasManyThrough(Purchase::class, GameKey::class);
+    }
+
     public function game_keys()
     {
         return $this->hasMany(GameKey::class);
@@ -56,5 +86,13 @@ class Game extends Model
         return  DB::table('game_search')->selectRaw('game_id')
             ->whereRaw("search @@ plainto_tsquery('english', ?)", [$search])
             ->pluck('game_id')->toArray();
+    }
+
+    public function user_has_key($user_id){
+        return $this->purchases->where('user_id', $user_id)->first();
+    }
+
+    public function user_has_review($user_id){
+        return $this->reviews()->where('user_id', $user_id)->first();
     }
 }

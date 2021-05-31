@@ -2,19 +2,22 @@
 
 @section('title', 'OGS')
 
+@section('breadcrumbs')
+<!-- Breadcrumbs -->
+<nav class="container my-4">
+    <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+    </ol>
+</nav>
+@endsection
 
 @section('content')
 
 
 <!-- Page Content -->
 <section class="container">
-    <!-- Breadcrumbs -->
-    <aside class="row mt-3 p-0">
-            <ol class="breadcrumb m-0 p-0">
-                <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Profile</li>
-            </ol>
-    </aside>
+   
     <!-- UserInfo -->
     <div class="container p-3" style="background:#2e2e2e;">
         <div class="row">
@@ -26,7 +29,11 @@
                 <h3 class="text-shadow">{{Auth::user()->username}}</h3>
                 <span class="text-muted">{{Auth::user()->first_name}}</span>
                 <span class="text-muted mr"> {{Auth::user()->last_name}}</span>
+                @if (is_null(Auth::user()->address))
+                <h6 class="my-3">No country</h6>
+                @else
                 <h6 class="my-3">{{Auth::user()->address->country->name}}</h6>
+                @endif
                 <span class="text-light">Games purchased: </span> <span class="m">{{$games_purchased}}</span>
             </div>
             <div class="col-1" style="border-right: 1px solid lightgray;"></div>

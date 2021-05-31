@@ -3,26 +3,84 @@
 @section('title', 'OGS')
 
 @section('scripts')
-<script src="{{ asset('bootstrap/jquery.twbsPagination.min.js') }}" defer></script>
+<script src="{{ asset('js/paginator.js') }}"></script>
 <script src="{{ asset('js/products.js') }}" defer></script>
 
+@endsection
+
+@section('breadcrumbs')
+<!-- Breadcrumbs -->
+<nav class="container my-4">
+    <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Products</li>
+    </ol>
+</nav>
 @endsection
 
 
 @section('content')
 
 <!-- Game list -->
-<div class="container p-0">
-    <!-- Breadcrumbs -->
-    <aside class="row mx-0 mt-3 p-0">
-        <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Products</li>
-        </ol>
-    </aside>
+<div class="container">
+
+    <form method="GET" action="/products" class="row my-4">
+
+        <div class="col-lg-9 col-md-12">
+
+            <div class="container search-criteria mb-4 bg-dark py-2">
+                <div class="row mt-2">
+                    <div class="col-8"><span class="my-auto text-light">Search games</span></div>
+                    <div class="col-4 pl-1"><span class="my-auto text-light">Sort by</span></div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-8 my-2">
+
+                        <input type="text" id="game_search_field" name="text_search"
+                            class="form-control bg-secondary text-light" placeholder="Search for a title..."
+                            value="{{ $_GET['text_search'] ?? null }}">
 
 
-    <section class="row my-4">
+                    </div>
+                    <div class="col-4 my-2 pl-1">
+
+                        <select id="sort_by_field" name="sort_by" class="form-control bg-secondary text-light">
+                            <option value="-1">Position</option>
+                            @if(($_GET["sort_by"] ?? 1) == 0)
+                            <option value="0" selected>Score</option>
+                            @else
+                            <option value="0">Score</option>
+                            @endif
+
+                            @if(($_GET["sort_by"] ?? null) == 1)
+                            <option value="1" selected>Date</option>
+                            @else
+                            <option value="1">Date</option>
+                            @endif
+
+                            @if(($_GET["sort_by"] ?? null) == 2)
+                            <option value="2" selected>Price</option>
+                            @else
+                            <option value="2">Price</option>
+                            @endif
+
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+            <section id="game-list" class="container" style="padding-bottom:40px;">
+                <!-- DYNAMIC LIST OF GAMES -->
+            </section>
+            <!-- Next page and previous page buttons -->
+
+            <aside id="list-links" class="container">
+
+            </aside>
+        </div>
 
         <div class="col-lg-3 d-none d-lg-block">
 
@@ -34,11 +92,13 @@
                 </div>
             </div>
 
+
             <div class="card shadow-none border-0 mt-2 d-flex text-white bg-transparent mr-3 row">
                 <div class="card-header bg-transparent">Price Limit</div>
                 <div class="card-body text-center">
-                    <input type="range" class="custom-range w-100" id="customRange1">
-                    <label for="customRange1">Under 60,--€</label>
+                    <input type="range" name="max_price" class="custom-range w-100" min="1" max="100"
+                        value="{{ $_GET['max_price'] ?? 100 }}" id="customRange1">
+                    <label id="customRangeLabel" for="customRange1">Under {{$_GET['max_price'] ?? 100}},--€</label>
                 </div>
             </div>
 
@@ -46,60 +106,28 @@
                 <div class="card-header bg-transparent">Category</div>
                 <div class="card-body">
 
-                    <select name="SortBy" class="form-control bg-dark text-light mb-3">
-                        <option value="Any">Any</option>
-                        <option value="newReleases">New Releases</option>
-                        <option value="topRated">Top Rated</option>
+                    <select name="category" class="form-control bg-secondary text-light mb-3">
+                        <option value="-1"> Any </option>
+                        @forelse($categories as $category)
+                        @if($category->id == ($_GET["category"] ?? null))
+                        <option value="{{ $category->id }}" selected> {{ $category->name }} </option>
+                        @else
+                        <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                        @endif
+                        @empty
+                        @endforelse
                     </select>
                 </div>
+                <button class="btn btn btn-dark w-100 mt-4" style="min-height:44px;" type="submit">
+                    Apply Filters
+                </button>
             </div>
+
+
         </div>
 
-        <div class="col-lg-9 col-md-12">
 
-            <form class="container search-criteria mb-4 bg-dark py-2">
-
-                <div class="form-row">
-                    <div class="col-5 my-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-dark text-light"
-                                placeholder="Search for a title..." aria-label="Search for a title..."
-                                aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2 mx-auto my-auto" id="list-loader"></div>
-                    <div class="col-5 my-auto">
-                        <div class="row">
-                            <span class="col-3 my-auto">Sort by </span>
-                            <div class="col-9">
-
-                                <select name="SortBy" class="form-control bg-dark text-light">
-                                    <option value="popularity">Popularity</option>
-                                    <option value="newReleases">New Releases</option>
-                                    <option value="topRated">Top Rated</option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
-            </form>
-
-            <section id="game-list" class="container" style="padding-bottom:40px;">
-                <!-- DYNAMIC LIST OF GAMES -->
-            </section>
-            <!-- Next page and previous page buttons -->
-
-            <aside id="list-links" class="container">
-
-            </aside>
-        </div>
-    </section>
+    </form>
 </div>
 
 

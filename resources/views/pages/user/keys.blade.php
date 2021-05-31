@@ -1,3 +1,18 @@
+<script src="{{ asset('js/paginator.js') }}"></script>
+<script src="{{ asset('js/user_keys.js') }}" defer></script>
+
+@section('breadcrumbs')
+<!-- Breadcrumbs -->
+<nav class="container my-4">
+    <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
+        <li class="breadcrumb-item"> <a href="{{ route('user') }}"> User panel </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> My keys </li>
+    </ol>
+</nav>
+@endsection
+
+
 <div class="container mt-4 px-0">
     <h4 class="text-shadow">MY KEYS</h4>
     <div class="row">
@@ -25,21 +40,19 @@
 </div>
 
 
-<aside class="container border border-secondary mt-3">
-    <article class="row border border-primary">
-        <div class="col mx-0 px-0 py-3" style="flex: 0 0 3px;"></div>
-        <div class="col-3 my-auto">Title</div>
-        <div class="col-2 my-auto">Price</div>
-        <div class="col-2 my-auto d-none d-md-block">Date</div>
-        <div class="col my-auto d-none d-md-block"> Payment Method</div>
-        <div class="col-2 my-auto mr-1">Status</div>
-        <div class="col my-auto">Key</div>
-
+<aside class="container mt-3">
+    <article class="row">
+        <div class="col-3 col-md-4 my-auto mx-0 p-1 text-light">TITLE</div>
+        <div class="col col-md-1 my-auto mx-0 p-1 text-light">PRICE</div>
+        <div class="col my-auto mx-0 p-1 text-light">DATE</div>
+        <div class="col my-auto mx-0 p-1 text-light">PAYMENT<br>METHOD</div>
+        <div class="col my-auto mx-0 p-1 text-light">STATUS</div>
+        <div class="col my-auto mx-0 p-1 text-light">KEY</div>
     </article>
 </aside>
+<hr>
 
-
-<section id="key_list" class="container border border-secondary mb-3">
+<section id="key_list" class="container mb-3">
 
 
 </section>
@@ -50,8 +63,7 @@
 
 </aside>
 
-<script src="{{ asset('bootstrap/jquery.twbsPagination.min.js') }}" defer></script>
-<script src="{{ asset('js/user_keys.js') }}" defer></script>
+
 
 <aside class="modal fade" id="gameKeyModal">
     <div class="modal-dialog" role="document">

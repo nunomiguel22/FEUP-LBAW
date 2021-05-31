@@ -14,7 +14,7 @@ class GamePolicy
 
     public function modify(User $user)
     {
-        // Any user can create a new card
-        return $user->is_admin;
+        // To Add, Edit or Delete games the user must be logged in and be an admin
+        return Auth::check() && $user->is_admin;
     }
 }
