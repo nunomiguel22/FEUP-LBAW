@@ -40,6 +40,7 @@ Route::get('products', 'GameController@showProducts')->name('products');
 Route::get('products/{id}', 'GameController@showProductPage');
 Route::post('products/{id}/cart', 'PurchaseController@addProductToCart');
 Route::delete('products/{id}/cart', 'PurchaseController@removeProductFromCart');
+Route::delete('products/{id}/wishlist', 'WishlistController@removeGame');
 
 
 // Users
@@ -48,6 +49,7 @@ Route::get('user/edit', 'UserController@showGeneral');
 Route::get('user/security', 'UserController@showSecurity');
 Route::get('user/keys', 'UserController@showKeys');
 Route::get('user/wishlist', 'UserController@showWishlist');
+Route::delete('user/wishlist', 'WishlistController@removeAll');
 Route::get('user/avatar', 'UserController@showAvatar');
 Route::get('user/cart', 'PurchaseController@showProductCart');
 Route::delete('user/cart', 'PurchaseController@removeAllFromCart');

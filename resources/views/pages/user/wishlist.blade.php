@@ -32,7 +32,7 @@
                 <p class="card-text"><span class="HomeNav-devInfo">{{$game->price}}€</span></p>
             </div>
 
-            <form class="col-md-1" method="POST" action="/products/{{$game->id}}/cart">
+            <form class="col-md-1" method="POST" action="/products/{{$game->id}}/wishlist">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-secondary" style="height: 63px; width: 68px;" type="submit" role="button">
@@ -42,18 +42,11 @@
         </div>
     </div>
 
-    @empty
-    <div class="row text-muted ml-1 bg-transparent p-2">
-        You have no games in your cart yet
-    </div>
-
-    @endforelse
-
     <div class="row bg-dark text-light p-2" align="right">
 
         <div class="col-2 col-md-9"></div>
 
-        <form class="col-5 col-md-3" method="POST" action="/user/cart">
+        <form class="col-5 col-md-3" method="POST" action="/user/wishlist">
             @csrf
             @method('DELETE')
             <button class="w-100 btn btn-danger mt-2" style="min-height:44px;" type="submit" role="button">
@@ -61,5 +54,12 @@
             </button>
         </form>
     </div>
+
+    @empty
+    <div class="row text-muted ml-1 bg-transparent p-2">
+        You have no games in your cart yet
+    </div>
+
+    @endforelse
 
 </div>
