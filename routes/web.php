@@ -55,6 +55,8 @@ Route::post('user/cart/checkout', 'PurchaseController@completeCheckout');
 
 // Review
 Route::post('/reviews/products/{id}/review', 'ReviewController@addReview');
+Route::put('/reviews/products/{id}/review', 'ReviewController@updateReview');
+Route::delete('/reviews/products/{id}/review', 'ReviewController@deleteReview');
 
 
 //API

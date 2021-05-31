@@ -49,7 +49,7 @@ class ReviewController extends Controller
         return redirect('/products/'.$review->game_id);
     }
 
-    public function update(Request $request, $game_id, $review_id)
+    public function updateReview(Request $request, $game_id, $review_id)
     {
         $game = null;
         try {
