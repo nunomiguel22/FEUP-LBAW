@@ -67,7 +67,8 @@ class Game extends Model
         return $this->belongsToMany(User::class, 'cart_items');
     }
 
-    public function reviews(){
+    public function reviews()
+    {
         return $this->hasMany(Review::class);
     }
 
@@ -88,11 +89,13 @@ class Game extends Model
             ->pluck('game_id')->toArray();
     }
 
-    public function user_has_key($user_id){
-        return $this->purchases->where('user_id', $user_id)->first();
+    public function user_has_key($user_id)
+    {
+        return $this->purchases->where('user_id', $user_id)->where('status', 'Completed')->first();
     }
 
-    public function user_has_review($user_id){
+    public function user_has_review($user_id)
+    {
         return $this->reviews()->where('user_id', $user_id)->first();
     }
 }

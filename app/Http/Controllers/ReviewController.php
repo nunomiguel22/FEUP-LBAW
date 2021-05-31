@@ -18,8 +18,6 @@ class ReviewController extends Controller
 {
     public function addReview(Request $request, $id)
     {
-        $this->authorize('add', Review::class);
-
         $game = null;
         try {
             $game = Game::findOrFail($id);
@@ -27,15 +25,16 @@ class ReviewController extends Controller
             abort(404);
         }
 
-        $validator = $this->validator($request->all());
+        $this->authorize('purchased', $game);
+        $this->authorize('add', Review::class);
 
+        $validator = $this->validator($request->all());
         if ($validator->fails()) {
             return back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        
-
+    
         $review = new Review();
 
         $review->description = $request->description;
@@ -45,7 +44,6 @@ class ReviewController extends Controller
 
         $review->save();
 
-        
         return redirect('/products/'.$review->game_id);
     }
 
@@ -58,7 +56,6 @@ class ReviewController extends Controller
             abort(404);
         }
 
-
         $review = null;
         try {
             $review = Review::findOrFail($review_id);
@@ -66,12 +63,9 @@ class ReviewController extends Controller
             abort(404);
         }
 
-
         $this->authorize('edit', $review);
 
-
         $validator = $this->validator($request->all());
-
         if ($validator->fails()) {
             return redirect('admin/products/'.$id.'/edit')
                 ->withErrors($validator)
@@ -93,5 +87,4 @@ class ReviewController extends Controller
             'game_id' => 'required|integer|min:1'
         ]);
     }
-
 }
