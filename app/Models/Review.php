@@ -19,4 +19,9 @@ class Review extends Model
     public function game(){
         return $this->belongsTo(Game::class);
     }
+
+    public function formattedTimestamp($format)
+    {
+        return date($format, strtotime($this->publication_date));
+    }
 }

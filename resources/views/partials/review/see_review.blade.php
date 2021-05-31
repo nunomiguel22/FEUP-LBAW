@@ -5,7 +5,7 @@
         <div class="card-header">
             <div class="row">
                 <h4 class="col" style="font-style: italic;">{{$review->user->username ?? null}} </h4>
-                <span class="col text-center text-muted">{{$review->publication_date ?? null}}</span>
+                <span class="col text-center text-white">{{$review->formattedTimestamp('d-m-Y H:i:s') ?? null}}</span>
                 <div class="review-rating col" align="right">
                     @for ($x = 0; $x < $review->score ; $x+=1)
                         <i class="fas fa-star"></i>

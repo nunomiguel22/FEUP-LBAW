@@ -56,10 +56,4 @@ class User extends Authenticatable
     {
         return $this->reviews->find($review_id);
     }
-
-    public function hasGame($game_id)
-    {
-        return $this->purchases->find($game_id);
-    }
-
 }

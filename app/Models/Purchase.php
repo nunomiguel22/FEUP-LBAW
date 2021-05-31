@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use \App\Models\User;
+use \App\Models\Game;
+use \App\Models\GameKey;
 
 class Purchase extends Model
 {
@@ -26,8 +28,13 @@ class Purchase extends Model
         return $this->belongsTo(GameKey::class);
     }
 
+    public function game(){
+        return $this->hasOneThrough(Game::class, GameKey::class);
+    }
+
     public function formattedTimestamp($format)
     {
         return date($format, strtotime($this->timestamp));
     }
+
 }

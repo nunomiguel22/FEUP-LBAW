@@ -14,7 +14,13 @@
 @endsection
 
 @section('content')
+
 <section class="container">
+    <ul class="row">
+        @foreach ($errors->all() as $error)
+        <li class="error mt-2">{{ $error }}</li>
+        @endforeach
+    </ul>
     <div class="row mt-4">
         <div class="col mr-4">
             <div id="carousel" class="carousel row slide carousel-fade" data-ride="carousel">
@@ -220,7 +226,9 @@
 No reviews yet!
 @endforelse
 
-@if(Auth::check() && !Auth::user()->hasGame($game->id))
+
+
+@if(Auth::check() && $game->user_has_key(Auth::user()->id) && !$game->user_has_review(Auth::user()->id))
 <form method="POST" action="/reviews/products/{id}/review" enctype="multipart/form-data">
     @csrf
     @include('partials.review.make_review')

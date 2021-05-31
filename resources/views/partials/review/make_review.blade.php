@@ -10,11 +10,14 @@
                     <i class="fas fa-star"></i> <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i> <i class="far fa-star"></i>
                 </div>
+                <input name="score" type="numeric" value="3" hidden="true" min="0" max="5">
+
+                <input name="game_id" type="numeric" value="{{$game->id}}" hidden="true" min="1">
 
                 <div class="form-group col-12">
                     <label for="description" class="control-label">Your game review</label>
-                    <textarea class="form-control bg-dark text-light" name="review" placeholder="Enter your review"
-                        rows="10" required{{$review->description ?? ""}}></textarea>
+                    <textarea class="form-control bg-dark text-light" name="description" placeholder="Enter your review"
+                        maxlength="600" rows="10" required{{$review->description ?? ""}}></textarea>
                 </div>
 
                 <div class="form-group col-12">
@@ -26,6 +29,3 @@
     </div>
     <!--//container-->
 </section>
-
-
-<input name="score" type="numeric" value="3" hidden="true">
