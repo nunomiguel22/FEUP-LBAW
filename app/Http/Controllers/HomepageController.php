@@ -24,8 +24,6 @@ class HomepageController extends Controller
         $title_game = $carousel_games->shift();
         $first_category = $categories->shift();
 
-
-
         return view('pages.homepage', $this->homepageGames());
     }
 
