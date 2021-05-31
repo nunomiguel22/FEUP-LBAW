@@ -60,6 +60,8 @@ class UserController extends Controller
         }
 
         $wishlist_games = Auth::user()->wishlist_items;
+        
+        //dd($wishlist_games);
 
         return view('pages.user.user', ['tab_id' => 0, 'wishlist_games' => $wishlist_games]);
     }

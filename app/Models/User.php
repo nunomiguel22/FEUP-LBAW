@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function wishlist_items()
     {
-        return $this->belongsToMany(User::class, 'wishlist_items');
+        return $this->belongsToMany(Game::class, 'wishlist_items');
     }
 }
