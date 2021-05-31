@@ -10,6 +10,7 @@ use \App\Models\Category;
 use \App\Models\Image;
 use \App\Models\Tag;
 use \App\Models\GameKey;
+use \App\Models\Review;
 
 class Game extends Model
 {
@@ -61,5 +62,10 @@ class Game extends Model
     public function cart_items()
     {
         return $this->belongsToMany(User::class, 'cart_items');
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+
     }
 }

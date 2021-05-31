@@ -12,6 +12,7 @@ use App\Models\Game;
 use App\Models\Image;
 use App\Models\Tag;
 use App\Models\Category;
+use App\Models\Review;
 
 class GameController extends Controller
 {
@@ -208,11 +209,13 @@ class GameController extends Controller
             abort(404);
         }
 
+        $reviews = $game->reviews;
+
         //calculating score to update in radial progress bar
         $score = ($game->score / 5) * 100;
         $percent = ceil($score / 5) * 5;
 
 
-        return view('pages.product_page', ['game' => $game, 'percent' => $percent]);
+        return view('pages.product_page', ['game' => $game, 'percent' => $percent, 'reviews' => $reviews]);
     }
 }

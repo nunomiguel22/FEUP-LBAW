@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use \App\Models\Game;
+use \App\Models\Review;
+
 
 class User extends Authenticatable
 {
@@ -45,4 +47,19 @@ class User extends Authenticatable
     {
         return $this->cart_items->find($game_id);
     }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function madeReview($review_id)
+    {
+        return $this->reviews->find($review_id);
+    }
+
+    public function hasGame($game_id)
+    {
+        return $this->purchases->find($game_id);
+    }
+
 }

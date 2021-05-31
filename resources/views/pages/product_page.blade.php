@@ -138,4 +138,31 @@
     </div>
 </section>
 
+<div class="container" style="padding-top:50px;">
+    <div class="row">
+        <div class="col">
+            <hr style="background:white;">
+        </div>
+        <span><i class="fas fa-book"></i> Reviews </span>
+        <div class="col">
+            <hr style="background:white;">
+        </div>
+    </div>
+</div>
+
+@forelse ($reviews as $review)
+@include('partials.review.see_review', ['review' => $review])
+@empty
+No reviews yet!
+@endforelse
+
+@if(Auth::check() && !Auth::user()->hasGame($game->id))
+<form method="POST" action="/reviews/products/{id}/review" enctype="multipart/form-data">
+    @csrf
+    @include('partials.review.make_review')
+</form>
+@endif
+
+
+
 @endsection

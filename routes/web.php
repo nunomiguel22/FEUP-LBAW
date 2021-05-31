@@ -51,6 +51,9 @@ Route::delete('user/cart', 'PurchaseController@removeAllFromCart');
 Route::get('user/cart/checkout', 'PurchaseController@showCheckout');
 Route::post('user/cart/checkout', 'PurchaseController@completeCheckout');
 
+// Review
+Route::post('/reviews/products/{id}/review', 'ReviewController@addReview');
+
 
 //API
 Route::get('api/products/search', 'GameController@search');
