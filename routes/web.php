@@ -28,8 +28,10 @@ Route::get('admin/sales', 'AdminController@showSales');
 Route::get('admin/products', 'AdminController@showProducts');
 Route::get('admin/products/add_product', 'AdminController@showNewGame');
 Route::get('admin/products/{id}/edit', 'AdminController@showEditGame');
-Route::post('admin/products/add_product', 'GameController@store');
 Route::put('admin/products/{id}/edit', 'GameController@update');
+Route::post('admin/products/add_product', 'GameController@store');
+Route::get('admin/products/{id}/keys', 'AdminController@showEditKeys');
+Route::put('admin/products/{id}/keys', 'GameController@updateKeys');
 Route::delete('admin/products/{id}/delete', 'GameController@delete');
 
 

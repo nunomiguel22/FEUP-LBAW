@@ -11,6 +11,7 @@ use \App\Models\Image;
 use \App\Models\Tag;
 use \App\Models\GameKey;
 use \App\Models\Review;
+use \App\Models\Purchase;
 
 class Game extends Model
 {
@@ -18,7 +19,7 @@ class Game extends Model
     public $timestamps  = false;
 
     protected $hidden = [
-        'developer_id', 'category_id', 'listed'
+        'developer_id', 'category_id'
     ];
 
     public function cover_image()
@@ -26,13 +27,27 @@ class Game extends Model
         return $this->images[0]->getPath();
     }
 
+    public function formattedLaunchDate($format)
+    {
+        return date($format, strtotime($this->launch_date));
+    }
 
-    public function developers()
+    public function hasAvailableKeys()
+    {
+        return $this->game_keys->where('available', true)->count() > 0;
+    }
+
+    public static function getRecent($limit)
+    {
+        return Game::orderByDesc('launch_date')->limit($limit)->get();
+    }
+
+    public function developer()
     {
         return $this->belongsTo(Developer::class, 'developer_id');
     }
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
@@ -45,6 +60,11 @@ class Game extends Model
     public function images()
     {
         return $this->belongsToMany(Image::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasManyThrough(Purchase::class, GameKey::class);
     }
 
     public function game_keys()
@@ -66,6 +86,5 @@ class Game extends Model
 
     public function reviews(){
         return $this->hasMany(Review::class);
-
     }
 }

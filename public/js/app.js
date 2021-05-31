@@ -10,7 +10,7 @@ function sendSearchRequest(page, category, text_search, max_price, sort_by, hand
 
     let url_params = encodeForAjax(params);
 
-    sendAjaxRequest("get", "api/products/search?" + url_params, null, handler);
+    sendAjaxRequest("get", "/api/products/search?" + url_params, null, handler);
 }
 
 function addEventListeners() {

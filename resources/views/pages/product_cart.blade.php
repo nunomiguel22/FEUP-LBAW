@@ -18,7 +18,9 @@
 @section('content')
 
 <section class="container">
-
+  @php
+  $checkout_enabled = true;
+  @endphp
   @forelse($cart_items as $game)
   <div class="row bg-secondary b-shadow my-1 px-2">
 
@@ -28,12 +30,24 @@
       </a>
     </div>
 
+    @if(!$game->hasAvailableKeys())
+    @php
+    $checkout_enabled = false;
+    @endphp
+    <div class="col-8 m-auto">
+      <div class="row">
+        {{$game->title}} <span class="text-danger ml-1 small"> unavailable </span>
+      </div>
+      <div class="row"><span class="HomeNav-devInfo">{{$game->developer->name}}</span></div>
+    </div>
+    @else
     <div class="col-8 m-auto">
       <div class="row">
         {{$game->title}}
       </div>
-      <div class="row"><span class="HomeNav-devInfo">{{$game->developers->name}}</span></div>
+      <div class="row"><span class="HomeNav-devInfo">{{$game->developer->name}}</span></div>
     </div>
+    @endif
 
 
     <div class="col-2 my-auto ">
@@ -82,13 +96,27 @@
       </button>
     </form>
 
-    <a class="col-5 col-md-2" href="{{ url('/user/cart/checkout') }}"><button class="btn btn-success mb-2 w-100"
-        style="min-height:44px;" role="button">
+    @if($checkout_enabled)
+    <a class="col-5 col-md-2" href="{{ url('/user/cart/checkout') }}">
+      <button class="btn btn-success mb-2 w-100" style="min-height:44px;" role="button">
         <i class="fas fa-shopping-cart"></i> Checkout
-      </button></a>
-
+      </button>
+    </a>
+    @else
+    <a class="col-5 col-md-2">
+      <button class="btn btn-success mb-2 w-100" style="min-height:44px;" role="button"
+        title="One or more items are not currently available" disabled>
+        <i class="fas fa-shopping-cart"></i> Checkout
+      </button>
+    </a>
+    @endif
   </div>
 
+  @if(!$checkout_enabled)
+  <span class="row text-danger ml-1 my-3">Some items are currently unavailable, you can remove these items or try again
+    later
+  </span>
+  @endif
   <span class="row text-light ml-1 my-3 small">*All prices include VAT where applicable</span>
   @endif
 </section>

@@ -1,4 +1,3 @@
-var pagination_set = false;
 var customRange = document.getElementById("customRange1");
 var search_field = document.getElementById("game_search_field");
 var sort_field = document.getElementById("sort_by_field");
@@ -25,6 +24,7 @@ sort_field.addEventListener("change", function () {
 getGameList(1, null, null);
 
 function getGameList(page, text_search, sort_by) {
+    curr_page = page;
     startLoader(document.getElementById("game-list"));
 
     let category = search_params.get('category');
@@ -50,19 +50,8 @@ function displayGames() {
         gameListElement.appendChild(getGameTemplate(game));
     }
 
-    if (!pagination_set){
-        $('#list-links').twbsPagination({
-            totalPages: response.last_page,
-            visiblePages: 7,
-            cssStyle: '',
-            onInit: null,
-            onPageClick: function (event, page) {
-                curr_page = page;
-                getGameList(page);
-            }
-        });
-        pagination_set = true;
-    }
+    new Paginator('list-links', response.last_page, curr_page,  getGameList);
+
     stopLoader();
 }
 
@@ -82,7 +71,7 @@ function getGameTemplate(game) {
             <div class="row">`
                + game.title +
            `</div>
-            <div class="row"><span class="HomeNav-devInfo">`+ game.developers.name +`</span></div>
+            <div class="row"><span class="HomeNav-devInfo">`+ game.developer.name +`</span></div>
 
         </div>
         <div class="col-2 my-auto d-none d-md-block">` + game.launch_date + `</div>

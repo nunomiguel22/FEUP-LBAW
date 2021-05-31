@@ -716,7 +716,7 @@ VALUES ('Hitman 3',
 INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Modern Warfare® 3', 
             'The best-selling first-person action series of all-time returns with an epic sequel to the multiple GOTY award winner Call of Duty®: Modern Warfare® 2', 
-            39.99, 4, '2011-11-08'::date, true, null, 7, 1);
+            39.99, 4, '2011-11-08'::date, false, null, 7, 1);
 
 INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Outriders', 

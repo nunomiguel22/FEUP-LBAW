@@ -15,7 +15,7 @@
         </ol>
     </div>
 
-    <section class="bg-dark p-4 my-4">
+    <section class="bg-dark p-5 my-4">
         <h4 class="text-shadow">ADD A NEW GAME</h4>
         <span class="text-muted">Add a game to the platform</span>
 
@@ -37,7 +37,7 @@
 
                 <div class="col-6">
                     <div class="row">
-                        <label for="images" class="col control-label">Gallery Images</label>
+                        <label for="images" class="col control-label text-light">Gallery Images</label>
                     </div>
                     <div class="row">
                         <input type="file" name="images[]" class="col mt-2" multiple required>
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="col-6">
-                    <label for="tags ">Tags</label>
+                    <label for="tags" class="text-light">Tags</label>
                     <select multiple name="tags[]" class="form-control bg-dark text-light">
                         @forelse($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
