@@ -16,8 +16,10 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
-    public function addReview(Request $request)
+    public function addReview(Request $request, $id)
     {
+        $this->authorize('add', Review::class);
+
         $game = null;
         try {
             $game = Game::findOrFail($id);
@@ -39,11 +41,46 @@ class ReviewController extends Controller
         $review->description = $request->description;
         $review->score = $request->score;
         $review->user_id = Auth::user()->id;
-        $review->game_id = $request->game_id;
+        $review->game_id = $id;
 
         $review->save();
 
         
+        return redirect('/products/'.$review->game_id);
+    }
+
+    public function update(Request $request, $game_id, $review_id)
+    {
+        $game = null;
+        try {
+            $game = Game::findOrFail($game_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+
+        $review = null;
+        try {
+            $review = Review::findOrFail($review_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+
+        $this->authorize('edit', $review);
+
+
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return redirect('admin/products/'.$id.'/edit')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        //edit review
+        //and save
+
         return redirect('/products/'.$review->game_id);
     }
 

@@ -21,7 +21,7 @@
 
             <p class="card-text ml-3 my-2">{{$review->description ?? null}}</p>
             <hr style="background:white;">
-            @if(Auth::check() && Auth::user()->madeReview($review->id))
+            @if(Auth::check() && $review->user_id === Auth::user()->id)
             <button type="button" class="btn btn-warning mb-3 ml-3">Edit your review <i class="fas fa-edit"></i></i>
             </button>
             <button type="button" class="btn btn-danger mb-3 ml-3">Delete your review <i class="fas fa-trash"></i>

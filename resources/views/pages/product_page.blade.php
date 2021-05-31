@@ -222,17 +222,30 @@
 
 @forelse ($reviews as $review)
 @include('partials.review.see_review', ['review' => $review])
+@if($review->user_id === Auth::user()->id)
+@php
+$user_review = $review;
+@endphp
+@endif
 @empty
 No reviews yet!
 @endforelse
 
 
 
-@if(Auth::check() && $game->user_has_key(Auth::user()->id) && !$game->user_has_review(Auth::user()->id))
-<form method="POST" action="/reviews/products/{id}/review" enctype="multipart/form-data">
+@if(Auth::check() && $game->user_has_key(Auth::user()->id))
+@if(!$game->user_has_review(Auth::user()->id))
+<form method="POST" action="/reviews/products/{{$game->id}}/review" enctype="multipart/form-data">
     @csrf
     @include('partials.review.make_review')
 </form>
+@else
+<form method="POST" action="/reviews/products/{{$game->id}}/review/{{$user_review->id}}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+    @include('partials.review.edit_review', ['user_review' => $user_review])
+</form>
+@endif
 @endif
 
 

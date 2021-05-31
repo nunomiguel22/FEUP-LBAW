@@ -6,16 +6,19 @@
             <div class="form-row">
 
                 <div class="review-rating col-4" align="right">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i> <i class="far fa-star"></i>
+                    @for ($x = 0; $x < $user_review->score ; $x+=1)
+                        <i class="fas fa-star"></i>
+                        @endfor
+                        @for ($x = 0; $x < 5 - $review->score ; $x+=1)
+                            <i class="far fa-star"></i>
+                            @endfor
                 </div>
                 <input id="form_review_score" name="score" type="numeric" value="3" hidden="true" min="0" max="5">
 
                 <div class="form-group col-12">
                     <label for="description" class="control-label">Your game review</label>
                     <textarea class="form-control bg-dark text-light" name="description" placeholder="Enter your review"
-                        maxlength="600" rows="10" required></textarea>
+                        maxlength="600" rows="10" required>{{$user_review->description ?? null}}</textarea>
                 </div>
 
                 <div class="form-group col-12">
