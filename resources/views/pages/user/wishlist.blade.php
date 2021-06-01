@@ -26,9 +26,9 @@
             </div>
 
             <div class="col-md-9 card-body">
-                <h5 class="card-title mt-1">
+                <h6 class="card-title mt-1">
                     {{$game->title}}
-                </h5>
+                </h6>
                 <p class="card-text"><span class="HomeNav-devInfo">{{$game->price}}€</span></p>
             </div>
 
@@ -46,9 +46,9 @@
     <div class="row text-muted ml-1 bg-transparent p-2">
         You have no games in your cart yet
     </div>
-    <form class="row justify-content-md-center" method="GET" action="{{route('homepage')}}">
-        <button class="btn btn-secondary" type="submit">Browse games</button>
-    </form>
+    <a class="row justify-content-md-center" href="{{route('products')}}">
+        <button class="btn btn-secondary" type="button">Browse games</button>
+    </a>
 
     @endforelse
 

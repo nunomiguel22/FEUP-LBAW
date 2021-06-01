@@ -73,9 +73,18 @@
 
                 </form>
                 <form method="POST" class="col pr-0 mr-0" action="/products/{{$game->id}}/wishlist">
+                    @csrf
+                    @if(Auth::user()->gameInWishlist($game->id))
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-secondary w-100" style="min-height:44px;">
+                        <i class="far fa-times-circle"></i> Remove from wishlist
+                    </button>
+
+                    @else
                     <button type="submit" class="btn btn-secondary w-100" style="min-height:44px;">
                         <i class="far fa-heart"></i> Add to wishlist
                     </button>
+                    @endif
                 </form>
                 @else
                 <div class="col p-0">
