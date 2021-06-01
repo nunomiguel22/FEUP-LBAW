@@ -16,31 +16,25 @@ use App\Models\Purchase;
 use App\Models\Image;
 use App\Models\Address;
 
-
 class ProfileController extends Controller
 {
     public function show()
     {
-
         if (!Auth::check()) {
             return redirect('login');
         }
-
+        
         return $this->profile();
     }
            
 
     public function profile()
     {
-        
         $games_purchased_num = array();
         $purchases = Auth::User()->purchases;
         $games_purchased_num = count($purchases);
 
-        
+        dd($purchases->first()->game());
         return view('pages.profile', ['purchases' => $purchases, 'games_purchased_num'=> $games_purchased_num]);
-
-
-
     }
 }
