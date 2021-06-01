@@ -73,7 +73,7 @@ class PurchaseController extends Controller
         }
 
         Auth::user()->cart_items()->attach($id);
-        return redirect("/products/".$id);
+        return back();
     }
 
     public function removeProductFromCart($id)

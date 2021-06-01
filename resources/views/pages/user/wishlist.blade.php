@@ -42,6 +42,17 @@
         </div>
     </div>
 
+    @empty
+    <div class="row text-muted ml-1 bg-transparent p-2">
+        You have no games in your cart yet
+    </div>
+    <form class="row justify-content-md-center" method="GET" action="{{route('homepage')}}">
+        <button class="btn btn-secondary" type="submit">Browse games</button>
+    </form>
+
+    @endforelse
+
+    @if($wishlist_games->isNotEmpty())
     <div class="row bg-dark text-light p-2" align="right">
 
         <div class="col-2 col-md-9"></div>
@@ -54,12 +65,6 @@
             </button>
         </form>
     </div>
-
-    @empty
-    <div class="row text-muted ml-1 bg-transparent p-2">
-        You have no games in your cart yet
-    </div>
-
-    @endforelse
+    @endif
 
 </div>

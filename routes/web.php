@@ -40,6 +40,7 @@ Route::get('products', 'GameController@showProducts')->name('products');
 Route::get('products/{id}', 'GameController@showProductPage');
 Route::post('products/{id}/cart', 'PurchaseController@addProductToCart');
 Route::delete('products/{id}/cart', 'PurchaseController@removeProductFromCart');
+Route::post('products/{id}/wishlist', 'WishlistController@addGame');
 Route::delete('products/{id}/wishlist', 'WishlistController@removeGame');
 
 

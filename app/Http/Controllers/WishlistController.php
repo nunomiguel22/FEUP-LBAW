@@ -28,7 +28,7 @@ class WishlistController extends Controller
         }
 
         Auth::user()->wishlist_items()->attach($id);
-        return redirect("/products/".$id);
+        return back();
     }
 
     public function removeGame($id)
