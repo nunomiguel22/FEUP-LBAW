@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Purchase;
 use App\Models\Game;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -12,9 +13,9 @@ class PurchasePolicy
 {
     use HandlesAuthorization;
 
-    public function view(User $user)
+    public function list(User $user)
     {
-        // Any user can create a new card
+        // Any autheticated user can list his own keys
         return Auth::check();
     }
 }

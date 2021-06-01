@@ -80,7 +80,7 @@ $cart_item_count = Auth::user()->cart_items()->count();
                         </a>
 
                         <article class="dropdown-menu dropdown-menu-right" style="width:40px">
-                            <a class="dropdown-item" href="#todo">
+                            <a class="dropdown-item" href="{{ route('profile') }}">
                                 <div class="row text-light">
                                     <i class="fas fa-id-badge col-2"></i>
                                     <span class="col-9">Profile</span>
@@ -114,10 +114,3 @@ $cart_item_count = Auth::user()->cart_items()->count();
         </section>
     </nav>
 </header>
-
-@if(Auth::guest())
-<aside>
-    @include('partials.modals.login')
-    @include('partials.modals.register')
-</aside>
-@endif

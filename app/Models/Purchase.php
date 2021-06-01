@@ -28,13 +28,13 @@ class Purchase extends Model
         return $this->belongsTo(GameKey::class);
     }
 
-    public function game(){
-        return $this->hasOneThrough(Game::class, GameKey::class);
+    public function game()
+    {
+        return $this->game_key->game;
     }
 
     public function formattedTimestamp($format)
     {
         return date($format, strtotime($this->timestamp));
     }
-
 }

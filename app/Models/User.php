@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use \App\Models\Game;
 use \App\Models\Review;
 
 
-class User extends Authenticatable
+use \App\Models\Image;
+use \App\Models\Purchase;
+use \App\Models\Address;
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -38,6 +43,15 @@ class User extends Authenticatable
         return $this->hasMany(Purchase::class);
     }
 
+    public function image()
+    {
+        return $this->belongsTo(Image::class, 'image_id');
+    }
+    public function address()
+    {
+        return $this->belongsTo(Address::class, 'addresses_id');
+    }
+
     public function cart_items()
     {
         return $this->belongsToMany(Game::class, 'cart_items');
@@ -48,7 +62,8 @@ class User extends Authenticatable
         return $this->cart_items->find($game_id);
     }
 
-    public function reviews(){
+    public function reviews()
+    {
         return $this->hasMany(Review::class);
     }
 }

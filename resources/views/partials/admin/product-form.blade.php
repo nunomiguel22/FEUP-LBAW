@@ -5,7 +5,7 @@
         <div class="col-6">
             <label for="title" class="control-label text-light">Title</label>
             <input type="text" name="title" class="form-control text-field my-auto bg-secondary text-light"
-                placeholder="*Title" value="{{ $game->title ?? null }}" required>
+                placeholder="*Title" value="{{ $game->title ?? null }}" maxlength="60" minlength="1" required>
 
         </div>
 
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="row my-2">
+    <div class=" row my-2">
         <div class="col-6">
             <label for="developer" class="control-label text-light">Developer</label>
             <select name="developer" class="form-control text-field bg-secondary text-light" required>

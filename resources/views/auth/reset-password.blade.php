@@ -7,7 +7,7 @@
 <nav class="container my-4 p-0">
     <ol class="breadcrumb m-0 p-0">
         <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Login</li>
+        <li class="breadcrumb-item active" aria-current="page">Change your password</li>
     </ol>
 </nav>
 @endsection
@@ -24,20 +24,25 @@
         </div>
 
         <div class="row mb-3 text-center">
-            <span class="col">SIGN IN WITH AN OGS ACCOUNT</span>
+            <span class="col">CHOOSE YOUR PASSWORD</span>
         </div>
 
         <!-- Signin Form -->
-        <form method="POST" action="{{route('login')}}">
+        <form method="POST" action="{{route('password.update')}}">
             @csrf
             <!-- Email Row -->
-            <input type="email" name="email" value="{{ old('email') }}"
-                class="form-control text-field bg-secondary text-light" placeholder="Email address" required>
+            <input type="email" name="email" value="{{$_GET['email'] ?? old('email')}}"
+                class="form-control text-field bg-secondary text-light" placeholder="Email address" readonly="true"
+                disabled required>
 
             <!-- Password Row -->
             <input type="password" name="password" class="form-control text-field col bg-secondary text-light mt-3"
                 placeholder="Password" required>
 
+            <!-- Password Row -->
+            <input type="password" name="password_confirmation"
+                class="form-control text-field col bg-secondary text-light mt-3" placeholder="Confirm your Password"
+                required>
 
             <ul class="row">
                 @foreach ($errors->all() as $error)
@@ -45,40 +50,19 @@
                 @endforeach
             </ul>
 
-            <label class="row mt-2">
-                <div class="col" align="center">
-                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <span class="text-light">Remember me</span>
-                </div>
-            </label>
+            <input type="hidden" name="token" value="{{$token}}">
+
 
             <!-- Submit button Row -->
             <div class="form-group row mt-4">
                 <div class="col">
-                    <button id="loginButton" class="btn btn-secondary btn-lg w-100" type="submit" required>
-                        Sign in
+                    <button class="btn btn-secondary btn-lg w-100" type="submit" required>
+                        Update your password
                     </button>
                 </div>
             </div>
         </form>
 
-        <!-- Signup link -->
-        <div class="row">
-            <span class="col-10">Don't have an OGS account?
-                <a class="text-muted" href="{{ route('register')}}">
-                    Sign up.
-                </a>
-            </span>
-        </div>
-
-        <!-- Password Reset link -->
-        <div class="row mt-2">
-            <span class="col-10">Forgot your password?
-                <a class="text-muted" href="{{ route('password.email')}}">
-                    Reset your password.
-                </a>
-            </span>
-        </div>
     </section>
 </section>
 

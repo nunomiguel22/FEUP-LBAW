@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PurchaseEmail;
 
 use App\Models\Purchase;
 use App\Models\Game;
@@ -15,9 +17,11 @@ use App\Models\GameKey;
 
 class PurchaseController extends Controller
 {
+    // GET /api/user/keys
     public function getKeys(Request $request)
     {
-        $this->authorize('view', Purchase::class);
+        $this->authorize('list', Purchase::class);
+
         $purchases = Auth::user()->purchases();
 
         if ($request->key_filter) {
@@ -45,12 +49,12 @@ class PurchaseController extends Controller
         return $purchases;
     }
 
+    // GET /user/cart
     public function showProductCart()
     {
-        $this->authorize('view', Purchase::class);
+        $this->authorize('list', Purchase::class);
         
         $cart_items = Auth::user()->cart_items;
-
         $prices = array();
 
         foreach ($cart_items as $item) {
@@ -62,44 +66,51 @@ class PurchaseController extends Controller
         return view('pages.product_cart', ['cart_items' => $cart_items, 'total_price' => $total_price]);
     }
 
+    // POST /products/{id}/cart
     public function addProductToCart($id)
     {
-        $this->authorize('view', Purchase::class);
-
+        $game = null;
         try {
-            Game::findOrFail($id);
+            $game = Game::findOrFail($id);
         } catch (ModelNotFoundException  $err) {
             abort(404);
         }
+
+        $this->authorize('addToCart', $game);
 
         Auth::user()->cart_items()->attach($id);
         return redirect("/products/".$id);
     }
 
+    // DELETE /products/{id}/cart
     public function removeProductFromCart($id)
     {
-        $this->authorize('view', Purchase::class);
-
+        $game = null;
         try {
-            Auth::user()->cart_items()->findOrFail($id);
+            $game = Game::findOrFail($id);
         } catch (ModelNotFoundException  $err) {
             abort(404);
         }
+
+        $this->authorize('removeFromCart', $game);
 
         Auth::user()->cart_items()->detach($id);
         return back();
     }
 
+    // DELETE /user/cart
     public function removeAllFromCart()
     {
+        $this->authorize('list', Purchase::class);
         Auth::user()->cart_items()->detach();
         return back();
     }
 
+    // GET /user/cart/checkout
     public function showCheckout()
     {
-        $this->authorize('view', Purchase::class);
-        $cart_items = null;
+        $this->authorize('list', Purchase::class);
+
         $cart_items = Auth::user()->cart_items;
 
         if (!$cart_items->first()) {
@@ -117,20 +128,20 @@ class PurchaseController extends Controller
         return view('pages.checkout.checkout', ['cart_items' => $cart_items, 'total_price' => $total_price]);
     }
 
+    // POST /user/cart/checkout
     public function completeCheckout(Request $request)
     {
-        $this->authorize('view', Purchase::class);
-        $payment_uuid = Str::uuid();
+        $this->authorize('list', Purchase::class);
 
-        $cart_items = null;
+        $payment_uuid = Str::uuid();
         $cart_items = Auth::user()->cart_items;
+        $prices = array();
 
         if (!$cart_items->first()) {
             abort(404);
         }
 
         DB::beginTransaction();
-        $prices = array();
         try {
             foreach ($cart_items as $item) {
                 $this->makePurchase($item, $payment_uuid, $request->method);
@@ -149,20 +160,23 @@ class PurchaseController extends Controller
         }
     }
 
+    // Auxiliary checkout view in case of failure
     public function showCheckoutFailed($message)
     {
-        $this->authorize('view', Purchase::class);
-
         return view('pages.checkout.checkout_failed', ['message' => $message]);
     }
 
+    // Auxiliary checkout view in case of success
     public function showCheckoutBankTransfer($total, $uuid)
     {
-        $this->authorize('view', Purchase::class);
+        $this->authorize('list', Purchase::class);
+
+        Mail::to(Auth::user())->send(new PurchaseEmail($total, $uuid));
 
         return view('pages.checkout.bank_transfer', ['amount' => $total, 'uuid' => $uuid]);
     }
 
+    // Auxiliary checkout function that purchases each individual item in the checkout
     private function makePurchase($cart_item, $uuid, $method)
     {
         $key = GameKey::getAvailableKey($cart_item->id);
