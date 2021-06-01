@@ -12,8 +12,6 @@ use \App\Models\Image;
 use \App\Models\Purchase;
 use \App\Models\Address;
 
-
-
 class User extends Authenticatable
 {
     use Notifiable;
@@ -44,12 +42,12 @@ class User extends Authenticatable
         return $this->hasMany(Purchase::class);
     }
 
-    public function image(){
-
+    public function image()
+    {
         return $this->belongsTo(Image::class, 'image_id');
     }
-    public function address(){
-
+    public function address()
+    {
         return $this->belongsTo(Address::class, 'addresses_id');
     }
 
@@ -63,7 +61,8 @@ class User extends Authenticatable
         return $this->cart_items->find($game_id);
     }
 
-    public function reviews(){
+    public function reviews()
+    {
         return $this->hasMany(Review::class);
     }
 }

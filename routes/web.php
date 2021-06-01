@@ -37,28 +37,6 @@ Route::delete('admin/products/{id}/delete', 'GameController@delete');
 
 // Products
 Route::get('products', 'GameController@showProducts')->name('products');
-Route::get('api/products/search', 'GameController@search');
-
-//Profile
-Route::get('profile', 'ProfileController@show')->name('profile');
-
-
-/* // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
-
-// API
-Route::put('api/cards', 'CardController@create');
-Route::delete('api/cards/{card_id}', 'CardController@delete');
-Route::put('api/cards/{card_id}/', 'ItemController@create');
-Route::post('api/item/{id}', 'ItemController@update');
-Route::delete('api/item/{id}', 'ItemController@delete');
-
-
- */
-Route::post('admin/products/add_product', 'GameController@store');
-Route::put('admin/products/{id}/edit', 'GameController@update');
-Route::delete('admin/products/{id}/delete', 'GameController@delete');
 Route::get('products/{id}', 'GameController@showProductPage');
 Route::post('products/{id}/cart', 'PurchaseController@addProductToCart');
 Route::delete('products/{id}/cart', 'PurchaseController@removeProductFromCart');
@@ -74,6 +52,7 @@ Route::get('user/cart', 'PurchaseController@showProductCart');
 Route::delete('user/cart', 'PurchaseController@removeAllFromCart');
 Route::get('user/cart/checkout', 'PurchaseController@showCheckout');
 Route::post('user/cart/checkout', 'PurchaseController@completeCheckout');
+Route::get('user/profile', 'ProfileController@show')->name('profile');
 
 // Review
 Route::post('/reviews/products/{id}/review', 'ReviewController@addReview');
