@@ -34,7 +34,6 @@ class ProfileController extends Controller
         $purchases = Auth::User()->purchases;
         $games_purchased_num = count($purchases);
 
-        dd($purchases->first()->game());
         return view('pages.profile', ['purchases' => $purchases, 'games_purchased_num'=> $games_purchased_num]);
     }
 }
