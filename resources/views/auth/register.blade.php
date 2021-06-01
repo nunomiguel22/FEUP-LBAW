@@ -43,12 +43,11 @@
         </div>
       </div>
 
-      @if ($errors->has('first_name') || $errors->has('last_name'))
+
       <div class="row mb-3">
-        <span class="error col">{{ $errors->first('first_name') }}</span>
-        <span class="error col">{{ $errors->first('last_name') }}</span>
+        <span class="error col">{{ $banned_message }}</span>
       </div>
-      @endif
+
 
 
       <!-- Display name Row -->
