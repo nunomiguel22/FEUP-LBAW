@@ -45,7 +45,7 @@
 
 
       <div class="row mb-3">
-        <span class="error col">{{ $banned_message }}</span>
+        <span class="error col">{{ $banned_message ?? null }}</span>
       </div>
 
 
