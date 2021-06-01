@@ -21,11 +21,11 @@
     <!-- UserInfo -->
     <div class="container p-3" style="background:#2e2e2e;">
         <div class="row">
-            <div class="col-3 d-none  d-lg-block">
+            <div class="col-3">
                 <img src="{{ Auth::user()->image->getPath() }}" style="max-height:250px; max-width:250px;"
-                    class="align-self-start border b-shadow" alt="...">
+                    class="align-self-start border b-shadow w-100" alt="...">
             </div>
-            <div class="col-4">
+            <div class="col-4 border-right 1px solid lightgray;">
                 <h3 class="text-shadow">{{Auth::user()->username}}</h3>
                 <span class="text-muted">{{Auth::user()->first_name}}</span>
                 <span class="text-muted mr"> {{Auth::user()->last_name}}</span>
@@ -36,7 +36,7 @@
                 @endif
                 <span class="text-light">Games purchased: </span> <span class="m">{{$games_purchased_num}}</span>
             </div>
-            <div class="col-1" style="border-right: 1px solid lightgray;"></div>
+
             <div class="col-4 mt-4">
                 <span>{{Auth::user()->description}}</span>
             </div>
