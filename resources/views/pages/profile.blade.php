@@ -19,7 +19,7 @@
 <section class="container">
    
     <!-- UserInfo -->
-    <div class="container p-3" style="background:#2e2e2e;">
+    <div class="container p-3 m-0" style="background:#2e2e2e;">
         <div class="row">
             <div class="col-3">
                 <img src="{{ Auth::user()->image->getPath() }}" style="max-height:250px; max-width:250px;"
@@ -43,7 +43,7 @@
         </div>
     </div>
     <!-- GamesPurchased -->
-    <div class="container mt-5">
+    <div class="container mt-5 mx-0">
         @if(($games_purchased_num) == 0)
         <h3 class="text-shadow">NO GAMES PURCHASED</h3>
         @else
