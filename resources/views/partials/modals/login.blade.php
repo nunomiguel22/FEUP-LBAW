@@ -49,6 +49,12 @@
                         @endforeach
                     </ul>
 
+                    <label class="row mt-2">
+                        <div class="col" align="center">
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <span class="text-light">Remember me</span>
+                        </div>
+                    </label>
 
                     <!-- Submit button Row -->
                     <div class="form-group row mt-4">
