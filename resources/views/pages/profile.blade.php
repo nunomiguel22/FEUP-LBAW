@@ -34,7 +34,7 @@
                 @else
                 <h6 class="my-3">{{Auth::user()->address->country->name}}</h6>
                 @endif
-                <span class="text-light">Games purchased: </span> <span class="m">{{$games_purchased}}</span>
+                <span class="text-light">Games purchased: </span> <span class="m">{{$games_purchased_num}}</span>
             </div>
             <div class="col-1" style="border-right: 1px solid lightgray;"></div>
             <div class="col-4 mt-4">
@@ -44,34 +44,46 @@
     </div>
     <!-- GamesPurchased -->
     <div class="container mt-5">
-
+        @if(($games_purchased_num) == 0)
+        <h3 class="text-shadow">NO GAMES PURCHASED</h3>
+        @else
         <h3 class="text-shadow">GAMES PURCHASED</h3>
+        <div>
+        @php
+                $i = 0;
+               
+                @endphp
 
-        <form action="">
+                @forelse($purchases as $purchase)
+                    @if ($i % 3 == 0)
+                        <div class="card-deck mb-3 text-center">
+                    @endif
+  
+                    @include('partials.homepage.card', ['game' => $purchase->game])
 
-            <div class="form-row">
-                <div class="col-lg-9 col-sm-12  my-3">
-
-                    <div class="input-group  w-50">
-                        <input type="text" class="form-control bg-dark text-light" placeholder="Search for a game..."
-                            aria-label="Search for a title..." aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+                    @if($i % 3 == 2)
                         </div>
+                    @endif
+
+                    @php
+                    $i++;
+                    @endphp
+                @empty
+                @endforelse
+
+                @while($i % 3 != 0)
+                    @php
+                    $i++;
+                    @endphp
+                    <article class="card mb-2 mt-2 hover-darken">
+                    </article>
+
+                    @if($i % 3 == 0)
                     </div>
-                </div>
-
-                <span class="my-auto col-lg-1 col-sm-2">Sort by </span>
-
-                <div class="col-lg-2 col-md-4 my-auto">
-                    <select name="SortBy" class="form-control bg-dark text-light">
-                        <option value="Title">Title</option>
-                        <option value="PurchaseDate">Purchase Date</option>
-                    </select>
-                </div>
-
+                    @endif
+                @endwhile
             </div>
-        </form>
 
+        @endif
 
 @endsection

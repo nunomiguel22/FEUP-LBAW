@@ -32,11 +32,13 @@ class ProfileController extends Controller
 
     public function profile()
     {
-        $games_purchased = array();
-        $purchases = Purchase::where('user_id', '=', Auth::user()->id)->get();
-        $games_purchased = count($purchases);
         
-        return view('pages.profile', ['games_purchased' => $games_purchased]);
+        $games_purchased_num = array();
+        $purchases = Auth::User()->purchases;
+        $games_purchased_num = count($purchases);
+
+        
+        return view('pages.profile', ['purchases' => $purchases, 'games_purchased_num'=> $games_purchased_num]);
 
 
 
