@@ -47,7 +47,7 @@
         @if(($games_purchased_num) == 0)
         <h3 class="text-shadow">NO GAMES PURCHASED</h3>
         @else
-        <h3 class="text-shadow">GAMES PURCHASED</h3>
+        <h3 class="text-shadow">RECENT GAMES PURCHASED</h3>
         <div>
         @php
         $i = 0;

@@ -5,15 +5,6 @@
          <img src="{{ $purchase->game()->cover_image() }}" class="card-img-top" alt="{{ $purchase->game()->title }}">
      </figure>
 
-     <!-- Wishlist Indicator -->
-     @if(Auth::check())
-     <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
-         title="Add to Wishlist" href="#todo"><i class="fas fa-plus-circle"></i></a>
-     @else
-     <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
-         title="Add to Wishlist" href="{{ route('login') }}"><i class="fas fa-plus-circle"></i></a>
-     @endif
-
      <div class="row">
          <div class="col-6">
              <p class="HomeNav-GameTitle my-1">{{ $purchase->game()->title }}</p>
