@@ -20,7 +20,10 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
-
+Route::get('forgot-password', 'Auth\PasswordResetController@showPasswordReset')->name('password.request');
+Route::post('forgot-password', 'Auth\PasswordResetController@sendPasswordReset')->name('password.email');
+Route::get('reset-password/{token}', 'Auth\PasswordResetController@showPasswordEmailReset')->name('password.reset');
+Route::post('reset-password', 'Auth\PasswordResetController@resetPassword')->name('password.update');
 
 // Admin
 Route::get('admin', 'AdminController@showDefault')->name('admin');

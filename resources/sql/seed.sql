@@ -18,6 +18,7 @@ DROP TABLE IF EXISTS wishlist_items CASCADE;
 DROP TABLE IF EXISTS purchases CASCADE;
 DROP TABLE IF EXISTS reviews CASCADE;
 DROP TABLE IF EXISTS reports CASCADE;
+DROP TABLE IF EXISTS password_resets CASCADE;
  
 DROP TYPE IF EXISTS PAYMENT_METHOD;
 DROP TYPE IF EXISTS PURCHASE_STATUS;
@@ -179,6 +180,12 @@ CREATE TABLE reports(
     admin_id INTEGER REFERENCES users (id), --Tem que ter constraint a verificar se user é admin
     review_id INTEGER REFERENCES reviews (id) CONSTRAINT review_id_ck
     CHECK ((r_type='Review' AND review_id is NOT NULL) OR r_type='Bug')
+);
+
+CREATE TABLE password_resets (
+    email TEXT,
+    token TEXT,
+    created_at TIMESTAMP
 );
 
 -----------------------------------------
