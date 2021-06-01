@@ -114,10 +114,3 @@ $cart_item_count = Auth::user()->cart_items()->count();
         </section>
     </nav>
 </header>
-
-@if(Auth::guest())
-<aside>
-    @include('partials.modals.login')
-    @include('partials.modals.register')
-</aside>
-@endif
