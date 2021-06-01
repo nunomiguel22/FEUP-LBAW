@@ -14,15 +14,16 @@
          title="Add to Wishlist" href="{{ route('login') }}"><i class="fas fa-plus-circle"></i></a>
      @endif
 
-     <div class="row mt-2">
-        <div class="col-7">
-            <span class="row HomeNav-GameTitle">{{ $purchase->game()->title }}</span>
-            <span class="row HomeNav-devInfo">{{ $purchase->game()->developer->name }}</span>
-        </div>
-        <div class="col-4">
-            <span class="row text-light small">Purchase date </span>
-            <span class="row HomeNav-devInfo text-right mr-3">{{ $purchase->formattedTimestamp('d-m-Y') }}</span>
-        </div>
-    </div>
-     <a href="{{ url('/products/'.$purchase->game()->id) }}" class="btn btn-secondary hidden-opacity stretched-link"></a>
+     <div class="row">
+         <div class="col-6">
+             <p class="HomeNav-GameTitle my-1">{{ $purchase->game()->title }}</p>
+             <p class="HomeNav-devInfo my-1">{{ $purchase->game()->developer->name }}</p>
+         </div>
+         <div class="col-5">
+             <p class="my-1">Purchased on </p>
+             <p class="HomeNav-devInfo my-1">{{ $purchase->formattedTimestamp('d-m-Y') }}</p>
+         </div>
+     </div>
+     <a href="{{ url('/products/'.$purchase->game()->id) }}" class="btn btn-secondary hidden-opacity stretched-link">
+     </a>
  </article>
