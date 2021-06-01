@@ -50,40 +50,40 @@
         <h3 class="text-shadow">GAMES PURCHASED</h3>
         <div>
         @php
-                $i = 0;
-               
-                @endphp
+        $i = 0;
+        
+        @endphp
 
-                @forelse($purchases as $purchase)
-                    @if ($i % 3 == 0)
-                        <div class="card-deck mb-3 text-center">
-                    @endif
-  
-                    @include('partials.homepage.card', ['game' => $purchase->game])
+        @forelse($purchases as $purchase)
+            @if ($i % 3 == 0)
+                <div class="card-deck mb-3 text-center">
+            @endif
 
-                    @if($i % 3 == 2)
-                        </div>
-                    @endif
+            @include('partials.profile.card', ['purchase' => $purchase])
 
-                    @php
-                    $i++;
-                    @endphp
-                @empty
-                @endforelse
+            @if($i % 3 == 2)
+                </div>
+            @endif
 
-                @while($i % 3 != 0)
-                    @php
-                    $i++;
-                    @endphp
-                    <article class="card mb-2 mt-2 hover-darken">
-                    </article>
+            @php
+            $i++;
+            @endphp
+        @empty
+        @endforelse
 
-                    @if($i % 3 == 0)
-                    </div>
-                    @endif
-                @endwhile
+        @while($i % 3 != 0)
+            @php
+            $i++;
+            @endphp
+            <article class="card mb-2 mt-2 hover-darken">
+            </article>
+
+            @if($i % 3 == 0)
             </div>
+            @endif
+        @endwhile
+    </div>
 
-        @endif
+    @endif
 
 @endsection
