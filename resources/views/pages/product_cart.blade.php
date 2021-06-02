@@ -24,7 +24,7 @@
   @forelse($cart_items as $game)
   <div class="row bg-secondary b-shadow my-1 px-2">
 
-    <div class="col-2 d-none d-lg-block">
+    <div class="col-2 d-none d-lg-block my-1">
       <a href="{{url('/products/'.$game->id)}}">
         <img src="{{$game->cover_image()}}" style="max-width:96px;max-height:54px;">
       </a>

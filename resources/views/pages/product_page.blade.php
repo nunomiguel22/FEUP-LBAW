@@ -82,7 +82,7 @@
                     @csrf
                     @if(Auth::user()->gameInWishlist($game->id))
                     @method('DELETE')
-                    <button type="submit" class="btn btn-secondary w-100" style="min-height:44px;">
+                    <button type="submit" class="btn btn-danger w-100" style="min-height:44px;">
                         <i class="far fa-times-circle"></i> Remove from wishlist
                     </button>
 

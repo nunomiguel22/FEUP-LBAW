@@ -13,12 +13,10 @@ use App\Models\Purchase;
 use App\Models\Game;
 use App\Models\User;
 
-class WishlistController extends Controller 
+class WishlistController extends Controller
 {
     public function addGame($id)
     {
-        $this->authorize('view', Purchase::class);
-
         $game = null;
 
         try {
@@ -26,6 +24,8 @@ class WishlistController extends Controller
         } catch (ModelNotFoundException  $err) {
             abort(404);
         }
+
+        $this->authorize('addToWhishlist', $game);
 
         Auth::user()->wishlist_items()->attach($id);
         return back();
@@ -43,6 +43,8 @@ class WishlistController extends Controller
             abort(404);
         }
 
+        $this->authorize('removeFromWhishlist', $game);
+        
         Auth::user()->wishlist_items()->detach($id);
         return back();
     }

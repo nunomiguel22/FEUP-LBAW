@@ -74,6 +74,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function gameInWishlist($game_id)
     {
-        return $this->wishlist_items->find($game_id);
+        return $this->wishlist_items->find($game_id) != null;
     }
 }

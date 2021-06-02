@@ -14,7 +14,7 @@ class UserController extends Controller
     //GET /user
     public function showDefault()
     {
-        return $this->showKeys();
+        return $this->showWishlist();
     }
 
     //GET /user/edit
