@@ -32,6 +32,7 @@
 
 <body>
   @include('partials.navbar')
+  @include('partials.verification_notice')
 
   @yield('breadcrumbs')
 

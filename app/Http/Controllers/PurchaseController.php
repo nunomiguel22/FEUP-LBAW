@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PurchaseEmail;
 
 use App\Models\Purchase;
 use App\Models\Game;
@@ -167,7 +169,9 @@ class PurchaseController extends Controller
     // Auxiliary checkout view in case of success
     public function showCheckoutBankTransfer($total, $uuid)
     {
-        $this->authorize('view', Purchase::class);
+        $this->authorize('list', Purchase::class);
+
+        Mail::to(Auth::user())->send(new PurchaseEmail($total, $uuid));
 
         return view('pages.checkout.bank_transfer', ['amount' => $total, 'uuid' => $uuid]);
     }
