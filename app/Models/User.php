@@ -65,6 +65,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function wishlist_items()
     {
         return $this->belongsToMany(Game::class, 'wishlist_items');
+    }
+    
     public function reviews()
     {
         return $this->hasMany(Review::class);
