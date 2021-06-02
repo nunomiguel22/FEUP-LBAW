@@ -39,12 +39,12 @@ class UserController extends Controller
         $this->authorize('modify', User::class);
         $this->authorize('modify', Address::class);
 
-        $validator = $this->validator($request->all());
+        /*$validator = $this->validator($request->all());
         if ($validator->fails()) {
             return redirect('user/edit')
                 ->withErrors($validator)
                 ->withInput();
-        }
+        }*/
 
         // Update the game in the DB using a transaction as this is a multipart action
         DB::beginTransaction();
@@ -56,27 +56,28 @@ class UserController extends Controller
             Auth::user()->description = $request->description;
             Auth::user()->save();
             // Create address if it does not existe
-            if(Auth::user()->image_id != 1){    
+            if(is_null(Auth::user()->address)){    
                 $address = new Address();
                 $address->line1 = $request->line1;
                 $address->line2 = $request->line2;
                 $address->postal_code = $request->postal_code;
                 $address->city = $request->city;
                 $address->region = $request->region;
-                $address->country_id = $country->id;
+                $address->country_id = $request->country;
                 $address->save();
-                Auth::user()->address = $address;
+                Auth::user()->address_id = $address->id;
             } else{
                 Auth::user()->address->line1 = $request->line1;
                 Auth::user()->address->line2 = $request->line2;
                 Auth::user()->address->postal_code = $request->postal_code;
                 Auth::user()->address->city = $request->city;
                 Auth::user()->address->region = $request->region;
-                Auth::user()->address->country_id = $country->id;
+                Auth::user()->address->country_id = $request->country;
+                Auth::user()->save();
             }
             
             // Add images to disk with an unique name, create images in table and add relation
-            if ($request->file('images')) {
+            if ($request->file('image')) {
                 // Delete images from disk, database and game relation if not default
                 if(Auth::user()->image_id != 1){
                     $image = Image::find(Auth::user()->image_id);
@@ -84,7 +85,7 @@ class UserController extends Controller
                     $image->deleteFromDisk();
                     $image->delete();
                 }
-                $image = $request->file('images');
+                $image = $request->file('image');
                     $path = Image::saveOnDisk($image);
                     Auth::user()->images()->save(new Image(['path' => $path]));// verificar se isto é so para muitos para um
             }
@@ -129,5 +130,18 @@ class UserController extends Controller
         $purchases = Auth::user()->purchases;
 
         return view('pages.user.user', ['tab_id' => 2, 'purchases' => $purchases]);
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => 'required|string|max:60|min:1',
+            'first_name' => 'required|string|max:60|min:1',
+            'last_name' => 'required|string|max:60|min:1',
+            'nif' => 'nullable',
+            'description' => 'nullable',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        
+        ]);
     }
 }

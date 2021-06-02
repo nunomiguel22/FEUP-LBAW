@@ -135,10 +135,10 @@
                         </div>
                         
                         <div class="row mt-2">
-                            <label for="images" class="col control-label text-light">Add new Image</label>
+                            <label for="image" class="col control-label text-light">Add new Image</label>
                         </div>
                         <div class="row">
-                            <input type="file" name="images" class="col mt-2">
+                            <input type="file" name="image" class="col mt-2">
                         </div>
             </div>
 
