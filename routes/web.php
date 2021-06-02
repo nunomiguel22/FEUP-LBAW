@@ -51,6 +51,7 @@ Route::delete('products/{id}/cart', 'PurchaseController@removeProductFromCart');
 // Users
 Route::get('user', 'UserController@showDefault')->name('user');
 Route::get('user/edit', 'UserController@showGeneral');
+Route::put('user/edit', 'UserController@updateGeneral');
 Route::get('user/security', 'UserController@showSecurity');
 Route::get('user/keys', 'UserController@showKeys');
 Route::get('user/avatar', 'UserController@showAvatar');

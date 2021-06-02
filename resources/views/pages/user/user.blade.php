@@ -114,7 +114,9 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+            @if (isset($tab_id) && $tab_id == 3)
+                    @include('pages.user.security')
+                @endif
             </div>
 
             <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-2-tab">
