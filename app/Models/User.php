@@ -62,15 +62,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->cart_items->find($game_id);
     }
 
-<<<<<<< HEAD
     public function wishlist_items()
     {
         return $this->belongsToMany(Game::class, 'wishlist_items');
-=======
     public function reviews()
     {
         return $this->hasMany(Review::class);
->>>>>>> origin/develop
     }
 
     public function gameInWishlist($game_id)
