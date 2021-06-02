@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use \App\Models\User;
+use \App\Models\Game;
+use \App\Models\GameKey;
 
 class Purchase extends Model
 {
@@ -24,6 +26,11 @@ class Purchase extends Model
     public function game_key()
     {
         return $this->belongsTo(GameKey::class);
+    }
+
+    public function game()
+    {
+        return $this->game_key->game;
     }
 
     public function formattedTimestamp($format)

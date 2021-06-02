@@ -10,6 +10,7 @@ use \App\Models\Category;
 use \App\Models\Image;
 use \App\Models\Tag;
 use \App\Models\GameKey;
+use \App\Models\Review;
 use \App\Models\Purchase;
 
 class Game extends Model
@@ -61,6 +62,16 @@ class Game extends Model
         return $this->belongsToMany(Image::class);
     }
 
+    public function cart_items()
+    {
+        return $this->belongsToMany(User::class, 'cart_items');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function purchases()
     {
         return $this->hasManyThrough(Purchase::class, GameKey::class);
@@ -78,9 +89,14 @@ class Game extends Model
             ->pluck('game_id')->toArray();
     }
 
-    public function cart_items()
+    public function user_has_key($user_id)
     {
-        return $this->belongsToMany(User::class, 'cart_items');
+        return $this->purchases->where('user_id', $user_id)->where('status', 'Completed')->first();
+    }
+
+    public function user_has_review($user_id)
+    {
+        return $this->reviews()->where('user_id', $user_id)->first();
     }
 
     public function wishlist_items()

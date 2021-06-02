@@ -18,6 +18,7 @@ DROP TABLE IF EXISTS wishlist_items CASCADE;
 DROP TABLE IF EXISTS purchases CASCADE;
 DROP TABLE IF EXISTS reviews CASCADE;
 DROP TABLE IF EXISTS reports CASCADE;
+DROP TABLE IF EXISTS password_resets CASCADE;
  
 DROP TYPE IF EXISTS PAYMENT_METHOD;
 DROP TYPE IF EXISTS PURCHASE_STATUS;
@@ -99,8 +100,11 @@ CREATE TABLE users (
     banned BOOLEAN NOT NULL DEFAULT false,
     restricted BOOLEAN NOT NULL DEFAULT false,
     is_admin BOOLEAN NOT NULL DEFAULT false,
-    avatar_id INTEGER REFERENCES images (id),
-    addresses_id INTEGER REFERENCES addresses (id)  ON DELETE CASCADE
+    image_id INTEGER DEFAULT 1 REFERENCES images (id),
+    addresses_id INTEGER REFERENCES addresses (id)  ON DELETE CASCADE,
+    "description" TEXT DEFAULT 'No description yet',
+    remember_token TEXT,
+    email_verified_at TIMESTAMP
 );
 
 CREATE TABLE games(
@@ -177,6 +181,12 @@ CREATE TABLE reports(
     admin_id INTEGER REFERENCES users (id), --Tem que ter constraint a verificar se user é admin
     review_id INTEGER REFERENCES reviews (id) CONSTRAINT review_id_ck
     CHECK ((r_type='Review' AND review_id is NOT NULL) OR r_type='Bug')
+);
+
+CREATE TABLE password_resets (
+    email TEXT,
+    token TEXT,
+    created_at TIMESTAMP
 );
 
 -----------------------------------------
@@ -626,10 +636,8 @@ INSERT INTO countries(name) VALUES
 ,('Western Sahara')
 ,('Yemen');
 
-INSERT INTO users(email, first_name, last_name, username, password, is_admin) VALUES('lbaw@lbaw.pt', 'PNome', 'LNome', 'lbaw', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true);
-INSERT INTO users(email, first_name, last_name, username, password, is_admin) VALUES('lbaw2@lbaw.pt', 'PNome', 'LNome', 'lbaw_normal', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', false);
 
-
+INSERT INTO images(path) VALUES ('images/logo/facebook_profile_image.png');
 INSERT INTO images(path) VALUES ('images/games/BL3.jpg');
 INSERT INTO images(path) VALUES ('images/games/Control.jpg');
 INSERT INTO images(path) VALUES ('images/games/CP2077.jpg');
@@ -641,6 +649,12 @@ INSERT INTO images(path) VALUES ('images/games/GTAV.jpg');
 INSERT INTO images(path) VALUES ('images/games/h3.jpg');
 INSERT INTO images(path) VALUES ('images/games/MW3.jpg');
 INSERT INTO images(path) VALUES ('images/games/Outriders.jpg');
+
+INSERT INTO addresses(line1, postal_code, city, region, country_id) VALUES ('Rua Dr. Roberto Frias', '4200-465', 'Porto', 'Porto', 177);
+
+INSERT INTO users(email, first_name, last_name, username, password, is_admin, image_id, addresses_id) VALUES('lbaw@lbaw.pt', 'PNome', 'LNome', 'lbaw', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true, 1, 1);
+INSERT INTO users(email, first_name, last_name, username, password, is_admin, image_id, addresses_id) VALUES('lbaw2@lbaw.pt', 'PNome', 'LNome', 'lbaw_normal', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', false, 1, 1);
+INSERT INTO users(email, first_name, last_name, username, password, banned, is_admin, image_id, addresses_id) VALUES('banned@email.com', 'sdf', 'asd', 'banned_user', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true, false, 1, 1);
 
 INSERT INTO developers(name) VALUES ('CDProjekt Red');
 INSERT INTO developers(name) VALUES ('Rockstar North');
@@ -732,17 +746,17 @@ INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3075','true',2
 
 
 
-INSERT INTO game_image(image_id,game_id) VALUES (1,2);
-INSERT INTO game_image(image_id,game_id) VALUES (2,3);
-INSERT INTO game_image(image_id,game_id) VALUES (3,1);
+INSERT INTO game_image(image_id,game_id) VALUES (2,2);
+INSERT INTO game_image(image_id,game_id) VALUES (3,3);
 INSERT INTO game_image(image_id,game_id) VALUES (4,1);
 INSERT INTO game_image(image_id,game_id) VALUES (5,1);
-INSERT INTO game_image(image_id,game_id) VALUES (6,4);
-INSERT INTO game_image(image_id,game_id) VALUES (7,5);
-INSERT INTO game_image(image_id,game_id) VALUES (8,6);
-INSERT INTO game_image(image_id,game_id) VALUES (9,7);
-INSERT INTO game_image(image_id,game_id) VALUES (10,8);
-INSERT INTO game_image(image_id,game_id) VALUES (11,9);
+INSERT INTO game_image(image_id,game_id) VALUES (6,1);
+INSERT INTO game_image(image_id,game_id) VALUES (7,4);
+INSERT INTO game_image(image_id,game_id) VALUES (8,5);
+INSERT INTO game_image(image_id,game_id) VALUES (9,6);
+INSERT INTO game_image(image_id,game_id) VALUES (10,7);
+INSERT INTO game_image(image_id,game_id) VALUES (11,8);
+INSERT INTO game_image(image_id,game_id) VALUES (12,9);
 
 INSERT INTO game_tag(tag_id,game_id) VALUES (1,1);
 INSERT INTO game_tag(tag_id,game_id) VALUES (4,1);

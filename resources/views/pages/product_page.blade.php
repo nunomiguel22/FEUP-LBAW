@@ -14,7 +14,13 @@
 @endsection
 
 @section('content')
+
 <section class="container">
+    <ul class="row">
+        @foreach ($errors->all() as $error)
+        <li class="error mt-2">{{ $error }}</li>
+        @endforeach
+    </ul>
     <div class="row mt-4">
         <div class="col mr-4">
             <div id="carousel" class="carousel row slide carousel-fade" data-ride="carousel">
@@ -201,5 +207,47 @@
 
 
 </section>
+
+<div class="container" style="padding-top:50px;">
+    <div class="row">
+        <div class="col">
+            <hr style="background:white;">
+        </div>
+        <span><i class="fas fa-book"></i> Reviews </span>
+        <div class="col">
+            <hr style="background:white;">
+        </div>
+    </div>
+</div>
+
+@forelse ($reviews as $review)
+@include('partials.review.see_review', ['review' => $review])
+@if($review->user_id === Auth::user()->id)
+@php
+$user_review = $review;
+@endphp
+@endif
+@empty
+No reviews yet!
+@endforelse
+
+
+
+@if(Auth::check() && $game->user_has_key(Auth::user()->id))
+@if(!$game->user_has_review(Auth::user()->id))
+<form method="POST" action="/reviews/products/{{$game->id}}/review" enctype="multipart/form-data">
+    @csrf
+    @include('partials.review.make_review')
+</form>
+@else
+<form method="POST" action="/reviews/products/{{$game->id}}/review/{{$user_review->id}}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+    @include('partials.review.edit_review', ['user_review' => $user_review])
+</form>
+@endif
+@endif
+
+
 
 @endsection
