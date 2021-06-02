@@ -59,7 +59,8 @@ class UserController extends Controller
         return view('pages.user.user', ['tab_id' => 2, 'purchases' => $purchases]);
     }
 
-    public function showWishlist(){
+    public function showWishlist()
+    {
         if (!Auth::check()) {
             return redirect('login');
         }

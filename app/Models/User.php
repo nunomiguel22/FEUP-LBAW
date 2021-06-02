@@ -72,4 +72,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Review::class);
 >>>>>>> origin/develop
     }
+
+    public function gameInWishlist($game_id)
+    {
+        return $this->wishlist_items->find($game_id);
+    }
 }
