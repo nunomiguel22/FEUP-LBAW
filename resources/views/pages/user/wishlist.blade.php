@@ -25,17 +25,29 @@
                 </a>
             </div>
 
-            <div class="col-md-9 card-body">
+            <div class="col-md-8 card-body">
+                @if(!$game->hasAvailableKeys())
                 <h6 class="card-title mt-1">
-                    {{$game->title}}
+                    {{$game->title}} <span class="text-danger ml-1 small"> unavailable </span>
                 </h6>
-                <p class="card-text"><span class="HomeNav-devInfo">{{$game->price}}€</span></p>
+
+                @else
+                <h6 class="card-title mt-1">
+                    {{$game->title}} 
+                </h6>
+                @endif
+
+                <p class="card-text"><span class="HomeNav-devInfo">{{$game->developer->name}}</span></p>
             </div>
 
-            <form class="col-md-1" method="POST" action="/products/{{$game->id}}/wishlist">
+            <p class="col-md-1 card-body my-auto">
+                {{$game->price}}€
+            </p>
+
+            <form class="col-md-1 my-auto" method="POST" action="/products/{{$game->id}}/wishlist">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-secondary" style="height: 63px; width: 68px;" type="submit" role="button">
+                <button class="btn btn-secondary" type="submit" role="button">
                     <i class="fas fa-trash"></i>
                 </button>
             </form>
