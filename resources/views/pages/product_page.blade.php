@@ -222,10 +222,12 @@
 
 @forelse ($reviews as $review)
 @include('partials.review.see_review', ['review' => $review])
+@if(Auth::user())
 @if($review->user_id === Auth::user()->id)
 @php
 $user_review = $review;
 @endphp
+@endif
 @endif
 @empty
 No reviews yet!
