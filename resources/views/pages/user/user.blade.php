@@ -21,7 +21,7 @@
                     <span class="col"> WISHLIST</span>
                 </div>
             </a>
-            <a class="nav-link" id="v-pills-1-tab-1" href="{{ url('user/edit') }}" role="tab"
+            <a class="nav-link" id="v-pills-1-tab-2" href="{{ url('user/edit') }}" role="tab"
                 aria-controls="v-pills-1" aria-selected="false">
                 <div class="row">
                     <i class="fas fa-user col-1"></i> 
@@ -101,13 +101,13 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                @if ($tab_id && $tab_id == 1)
+                @if (isset($tab_id) && $tab_id == 1)
                     @include('pages.user.general')
                 @endif
             </div>
 
             <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                @if ($tab_id && $tab_id == 2)
+            @if (isset($tab_id) && $tab_id == 2)
                     @include('pages.user.keys')
                 @endif
 
