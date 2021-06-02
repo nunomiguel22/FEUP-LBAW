@@ -25,6 +25,19 @@ class GamePolicy
         return Auth::check() && $game->hasAvailableKeys() && !$user->cart_items()->find($game->id);
     }
 
+    public function addToWhishlist(User $user, Game $game)
+    {
+        // Any autheticated user can add a game to the wishlist and the game is not in the wishlist already
+        return Auth::check() && !$user->gameInWishlist($game->id);
+    }
+
+    public function removeFromWhishlist(User $user, Game $game)
+    {
+        // Any autheticated user can remove a game from the wishlist if the game is in the wishlist already
+        return Auth::check() && $user->gameInWishlist($game->id);
+    }
+
+
     public function removeFromCart(User $user, Game $game)
     {
         // A autheticated user can remove a game from the cart if the game is in the cart

@@ -79,7 +79,7 @@ class PurchaseController extends Controller
         $this->authorize('addToCart', $game);
 
         Auth::user()->cart_items()->attach($id);
-        return redirect("/products/".$id);
+        return back();
     }
 
     // DELETE /products/{id}/cart
