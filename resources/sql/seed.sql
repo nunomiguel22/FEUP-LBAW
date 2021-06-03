@@ -101,7 +101,7 @@ CREATE TABLE users (
     restricted BOOLEAN NOT NULL DEFAULT false,
     is_admin BOOLEAN NOT NULL DEFAULT false,
     image_id INTEGER DEFAULT 1 REFERENCES images (id),
-    addresses_id INTEGER REFERENCES addresses (id)  ON DELETE CASCADE,
+    address_id INTEGER REFERENCES addresses (id)  ON DELETE CASCADE,
     "description" TEXT DEFAULT 'No description yet',
     remember_token TEXT,
     email_verified_at TIMESTAMP
@@ -652,9 +652,9 @@ INSERT INTO images(path) VALUES ('images/games/Outriders.jpg');
 
 INSERT INTO addresses(line1, postal_code, city, region, country_id) VALUES ('Rua Dr. Roberto Frias', '4200-465', 'Porto', 'Porto', 177);
 
-INSERT INTO users(email, first_name, last_name, username, password, is_admin, image_id, addresses_id) VALUES('lbaw@lbaw.pt', 'PNome', 'LNome', 'lbaw', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true, 1, 1);
-INSERT INTO users(email, first_name, last_name, username, password, is_admin, image_id, addresses_id) VALUES('lbaw2@lbaw.pt', 'PNome', 'LNome', 'lbaw_normal', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', false, 1, 1);
-INSERT INTO users(email, first_name, last_name, username, password, banned, is_admin, image_id, addresses_id) VALUES('banned@email.com', 'sdf', 'asd', 'banned_user', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true, false, 1, 1);
+INSERT INTO users(email, first_name, last_name, username, password, is_admin, image_id, address_id) VALUES('lbaw@lbaw.pt', 'PNome', 'LNome', 'lbaw', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true, 1, 1);
+INSERT INTO users(email, first_name, last_name, username, password, is_admin, image_id, address_id) VALUES('lbaw2@lbaw.pt', 'PNome', 'LNome', 'lbaw_normal', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', false, 1, 1);
+INSERT INTO users(email, first_name, last_name, username, password, banned, is_admin, image_id, address_id) VALUES('banned@email.com', 'sdf', 'asd', 'banned_user', '$2y$10$REP/9v3A7pr477Lne7ttKOBVKJuWrkvsSihNIkYGePO6rLgWehUCu', true, false, 1, 1);
 
 INSERT INTO developers(name) VALUES ('CDProjekt Red');
 INSERT INTO developers(name) VALUES ('Rockstar North');

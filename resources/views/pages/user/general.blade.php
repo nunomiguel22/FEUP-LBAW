@@ -39,6 +39,7 @@
 
             <div class="row mx-auto mt-4">
                 <label for="first_name" class="control-label text-light col-5">First Name</label>
+                
                 <div class="col-1"></div>
                 <label for="last_name" class="control-label text-light col-5">Last Name</label>
             </div>
@@ -53,12 +54,21 @@
                     style="height:50px" placeholder="*Last Name" value="{{Auth::user()->last_name ?? null}}">
             </div>
 
+            @if ($errors->has('first_name') || $errors->has('last_name'))
+            <div class="row mb-3">
+                <span class="error col-5">{{ $errors->first('first_name') }}</span>
+                <div class="col-1"></div>
+                <span class="error col-5 pl-0">{{ $errors->first('last_name') }}</span>
+
+            </div>
+            @endif
+
             <div class="row mx-auto mt-4">
                 <label for="nif" class="control-label col-5 text-light">NIF</label>
             </div>
 
             <div class="row mt-2 mx-auto ">
-            <input type="text" name="last_name" class="form-control col-5 text-field my-auto  bg-secondary text-light"
+            <input type="text" name="nif" class="form-control col-5 text-field my-auto  bg-secondary text-light"
                     style="height:50px" placeholder="*NIF" value="{{Auth::user()->nif ?? null}}">
             </div>
 
@@ -74,12 +84,12 @@
             </div>
 
             <div class="row mt-2 mx-auto">
-                <input type="text" name="price" class="form-control col-5 bg-secondary text-white"
+                <input type="text" name="line1" class="form-control col-5 bg-secondary text-white"
                     style="height:50px" placeholder="*Address Line 1" value="{{Auth::user()->address->line1 ?? null}}">
 
                 <div class="col-1"></div>
 
-                <input type="text" name="price" class="form-control col-5 bg-secondary text-white"
+                <input type="text" name="line2" class="form-control col-5 bg-secondary text-white"
                     style="height:50px" placeholder="*Address Line 2" value="{{Auth::user()->address->line2 ?? null}}">
             </div>
 
@@ -91,15 +101,15 @@
             </div>
 
             <div class="row mt-2 mx-auto">
-                <input type="text" name="price" class="form-control col-5 bg-secondary text-white"
+                <input type="text" name="city" class="form-control col-5 bg-secondary text-white"
                     style="height:50px" placeholder="*City" value="{{Auth::user()->address->city ?? null}}">
 
                 <div class="col-1"></div>
 
-                <input type="text" name="price" class="form-control mr-1 col-2 bg-secondary text-white"
+                <input type="text" name="region" class="form-control mr-1 col-2 bg-secondary text-white"
                     style="height:50px" placeholder="*Region" value="{{Auth::user()->address->region ?? null}}">
 
-                <input type="text" name="price" class="form-control col-3 bg-secondary text-white"
+                <input type="text" name="postal_code" class="form-control col-3 bg-secondary text-white"
                     style="height:50px" placeholder="*Postal Code" value="{{Auth::user()->address->postal_code ?? null}}">
             </div>
 

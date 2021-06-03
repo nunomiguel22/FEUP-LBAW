@@ -49,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function address()
     {
-        return $this->belongsTo(Address::class, 'addresses_id');
+        return $this->belongsTo(Address::class);
     }
 
     public function cart_items()
