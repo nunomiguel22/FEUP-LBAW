@@ -221,7 +221,7 @@
 
 </section>
 
-<div class="container" style="padding-top:50px;">
+<div class="container px-0" style="padding-top:50px;">
     <div class="row">
         <div class="col">
             <hr style="background:white;">
@@ -243,7 +243,7 @@ $user_review = $review;
 @endif
 @endif
 @empty
-No reviews yet!
+<aside class="row my-4"><span class="col text-muted text-center">No reviews yet!</span></aside>
 @endforelse
 
 
