@@ -238,20 +238,21 @@ BEGIN
     WITH score_avg AS (
         SELECT AVG(score)::numeric(1) as avg
         FROM reviews
-        WHERE game_id=New.game_id 
+        WHERE reviews.game_id=New.game_id 
     )
 
     UPDATE games
     SET score = score_avg.avg
     FROM score_avg
     WHERE games.id=New.game_id; 
-    RETURN NULL;
+    RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER update_score 
     AFTER INSERT OR UPDATE OR DELETE ON reviews
+    FOR EACH ROW
     EXECUTE PROCEDURE update_game_score();  
  
 
@@ -686,56 +687,56 @@ INSERT INTO tags(name) VALUES ('Third-Person Shooter');
 INSERT INTO tags(name) VALUES ('Casual');
 INSERT INTO tags(name) VALUES ('Platformer');
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Cyberpunk 2077', 
             'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with
             power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant
             that is the key to immortality. You can customize your character’s cyberware,
             skillset and playstyle, and explore a vast city where the choices you make shape the story and the world
-            around you.', 59.99, 3.5, '2020-12-20'::date, true, null, 1, 1);
+            around you.', 59.99, '2020-12-20'::date, true, null, 1, 1);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Borderlands 3', 
             'The original shooter-looter returns, packing bazillions of guns and a mayhem-fueled adventure! 
             Blast through new worlds and enemies as one of four new Vault Hunters.', 
-            59.99, 4, '2020-03-13'::date, true, null, 3, 1);
+            59.99, '2020-03-13'::date, true, null, 3, 1);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Control', 
             'Winner of over 80 awards, Control is a visually stunning third-person action-adventure that will keep you on the edge of your seat.', 
-            39.99, 4.5, '2020-8-27'::date, true, null, 9, 2);
+            39.99, '2020-8-27'::date, true, null, 9, 2);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Counter-Strike: Global Offensive', 
             'Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. 
             CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).', 
-            8.99, 4.5, '2012-08-21'::date, true, null, 4, 1);
+            8.99, '2012-08-21'::date, true, null, 4, 1);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Ghostrunner', 
             'Ghostrunner offers a unique single-player experience: fast-paced, violent combat, and an original setting that blends science fiction with post-apocalyptic themes. 
             It tells the story of a world that has already ended and its inhabitants who fight to survive.', 
-            29.99, 4.5, '2020-10-27'::date, true, null, 5, 1);
+            29.99, '2020-10-27'::date, true, null, 5, 1);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Grand Theft Auto V', 
             'Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.', 
-            29.99, 4.5, '2015-04-14'::date, true, null, 2, 1);
+            29.99, '2015-04-14'::date, true, null, 2, 1);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Hitman 3', 
             'Death Awaits. Agent 47 returns in HITMAN 3, the dramatic conclusion to the World of Assassination trilogy.', 
-            44.99, 4, '2021-01-20'::date, true, null, 6, 1);
+            44.99, '2021-01-20'::date, true, null, 6, 1);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Modern Warfare® 3', 
             'The best-selling first-person action series of all-time returns with an epic sequel to the multiple GOTY award winner Call of Duty®: Modern Warfare® 2', 
-            39.99, 4, '2011-11-08'::date, false, null, 7, 1);
+            39.99, '2011-11-08'::date, false, null, 7, 1);
 
-INSERT INTO games(title,description,price,score,launch_date,listed,parent_id,developer_id,category_id) 
+INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Outriders', 
             'Outriders’ brutal and bloody combat combines frenetic gunplay, violent powers and deep RPG systems to create a true genre hybrid.', 
-            59.99, 3, '2021-04-01'::date, true, null, 8, 1);
+            59.99, '2021-04-01'::date, true, null, 8, 1);
 
 INSERT INTO game_keys("key",available,game_id) VALUES ('757A-D8466F-A453','true',1);
 INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3076','true',2);
@@ -780,7 +781,7 @@ INSERT INTO wishlist_items(game_id, user_id) VALUES(3, 1);
 INSERT INTO wishlist_items(game_id, user_id) VALUES(8, 1);
 
 
-INSERT INTO reviews (description, score, user_id, game_id) VALUES ('this it to test see reviews', 4, 2, 2);
+-- INSERT INTO reviews (description, score, user_id, game_id) VALUES ('this it to test see reviews', 4, 2, 2);
 
 -----------------------------------------
 -- end
