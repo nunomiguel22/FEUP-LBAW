@@ -5,18 +5,96 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
-
+use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Image;
 use App\Models\Address;
 use App\Models\Country;
 
-
 class UserController extends Controller
 {
+    public function changeLoginDestails(Request $request)
+    {
+        $this->authorize('modify', User::class);
+
+        $request->validate([
+            'email' => 'nullable|email',
+            'password' => 'required|string',
+            'new_password' => 'nullable|
+                        min:6|
+                        regex:/[a-z]/|
+                        regex:/[A-Z]/|
+                        regex:/[0-9]/',
+
+            'password_confirmation' => 'nullable|string|same:new_password',
+        ]);
+        $user = Auth::user();
+
+        if (!Hash::check($request->password, $user->password)) {
+            return back()->withErrors(['password' => 'Incorrect password']);
+        }
+
+
+        if (!is_null($request->email) && ($request->email != $user->email)) {
+            if (is_null(User::where('email', $request->email)->first())) {
+                $user->email = $request->email;
+                $user->email_verified_at = null;
+                $user->save();
+            } else {
+                return back()->withErrors(['email' => 'This email is already registered']);
+            }
+        }
+
+        if (!is_null($request->new_password)) {
+            $user->forceFill([
+                'password' => bcrypt($request->new_password)
+            ])->setRememberToken(Str::random(60));
+            $user->save();
+        }
+    
+        return back();
+    }
+
+    public function deleteAccount(Request $request)
+    {
+        $this->authorize('modify', User::class);
+
+        $user = Auth::user();
+   
+        DB::beginTransaction();
+        try {
+            $user->cart_items()->detach();
+    
+            $user->wishlist_items()->detach();
+            $user->purchases()->delete();
+            $user->reviews()->delete();
+    
+            if ($user->image->id != 1) {
+                $user_image = $user->image;
+                $user->image_id = 1;
+                $user->save();
+                $user_image->deleteFromDisk();
+                $user_image->delete();
+            }
+            $user->address()->delete();
+            $user->delete();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->withErrors($e->getMessage());
+        }
+
+        Auth::logout();
+        
+        return redirect('login');
+    }
+
     //GET /user
     public function showDefault()
     {
@@ -55,18 +133,17 @@ class UserController extends Controller
             Auth::user()->last_name = $request->last_name;
             Auth::user()->nif = $request->nif;
             Auth::user()->description = $request->description;
-            if($this->hasAddress($request)){
-
+            if ($this->hasAddress($request)) {
                 $validator = $this->addressValidator($request->all());
                 if ($validator->fails()) {
-                return redirect('user/edit')
+                    return redirect('user/edit')
                     ->withErrors($validator)
                     ->withInput();
                 }
                 // Create address if it does not existe
-                if(Auth::user()->address === null){
+                if (Auth::user()->address === null) {
                     $address = new Address();
-                } else{
+                } else {
                     $address = Auth::user()->address;
                 }
                 $address->line1 = $request->line1;
@@ -77,7 +154,7 @@ class UserController extends Controller
                 $address->country_id = $request->country;
                 $address->save();
                 Auth::user()->address_id = $address->id;
-            } 
+            }
             
             // Add images to disk with an unique name, create images in table and add relation
             if ($request->file('image')) {
@@ -89,19 +166,17 @@ class UserController extends Controller
                 Auth::user()->image_id= $image->id;
                 Auth::user()->save();
                 // Delete images from disk, database and game relation if not default
-                if($old_image->id != 1){
+                if ($old_image->id != 1) {
                     $old_image->deleteFromDisk();
                     $old_image->delete();
                 }
-                    
-            }else{
+            } else {
                 Auth::user()->save();
             }
             
             
             DB::commit();
-
-        }  catch (\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return back()->withErrors($e->getMessage());
         }
@@ -154,10 +229,9 @@ class UserController extends Controller
         ]);
     }
 
-    protected function hasAddress($request){
-
+    protected function hasAddress($request)
+    {
         return $request->line1 || $request->postal_code || $request->city || $request->region;
-
     }
 
     protected function addressValidator(array $data)

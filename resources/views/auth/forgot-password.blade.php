@@ -58,6 +58,10 @@
             </div>
         </form>
 
+        <div class="row mb-3 text-center">
+            <span class="col text-success">{{ Session::get('status')}}</span>
+        </div>
+
     </section>
 </section>
 

@@ -55,6 +55,8 @@ Route::get('user', 'UserController@showDefault')->name('user');
 Route::get('user/edit', 'UserController@showGeneral');
 Route::put('user/edit', 'UserController@updateGeneral');
 Route::get('user/security', 'UserController@showSecurity');
+Route::put('user/security', 'UserController@changeLoginDestails');
+Route::delete('user/security', 'UserController@deleteAccount');
 Route::get('user/keys', 'UserController@showKeys');
 Route::get('user/wishlist', 'UserController@showWishlist');
 Route::delete('user/wishlist', 'WishlistController@removeAll');

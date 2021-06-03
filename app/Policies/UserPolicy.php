@@ -16,6 +16,4 @@ class UserPolicy
         // To Add, Edit or Delete User info the user must be logged in
         return Auth::check();
     }
-
-    
 }
