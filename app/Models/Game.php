@@ -98,4 +98,9 @@ class Game extends Model
     {
         return $this->reviews()->where('user_id', $user_id)->first();
     }
+
+    public function wishlist_items()
+    {
+        return $this->belongsToMany(User::class, 'wishlist_items');
+    }
 }

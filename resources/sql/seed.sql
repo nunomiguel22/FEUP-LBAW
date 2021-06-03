@@ -775,6 +775,11 @@ INSERT INTO cart_items(game_id, user_id) VALUES (9, 1);
 INSERT INTO cart_items(game_id, user_id) VALUES (6, 2);
 INSERT INTO cart_items(game_id, user_id) VALUES (1, 2);
 
+INSERT INTO wishlist_items(game_id, user_id) VALUES(1, 1);
+INSERT INTO wishlist_items(game_id, user_id) VALUES(3, 1);
+INSERT INTO wishlist_items(game_id, user_id) VALUES(8, 1);
+
+
 INSERT INTO reviews (description, score, user_id, game_id) VALUES ('this it to test see reviews', 4, 2, 2);
 
 -----------------------------------------
