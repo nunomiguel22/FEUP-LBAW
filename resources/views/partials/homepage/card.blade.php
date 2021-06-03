@@ -8,7 +8,14 @@
      <!-- Wishlist Indicator -->
      @if(Auth::check())
      <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
-         title="Add to Wishlist" href="#todo"><i class="fas fa-plus-circle"></i></a>
+         title="Add to Wishlist" href="#" onclick="return false;" game_id="{{ $game->id }}"
+         in_wishlist="{{ json_encode(Auth::user()->gameInWishlist($game->id)) }}">
+         @if (Auth::user()->gameInWishlist($game->id))
+         <i class="fas fa-check-circle"></i>
+         @else
+         <i class="fas fa-plus-circle"></i>
+         @endif
+     </a>
      @else
      <a class="wishlist-indicator fade-in text-shadow" data-toggle="tooltip" data-placement="left"
          title="Add to Wishlist" href="{{ route('login') }}"><i class="fas fa-plus-circle"></i></a>

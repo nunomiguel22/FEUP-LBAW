@@ -14,7 +14,7 @@ class UserController extends Controller
     //GET /user
     public function showDefault()
     {
-        return $this->showKeys();
+        return $this->showWishlist();
     }
 
     //GET /user/edit
@@ -57,5 +57,18 @@ class UserController extends Controller
         $purchases = Auth::user()->purchases;
 
         return view('pages.user.user', ['tab_id' => 2, 'purchases' => $purchases]);
+    }
+
+    public function showWishlist()
+    {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+
+        $wishlist_games = Auth::user()->wishlist_items;
+        
+        //dd($wishlist_games);
+
+        return view('pages.user.user', ['tab_id' => 0, 'wishlist_games' => $wishlist_games]);
     }
 }

@@ -78,11 +78,20 @@
                     @endif
 
                 </form>
-                <div class="col pr-0 mr-0">
-                    <button type="button" class="btn btn-secondary w-100" style="min-height:44px;">
+                <form method="POST" class="col pr-0 mr-0" action="/products/{{$game->id}}/wishlist">
+                    @csrf
+                    @if(Auth::user()->gameInWishlist($game->id))
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger w-100" style="min-height:44px;">
+                        <i class="far fa-times-circle"></i> Remove from wishlist
+                    </button>
+
+                    @else
+                    <button type="submit" class="btn btn-secondary w-100" style="min-height:44px;">
                         <i class="far fa-heart"></i> Add to wishlist
                     </button>
-                </div>
+                    @endif
+                </form>
                 @else
                 <div class="col p-0">
                     <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#LoginModal"

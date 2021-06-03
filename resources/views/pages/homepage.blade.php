@@ -2,6 +2,10 @@
 
 @section('title', 'OGS')
 
+@section('scripts')
+<script src="{{ asset('js/wishlist_indicators.js') }}" defer></script>
+@endsection
+
 @section('content')
 
 <section class="container">
@@ -38,8 +42,8 @@
 
                 @forelse($categories as $category)
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="{{$category->name}}-tab" data-toggle="tab" href="#{{$category->name}}" role="tab"
-                        aria-controls="{{$category->name}}" aria-selected="false">{{$category->name}}</a>
+                    <a class="nav-link" id="{{$category->name}}-tab" data-toggle="tab" href="#{{$category->name}}"
+                        role="tab" aria-controls="{{$category->name}}" aria-selected="false">{{$category->name}}</a>
                 </li>
                 @empty
                 @endforelse
@@ -57,74 +61,75 @@
                 @endphp
 
                 @forelse($cat_games as $game)
-                    @if ($i % 3 == 0)
-                        <div class="card-deck mb-3 text-center">
+                @if ($i % 3 == 0)
+                <div class="card-deck mb-3 text-center">
                     @endif
-  
+
                     @include('partials.homepage.card', ['game' => $game])
 
                     @if($i % 3 == 2)
-                        </div>
-                    @endif
+                </div>
+                @endif
 
-                    @php
-                    $i++;
-                    @endphp
-                @empty
-                @endforelse
-
-                @while($i % 3 != 0)
-                    @php
-                    $i++;
-                    @endphp
-                    <article class="card mb-2 mt-2 hover-darken">
-                    </article>
-
-                    @if($i % 3 == 0)
-                    </div>
-                    @endif
-                @endwhile
-            </div>
-
-            @forelse($categories as  $category)
-            <div class="tab-pane fade" id="{{$category->name}}" role="tabpanel" style="min-height:100px" aria-labelledby="{{$category->name}}-tab">
                 @php
-                $i = 0;
-                $cat_games = $games[$category->id];
+                $i++;
                 @endphp
-
-                @forelse($cat_games as $game)
-                    @if ($i % 3 == 0)
-                        <div class="card-deck mb-3 text-center">
-                    @endif
-  
-                    @include('partials.homepage.card', ['game' => $game])
-
-                    @if($i % 3 == 2)
-                        </div>
-                    @endif
-
-                    @php
-                    $i++;
-                    @endphp
                 @empty
-                <span>No games yet!</span>
                 @endforelse
 
                 @while($i % 3 != 0)
-                    @php
-                    $i++;
-                    @endphp
-                    <article class="card mb-2 mt-2 hover-darken">
-                    </article>
+                @php
+                $i++;
+                @endphp
+                <article class="card mb-2 mt-2 hover-darken">
+                </article>
 
-                    @if($i % 3 == 0)
-                    </div>
-                    @endif
-                @endwhile
+                @if($i % 3 == 0)
             </div>
+            @endif
+            @endwhile
+        </div>
+
+        @forelse($categories as $category)
+        <div class="tab-pane fade" id="{{$category->name}}" role="tabpanel" style="min-height:100px"
+            aria-labelledby="{{$category->name}}-tab">
+            @php
+            $i = 0;
+            $cat_games = $games[$category->id];
+            @endphp
+
+            @forelse($cat_games as $game)
+            @if ($i % 3 == 0)
+            <div class="card-deck mb-3 text-center">
+                @endif
+
+                @include('partials.homepage.card', ['game' => $game])
+
+                @if($i % 3 == 2)
+            </div>
+            @endif
+
+            @php
+            $i++;
+            @endphp
             @empty
+            <span>No games yet!</span>
             @endforelse
+
+            @while($i % 3 != 0)
+            @php
+            $i++;
+            @endphp
+            <article class="card mb-2 mt-2 hover-darken">
+            </article>
+
+            @if($i % 3 == 0)
+        </div>
+        @endif
+        @endwhile
+        </div>
+        @empty
+        @endforelse
 
         </div>
 

@@ -24,7 +24,7 @@
   @forelse($cart_items as $game)
   <div class="row bg-secondary b-shadow my-1 px-2">
 
-    <div class="col-2 d-none d-lg-block">
+    <div class="col-2 d-none d-lg-block my-1">
       <a href="{{url('/products/'.$game->id)}}">
         <img src="{{$game->cover_image()}}" style="max-width:96px;max-height:54px;">
       </a>
@@ -50,18 +50,13 @@
     @endif
 
 
-    <div class="col-2 my-auto ">
-      <div class="row ">
-        <span class="col text-right">{{$game->price}}€</span>
-      </div>
+    <span class="col-1 my-auto text-right">{{$game->price}}€</span>
 
-      <form class="row" method="POST" action="/products/{{$game->id}}/cart">
-        @csrf
-        @method('DELETE')
-        <a class="col clickable text-right link-small text-light"
-          onclick="this.closest('form').submit();return false;">Remove</a>
-      </form>
-    </div>
+    <form class="col-1 my-auto" method="POST" action="/products/{{$game->id}}/cart">
+      @csrf
+      @method('DELETE')
+      <button class="btn btn-secondary" type="submit" role="button"><i class="fas fa-trash"></i></button>
+    </form>
   </div>
 
   @empty
