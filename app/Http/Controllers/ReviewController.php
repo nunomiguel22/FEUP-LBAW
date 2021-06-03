@@ -67,13 +67,25 @@ class ReviewController extends Controller
 
         $validator = $this->validator($request->all());
         if ($validator->fails()) {
-            return redirect('admin/products/'.$id.'/edit')
+            return back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        //edit review
-        //and save
+        // Update the review in the DB using a transaction as this is a multipart action
+        DB::beginTransaction();
+        try {
+            // Edit review object
+            $review->description = $request->description;
+            $review->score = $request->score;
+            $review->save();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->withErrors($e->getMessage());
+        }
+
 
         return redirect('/products/'.$review->game_id);
     }
@@ -81,6 +93,13 @@ class ReviewController extends Controller
     
     public function deleteReview($game_id ,$review_id)
     {
+        $game = null;
+        try {
+            $game = Game::findOrFail($game_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+        
         $review = null;
         try {
             $review = Review::findOrFail($review_id);
