@@ -18,6 +18,18 @@
     <span class="text-muted">Manage your password and security details</span>
 
     <form action="">
+
+        <h4 class="mt-5 text-shadow"> Email</h4>
+        <span class="text-muted">Change your email</span>
+
+        <div class="row mx-auto mt-4">
+            <label for="new_password" class="control-label text-light col-5">New Email</label>
+        </div>
+        <div class="row mt-2 mx-auto">
+                <input type="text" name="new_email" class="form-control col-5 bg-secondary text-white"
+                    style="height:50px" placeholder="*Email">
+        </div>
+
         <h4 class="mt-5 text-shadow">Password</h4>
         <span class="text-muted">Change your password</span>
 
@@ -33,7 +45,7 @@
         <div class="row mx-auto mt-4">
             <label for="new_password" class="control-label text-light col-5">New Password</label>
             <div class="col-1"></div>
-            <label for="repeat_new_password" class="control-label text-light col-5">Repeat New Password</label>
+            <label for="confirm_new_password" class="control-label text-light col-5">Confirm New Password</label>
         </div>
 
         <div class="row mt-2 mx-auto">
@@ -42,21 +54,8 @@
 
             <div class="col-1"></div>
 
-            <input type="text" name="repeat_new_password" class="form-control col-5 text-field my-auto  bg-secondary text-light"
-                style="height:50px" placeholder="*Repeat New Password" value=>
-        </div>
-
-        <hr>
-
-        <h4 class="mt-5 text-shadow"> Email</h4>
-        <span class="text-muted">Change your email</span>
-
-        <div class="row mx-auto mt-4">
-            <label for="new_password" class="control-label text-light col-5">New Email</label>
-        </div>
-        <div class="row mt-2 mx-auto">
-                <input type="text" name="new_email" class="form-control col-5 bg-secondary text-white"
-                    style="height:50px" placeholder="*Email">
+            <input type="text" name="confirm_new_password" class="form-control col-5 text-field my-auto  bg-secondary text-light"
+                style="height:50px" placeholder="*Confirm New Password" value=>
         </div>
         
         <hr>

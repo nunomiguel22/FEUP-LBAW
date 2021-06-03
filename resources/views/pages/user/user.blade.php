@@ -42,13 +42,6 @@
                     <span class="col">MY KEYS</span> 
                 </div>
             </a>
-            <a class="nav-link" id="v-pills-4-tab-2" href="{{ url('user/avatar') }}" role="tab"
-                aria-controls="v-pills-4" aria-selected="false">
-                <div class="row">
-                    <i class="fas fa-image col-1"></i> 
-                    <span class="col">AVATAR</span> 
-                </div>
-            </a>
 
         </div>
     </nav>
@@ -84,13 +77,6 @@
                         <span class="col">MY KEYS</span> 
                     </div>
                 </a>
-                <a class="nav-link" id="v-pills-4-tab" href="{{ url('user/avatar') }}" role="tab"
-                    aria-controls="v-pills-reports" aria-selected="false">
-                    <div class="row">
-                        <i class="fas fa-image col-1"></i> 
-                        <span class="col">AVATAR</span> 
-                    </div>
-                </a>
             </div>
         </nav>
 
@@ -120,10 +106,6 @@
             @if (isset($tab_id) && $tab_id == 3)
                     @include('pages.user.security')
                 @endif
-            </div>
-
-            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
             </div>
 
         </div>
