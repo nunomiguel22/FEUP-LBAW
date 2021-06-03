@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
+
 use \App\Models\Game;
 use \App\Models\Review;
-
-
 use \App\Models\Image;
 use \App\Models\Purchase;
 use \App\Models\Address;
@@ -26,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'username', 'email', 'password',
+        'first_name', 'last_name', 'username', 'email', 'password', 'description', 'image_id', 'address_id'
     ];
 
     /**
@@ -49,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function address()
     {
-        return $this->belongsTo(Address::class, 'addresses_id');
+        return $this->belongsTo(Address::class);
     }
 
     public function cart_items()

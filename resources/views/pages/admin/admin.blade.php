@@ -88,7 +88,7 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
-            @if ($tab_id && $tab_id == 1)
+            @if (isset($tab_id) && $tab_id == 1)
                 @include('pages.admin.games')
             @endif
             </div>

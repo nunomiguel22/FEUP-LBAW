@@ -21,7 +21,7 @@
                     <span class="col"> WISHLIST</span>
                 </div>
             </a>
-            <a class="nav-link" id="v-pills-1-tab-1" href="{{ url('user/general') }}" role="tab"
+            <a class="nav-link" id="v-pills-1-tab-2" href="{{ url('user/edit') }}" role="tab"
                 aria-controls="v-pills-1" aria-selected="false">
                 <div class="row">
                     <i class="fas fa-user col-1"></i> 
@@ -42,13 +42,6 @@
                     <span class="col">MY KEYS</span> 
                 </div>
             </a>
-            <a class="nav-link" id="v-pills-4-tab-2" href="{{ url('user/avatar') }}" role="tab"
-                aria-controls="v-pills-4" aria-selected="false">
-                <div class="row">
-                    <i class="fas fa-image col-1"></i> 
-                    <span class="col">AVATAR</span> 
-                </div>
-            </a>
 
         </div>
     </nav>
@@ -63,7 +56,7 @@
                         <span class="col"> WISHLIST</span>
                     </div>
                 </a>
-                <a class="nav-link" id="v-pills-1-tab" href="{{ url('user/general') }}"  role="tab"
+                <a class="nav-link" id="v-pills-1-tab" href="{{ url('user/edit') }}"  role="tab"
                     aria-controls="v-pills-games" aria-selected="false">
                     <div class="row">
                         <i class="fas fa-user col-1"></i> 
@@ -84,13 +77,6 @@
                         <span class="col">MY KEYS</span> 
                     </div>
                 </a>
-                <a class="nav-link" id="v-pills-4-tab" href="{{ url('user/avatar') }}" role="tab"
-                    aria-controls="v-pills-reports" aria-selected="false">
-                    <div class="row">
-                        <i class="fas fa-image col-1"></i> 
-                        <span class="col">AVATAR</span> 
-                    </div>
-                </a>
             </div>
         </nav>
 
@@ -104,10 +90,11 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+                @if (isset($tab_id) && $tab_id == 1)
+                    @include('pages.user.general')
+                @endif
             </div>
 
-            
             <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                 @if (isset($tab_id) && $tab_id == 2)
                     @include('pages.user.keys')
@@ -116,11 +103,9 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
-            </div>
-
-            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                
+            @if (isset($tab_id) && $tab_id == 3)
+                    @include('pages.user.security')
+                @endif
             </div>
 
         </div>

@@ -60,14 +60,19 @@ class PasswordResetController extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|
+                        confirmed|
+                        min:6|
+                        regex:/[a-z]/|
+                        regex:/[A-Z]/|
+                        regex:/[0-9]/',
         ]);
     
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) use ($request) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => bcrypt($password)
                 ])->setRememberToken(Str::random(60));
     
                 $user->save();
