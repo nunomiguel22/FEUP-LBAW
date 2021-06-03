@@ -24,8 +24,13 @@
             @if(Auth::check() && $review->user_id === Auth::user()->id)
             <button type="button" class="btn btn-warning mb-3 ml-3">Edit your review <i class="fas fa-edit"></i></i>
             </button>
-            <button type="button" class="btn btn-danger mb-3 ml-3">Delete your review <i class="fas fa-trash"></i>
-            </button>
+            <form method="POST" action="/reviews/products/{{$review->game_id}}/review/{{$review->id}}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger mb-3 ml-3">
+                    Delete your review <i class="fas fa-trash"></i>
+                </button>
+            </form>
             @endif
 
         </div>

@@ -79,6 +79,25 @@ class ReviewController extends Controller
     }
 
     
+    public function deleteReview($game_id ,$review_id)
+    {
+        $review = null;
+        try {
+            $review = Review::findOrFail($review_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+
+        $this->authorize('edit', $review);
+
+
+        $review->delete();
+
+        return redirect('/products/'.$game_id);
+    }
+
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
