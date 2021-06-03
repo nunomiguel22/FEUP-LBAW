@@ -6,9 +6,11 @@
             <div class="form-row">
 
                 <div class="review-rating col-4" align="right">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i> <i class="far fa-star"></i>
+                    <i class="fas fa-star text-warning" score="1"></i>
+                    <i class="fas fa-star text-warning" score="2"></i> <i class="fas fa-star text-warning"
+                        score="3"></i>
+                    <i class="fas fa-star text-warning" score="4"></i> <i class="far fa-star text-warning"
+                        score="5"></i>
                 </div>
                 <input id="form_review_score" name="score" type="numeric" value="3" hidden="true" min="0" max="5">
 

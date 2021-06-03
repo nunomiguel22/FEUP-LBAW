@@ -2,6 +2,10 @@
 
 @section('title', 'OGS')
 
+@section('scripts')
+<script src="{{ asset('js/product_page.js') }}" defer></script>
+@endsection
+
 @section('breadcrumbs')
 <!-- Breadcrumbs -->
 <nav class="container my-4 p-0">
@@ -251,7 +255,8 @@ No reviews yet!
     @include('partials.review.make_review')
 </form>
 @else
-<form method="POST" action="/reviews/products/{{$game->id}}/review/{{$user_review->id}}" enctype="multipart/form-data">
+<form id="review_edit_form" hidden method="POST" action="/reviews/products/{{$game->id}}/review/{{$user_review->id}}"
+    enctype="multipart/form-data">
     @csrf
     @method('PUT')
     @include('partials.review.edit_review', ['user_review' => $user_review])

@@ -121,8 +121,7 @@ class ReviewController extends Controller
     {
         return Validator::make($data, [
             'description' => 'required|string|max:600|min:1',
-            'score' => 'required|integer|min:0|max:5',
-            'game_id' => 'required|integer|min:1'
+            'score' => 'required|integer|min:0|max:5'
         ]);
     }
 }

@@ -8,10 +8,10 @@
                 <span class="col text-center text-white">{{$review->formattedTimestamp('d-m-Y H:i:s') ?? null}}</span>
                 <div class="review-rating col" align="right">
                     @for ($x = 0; $x < $review->score ; $x+=1)
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star text-light"></i>
                         @endfor
                         @for ($x = 0; $x < 5 - $review->score ; $x+=1)
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star text-dark"></i>
                             @endfor
                 </div>
             </div>
@@ -22,7 +22,8 @@
             <p class="card-text ml-3 my-2">{{$review->description ?? null}}</p>
             <hr style="background:white;">
             @if(Auth::check() && $review->user_id === Auth::user()->id)
-            <button type="button" class="btn btn-warning mb-3 ml-3">Edit your review <i class="fas fa-edit"></i></i>
+            <button id="open_review_form" type="button" class="btn btn-warning mb-3 ml-3">Edit your review <i
+                    class="fas fa-edit"></i></i>
             </button>
             <form method="POST" action="/reviews/products/{{$review->game_id}}/review/{{$review->id}}">
                 @csrf

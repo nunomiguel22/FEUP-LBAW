@@ -66,8 +66,8 @@ Route::get('user/profile', 'ProfileController@show')->name('profile');
 
 // Review
 Route::post('/reviews/products/{id}/review', 'ReviewController@addReview');
-Route::put('/reviews/products/{id}/review', 'ReviewController@updateReview');
-Route::delete('/reviews/products/{id}/review', 'ReviewController@deleteReview');
+Route::put('/reviews/products/{id}/review/{review_id}', 'ReviewController@updateReview');
+Route::delete('/reviews/products/{id}/review/{review_id}', 'ReviewController@deleteReview');
 
 
 //API
