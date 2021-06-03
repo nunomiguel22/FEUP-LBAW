@@ -147,8 +147,8 @@ class UserController extends Controller
             'username' => 'required|string|max:60|min:1',
             'first_name' => 'required|string|max:60|min:1',
             'last_name' => 'required|string|max:60|min:1',
-            'nif' => 'nullable',
-            'description' => 'nullable',
+            'nif' => 'nullable|string|max:20',
+            'description' => 'nullable|string|max:500',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         
         ]);
@@ -164,7 +164,7 @@ class UserController extends Controller
     {
         return Validator::make($data, [
             'line1' => 'required|string|max:100|min:1',
-            'line2' => 'nullable',
+            'line2' => 'nullable|string|max:100',
             'postal_code' => 'required|string|max:20|min:1',
             'region' => 'required|string|max:60|min:1',
             'city' => 'required|string|max:60|min:1',

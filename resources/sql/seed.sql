@@ -102,7 +102,7 @@ CREATE TABLE users (
     is_admin BOOLEAN NOT NULL DEFAULT false,
     image_id INTEGER DEFAULT 1 REFERENCES images (id),
     address_id INTEGER REFERENCES addresses (id)  ON DELETE CASCADE,
-    "description" TEXT DEFAULT 'No description yet',
+    "description" TEXT DEFAULT "No description yet",
     remember_token TEXT,
     email_verified_at TIMESTAMP
 );

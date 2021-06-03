@@ -65,6 +65,11 @@
                     <button class="btn btn-success my-4 btn-lg w-100" type="submit">
                         SAVE CHANGES</button>
                 </div>
+                <div class="col-6">
+                    <button class="btn btn-danger my-4 btn-lg w-100" data-toggle="modal" data-target="#"
+                        type="button">
+                        DELETE ACCOUNT</button>
+                </div>
         </div>
     
 </div>
