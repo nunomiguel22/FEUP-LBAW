@@ -108,7 +108,7 @@
 
         <div class="row mt-2 mx-auto">
             <input type="text" name="line1" class="form-control col-5 bg-secondary text-white" style="height:50px"
-                minlength="1" maxlength="100" placeholder="*Address Line 1"
+                minlength="1" maxlength="100" placeholder="Address Line 1"
                 value="{{Auth::user()->address->line1 ?? null}}">
 
             <div class="col-1"></div>
@@ -135,15 +135,15 @@
 
         <div class="row mt-2 mx-auto">
             <input type="text" name="city" class="form-control col-5 bg-secondary text-white" style="height:50px"
-                minlength="1" maxlength="60" placeholder="*City" value="{{Auth::user()->address->city ?? null}}">
+                minlength="1" maxlength="60" placeholder="City" value="{{Auth::user()->address->city ?? null}}">
 
             <div class="col-1"></div>
 
             <input type="text" name="region" class="form-control mr-1 col-2 bg-secondary text-white" style="height:50px"
-                minlength="1" maxlength="60" placeholder="*Region" value="{{Auth::user()->address->region ?? null}}">
+                minlength="1" maxlength="60" placeholder="Region" value="{{Auth::user()->address->region ?? null}}">
 
             <input type="text" name="postal_code" class="form-control col-3 bg-secondary text-white" style="height:50px"
-                minlength="1" maxlength="20" placeholder="*Postal Code"
+                minlength="1" maxlength="20" placeholder="Postal Code"
                 value="{{Auth::user()->address->postal_code ?? null}}">
         </div>
 
