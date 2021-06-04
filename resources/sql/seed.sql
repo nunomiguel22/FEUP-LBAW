@@ -701,7 +701,7 @@ INSERT INTO images(path) VALUES ('images/games/Oliver-n-Benji.jpg');
 INSERT INTO images(path) VALUES ('images/games/ProjectCars3.jpg');
 INSERT INTO images(path) VALUES ('images/games/footballManager.jpg');
 INSERT INTO images(path) VALUES ('images/games/need-for-speed-heat.jpg');
-INSERT INTO images(path) VALUES ('images/games/assetoCorsa.jpg');
+INSERT INTO images(path) VALUES ('images/games/assetoCorsa.jpeg');
 INSERT INTO images(path) VALUES ('images/games/GolfWithFriends.jpg');
 
 
