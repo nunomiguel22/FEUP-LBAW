@@ -42,7 +42,7 @@ class AdminController extends Controller
             $purchases->where('user_id', $request->user_id);
         }
 
-        $purchases = $purchases->paginate(2);
+        $purchases = $purchases->paginate(10);
     
         return view('pages.admin.admin', ['tab_id' => 0, 'purchases' => $purchases]);
     }
@@ -58,7 +58,7 @@ class AdminController extends Controller
             $users->where('id', $request->user_id);
         }
 
-        $users = $users->paginate(2);
+        $users = $users->paginate(10);
     
         return view('pages.admin.admin', ['tab_id' => 2, 'users' => $users]);
     }
