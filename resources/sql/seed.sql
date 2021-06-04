@@ -223,8 +223,6 @@ CREATE INDEX cart_items_user_id_idx ON cart_items USING hash (user_id);
 CREATE INDEX withlist_items_user_id_idx ON wishlist_items USING hash (user_id); 
 
 CREATE INDEX game_search_idx ON game_search USING gin(search);
-
-
  
 -----------------------------------------
 -- TRIGGERS and UDFs

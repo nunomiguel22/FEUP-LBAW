@@ -4,17 +4,18 @@
 
 @section('content')
 
-<section class="container">
-    <!-- Breadcrumbs -->
-    <div class="row mx-0 my-3 p-0">
-        <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
-            <li class="breadcrumb-item"> <a href="{{ route('admin') }}"> Admin Panel </a></li>
-            <li class="breadcrumb-item"> <a href="{{ url('admin/products') }}"> Products </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Add New Product </li>
-        </ol>
-    </div>
+@section('breadcrumbs')
+<div class="row mx-0 my-3 p-0">
+    <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
+        <li class="breadcrumb-item"> <a href="{{ route('admin') }}"> Admin Panel </a></li>
+        <li class="breadcrumb-item"> <a href="{{ url('admin/products') }}"> Products </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> Add New Product </li>
+    </ol>
+</div>
+@endsection
 
+<section class="container">
     <section class="bg-dark p-5 my-4">
         <h4 class="text-shadow">ADD A NEW GAME</h4>
         <span class="text-muted">Add a game to the platform</span>

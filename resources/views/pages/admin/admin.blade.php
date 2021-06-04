@@ -19,7 +19,7 @@
                 aria-controls="v-pills-sale" aria-selected="true">
                 <div class="row">
                     <i class="fas fa-money-bill-wave col-1"></i>
-                    <span class="col">SALES</span>
+                    <span class="col">MANAGE SALES</span>
                 </div>
             </a>
             <a class="nav-link" id="v-pills-1-tab-2" href="{{ url('admin/products') }}" role="tab"
@@ -29,18 +29,11 @@
                     <span class="col">MANAGE GAMES</span>
                 </div>
             </a>
-            <a class="nav-link" id="v-pills-3-tab-2" data-toggle="pill" href="#v-pills-3" role="tab"
+            <a class="nav-link" id="v-pills-2-tab-2" href="{{ url('admin/users') }}" role="tab"
                 aria-controls="v-pills-users" aria-selected="false">
                 <div class="row">
                     <i class="fas fa-users-cog col-1"></i>
                     <span class="col">MANAGE USERS</span>
-                </div>
-            </a>
-            <a class="nav-link" id="v-pills-4-tab-2" data-toggle="pill" href="#v-pills-4" role="tab"
-                aria-controls="v-pills-reports" aria-selected="false">
-                <div class="row">
-                    <i class="fas fa-bug col-1"></i>
-                    <span class="col">MANAGE REPORTS</span>
                 </div>
             </a>
 
@@ -54,7 +47,7 @@
                     aria-controls="v-pills-sale" aria-selected="true">
                     <div class="row">
                         <i class="fas fa-money-bill-wave col-1"></i>
-                        <span class="col">SALES</span>
+                        <span class="col">MANAGE SALES</span>
                     </div>
                 </a>
                 <a class="nav-link" id="v-pills-1-tab" href="{{ url('admin/products') }}" role="tab"
@@ -64,18 +57,11 @@
                         <span class="col">MANAGE GAMES</span>
                     </div>
                 </a>
-                <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
+                <a class="nav-link" id="v-pills-2-tab"  href="{{ url('admin/users') }}" role="tab"
                     aria-controls="v-pills-users" aria-selected="false">
                     <div class="row">
                         <i class="fas fa-users-cog col-1"></i>
                         <span class="col">MANAGE USERS</span>
-                    </div>
-                </a>
-                <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab"
-                    aria-controls="v-pills-reports" aria-selected="false">
-                    <div class="row">
-                        <i class="fas fa-bug col-1"></i>
-                        <span class="col">MANAGE REPORTS</span>
                     </div>
                 </a>
             </div>
@@ -84,7 +70,9 @@
         <div class="col bg-dark mb-4">
 
             <div class="tab-pane fade" id="v-pills-0" role="tabpanel" aria-labelledby="v-pills-2-tab">
-
+            @if (isset($tab_id) && $tab_id == 0)
+                @include('pages.admin.sales')
+            @endif
             </div>
 
             <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-2-tab">
@@ -93,20 +81,20 @@
             @endif
             </div>
 
-            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">
-
+            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+            @if (isset($tab_id) && $tab_id == 2)
+                @include('pages.admin.users')
+            @endif
             </div>
 
-            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-2-tab">
 
-            </div>
 
         </div>
     </div>
 </section>
 
 <!-- Activate correct tab on startup  -->
-<script type="text/javascript"> activateTab(<?php echo $tab_id ?>) </script>
+<script type="text/javascript"> activateTab({{$tab_id}} ) </script>
 
 
 @endsection

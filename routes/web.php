@@ -31,6 +31,9 @@ Route::post('email/verify', 'Auth\EmailVerifyController@resendVerification')->na
 // Admin
 Route::get('admin', 'AdminController@showDefault')->name('admin');
 Route::get('admin/sales', 'AdminController@showSales');
+Route::get('admin/sale/{id}', 'PurchaseController@showSale');
+Route::post('admin/sale/{id}', 'PurchaseController@manageSale');
+Route::get('admin/users', 'AdminController@showUsers');
 Route::get('admin/products', 'AdminController@showProducts');
 Route::get('admin/products/add_product', 'AdminController@showNewGame');
 Route::get('admin/products/{id}/edit', 'AdminController@showEditGame');
@@ -52,6 +55,8 @@ Route::delete('products/{id}/wishlist', 'WishlistController@removeGame');
 
 // Users
 Route::get('user', 'UserController@showDefault')->name('user');
+Route::put('user/{id}/ban', 'UserController@ban');
+Route::put('user/{id}/admin', 'UserController@adminRole');
 Route::get('user/edit', 'UserController@showGeneral');
 Route::put('user/edit', 'UserController@updateGeneral');
 Route::get('user/security', 'UserController@showSecurity');
