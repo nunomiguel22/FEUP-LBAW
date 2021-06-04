@@ -18,7 +18,7 @@
 
             <ul class="list-unstyled mb-0">
                 <li>
-                    <a href="#todo" class="text-light">About us</a>
+                    <a href="{{ route('about') }}" class="text-light">About us</a>
                 </li>
                 <li>
                     <a href="#todo" class="text-light" data-toggle="modal" data-target="#ReportModal">Report a

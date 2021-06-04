@@ -35,15 +35,18 @@
         <aside>
             <ul class="nav nav-tabs" id="HomeNav" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="{{$first_category->name}}-tab" data-toggle="tab"
-                        href="#{{$first_category->name}}" role="tab" aria-controls="{{$first_category->name}}"
+                    <a class="nav-link active" id="{{str_replace(' ', '', $first_category->name) }}-tab"
+                        data-toggle="tab" href="#{{str_replace(' ', '', $first_category->name) }}" role="tab"
+                        aria-controls="{{str_replace(' ', '', $first_category->name) }}"
                         aria-selected="true">{{$first_category->name}}</a>
                 </li>
 
                 @forelse($categories as $category)
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="{{$category->name}}-tab" data-toggle="tab" href="#{{$category->name}}"
-                        role="tab" aria-controls="{{$category->name}}" aria-selected="false">{{$category->name}}</a>
+                    <a class="nav-link" id="{{str_replace(' ', '', $category->name) }}-tab" data-toggle="tab"
+                        href="#{{str_replace(' ', '', $category->name) }}" role="tab"
+                        aria-controls="{{str_replace(' ', '', $category->name) }}"
+                        aria-selected="false">{{$category->name}}</a>
                 </li>
                 @empty
                 @endforelse
@@ -53,7 +56,7 @@
 
 
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="{{$first_category->name}}" role="tabpanel"
+            <div class="tab-pane fade show active" id="{{str_replace(' ', '', $first_category->name) }}" role="tabpanel"
                 aria-labelledby="{{$first_category->name}}-tab">
                 @php
                 $i = 0;
@@ -91,8 +94,8 @@
         </div>
 
         @forelse($categories as $category)
-        <div class="tab-pane fade" id="{{$category->name}}" role="tabpanel" style="min-height:100px"
-            aria-labelledby="{{$category->name}}-tab">
+        <div class="tab-pane fade" id="{{str_replace(' ', '', $category->name) }}" role="tabpanel"
+            style="min-height:100px" aria-labelledby="{{str_replace(' ', '', $category->name) }}-tab">
             @php
             $i = 0;
             $cat_games = $games[$category->id];
