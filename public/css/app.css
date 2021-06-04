@@ -76,7 +76,7 @@ input[type="number"] {
 }
 
 .btn {
-    border-radius: 4;
+    border-radius: 4px;
 }
 
 .page-link {

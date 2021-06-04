@@ -29,7 +29,7 @@
     <!-- MOBILE VERSION -->
     <section class="container">
         <div class="row mt-4  d-md-none">
-            <div id="carousel" class="carousel row slide carousel-fade" data-ride="carousel">
+            <div id="carousel" class="carousel row slide carousel-fade" data-ride="carousel-mobile">
                 <article class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="{{ $game->cover_image() }}" class="d-block w-100" alt="game_img">
@@ -253,7 +253,7 @@
                 </div>
                 <div class="col pr-0 mr-0">
                     <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#LoginModal"
-                        style="min-height:40px;">
+                        style="min-height:44px;">
                         <i class="far fa-heart"></i> Add to wishlist</button>
                 </div>
                 @endif
