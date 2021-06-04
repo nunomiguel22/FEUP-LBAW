@@ -15,7 +15,7 @@ class Paginator {
                 : start_index + 4;
 
         while (
-            total_pages - this.current_page < 2 &&
+            this.total_pages - this.current_page < 2 &&
             start_index != 1 &&
             end_index - start_index < 4
         ) {

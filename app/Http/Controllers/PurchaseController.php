@@ -9,14 +9,61 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\PurchaseEmail;
+use Illuminate\Support\Facades\Validator;
 
+use App\Mail\PurchaseEmail;
+use App\Mail\KeyEmail;
 use App\Models\Purchase;
 use App\Models\Game;
 use App\Models\GameKey;
 
 class PurchaseController extends Controller
 {
+    public function showSale($id)
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+
+        $purchase = null;
+        try {
+            $purchase = Purchase::findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        return view('pages.admin.sale', ['purchase' => $purchase]);
+    }
+
+    public function manageSale(Request $request, $id)
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+
+        $purchase = null;
+        try {
+            $purchase = Purchase::findOrFail($id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+
+        if ($purchase->status == "Completed") {
+            return back()->withErrors(['error' => 'Cannot change the status of a purchase after it has been marked completed']);
+        }
+ 
+        if ($request->confirm) {
+            $purchase->status = "Completed";
+            Mail::to($purchase->user)->send(new KeyEmail($purchase->game()->title, $purchase->game_key->key));
+        } else {
+            $purchase->status = "Aborted";
+        }
+
+        $purchase->save();
+
+        return back();
+    }
+
     // GET /api/user/keys
     public function getKeys(Request $request)
     {

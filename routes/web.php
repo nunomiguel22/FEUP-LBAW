@@ -31,6 +31,8 @@ Route::post('email/verify', 'Auth\EmailVerifyController@resendVerification')->na
 // Admin
 Route::get('admin', 'AdminController@showDefault')->name('admin');
 Route::get('admin/sales', 'AdminController@showSales');
+Route::get('admin/sale/{id}', 'PurchaseController@showSale');
+Route::post('admin/sale/{id}', 'PurchaseController@manageSale');
 Route::get('admin/products', 'AdminController@showProducts');
 Route::get('admin/products/add_product', 'AdminController@showNewGame');
 Route::get('admin/products/{id}/edit', 'AdminController@showEditGame');

@@ -6,20 +6,21 @@
 <script src="{{ asset('js/image-panel.js') }}" defer></script>
 @endsection
 
+@section('breadcrumbs')
+<div class="row mx-0 my-3 p-0">
+    <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
+        <li class="breadcrumb-item"> <a href="{{ route('admin') }}"> Admin Panel </a></li>
+        <li class="breadcrumb-item"> <a href="{{ url('/admin/products') }}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{{ url('/products/'.$game->id) }}"> {{ $game->title }} </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> Edit Product </li>
+    </ol>
+</div>
+@endsection
 
 @section('content')
 
 <section class="container">
-    <!-- Breadcrumbs -->
-    <div class="row mx-0 my-3 p-0">
-        <ol class="breadcrumb m-0 p-0">
-            <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
-            <li class="breadcrumb-item"> <a href="{{ route('admin') }}"> Admin Panel </a></li>
-            <li class="breadcrumb-item"> <a href="{{ url('/admin/products') }}"> Products </a></li>
-            <li class="breadcrumb-item"> <a href="{{ url('/products/'.$game->id) }}"> {{ $game->title }} </a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Edit Product </li>
-        </ol>
-    </div>
 
     <section class="bg-dark p-5 my-4">
         <h4 class="text-shadow">EDIT A GAME</h4>

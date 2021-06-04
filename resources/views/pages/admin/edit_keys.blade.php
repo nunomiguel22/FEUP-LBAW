@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'OGS - Edit Product')
-
-
+@section('title', 'OGS - Edit Keys')
 
 @section('content')
 
 <section class="container">
-    <!-- Breadcrumbs -->
-    <div class="row mx-0 my-3 p-0">
+
+    <div class="row mx-auto my-3 p-0">
         <ol class="breadcrumb m-0 p-0">
             <li class="breadcrumb-item"> <a href="{{ route('homepage') }}"> Home </a></li>
             <li class="breadcrumb-item"> <a href="{{ route('admin') }}"> Admin Panel </a></li>
@@ -81,10 +79,6 @@
             <button id="admin-add-game-btn" class="btn row btn-success my-5 btn-lg w-100" type="submit">
                 Update {{$game->title}} keys
             </button>
-
-
-
-
 
         </form>
     </section>

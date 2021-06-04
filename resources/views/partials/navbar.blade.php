@@ -113,4 +113,5 @@ $cart_item_count = Auth::user()->cart_items()->count();
             </nav>
         </section>
     </nav>
+    @include('partials.verification_notice')
 </header>

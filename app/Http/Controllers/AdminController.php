@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Developer;
 use App\Models\Game;
 use App\Models\GameKey;
+use App\Models\Purchase;
 use App\Models\Tag;
 use App\Models\Category;
 
@@ -18,7 +19,7 @@ class AdminController extends Controller
 {
     public function showDefault()
     {
-        return $this->showProducts();
+        return $this->showSales();
     }
 
     public function showProducts()
@@ -30,17 +31,21 @@ class AdminController extends Controller
         return view('pages.admin.admin', ['tab_id' => 1]);
     }
 
-    public function showSales()
+    public function showSales(Request $request)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
             throw new AuthorizationException('This page is limited to administrators only');
         }
 
-        $tags = Tag::all();
-        $developers = Developer::all();
-        return view('pages.admin.admin', ['tab_id' => 0, 'developers' => $developers, 'tags' => $tags]);
-    }
+        $purchases = Purchase::query();
+        if ($request->user_id) {
+            $purchases->where('user_id', $request->user_id);
+        }
 
+        $purchases = $purchases->paginate(2);
+    
+        return view('pages.admin.admin', ['tab_id' => 0, 'purchases' => $purchases]);
+    }
 
     public function showNewGame()
     {
