@@ -648,6 +648,62 @@ INSERT INTO images(path) VALUES ('images/games/GTAV.jpg');
 INSERT INTO images(path) VALUES ('images/games/h3.jpg');
 INSERT INTO images(path) VALUES ('images/games/MW3.jpg');
 INSERT INTO images(path) VALUES ('images/games/Outriders.jpg');
+INSERT INTO images(path) VALUES ('images/games/HollowKnight.jpg');
+INSERT INTO images(path) VALUES ('images/games/Celeste.jpg');
+INSERT INTO images(path) VALUES ('images/games/Undertale.jpg');
+INSERT INTO images(path) VALUES ('images/games/Hades.jpg');
+INSERT INTO images(path) VALUES ('images/games/DarkestDungeon.jpg');
+INSERT INTO images(path) VALUES ('images/games/DarkSouls.jpg');
+INSERT INTO images(path) VALUES ('images/games/Slay_the_spire.jpg');
+INSERT INTO images(path) VALUES ('images/games/DeadCells.jpg');
+INSERT INTO images(path) VALUES ('images/games/OriAndTheBlindForestDefinitiveEdition.jpg');
+INSERT INTO images(path) VALUES ('images/games/OriAndTheWillOfTheWisps.jpg');
+INSERT INTO images(path) VALUES ('images/games/BabaIsYou.jpg');
+INSERT INTO images(path) VALUES ('images/games/Witcher3.jpg');
+INSERT INTO images(path) VALUES ('images/games/MHW.jpg');
+INSERT INTO images(path) VALUES ('images/games/Skyrim.jpg');
+INSERT INTO images(path) VALUES ('images/games/Portal2.jpg');
+INSERT INTO images(path) VALUES ('images/games/Portal.jpg');
+INSERT INTO images(path) VALUES ('images/games/Civ_V.jpg');
+INSERT INTO images(path) VALUES ('images/games/SidMeiersCivilizationVI.jpg');
+INSERT INTO images(path) VALUES ('images/games/Stardew-Valley.jpg');
+INSERT INTO images(path) VALUES ('images/games/PhoenixWrightAceAttorneyTrilogy.jpg');
+INSERT INTO images(path) VALUES ('images/games/P4G.jpg');
+INSERT INTO images(path) VALUES ('images/games/DQXI.jpg');
+INSERT INTO images(path) VALUES ('images/games/P5S.jpg');
+INSERT INTO images(path) VALUES ('images/games/ValkyriaChronicles.jpg');
+INSERT INTO images(path) VALUES ('images/games/Cuphead.jpg');
+INSERT INTO images(path) VALUES ('images/games/The-Walking-Dead.jpg');
+INSERT INTO images(path) VALUES ('images/games/TheWalkingDeadSeasonTwo.jpg');
+INSERT INTO images(path) VALUES ('images/games/Oneshot.jpg');
+INSERT INTO images(path) VALUES ('images/games/ShovelKnight.jpg');
+INSERT INTO images(path) VALUES ('images/games/disco-elysium.jpg');
+INSERT INTO images(path) VALUES ('images/games/MassEffect.jpg');
+INSERT INTO images(path) VALUES ('images/games/Griftlands.jpg');
+INSERT INTO images(path) VALUES ('images/games/plants-vs-zombies.jpg');
+INSERT INTO images(path) VALUES ('images/games/TotalWarhammer2.jpg');
+INSERT INTO images(path) VALUES ('images/games/Frostpunk.jpg');
+INSERT INTO images(path) VALUES ('images/games/TotalWarRome.jpg');
+INSERT INTO images(path) VALUES ('images/games/LC.jpg');
+INSERT INTO images(path) VALUES ('images/games/PapersPls.jpg');
+INSERT INTO images(path) VALUES ('images/games/citiesskylines.jpg');
+INSERT INTO images(path) VALUES ('images/games/stellaris.jpg');
+INSERT INTO images(path) VALUES ('images/games/Sims4.jpg');
+INSERT INTO images(path) VALUES ('images/games/Spore.jpg');
+INSERT INTO images(path) VALUES ('images/games/Factorio.jpg');
+INSERT INTO images(path) VALUES ('images/games/planet-zoo.jpg');
+INSERT INTO images(path) VALUES ('images/games/PlanetCoaster.jpg');
+INSERT INTO images(path) VALUES ('images/games/KnockoutCity.jpg');
+INSERT INTO images(path) VALUES ('images/games/fifa21.jpg');
+INSERT INTO images(path) VALUES ('images/games/FH4.jpg');
+INSERT INTO images(path) VALUES ('images/games/nba2k21.jpg');
+INSERT INTO images(path) VALUES ('images/games/Oliver-n-Benji.jpg');
+INSERT INTO images(path) VALUES ('images/games/ProjectCars3.jpg');
+INSERT INTO images(path) VALUES ('images/games/footballManager.jpg');
+INSERT INTO images(path) VALUES ('images/games/need-for-speed-heat.jpg');
+INSERT INTO images(path) VALUES ('images/games/assetoCorsa.jpg');
+INSERT INTO images(path) VALUES ('images/games/GolfWithFriends.jpg');
+
 
 INSERT INTO addresses(line1, postal_code, city, region, country_id) VALUES ('Rua Dr. Roberto Frias', '4200-465', 'Porto', 'Porto', 177);
 
@@ -664,6 +720,49 @@ INSERT INTO developers(name) VALUES ('IO Interactive');
 INSERT INTO developers(name) VALUES ('Infinity Ward');
 INSERT INTO developers(name) VALUES ('Square Enix');
 INSERT INTO developers(name) VALUES ('Remedy Entertainment');
+INSERT INTO developers(name) VALUES ('Team Cherry');
+INSERT INTO developers(name) VALUES ('Extremely OK Games');
+INSERT INTO developers(name) VALUES ('Toby Fox');
+INSERT INTO developers(name) VALUES ('Supergiant Games');
+INSERT INTO developers(name) VALUES ('Red Hook Studios');
+INSERT INTO developers(name) VALUES ('From Software');
+INSERT INTO developers(name) VALUES ('Mega Crit Games');
+INSERT INTO developers(name) VALUES ('Motion Twin');
+INSERT INTO developers(name) VALUES ('Moon Studios');
+INSERT INTO developers(name) VALUES ('Hempuli Oy');
+INSERT INTO developers(name) VALUES ('Capcom');
+INSERT INTO developers(name) VALUES ('Bethesda');
+INSERT INTO developers(name) VALUES ('Firaxis Games');
+INSERT INTO developers(name) VALUES ('Concerned Ape');
+INSERT INTO developers(name) VALUES ('Atlus');
+INSERT INTO developers(name) VALUES ('Sega');
+INSERT INTO developers(name) VALUES ('Studio MDHR');
+INSERT INTO developers(name) VALUES ('Telltale Games');
+INSERT INTO developers(name) VALUES ('Future Cat');
+INSERT INTO developers(name) VALUES ('Yatch Club Games');
+INSERT INTO developers(name) VALUES ('ZA/UM');
+INSERT INTO developers(name) VALUES ('Bioware');
+INSERT INTO developers(name) VALUES ('Klei Entertainment');
+INSERT INTO developers(name) VALUES ('PopCap Games');
+INSERT INTO developers(name) VALUES ('Creative Assembly');
+INSERT INTO developers(name) VALUES ('11 bit studios');
+INSERT INTO developers(name) VALUES ('Project Moon');
+INSERT INTO developers(name) VALUES ('Lucas Pope');
+INSERT INTO developers(name) VALUES ('Colossal Order');
+INSERT INTO developers(name) VALUES ('Paradox Development Studio');
+INSERT INTO developers(name) VALUES ('Maxis');
+INSERT INTO developers(name) VALUES ('Wube Software');
+INSERT INTO developers(name) VALUES ('Frontier Developments');
+INSERT INTO developers(name) VALUES ('Velan Studios');
+INSERT INTO developers(name) VALUES ('EA');
+INSERT INTO developers(name) VALUES ('Playground Games');
+INSERT INTO developers(name) VALUES ('Visual Concepts');
+INSERT INTO developers(name) VALUES ('Tamsoft Corporation');
+INSERT INTO developers(name) VALUES ('Slightly Mad Studios');
+INSERT INTO developers(name) VALUES ('Sports Interactive');
+INSERT INTO developers(name) VALUES ('Ghost Games');
+INSERT INTO developers(name) VALUES ('Kunos Simulazioni');
+INSERT INTO developers(name) VALUES ('Blacklight Interactive');
 
 
 INSERT INTO categories(name) VALUES ('Action');
@@ -678,12 +777,32 @@ INSERT INTO tags(name) VALUES ('Fighting');
 INSERT INTO tags(name) VALUES ('Puzzle');
 INSERT INTO tags(name) VALUES ('Sci-Fi');
 INSERT INTO tags(name) VALUES ('Real-time Strategy');
-INSERT INTO tags(name) VALUES ('Racing');
+INSERT INTO tags(name) VALUES ('Sim-Racing');
 INSERT INTO tags(name) VALUES ('JRPG');
 INSERT INTO tags(name) VALUES ('First-Person Shooter');
 INSERT INTO tags(name) VALUES ('Third-Person Shooter');
 INSERT INTO tags(name) VALUES ('Casual');
 INSERT INTO tags(name) VALUES ('Platformer');
+INSERT INTO tags(name) VALUES ('Co-op');
+INSERT INTO tags(name) VALUES ('Hack and Slash');
+INSERT INTO tags(name) VALUES ('Open World');
+INSERT INTO tags(name) VALUES ('Stealth');
+INSERT INTO tags(name) VALUES ('Metroidvania');
+INSERT INTO tags(name) VALUES ('Turn based');
+INSERT INTO tags(name) VALUES ('Roguelike');
+INSERT INTO tags(name) VALUES ('Deckbuilder');
+INSERT INTO tags(name) VALUES ('Visual Novel');
+INSERT INTO tags(name) VALUES ('Boss Rush');
+INSERT INTO tags(name) VALUES ('Investigation');
+INSERT INTO tags(name) VALUES ('Tower Defense');
+INSERT INTO tags(name) VALUES ('City Builder');
+INSERT INTO tags(name) VALUES ('Horror');
+INSERT INTO tags(name) VALUES ('Sports');
+INSERT INTO tags(name) VALUES ('Racing');
+INSERT INTO tags(name) VALUES ('Management');
+INSERT INTO tags(name) VALUES ('Grand Strategy');
+
+
 
 INSERT INTO games(title,description,price,launch_date,listed,parent_id,developer_id,category_id) 
 VALUES ('Cyberpunk 2077', 
@@ -736,14 +855,323 @@ VALUES ('Outriders',
             'Outriders’ brutal and bloody combat combines frenetic gunplay, violent powers and deep RPG systems to create a true genre hybrid.', 
             59.99, '2021-04-01'::date, true, null, 8, 1);
 
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Hollow Knight',
+            'Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes. 
+            Explore twisting caverns, battle tainted creatures and befriend bizarre bugs, all in a classic, hand-drawn 2D style.',
+            14.99, '2017-02-24'::date, true, null, 10, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Celeste',
+            'Help Madeline survive her inner demons on her journey to the top of Celeste Mountain, in this super-tight platformer from the creators of TowerFall. 
+            Brave hundreds of hand-crafted challenges, uncover devious secrets, and piece together the mystery of the mountain.',
+            19.99, '2018-01-25'::date, true, null, 11, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Undertale',
+            'UNDERTALE! The RPG game where you dont have to destroy anyone.',
+            9.99, '2015-09-15'::date, true, null, 12, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Hades',
+            'Defy the god of the dead as you hack and slash out of the Underworld in this rogue-like dungeon crawler from the creators of Bastion, Transistor, and Pyre.',
+            20.99, '2020-09-17'::date, true, null, 13, 1);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Darkest Dungeon',
+            'Darkest Dungeon is a challenging gothic turn-based RPG about the psychological stresses of adventuring. 
+            Recruit, train, and lead a team of flawed heroes against unimaginable horrors, stress, disease, and the ever-encroaching dark. 
+            Can you keep your heroes together when all hope is lost?',
+            22.99, '2016-01-19'::date, true, null, 14, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Dark Souls Remastered',
+            'Then, there was fire. Re-experience the critically acclaimed, genre-defining game that started it all. 
+            Beautifully remastered, return to Lordran in stunning high-definition detail running at 60fps.',
+            39.99, '2018-05-23'::date, true, null, 15, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Slay the Spire',
+            'We fused card games and roguelikes together to make the best single player deckbuilder we could. 
+            Craft a unique deck, encounter bizarre creatures, discover relics of immense power, and Slay the Spire!',
+            20.99, '2019-01-23'::date, true, null, 16, 5);
+
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Dead Cells',
+            'Dead Cells is a rogue-lite, metroidvania inspired, action-platformer. 
+            You will explore a sprawling, ever-changing castle... assuming you’re able to fight your way past its keepers in 2D souls-lite combat. 
+            No checkpoints. Kill, die, learn, repeat.',
+            24.99, '2018-08-06'::date, true, null, 17, 1);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Ori and the Blind Forest: Definitive Edition',
+            '“Ori and the Blind Forest” tells the tale of a young orphan destined for heroics, through a visually stunning Action-Platformer crafted by Moon Studios.',
+            4.99, '2016-04-27'::date, true, null, 18, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Ori and the Will of the Wisps',
+            'Play the critically acclaimed masterpiece. Embark on a new journey in a vast, exotic world where you’ll encounter towering enemies and challenging puzzles on your quest to unravel Ori’s destiny.',
+            29.99, '2020-03-11'::date, true, null, 18, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Baba is You',
+            'Baba Is You is a puzzle game where the rules you have to follow are present as blocks you can interact with. 
+            By manipulating them, you can change how the game works, repurpose things you find in the levels and cause surprising interactions!',
+            12.49, '2019-03-13'::date, true, null, 19, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('The Witcher 3: Wild Hunt',
+            'As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world.',
+            29.99, '2015-05-18'::date, true, null, 1, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Monster Hunter: World',
+            'Welcome to a new world! In Monster Hunter: World, the latest installment in the series, you can enjoy the ultimate hunting experience, using everything at your disposal to hunt monsters in a new world teeming with surprises and excitement.',
+            29.99, '2018-08-09'::date, true, null, 20, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('The Elder Scrolls V: Skyrim Special Edition',
+            'Winner of more than 200 Game of the Year Awards, Skyrim Special Edition brings the epic fantasy to life in stunning detail. 
+            The Special Edition includes the critically acclaimed game and add-ons with all-new features like remastered art and effects, volumetric god rays, dynamic depth of field, screen-space reflections, and more. 
+            Skyrim Special Edition also brings the full power of mods to the PC and consoles. New quests, environments, characters, dialogue, armor, weapons and more – with Mods, there are no limits to what you can experience.',
+            39.99, '2016-10-28'::date, true, null, 21, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Portal 2',
+            'The "Perpetual Testing Initiative" has been expanded to allow you to design co-op puzzles for you and your friends!',
+            8.19, '2011-04-19'::date, true, null, 4, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Portal',
+            'Portal™ is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.',
+            8.19, '2007-10-10'::date, true, null, 4, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Sid Meier’s Civilization V',
+            'Create, discover, and download new player-created maps, scenarios, interfaces, and more!',
+            29.99, '2010-09-23'::date, true, null, 22, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Sid Meier’s Civilization VI',
+            'Civilization VI offers new ways to interact with your world, expand your empire across the map, advance your culture, and compete against history’s greatest leaders to build a civilization that will stand the test of time. 
+            Play as one of 20 historical leaders including Roosevelt (America) and Victoria (England).',
+            59.99, '2016-10-21'::date, true, null, 22, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Stardew Valley',
+            'You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. 
+            Can you learn to live off the land and turn these overgrown fields into a thriving home?',
+            13.99, '2016-02-26'::date, true, null, 23, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Phoenix Wright: Ace Attorney Trilogy',
+            'Become Phoenix Wright and experience the thrill of battle as you fight to save your innocent clients in a court of law. 
+            Play all 14 episodes, spanning the first three games, in one gorgeous collection.',
+            29.99, '2019-04-09'::date, true, null, 20, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Persona 4 Golden',
+            'A coming of age story that sets the protagonist and his friends on a journey kickstarted by a chain of serial murders.',
+            19.99, '2020-06-21'::date, true, null, 24, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('DRAGON QUEST XI S: Echoes of an Elusive Age - Definitive Edition',
+            'The Definitive Edition includes the critically acclaimed DRAGON QUEST XI, plus additional scenarios, orchestral soundtrack, 2D mode and more! 
+            Whether you are a longtime fan or a new adventurer, this is the ultimate DQXI experience.',
+            39.99, '2020-12-04'::date, true, null, 8, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Persona 5 Strikers',
+            'Join the Phantom Thieves and strike back against the corruption overtaking cities across Japan. 
+            A summer vacation with close friends takes a sudden turn as a distorted reality emerges; reveal the truth and redeem the hearts of those imprisoned at the center of the crisis!',
+            59.99, '2021-02-23'::date, true, null, 24, 1);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Valkyria Chronicles',
+            'The critically acclaimed Valkyria Chronicles is now available on PC in 1080p True HD, including all previously released DLC!',
+            19.99, '2014-11-11'::date, true, null, 25, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Cuphead',
+            'Cuphead is a classic run and gun action game heavily focused on boss battles. 
+            Inspired by cartoons of the 1930s, the visuals and audio are painstakingly created with the same techniques of the era, i.e. traditional hand drawn cel animation, watercolor backgrounds, and original jazz recordings.',
+            19.99, '2017-09-29'::date, true, null, 26, 1);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('The Walking Dead',
+            'A five-part adventure horror series set in the same universe as Robert Kirkman’s award-winning comic book series.',
+            14.99, '2012-04-24'::date, true, null, 27, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('The Walking Dead: Season Two',
+            'The Walking Dead: Season Two continues the story of Clementine, a young girl orphaned by the undead apocalypse. 
+            Left to fend for herself, she has been forced to learn how to survive in a world gone mad.',
+            14.99, '2013-12-17'::date, true, null, 27, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Oneshot',
+            'OneShot is a surreal top down Puzzle/Adventure game with unique gameplay capabilities. You are to guide a child through a mysterious world on a mission to restore its long-dead sun. The world knows you exist.',
+            9.99, '2016-12-08'::date, true, null, 28, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Shovel Knight: Treasure Throve',
+            'Shovel Knight: Treasure Trove is the complete Shovel Knight collection, containing all 5 games in the epic saga! Dig, blast, slash, and bash your way through a fantastical, 8-bit inspired world of pixel-perfect platforming, memorable characters, and world-class action-adventure gameplay.',
+            39.99, '2014-06-26'::date, true, null, 29, 2);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Disco Elysium',
+            'Disco Elysium - The Final Cut is a groundbreaking role playing game. 
+            You’re a detective with a unique skill system at your disposal and a whole city to carve your path across. 
+            Interrogate unforgettable characters, crack murders or take bribes. Become a hero or an absolute disaster of a human being.',
+            39.99, '2019-10-15'::date, true, null, 30, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Mass Effect Legendary Edition',
+            'The Mass Effect™ Legendary Edition includes single-player base content and over 40 DLC from the highly acclaimed Mass Effect, Mass Effect 2, and Mass Effect 3 games, including promo weapons, armors, and packs — remastered and optimized for 4K Ultra HD.',
+            59.99, '2021-05-14'::date, true, null, 31, 3);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Griftlands',
+            'Griftlands is a deck-building roguelite where you negotiate, fight, steal or otherwise persuade others to get your way. 
+            Every decision is important, be it the jobs you take, the friends you make, or the cards you collect.',
+            16.79, '2021-06-01'::date, true, null, 32, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Plants vs Zombies GOTY Edition',
+            'Zombies are invading your home, and the only defense is your arsenal of plants! Armed with an alien nursery-worth of zombie-zapping plants like peashooters and cherry bombs, you’ll need to think fast and plant faster to stop dozens of types of zombies dead in their tracks.',
+            4.99, '2009-05-05'::date, true, null, 33, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Total War: Warhammer II',
+            'Strategy gaming perfected. A breath-taking campaign of exploration, expansion and conquest across a fantasy world. Turn-based civilisation management and real-time epic strategy battles with thousands of troops and monsters at your command.',
+            59.99, '2017-09-28'::date, true, null, 34, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Frostpunk',
+            'Frostpunk is the first society survival game. As the ruler of the last city on Earth, it is your duty to manage both its citizens and infrastructure. What decisions will you make to ensure your society’s survival? What will you do when pushed to breaking point? Who will you become in the process?',
+            29.99, '2018-04-24'::date, true, null, 35, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Total War: Rome Remastered',
+            'Total War: ROME REMASTERED lets you relive the legacy that defined the award-winning strategy game series. 
+            Remastered to 4K with multiple improvements to visuals as well as refinements to gameplay, it’s time to revisit a true classic. Not everyone gets a second chance to conquer the Roman Empire.',
+            29.99, '2021-04-29'::date, true, null, 34, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Lobotomy Corporation',
+            'A roguelite monster-management simulation inspired by the likes of the SCP Foundation, Cabin in the Woods, and Warehouse 13. 
+            Order your employees to perform work with the creatures and watch as it unfolds; harness greater energy, and expand the facility',
+            22.99, '2018-04-09'::date, true, null, 36, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Papers Please',
+            'Congratulations. The October labor lottery is complete. Your name was pulled. 
+            For immediate placement, report to the Ministry of Admission at Grestin Border Checkpoint. 
+            An apartment will be provided for you and your family in East Grestin. Expect a Class-8 dwelling.',
+            8.99, '2013-08-08'::date, true, null, 37, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Cities Skylines',
+            'Cities: Skylines is a modern take on the classic city simulation. 
+            The game introduces new game play elements to realize the thrill and hardships of creating and maintaining a real city whilst expanding on some well-established tropes of the city building experience.',
+            27.99, '2015-03-10'::date, true, null, 38, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Stelaris',
+            'Explore a galaxy full of wonders in this sci-fi grand strategy game from Paradox Development Studios. 
+            Interact with diverse alien races, discover strange new worlds with unexpected events and expand the reach of your empire. 
+            Each new adventure holds almost limitless possibilities.',
+            39.99, '2016-05-09'::date, true, null, 39, 5);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('The Sims 4',
+            'Play with life and discover the possibilities. Unleash your imagination and create a world of Sims that’s wholly unique. 
+            Explore and customize every detail from Sims to homes–and much more.',
+            39.99, '2014-09-02'::date, true, null, 40, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Spore',
+            'Be the architect of your own universe with Spore, an exciting single-player adventure. From Single Cell to Galactic God, evolve your creature in a universe of your own creations.',
+            19.99, '2008-12-19'::date, true, null, 40, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Factorio',
+            'Factorio is a game about building and creating automated factories to produce items of increasing complexity, within an infinite 2D world. 
+            Use your imagination to design your factory, combine simple elements into ingenious structures, and finally protect it from the creatures who don’t really like you.',
+            25.00, '2020-08-14'::date, true, null, 41, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Planet Zoo',
+            'Build a world for wildlife in Planet Zoo. From the developers of Planet Coaster and Zoo Tycoon comes the ultimate zoo sim. 
+            Construct detailed habitats, manage your zoo, and meet authentic living animals who think, feel and explore the world you create around them.',
+            44.99, '2019-11-05'::date, true, null, 42, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Planet Coaster',
+            'Planet Coaster® - the future of coaster park simulation games has arrived! Surprise, delight and thrill incredible crowds as you build your coaster park empire - let your imagination run wild, and share your success with the world.',
+            37.99, '2016-11-17'::date, true, null, 42, 4);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Knockout City',
+            'Team up and duke it out with rival Crews in Knockout City™, where EPIC DODGEBALL BATTLES settle the score in team-based multiplayer matches. 
+            Throw, catch, pass, dodge, and tackle your way to dodgeball dominance!',
+            19.99, '2021-05-21'::date, true, null, 43, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('FIFA 2021',
+            'Football is back with EA SPORTS™ FIFA 21, featuring more ways to team up on the street or in the stadium to enjoy even bigger victories with friends.',
+            59.99, '2020-10-09'::date, true, null, 44, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Forza Horizon 4',
+            'Dynamic seasons change everything at the world’s greatest automotive festival. 
+            Go it alone or team up with others to explore beautiful and historic Britain in a shared open world.',
+            69.99, '2021-03-09'::date, true, null, 45, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('NBA 2K21',
+            'NBA 2K21 is the latest title in the world-renowned, best-selling NBA 2K series, delivering an industry-leading sports video game experience.',
+            59.99, '2020-09-04'::date, true, null, 46, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Captain Tsubasa: Rise of New Champions',
+            'Captain Tsubasa: Rise of New Champions is an arcade football game bringing a refreshing look to the football genre with the exhilarating action and over the top shots that made the license famous. Defy The Laws of Football Become Legend',
+            49.99, '2020-09-28'::date, true, null, 47, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Project Cars 3',
+            'Journey from weekend warrior to racing legend & experience the thrill & emotion of authentic racing. 
+            Own, upgrade and personalise hundreds of cars, customise your driver, tailor every setting & play the way you want in YOUR Ultimate Driver Journey.',
+            59.99, '2020-08-27'::date, true, null, 48, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Football Manager 2021',
+            'New additions and game upgrades deliver added levels of depth, drama and football authenticity. FM21 empowers you like never before to develop your skills and command success at your club.',
+            54.99, '2020-11-23'::date, true, null, 49, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Need for Speed Heat',
+            'Hustle by day and risk it all at night in Need for Speed™ Heat Deluxe Edition, a white-knuckle street racer, where the lines of the law fade as the sun starts to set.',
+            69.99, '2019-11-08'::date, true, null, 50, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Assetto Corsa',
+            'Assetto Corsa v1.16 introduces the new "Laguna Seca" laser-scanned track, 7 new cars among which the eagerly awaited Alfa Romeo Giulia Quadrifoglio! Check the changelog for further info!',
+            19.99, '2014-12-19'::date, true, null, 51, 6);
+
+INSERT INTO games(title,description,price, launch_date,listed,parent_id,developer_id,category_id) 
+VALUES ('Golf With Your Friends',
+            'Why have friends if not to play Golf... With Your Friends! Nothing is out of bounds as you take on courses filled with fast paced, exciting, simultaneous mini golf for up to 12 players!',
+            14.99, '2020-05-19'::date, true, null, 52, 6);
+
+
 INSERT INTO game_keys("key",available,game_id) VALUES ('757A-D8466F-A453','true',1);
 INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3076','true',2);
 INSERT INTO game_keys("key",available,game_id) VALUES ('1218-58-2960','true',3);
 INSERT INTO game_keys("key",available,game_id) VALUES ('31845-618-36','true',4);
 INSERT INTO game_keys("key",available,game_id) VALUES ('318DA45-618EFA-3HJV6','true',1);
 INSERT INTO game_keys("key",available,game_id) VALUES ('79749-432-3075','true',2);
-
-
 
 INSERT INTO game_image(image_id,game_id) VALUES (2,2);
 INSERT INTO game_image(image_id,game_id) VALUES (3,3);
@@ -756,10 +1184,237 @@ INSERT INTO game_image(image_id,game_id) VALUES (9,6);
 INSERT INTO game_image(image_id,game_id) VALUES (10,7);
 INSERT INTO game_image(image_id,game_id) VALUES (11,8);
 INSERT INTO game_image(image_id,game_id) VALUES (12,9);
+INSERT INTO game_image(image_id,game_id) VALUES (13,10);
+INSERT INTO game_image(image_id,game_id) VALUES (14,11);
+INSERT INTO game_image(image_id,game_id) VALUES (15,12);
+INSERT INTO game_image(image_id,game_id) VALUES (16,13);
+INSERT INTO game_image(image_id,game_id) VALUES (17,14);
+INSERT INTO game_image(image_id,game_id) VALUES (18,15);
+INSERT INTO game_image(image_id,game_id) VALUES (19,16);
+INSERT INTO game_image(image_id,game_id) VALUES (20,17);
+INSERT INTO game_image(image_id,game_id) VALUES (21,18);
+INSERT INTO game_image(image_id,game_id) VALUES (22,19);
+INSERT INTO game_image(image_id,game_id) VALUES (23,20);
+INSERT INTO game_image(image_id,game_id) VALUES (24,21);
+INSERT INTO game_image(image_id,game_id) VALUES (25,22);
+INSERT INTO game_image(image_id,game_id) VALUES (26,23);
+INSERT INTO game_image(image_id,game_id) VALUES (27,24);
+INSERT INTO game_image(image_id,game_id) VALUES (28,25);
+INSERT INTO game_image(image_id,game_id) VALUES (29,26);
+INSERT INTO game_image(image_id,game_id) VALUES (30,27);
+INSERT INTO game_image(image_id,game_id) VALUES (31,28);
+INSERT INTO game_image(image_id,game_id) VALUES (32,29);
+INSERT INTO game_image(image_id,game_id) VALUES (33,30);
+INSERT INTO game_image(image_id,game_id) VALUES (34,31);
+INSERT INTO game_image(image_id,game_id) VALUES (35,32);
+INSERT INTO game_image(image_id,game_id) VALUES (36,33);
+INSERT INTO game_image(image_id,game_id) VALUES (37,34);
+INSERT INTO game_image(image_id,game_id) VALUES (38,35);
+INSERT INTO game_image(image_id,game_id) VALUES (39,36);
+INSERT INTO game_image(image_id,game_id) VALUES (40,37);
+INSERT INTO game_image(image_id,game_id) VALUES (41,38);
+INSERT INTO game_image(image_id,game_id) VALUES (42,39);
+INSERT INTO game_image(image_id,game_id) VALUES (43,40);
+INSERT INTO game_image(image_id,game_id) VALUES (44,41);
+INSERT INTO game_image(image_id,game_id) VALUES (45,42);
+INSERT INTO game_image(image_id,game_id) VALUES (46,43);
+INSERT INTO game_image(image_id,game_id) VALUES (47,44);
+INSERT INTO game_image(image_id,game_id) VALUES (48,45);
+INSERT INTO game_image(image_id,game_id) VALUES (49,46);
+INSERT INTO game_image(image_id,game_id) VALUES (50,47);
+INSERT INTO game_image(image_id,game_id) VALUES (51,48);
+INSERT INTO game_image(image_id,game_id) VALUES (52,49);
+INSERT INTO game_image(image_id,game_id) VALUES (53,50);
+INSERT INTO game_image(image_id,game_id) VALUES (54,51);
+INSERT INTO game_image(image_id,game_id) VALUES (55,52);
+INSERT INTO game_image(image_id,game_id) VALUES (56,53);
+INSERT INTO game_image(image_id,game_id) VALUES (57,54);
+INSERT INTO game_image(image_id,game_id) VALUES (58,55);
+INSERT INTO game_image(image_id,game_id) VALUES (59,56);
+INSERT INTO game_image(image_id,game_id) VALUES (60,57);
+INSERT INTO game_image(image_id,game_id) VALUES (61,58);
+INSERT INTO game_image(image_id,game_id) VALUES (62,59);
+INSERT INTO game_image(image_id,game_id) VALUES (63,60);
+INSERT INTO game_image(image_id,game_id) VALUES (64,61);
+INSERT INTO game_image(image_id,game_id) VALUES (65,62);
+INSERT INTO game_image(image_id,game_id) VALUES (66,63);
+INSERT INTO game_image(image_id,game_id) VALUES (67,64);
 
+
+--Cyberpunk 2077
 INSERT INTO game_tag(tag_id,game_id) VALUES (1,1);
 INSERT INTO game_tag(tag_id,game_id) VALUES (4,1);
 INSERT INTO game_tag(tag_id,game_id) VALUES (8,1);
+INSERT INTO game_tag(tag_id,game_id) VALUES (14,1);
+--Borderlands 3
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,2);
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,2);
+INSERT INTO game_tag(tag_id,game_id) VALUES (8,2);
+INSERT INTO game_tag(tag_id,game_id) VALUES (12,2);
+--Control
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,3);
+INSERT INTO game_tag(tag_id,game_id) VALUES (9,3);
+--CS:GO
+INSERT INTO game_tag(tag_id,game_id) VALUES (8,4);
+--Ghostrunner
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,5);
+INSERT INTO game_tag(tag_id,game_id) VALUES (13,5);
+--GTA V
+INSERT INTO game_tag(tag_id,game_id) VALUES (14,6);
+--Hitman 3
+INSERT INTO game_tag(tag_id,game_id) VALUES (15,7);
+--MW3
+INSERT INTO game_tag(tag_id,game_id) VALUES (8,8);
+--Outriders
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,9);
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,9);
+INSERT INTO game_tag(tag_id,game_id) VALUES (9,9);
+INSERT INTO game_tag(tag_id,game_id) VALUES (12,9);
+--Hollow Knight
+INSERT INTO game_tag(tag_id,game_id) VALUES (11,10);
+INSERT INTO game_tag(tag_id,game_id) VALUES (16,10);
+--Celeste
+INSERT INTO game_tag(tag_id,game_id) VALUES (11,11);
+--Undertale
+INSERT INTO game_tag(tag_id,game_id) VALUES (17,12);
+--Hades
+INSERT INTO game_tag(tag_id,game_id) VALUES (18,13);
+--Darkest Dungeon
+INSERT INTO game_tag(tag_id,game_id) VALUES (17,14);
+INSERT INTO game_tag(tag_id,game_id) VALUES (25,14);
+--Dark Souls
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,15);
+--Slay the Spire
+INSERT INTO game_tag(tag_id,game_id) VALUES (18,16);
+INSERT INTO game_tag(tag_id,game_id) VALUES (19,16);
+--Dead Cells
+INSERT INTO game_tag(tag_id,game_id) VALUES (16,17);
+INSERT INTO game_tag(tag_id,game_id) VALUES (18,17);
+--Ori BF
+INSERT INTO game_tag(tag_id,game_id) VALUES (11,18);
+INSERT INTO game_tag(tag_id,game_id) VALUES (16,18);
+--Ori WW
+INSERT INTO game_tag(tag_id,game_id) VALUES (11,19);
+INSERT INTO game_tag(tag_id,game_id) VALUES (16,19);
+--Baba is you
+INSERT INTO game_tag(tag_id,game_id) VALUES (3,20);
+--Witcher 3
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,21);
+INSERT INTO game_tag(tag_id,game_id) VALUES (14,21);
+--MHW
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,22);
+INSERT INTO game_tag(tag_id,game_id) VALUES (12,22);
+--Skyrim
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,23);
+INSERT INTO game_tag(tag_id,game_id) VALUES (14,23);
+--Portal 2
+INSERT INTO game_tag(tag_id,game_id) VALUES (3,24);
+--Portal 
+INSERT INTO game_tag(tag_id,game_id) VALUES (3,25);
+--Civ V
+INSERT INTO game_tag(tag_id,game_id) VALUES (17,26);
+INSERT INTO game_tag(tag_id,game_id) VALUES (29,26);
+--Civ VI
+INSERT INTO game_tag(tag_id,game_id) VALUES (17,27);
+INSERT INTO game_tag(tag_id,game_id) VALUES (29,27);
+--Stardew Valley
+INSERT INTO game_tag(tag_id,game_id) VALUES (10,28);
+--Ace Attorney
+INSERT INTO game_tag(tag_id,game_id) VALUES (20,29);
+INSERT INTO game_tag(tag_id,game_id) VALUES (22,29);
+--Persona 4
+INSERT INTO game_tag(tag_id,game_id) VALUES (7,30);
+INSERT INTO game_tag(tag_id,game_id) VALUES (17,30);
+--DQXI
+INSERT INTO game_tag(tag_id,game_id) VALUES (7,31);
+INSERT INTO game_tag(tag_id,game_id) VALUES (17,31);
+--P5 Strikers
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,32);
+INSERT INTO game_tag(tag_id,game_id) VALUES (7,32);
+INSERT INTO game_tag(tag_id,game_id) VALUES (13,32);
+--Valkyria Chronicles
+INSERT INTO game_tag(tag_id,game_id) VALUES (7,33);
+INSERT INTO game_tag(tag_id,game_id) VALUES (17,33);
+--Cuphead
+INSERT INTO game_tag(tag_id,game_id) VALUES (21,34);
+--Walking Dead
+INSERT INTO game_tag(tag_id,game_id) VALUES (20,35);
+--Walking Dead 2
+INSERT INTO game_tag(tag_id,game_id) VALUES (20,36);
+--Oneshot
+INSERT INTO game_tag(tag_id,game_id) VALUES (3,37);
+--Shovel Knight
+INSERT INTO game_tag(tag_id,game_id) VALUES (11,38);
+--Disco Elysium
+INSERT INTO game_tag(tag_id,game_id) VALUES (22,39);
+--Mass Effect
+INSERT INTO game_tag(tag_id,game_id) VALUES (1,40);
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,40);
+INSERT INTO game_tag(tag_id,game_id) VALUES (9,40);
+--Griftlands
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,41);
+INSERT INTO game_tag(tag_id,game_id) VALUES (18,41);
+INSERT INTO game_tag(tag_id,game_id) VALUES (19,41);
+--PvZ
+INSERT INTO game_tag(tag_id,game_id) VALUES (23,42);
+--Warhammer
+INSERT INTO game_tag(tag_id,game_id) VALUES (5,43);
+--Frostpunk
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,44);
+INSERT INTO game_tag(tag_id,game_id) VALUES (24,44);
+--Total War Rome
+INSERT INTO game_tag(tag_id,game_id) VALUES (5,45);
+--Lobotomy Corporation
+INSERT INTO game_tag(tag_id,game_id) VALUES (25,46);
+INSERT INTO game_tag(tag_id,game_id) VALUES (28,46);
+--Papers Please
+INSERT INTO game_tag(tag_id,game_id) VALUES (3,47);
+--Cities Skylines
+INSERT INTO game_tag(tag_id,game_id) VALUES (24,48);
+--Stellaris
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,49);
+INSERT INTO game_tag(tag_id,game_id) VALUES (29,49);
+--Sims 4
+INSERT INTO game_tag(tag_id,game_id) VALUES (10,50);
+--Spore
+INSERT INTO game_tag(tag_id,game_id) VALUES (4,51);
+INSERT INTO game_tag(tag_id,game_id) VALUES (5,51);
+INSERT INTO game_tag(tag_id,game_id) VALUES (10,51);
+--Factorio
+INSERT INTO game_tag(tag_id,game_id) VALUES (12,52);
+INSERT INTO game_tag(tag_id,game_id) VALUES (28,52);
+--Planet Zoo
+INSERT INTO game_tag(tag_id,game_id) VALUES (10,53);
+INSERT INTO game_tag(tag_id,game_id) VALUES (24,53);
+INSERT INTO game_tag(tag_id,game_id) VALUES (28,53);
+--Planet Coaster
+INSERT INTO game_tag(tag_id,game_id) VALUES (10,54);
+INSERT INTO game_tag(tag_id,game_id) VALUES (24,54);
+INSERT INTO game_tag(tag_id,game_id) VALUES (28,54);
+--KO City
+INSERT INTO game_tag(tag_id,game_id) VALUES (26,55);
+--FIFA
+INSERT INTO game_tag(tag_id,game_id) VALUES (26,56);
+--FH4
+INSERT INTO game_tag(tag_id,game_id) VALUES (27,57);
+--NBA
+INSERT INTO game_tag(tag_id,game_id) VALUES (26,58);
+--Oliver and Benji
+INSERT INTO game_tag(tag_id,game_id) VALUES (26,59);
+--Project Cars 
+INSERT INTO game_tag(tag_id,game_id) VALUES (27,60);
+--Football Manager
+INSERT INTO game_tag(tag_id,game_id) VALUES (26,61);
+INSERT INTO game_tag(tag_id,game_id) VALUES (28,61);
+--Need 4 Speed
+INSERT INTO game_tag(tag_id,game_id) VALUES (27,62);
+--Asseto Corsa
+INSERT INTO game_tag(tag_id,game_id) VALUES (27,63);
+--Golf with your friends
+INSERT INTO game_tag(tag_id,game_id) VALUES (10,64);
+INSERT INTO game_tag(tag_id,game_id) VALUES (26,64);
+
+
 
 
 INSERT INTO purchases("timestamp", price, "status", "method", payment_uuid, game_key_id, user_id) VALUES ('2019-03-01', 59.99, 'Pending', 'PayPal', '45', 1, 1);
