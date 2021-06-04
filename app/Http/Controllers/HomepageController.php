@@ -14,17 +14,6 @@ class HomepageController extends Controller
     // GET /
     public function show()
     {
-        $categories = Category::all();
-        $games = array();
-
-        foreach ($categories as $category) {
-            $games[$category->id] = $category->getRecentGames(9);
-        }
-
-        $carousel_games = Game::getRecent(3);
-        $title_game = $carousel_games->shift();
-        $first_category = $categories->shift();
-
         return view('pages.homepage', $this->homepageGames());
     }
 
