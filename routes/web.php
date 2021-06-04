@@ -12,7 +12,7 @@
 */
 // Home
 Route::get('/', 'HomepageController@show')->name('homepage');
-
+Route::get('/about', 'HomepageController@showAbout')->name('about');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

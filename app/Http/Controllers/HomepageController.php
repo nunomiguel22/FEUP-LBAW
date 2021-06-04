@@ -44,4 +44,9 @@ class HomepageController extends Controller
         'carousel_games' => $carousel_games, 'first_category' => $first_category,
         'categories' => $categories];
     }
+
+    public function showAbout()
+    {
+        return view('pages.about');
+    }
 }
