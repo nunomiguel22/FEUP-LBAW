@@ -18,6 +18,55 @@ use App\Models\Country;
 
 class UserController extends Controller
 {
+    public function adminRole(Request $request, $user_id)
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+
+        
+        $user = null;
+        try {
+            $user = User::findOrFail($user_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+ 
+        if ($request->make_admin) {
+            $user->is_admin = true;
+        } else {
+            $user->is_admin = false;
+        }
+
+        $user->save();
+    
+        return back();
+    }
+
+    public function ban(Request $request, $user_id)
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+
+        $user = null;
+        try {
+            $user = User::findOrFail($user_id);
+        } catch (ModelNotFoundException  $err) {
+            abort(404);
+        }
+ 
+        if ($request->unban) {
+            $user->banned = false;
+        } else {
+            $user->banned = true;
+        }
+
+        $user->save();
+    
+        return back();
+    }
+
     public function changeLoginDestails(Request $request)
     {
         $this->authorize('modify', User::class);

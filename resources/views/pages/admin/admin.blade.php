@@ -29,7 +29,7 @@
                     <span class="col">MANAGE GAMES</span>
                 </div>
             </a>
-            <a class="nav-link" id="v-pills-3-tab-2" data-toggle="pill" href="#v-pills-3" role="tab"
+            <a class="nav-link" id="v-pills-2-tab-2" href="{{ url('admin/users') }}" role="tab"
                 aria-controls="v-pills-users" aria-selected="false">
                 <div class="row">
                     <i class="fas fa-users-cog col-1"></i>
@@ -57,7 +57,7 @@
                         <span class="col">MANAGE GAMES</span>
                     </div>
                 </a>
-                <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
+                <a class="nav-link" id="v-pills-2-tab"  href="{{ url('admin/users') }}" role="tab"
                     aria-controls="v-pills-users" aria-selected="false">
                     <div class="row">
                         <i class="fas fa-users-cog col-1"></i>
@@ -81,8 +81,10 @@
             @endif
             </div>
 
-            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-2-tab">
-
+            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+            @if (isset($tab_id) && $tab_id == 2)
+                @include('pages.admin.users')
+            @endif
             </div>
 
 

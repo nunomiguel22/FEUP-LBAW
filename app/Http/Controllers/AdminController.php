@@ -47,6 +47,22 @@ class AdminController extends Controller
         return view('pages.admin.admin', ['tab_id' => 0, 'purchases' => $purchases]);
     }
 
+    public function showUsers(Request $request)
+    {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            throw new AuthorizationException('This page is limited to administrators only');
+        }
+
+        $users = User::query();
+        if ($request->user_id) {
+            $users->where('id', $request->user_id);
+        }
+
+        $users = $users->paginate(2);
+    
+        return view('pages.admin.admin', ['tab_id' => 2, 'users' => $users]);
+    }
+
     public function showNewGame()
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
