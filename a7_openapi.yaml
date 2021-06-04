@@ -150,36 +150,24 @@ paths:
                   description: "Failed authentication. Redirect to login form."
                   value: "/login"
 
-  /users/{id}:
+  /user:
     get:
       operationId: R107
       summary: "R107: View user profile"
       description: "Show the individual user profile. Access: USR"
       tags:
         - "M01: Authentication and profile"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       responses:
         "200":
           description: "Ok. Show [UI04](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
 
-  /users/{id}/edit:
+  /users/edit:
     get:
       operationId: R108
       summary: "R108: Edit user profile Form"
       description: "Edit user profile Form. Access: USR"
       tags:
         - "M01: Authentication and profile"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       responses:
         "200":
           description: "Ok. Show [UI05](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui03-signup-form)"
@@ -192,12 +180,6 @@ paths:
       description: "Alter the individual user profile. Access: USR"
       tags:
         - "M01: Authentication and profile"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       requestBody:
         required: true
         content:
@@ -206,8 +188,6 @@ paths:
               type: object
               properties:
                 username:
-                  type: string
-                email:
                   type: string
                 first_name:
                   type: string
@@ -244,19 +224,13 @@ paths:
         "404":
           description: "User not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
-  /users/{id}/password_security:
+  /user/security:
     get:
       operationId: R110
       summary: "R110: Password and Security Form"
       description: "Show delete user profile Form. Access: USR"
       tags:
         - "M01: Authentication and profile"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       responses:
         "200":
           description: "Ok. Show [UI07](http://lbaw2156-piu.lbaw-prod.fe.up.pt/account.php#Security)"
@@ -267,12 +241,6 @@ paths:
       description: "Alter the individual user password. Access: USR"
       tags:
         - "M01: Authentication and profile"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       requestBody:
         required: true
         content:
@@ -280,6 +248,8 @@ paths:
             schema:
               type: object
               properties:
+                email:
+                  type: string
                 password:
                   type: string
                 new_password:
@@ -309,12 +279,6 @@ paths:
       description: "Delete user profile Action. Access: USR, ADM"
       tags:
         - "M01: Authentication and profile"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       responses:
         "302":
           description: "Redirect after deleting account."
@@ -702,7 +666,7 @@ paths:
         "200":
           description: "Ok. Show [UI10](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui09-product-page)"
 
-  /shopping/products/{id}/cart:
+  /products/{id}/cart:
     post:
       operationId: R402
       summary: "R402: Add product to cart Action"
@@ -757,7 +721,7 @@ paths:
                 302Failure:
                   description: "Failed to remove product from cart."
 
-  /shopping/cart/purchase:
+  /user/cart/checkout:
     post:
       operationId: R404
       summary: "R404: Checkout cart items Action"
@@ -792,7 +756,7 @@ paths:
                   description: "Failed to checkout items. Redirect to user profile."
                   value: "/shopping/cart/"
 
-  /api/shopping/order_history:
+  /api/user/keys:
     get:
       operationId: R405
       summary: "R405: Order History."
@@ -918,44 +882,7 @@ paths:
         "404":
           description: "Product not found. Show [UI14](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/wikis/A3#ui14-404)"
 
-  /api/wishlist/users/{id}:
-    get:
-      operationId: R601
-      summary: "R601: View user wishlist."
-      description: "View user wishlist. Access: USR"
-      tags:
-        - "M06: Wishlist"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    product_id:
-                      type: integer
-                    title:
-                      type: string
-                    price:
-                      type: string
-                    cover_image:
-                      type: string
-              example:
-                - product_id: 1
-                  title: Cyberpunk 2077
-                  price: 59.99
-                  cover_image: "/images/cp2077_cover.jpg"
-
-  /wishlist/product{id}:
+  /products/{id}/wishlist:
     post:
       operationId: R602
       summary: "R602: Add product to wishlist Action"
