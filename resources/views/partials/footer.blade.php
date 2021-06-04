@@ -29,6 +29,6 @@
     </section>
     <aside class="text-center p-3" style="background-color:rgba(0, 0, 0, 0.3)">
         <span>© 2021 Copyright:</span>
-        <a class="text-light" href="http://lbaw2156-piu.lbaw-prod.fe.up.pt/">OGS.com</a>
+        <a class="text-light" href="http://lbaw2156.lbaw-prod.fe.up.pt/">OGS.com</a>
     </aside>
 </footer>

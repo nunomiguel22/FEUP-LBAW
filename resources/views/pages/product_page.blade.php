@@ -245,17 +245,15 @@
                     @endif
                 </form>
                 @else
-                <div class="col p-0">
-                    <button type="button" class="btn btn-success w-100" data-toggle="modal" data-target="#LoginModal"
-                        style="min-height:44px;">
+                <a class="col p-0" href="{{ route('login') }}">
+                    <button type="button" class="btn btn-success w-100" style="min-height:44px;">
                         <i class="fas fa-shopping-cart"></i> Add to cart
                     </button>
-                </div>
-                <div class="col pr-0 mr-0">
-                    <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#LoginModal"
-                        style="min-height:44px;">
+                </a>
+                <a class="col pr-0 mr-0" href="{{ route('login') }}">
+                    <button type="button" class="btn btn-secondary w-100" style="min-height:44px;">
                         <i class="far fa-heart"></i> Add to wishlist</button>
-                </div>
+                </a>
                 @endif
             </div>
         </div>
