@@ -25,18 +25,20 @@ class UserController extends Controller
             throw new AuthorizationException('This page is limited to administrators only');
         }
 
-        
         $user = null;
         try {
             $user = User::findOrFail($user_id);
         } catch (ModelNotFoundException  $err) {
             abort(404);
         }
-        if ($request->make_admin) {
+
+     
+        if (!isset($request->make_admin)) {
             $user->is_admin = true;
         } else {
             $user->is_admin = false;
         }
+
 
         $user->save();
     
@@ -122,7 +124,6 @@ class UserController extends Controller
         // Update delete user form DB using a transaction as this is a multipart action
         DB::beginTransaction();
         try {
-            
             $user->cart_items()->detach();
             $user->wishlist_items()->detach();
             $user->purchases()->delete();
@@ -232,7 +233,7 @@ class UserController extends Controller
                 }
             } else {
                 Auth::user()->save();
-            } 
+            }
             
             DB::commit();
         } catch (\Exception $e) {
