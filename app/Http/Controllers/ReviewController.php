@@ -16,6 +16,7 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
+    // POST /reviews/products/{id}/review
     public function addReview(Request $request, $id)
     {
         $game = null;
@@ -37,6 +38,7 @@ class ReviewController extends Controller
     
         $review = new Review();
 
+        // Fill review object
         $review->description = $request->description;
         $review->score = $request->score;
         $review->user_id = Auth::user()->id;
@@ -47,6 +49,7 @@ class ReviewController extends Controller
         return redirect('/products/'.$review->game_id);
     }
 
+    // PUT /reviews/products/{id}/review/{review_id}
     public function updateReview(Request $request, $game_id, $review_id)
     {
         $game = null;
@@ -90,7 +93,7 @@ class ReviewController extends Controller
         return redirect('/products/'.$review->game_id);
     }
 
-    
+    // DELETE /reviews/products/{id}/review/{review_id}
     public function deleteReview($game_id ,$review_id)
     {
         $game = null;

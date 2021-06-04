@@ -19,6 +19,7 @@ use App\Models\GameKey;
 
 class PurchaseController extends Controller
 {
+    // GET /admin/sale/{id}
     public function showSale($id)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -35,6 +36,7 @@ class PurchaseController extends Controller
         return view('pages.admin.sale', ['purchase' => $purchase]);
     }
 
+    // POST /admin/sale/{id}
     public function manageSale(Request $request, $id)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {

@@ -60,7 +60,7 @@ Route::put('user/{id}/admin', 'UserController@adminRole');
 Route::get('user/edit', 'UserController@showGeneral');
 Route::put('user/edit', 'UserController@updateGeneral');
 Route::get('user/security', 'UserController@showSecurity');
-Route::put('user/security', 'UserController@changeLoginDestails');
+Route::put('user/security', 'UserController@changeLoginDetails');
 Route::delete('user/security', 'UserController@deleteAccount');
 Route::get('user/keys', 'UserController@showKeys');
 Route::get('user/wishlist', 'UserController@showWishlist');

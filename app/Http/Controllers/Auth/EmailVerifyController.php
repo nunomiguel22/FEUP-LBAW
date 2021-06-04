@@ -21,6 +21,7 @@ class EmailVerifyController extends Controller
         $this->middleware('auth');
     }
 
+    // GET /email/verify/{id}/{hash}
     public function verifyEmail(EmailVerificationRequest $request)
     {
         $request->fulfill();
@@ -28,6 +29,7 @@ class EmailVerifyController extends Controller
         return redirect('/');
     }
 
+    // POST /email/verify
     public function resendVerification(Request $request)
     {
         $request->user()->sendEmailVerificationNotification();
@@ -35,6 +37,7 @@ class EmailVerifyController extends Controller
         return back()->with('message', 'Verification link sent!');
     }
 
+    // GET /email/verify
     public function showEmailNotVerified()
     {
         return view('auth.verify-email');

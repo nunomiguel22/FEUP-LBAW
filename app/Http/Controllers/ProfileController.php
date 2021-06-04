@@ -18,6 +18,7 @@ use App\Models\Address;
 
 class ProfileController extends Controller
 {
+    // GET /user/profile
     public function show()
     {
         if (!Auth::check()) {
@@ -27,7 +28,7 @@ class ProfileController extends Controller
         return $this->profile();
     }
            
-
+    //Gets games info for recente games of profile page (Aux Function)
     public function profile()
     {
         

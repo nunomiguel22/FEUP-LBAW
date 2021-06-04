@@ -32,11 +32,13 @@ class PasswordResetController extends Controller
         $this->middleware('guest');
     }
 
+    // GET /forgot-password
     public function showPasswordReset()
     {
         return view('auth.forgot-password');
     }
 
+    // POST /forgot-password
     public function sendPasswordReset(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -50,11 +52,13 @@ class PasswordResetController extends Controller
                     : back()->withErrors(['email' => __($status)]);
     }
 
+    // GET /reset-password/{token}
     public function showPasswordEmailReset($token)
     {
         return view('auth.reset-password', ['token' => $token]);
     }
 
+    // POST /reset-password
     public function resetPassword(Request $request)
     {
         $request->validate([

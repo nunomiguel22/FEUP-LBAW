@@ -17,11 +17,13 @@ use App\Models\Category;
 
 class AdminController extends Controller
 {
+    // GET /admin
     public function showDefault(Request $request)
     {
         return $this->showSales($request);
     }
 
+    // GET /admin/products
     public function showProducts()
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -31,6 +33,7 @@ class AdminController extends Controller
         return view('pages.admin.admin', ['tab_id' => 1]);
     }
 
+    // GET /admin/sales
     public function showSales(Request $request)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -47,6 +50,7 @@ class AdminController extends Controller
         return view('pages.admin.admin', ['tab_id' => 0, 'purchases' => $purchases]);
     }
 
+    // GET /admin/users
     public function showUsers(Request $request)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -62,7 +66,7 @@ class AdminController extends Controller
     
         return view('pages.admin.admin', ['tab_id' => 2, 'users' => $users]);
     }
-
+    // GET /admin/products/add_product
     public function showNewGame()
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -76,6 +80,7 @@ class AdminController extends Controller
                     'tags' => $tags, 'categories' => $categories]);
     }
 
+    // GET /admin/products/{id}/edit
     public function showEditGame($game_id)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -96,6 +101,7 @@ class AdminController extends Controller
                     'tags' => $tags, 'game' => $game, 'categories' => $categories]);
     }
 
+    // GET /admin/products/{id}/keys
     public function showEditKeys($game_id)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {

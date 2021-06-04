@@ -11,6 +11,7 @@ use App\Models\Category;
 
 class HomepageController extends Controller
 {
+    // GET /
     public function show()
     {
         $categories = Category::all();
@@ -27,6 +28,7 @@ class HomepageController extends Controller
         return view('pages.homepage', $this->homepageGames());
     }
 
+    // Gets info for homepage cards display (Aux Function)
     public function homepageGames()
     {
         $categories = Category::all();

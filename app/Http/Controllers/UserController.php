@@ -18,6 +18,7 @@ use App\Models\Country;
 
 class UserController extends Controller
 {
+    //Change admin status of other user (Aux Function)
     public function adminRole(Request $request, $user_id)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -31,7 +32,6 @@ class UserController extends Controller
         } catch (ModelNotFoundException  $err) {
             abort(404);
         }
- 
         if ($request->make_admin) {
             $user->is_admin = true;
         } else {
@@ -43,6 +43,7 @@ class UserController extends Controller
         return back();
     }
 
+    //Change banned status of other user (Aux Function)
     public function ban(Request $request, $user_id)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -67,7 +68,8 @@ class UserController extends Controller
         return back();
     }
 
-    public function changeLoginDestails(Request $request)
+    // PUT /user/security
+    public function changeLoginDetails(Request $request)
     {
         $this->authorize('modify', User::class);
 
@@ -83,12 +85,13 @@ class UserController extends Controller
             'password_confirmation' => 'nullable|string|same:new_password',
         ]);
         $user = Auth::user();
-
+        
+        // Confirm user password in order to change data
         if (!Hash::check($request->password, $user->password)) {
             return back()->withErrors(['password' => 'Incorrect password']);
         }
 
-
+        // Change email if diferente than existing one
         if (!is_null($request->email) && ($request->email != $user->email)) {
             if (is_null(User::where('email', $request->email)->first())) {
                 $user->email = $request->email;
@@ -99,6 +102,7 @@ class UserController extends Controller
             }
         }
 
+        // Change password
         if (!is_null($request->new_password)) {
             $user->forceFill([
                 'password' => bcrypt($request->new_password)
@@ -109,20 +113,22 @@ class UserController extends Controller
         return back();
     }
 
+    // DELETE /user/security
     public function deleteAccount(Request $request)
     {
         $this->authorize('modify', User::class);
 
         $user = Auth::user();
-   
+        // Update delete user form DB using a transaction as this is a multipart action
         DB::beginTransaction();
         try {
+            
             $user->cart_items()->detach();
-    
             $user->wishlist_items()->detach();
             $user->purchases()->delete();
             $user->reviews()->delete();
-    
+            
+            //Delete image if not default
             if ($user->image->id != 1) {
                 $user_image = $user->image;
                 $user->image_id = 1;
@@ -177,11 +183,15 @@ class UserController extends Controller
         // Update the game in the DB using a transaction as this is a multipart action
         DB::beginTransaction();
         try {
+
+            // Edit user object
             Auth::user()->username = $request->username;
             Auth::user()->first_name = $request->first_name;
             Auth::user()->last_name = $request->last_name;
             Auth::user()->nif = $request->nif;
             Auth::user()->description = $request->description;
+
+            //verify that is inserted a valid address
             if ($this->hasAddress($request)) {
                 $validator = $this->addressValidator($request->all());
                 if ($validator->fails()) {
@@ -195,6 +205,7 @@ class UserController extends Controller
                 } else {
                     $address = Auth::user()->address;
                 }
+                // Edit address object
                 $address->line1 = $request->line1;
                 $address->line2 = $request->line2;
                 $address->postal_code = $request->postal_code;
@@ -214,15 +225,14 @@ class UserController extends Controller
                 $image->save();
                 Auth::user()->image_id= $image->id;
                 Auth::user()->save();
-                // Delete images from disk, database and game relation if not default
+                // Delete images from disk, database and game relation if not default image
                 if ($old_image->id != 1) {
                     $old_image->deleteFromDisk();
                     $old_image->delete();
                 }
             } else {
                 Auth::user()->save();
-            }
-            
+            } 
             
             DB::commit();
         } catch (\Exception $e) {
@@ -278,6 +288,7 @@ class UserController extends Controller
         ]);
     }
 
+    
     protected function hasAddress($request)
     {
         return $request->line1 || $request->postal_code || $request->city || $request->region;
@@ -295,6 +306,8 @@ class UserController extends Controller
         
         ]);
     }
+
+    // GET /user/wishlist
     public function showWishlist()
     {
         if (!Auth::check()) {
@@ -303,8 +316,6 @@ class UserController extends Controller
 
         $wishlist_games = Auth::user()->wishlist_items;
         
-        //dd($wishlist_games);
-
         return view('pages.user.user', ['tab_id' => 0, 'wishlist_games' => $wishlist_games]);
     }
 }

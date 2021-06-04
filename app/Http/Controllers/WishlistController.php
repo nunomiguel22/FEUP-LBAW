@@ -15,6 +15,7 @@ use App\Models\User;
 
 class WishlistController extends Controller
 {
+    // POST /products/{id}/wishlist
     public function addGame($id)
     {
         $game = null;
@@ -31,9 +32,9 @@ class WishlistController extends Controller
         return back();
     }
 
+    // DELETE /products/{id}/wishlist
     public function removeGame($id)
     {
-        //$this->authorize('view', Purchase::class);
 
         $game = null;
 
@@ -49,6 +50,7 @@ class WishlistController extends Controller
         return back();
     }
 
+    // DELETE /user/wishlist
     public function removeAll()
     {
         Auth::user()->wishlist_items()->detach();

@@ -239,7 +239,7 @@ class GameController extends Controller
         return redirect('admin/products/'.$id.'/edit');
     }
 
-    // PUT /admin/products/{id}/edit
+    // DELETE /admin/products/{id}/edit
     public function delete($id)
     {
         $this->authorize('modify', Game::class);
@@ -331,7 +331,6 @@ class GameController extends Controller
             'f_keys' => 'file|mimetypes:text/plain|max:2048',
         ]);
     }
-
 
     protected function validator(array $data)
     {
