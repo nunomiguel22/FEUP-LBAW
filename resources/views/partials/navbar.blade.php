@@ -44,7 +44,7 @@ $cart_item_count = Auth::user()->cart_items()->count();
                 </ul>
             </nav>
 
-            <form type="GET" action="/products" class="form-inline mx-lg-auto w-50">
+            <form method="GET" action="/products" class="form-inline mx-lg-auto w-50">
                 <input class="form-control bg-secondary text-light" name="text_search" type="text"
                     placeholder="Search for a title..." style="width:85%" value="{{ $_GET['text_search'] ?? null }}">
                 <button class="btn bg-transparent border-0 my-2" half-loader="true" type="submit"
