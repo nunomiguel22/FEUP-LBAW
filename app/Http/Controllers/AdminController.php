@@ -17,9 +17,9 @@ use App\Models\Category;
 
 class AdminController extends Controller
 {
-    public function showDefault()
+    public function showDefault(Request $request)
     {
-        return $this->showSales();
+        return $this->showSales($request);
     }
 
     public function showProducts()

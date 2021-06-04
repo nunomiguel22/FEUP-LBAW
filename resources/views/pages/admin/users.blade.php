@@ -38,26 +38,27 @@
     <aside class="container mt-3">
         <article class="row">
             <div class="col-1 text-light px-0">#ID</div>
-            <div class="col-3 text-light px-0">USERNAME</div>
-            <div class="col-3 text-light px-0">EMAIL</div>
+            <div class="col-2 text-light px-0">USERNAME</div>
+            <div class="col-2 text-light px-0">EMAIL</div>
             <div class="col-2 text-light px-0">BANNED</div>
             <div class="col-3 text-light px-0">ADMIN</div>
+            <div class="col-2 text-light px-0">PURCHASES</div>
         </article>
     </aside>
     <section class="container mt-3">
 
         @forelse($users as $user)
-        <a class="row my-2 bg-secondary" href="" style="min-height:30px">
-            <div class="col-1 my-auto mx-0 p-1">
+        <div class="row my-2 bg-secondary" style="min-height:30px">
+            <div class="col-1 my-auto mx-0 p-0">
                 {{ $user->id }}
             </div>
-            <div class="col-3 my-auto mx-0 p-1">
+            <div class="col-2 my-auto mx-0 p-0">
                 {{ $user->username }}
             </div>
-            <div class="col-3 my-auto mx-0 p-1">
+            <div class="col-2 my-auto mx-0 p-0">
                 {{ $user->email }}
             </div>
-            <div class="col-2 my-auto mx-0 p-1">
+            <div class="col-2 my-auto mx-0 p-0">
 
                 <form method="POST" action="/user/{{ $user->id }}/ban">
                     @csrf
@@ -75,7 +76,7 @@
                     @endif
                 </form>
             </div>
-            <div class="col-3 my-auto mx-0 p-1">
+            <div class="col-3 my-auto mx-0 p-0">
 
                 <form method="POST" action="/user/{{ $user->id }}/admin">
                     @csrf
@@ -93,7 +94,13 @@
                     @endif
                 </form>
             </div>
-        </a>
+            <div class="col-2 my-auto mx-0 p-0">
+                <button type="button" user_id="{{ $user->id }}" class="purchase_btns btn btn-info w-75 my-auto"
+                    style="min-height:45px">
+                    Purchases
+                </button>
+            </div>
+        </div>
         @empty
         @endforelse
 </div>
@@ -102,8 +109,8 @@
 
 </aside>
 
-<script src="{{ asset('js/admin_users.js') }}" ></script>
+<script src="{{ asset('js/admin_users.js') }}"></script>
 <!-- Add Paginator  -->
-<script type="text/javascript" >
+<script type="text/javascript">
     startPaginator({{ $users->lastPage() }}, {{ $users->currentPage() }});
 </script>
