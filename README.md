@@ -10,6 +10,9 @@
 
 #### Using PHP Artisan
 
+Link the storage folder to the public folder with:
+`php artisan storage:link`
+
 To use pgadmin locally:
 `docker-compose up`
 
