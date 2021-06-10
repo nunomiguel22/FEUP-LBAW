@@ -1,5 +1,5 @@
 # Online shop
-![preview](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2156/-/raw/master/docs/preview.jpg)
+![preview](https://github.com/nunomiguel22/FEUP-LBAW/blob/master/docs/preview.jpg)
 
 ### Installation
 
