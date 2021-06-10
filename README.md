@@ -32,7 +32,7 @@ To host web app locally in port 8000:
 
 |     Type      |    Email         |   Password   |
 |---------------|------------------|--------------|
-| basic account | lbaw@lbaw.pt     |   lbaw2156   |
+| basic account | lbaw2@lbaw.pt    |   lbaw2156   |
 | banned account| banned@email.com |   lbaw2156   |
 
 ## Team
